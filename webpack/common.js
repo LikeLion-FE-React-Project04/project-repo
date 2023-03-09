@@ -21,7 +21,7 @@ const commonConfig = {
     // main: resolve(__dirname, '../src/index.jsx'),
     main: {
       // eslint-disable-next-line no-undef
-      import: resolve(__dirname, '../src/index.tsx'),
+      import: resolve(__dirname, '../src/index.jsx'),
       dependOn: ['vendor'],
     },
     vendor: ['react', 'react-dom'],
@@ -48,7 +48,7 @@ const commonConfig = {
         // 어떤 로더를 사용해 파일을 변환할 것인가?
         use: 'babel-loader',
       },
-      esbuildLoader,
+      // esbuildLoader,
       styleLoader,
       styleModuleLoader,
       {

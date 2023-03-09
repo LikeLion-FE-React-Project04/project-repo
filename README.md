@@ -1,2 +1,2 @@
-# develop 브랜치
+# setting 브랜치
 test
