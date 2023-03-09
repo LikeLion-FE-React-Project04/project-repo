@@ -24,7 +24,7 @@ module.exports = {
   rules: {
     '@typescript-eslint/no-var-requires': 'off',
     'prettier/prettier': [
-      'error',
+      'off',
       {
         endOfLine: 'auto',
       },
