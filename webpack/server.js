@@ -14,6 +14,7 @@ const serverOptions = {
   watchFiles: {
     paths: ['src/**/*.*', 'public/**/*.*'],
   },
-}
+  historyApiFallback: true,
+};
 
 module.exports = serverOptions;
