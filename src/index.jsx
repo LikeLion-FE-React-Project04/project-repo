@@ -1,5 +1,7 @@
 import { StrictMode, lazy, Suspense } from 'react';
+import { RecoilRoot, RecoilEnv } from 'recoil';
 import { createRoot } from 'react-dom/client';
+import { RecoilLogger } from 'recoil-devtools-logger';
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -40,8 +42,14 @@ const router = createBrowserRouter(
 
 const rootContainer = document.getElementById('root');
 
+
+RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
+
 createRoot(rootContainer).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <RecoilRoot>
+      <RouterProvider router={router} />
+      <RecoilLogger />
+    </RecoilRoot>
   </StrictMode>
 );
