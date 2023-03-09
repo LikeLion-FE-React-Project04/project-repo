@@ -1,0 +1,3257 @@
+{
+  "hash": "3b22933c8ef8f489bfe3",
+  "version": "5.75.0",
+  "time": 7724,
+  "builtAt": 1677764611923,
+  "publicPath": "auto",
+  "outputPath": "C:\\Users\\kej19\\Desktop\\webpack-TS\\build",
+  "assetsByChunkName": {
+    "main": [
+      "main.min.js"
+    ],
+    "vendor": [
+      "vendor.min.js"
+    ]
+  },
+  "assets": [
+    {
+      "type": "asset",
+      "name": "vendor.min.js",
+      "size": 140709,
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "license": "vendor.min.js.LICENSE.txt"
+        },
+        "size": 140709
+      },
+      "chunkNames": [
+        "vendor"
+      ],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 0,
+      "related": [
+        {
+          "type": "license",
+          "name": "vendor.min.js.LICENSE.txt",
+          "size": 721,
+          "emitted": true,
+          "comparedForEmit": false,
+          "cached": false,
+          "info": {
+            "extractedComments": true,
+            "size": 721
+          },
+          "chunkNames": [],
+          "chunkIdHints": [],
+          "auxiliaryChunkNames": [],
+          "auxiliaryChunkIdHints": [],
+          "related": {},
+          "chunks": [],
+          "auxiliaryChunks": [],
+          "isOverSizeLimit": false
+        }
+      ],
+      "chunks": [
+        736
+      ],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    },
+    {
+      "type": "asset",
+      "name": "static/test.png",
+      "size": 136534,
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "copied": true,
+        "sourceFilename": "public/assets/test.png",
+        "size": 136534
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "related": {},
+      "chunks": [],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    },
+    {
+      "type": "asset",
+      "name": "main.min.js",
+      "size": 1450,
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "license": "main.min.js.LICENSE.txt"
+        },
+        "size": 1450
+      },
+      "chunkNames": [
+        "main"
+      ],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 0,
+      "related": [
+        {
+          "type": "license",
+          "name": "main.min.js.LICENSE.txt",
+          "size": 249,
+          "emitted": true,
+          "comparedForEmit": false,
+          "cached": false,
+          "info": {
+            "extractedComments": true,
+            "size": 249
+          },
+          "chunkNames": [],
+          "chunkIdHints": [],
+          "auxiliaryChunkNames": [],
+          "auxiliaryChunkIdHints": [],
+          "related": {},
+          "chunks": [],
+          "auxiliaryChunks": [],
+          "isOverSizeLimit": false
+        }
+      ],
+      "chunks": [
+        179
+      ],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    },
+    {
+      "type": "asset",
+      "name": "static/react.svg",
+      "size": 1318,
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "copied": true,
+        "sourceFilename": "public/assets/react.svg",
+        "minimized": true,
+        "minimizedBy": [
+          "imagemin"
+        ],
+        "size": 1318
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "related": {},
+      "chunks": [],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    },
+    {
+      "type": "asset",
+      "name": "index.html",
+      "size": 778,
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "size": 778
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "related": {},
+      "chunks": [],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    }
+  ],
+  "chunks": [
+    {
+      "rendered": true,
+      "initial": true,
+      "entry": false,
+      "recorded": false,
+      "size": 2648,
+      "sizes": {
+        "javascript": 2648
+      },
+      "names": [
+        "main"
+      ],
+      "idHints": [],
+      "runtime": [
+        "vendor"
+      ],
+      "files": [
+        "main.min.js"
+      ],
+      "auxiliaryFiles": [],
+      "hash": "bca97863cb31165f0299",
+      "childrenByOrder": {},
+      "id": 179,
+      "siblings": [],
+      "parents": [
+        736
+      ],
+      "children": [],
+      "modules": [
+        {
+          "type": "module",
+          "moduleType": "javascript/auto",
+          "layer": null,
+          "size": 619,
+          "sizes": {
+            "javascript": 619
+          },
+          "built": true,
+          "codeGenerated": true,
+          "buildTimeExecuted": false,
+          "cached": false,
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\client.js",
+          "name": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/client.js",
+          "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\client.js",
+          "index": 9,
+          "preOrderIndex": 9,
+          "index2": 8,
+          "postOrderIndex": 8,
+          "cacheable": true,
+          "optional": false,
+          "orphan": false,
+          "dependent": true,
+          "issuer": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+          "issuerName": "./src/index.tsx",
+          "issuerPath": [
+            {
+              "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+              "name": "./src/index.tsx",
+              "id": 187
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": 478,
+          "issuerId": 187,
+          "chunks": [
+            179
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+              "module": "./src/index.tsx",
+              "moduleName": "./src/index.tsx",
+              "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+              "resolvedModule": "./src/index.tsx",
+              "type": "cjs require",
+              "active": true,
+              "explanation": "",
+              "userRequest": "react-dom/client",
+              "loc": "8:17-44",
+              "moduleId": 187,
+              "resolvedModuleId": 187
+            }
+          ],
+          "usedExports": true,
+          "providedExports": [
+            "createRoot",
+            "hydrateRoot"
+          ],
+          "optimizationBailout": [
+            "Statement (VariableDeclaration) with side effects in source code at 3:0-29",
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 1
+        },
+        {
+          "type": "module",
+          "moduleType": "javascript/auto",
+          "layer": null,
+          "size": 859,
+          "sizes": {
+            "javascript": 859
+          },
+          "built": true,
+          "codeGenerated": true,
+          "buildTimeExecuted": false,
+          "cached": false,
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\cjs\\react-jsx-runtime.production.min.js",
+          "name": "./node_modules/.pnpm/react@18.2.0/node_modules/react/cjs/react-jsx-runtime.production.min.js",
+          "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\cjs\\react-jsx-runtime.production.min.js",
+          "index": 8,
+          "preOrderIndex": 8,
+          "index2": 6,
+          "postOrderIndex": 6,
+          "cacheable": true,
+          "optional": false,
+          "orphan": false,
+          "dependent": true,
+          "issuer": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\jsx-runtime.js",
+          "issuerName": "./node_modules/.pnpm/react@18.2.0/node_modules/react/jsx-runtime.js",
+          "issuerPath": [
+            {
+              "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+              "name": "./src/index.tsx",
+              "id": 187
+            },
+            {
+              "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\jsx-runtime.js",
+              "name": "./node_modules/.pnpm/react@18.2.0/node_modules/react/jsx-runtime.js",
+              "id": 527
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": 354,
+          "issuerId": 527,
+          "chunks": [
+            179
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\jsx-runtime.js",
+              "module": "./node_modules/.pnpm/react@18.2.0/node_modules/react/jsx-runtime.js",
+              "moduleName": "./node_modules/.pnpm/react@18.2.0/node_modules/react/jsx-runtime.js",
+              "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\jsx-runtime.js",
+              "resolvedModule": "./node_modules/.pnpm/react@18.2.0/node_modules/react/jsx-runtime.js",
+              "type": "cjs export require",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./cjs/react-jsx-runtime.production.min.js",
+              "loc": "4:2-71",
+              "moduleId": 527,
+              "resolvedModuleId": 527
+            }
+          ],
+          "usedExports": true,
+          "providedExports": [
+            "Fragment",
+            "jsx",
+            "jsxs"
+          ],
+          "optimizationBailout": [
+            "Statement (VariableDeclaration) with side effects in source code at 10:13-244",
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 2
+        },
+        {
+          "type": "module",
+          "moduleType": "javascript/auto",
+          "layer": null,
+          "size": 214,
+          "sizes": {
+            "javascript": 214
+          },
+          "built": true,
+          "codeGenerated": true,
+          "buildTimeExecuted": false,
+          "cached": false,
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\jsx-runtime.js",
+          "name": "./node_modules/.pnpm/react@18.2.0/node_modules/react/jsx-runtime.js",
+          "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\jsx-runtime.js",
+          "index": 7,
+          "preOrderIndex": 7,
+          "index2": 7,
+          "postOrderIndex": 7,
+          "cacheable": true,
+          "optional": false,
+          "orphan": false,
+          "dependent": true,
+          "issuer": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+          "issuerName": "./src/index.tsx",
+          "issuerPath": [
+            {
+              "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+              "name": "./src/index.tsx",
+              "id": 187
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": 527,
+          "issuerId": 187,
+          "chunks": [
+            179
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\App.tsx",
+              "module": "./src/App.tsx",
+              "moduleName": "./src/App.tsx",
+              "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\App.tsx",
+              "resolvedModule": "./src/App.tsx",
+              "type": "cjs require",
+              "active": true,
+              "explanation": "",
+              "userRequest": "react/jsx-runtime",
+              "loc": "3:22-50",
+              "moduleId": 705,
+              "resolvedModuleId": 705
+            },
+            {
+              "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+              "module": "./src/index.tsx",
+              "moduleName": "./src/index.tsx",
+              "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+              "resolvedModule": "./src/index.tsx",
+              "type": "cjs require",
+              "active": true,
+              "explanation": "",
+              "userRequest": "react/jsx-runtime",
+              "loc": "6:22-50",
+              "moduleId": 187,
+              "resolvedModuleId": 187
+            }
+          ],
+          "usedExports": true,
+          "providedExports": [
+            "Fragment",
+            "jsx",
+            "jsxs"
+          ],
+          "optimizationBailout": [
+            "Statement (ExpressionStatement) with side effects in source code at 4:2-72",
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 1
+        },
+        {
+          "type": "module",
+          "moduleType": "javascript/auto",
+          "layer": null,
+          "size": 344,
+          "sizes": {
+            "javascript": 344
+          },
+          "built": true,
+          "codeGenerated": true,
+          "buildTimeExecuted": false,
+          "cached": false,
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\App.tsx",
+          "name": "./src/App.tsx",
+          "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\App.tsx",
+          "index": 10,
+          "preOrderIndex": 10,
+          "index2": 9,
+          "postOrderIndex": 9,
+          "cacheable": true,
+          "optional": false,
+          "orphan": false,
+          "dependent": true,
+          "issuer": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+          "issuerName": "./src/index.tsx",
+          "issuerPath": [
+            {
+              "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+              "name": "./src/index.tsx",
+              "id": 187
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": 705,
+          "issuerId": 187,
+          "chunks": [
+            179
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+              "module": "./src/index.tsx",
+              "moduleName": "./src/index.tsx",
+              "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+              "resolvedModule": "./src/index.tsx",
+              "type": "cjs require",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./App",
+              "loc": "9:30-46",
+              "moduleId": 187,
+              "resolvedModuleId": 187
+            }
+          ],
+          "usedExports": true,
+          "providedExports": [
+            "__esModule",
+            "default"
+          ],
+          "optimizationBailout": [
+            "Statement (ExpressionStatement) with side effects in source code at 2:0-62",
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 1
+        },
+        {
+          "type": "module",
+          "moduleType": "javascript/auto",
+          "layer": null,
+          "size": 612,
+          "sizes": {
+            "javascript": 612
+          },
+          "built": true,
+          "codeGenerated": true,
+          "buildTimeExecuted": false,
+          "cached": false,
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+          "name": "./src/index.tsx",
+          "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+          "index": 6,
+          "preOrderIndex": 6,
+          "index2": 10,
+          "postOrderIndex": 10,
+          "cacheable": true,
+          "optional": false,
+          "orphan": false,
+          "dependent": false,
+          "issuer": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": 187,
+          "issuerId": null,
+          "chunks": [
+            179
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+              "module": "./src/index.tsx",
+              "moduleName": "./src/index.tsx",
+              "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+              "resolvedModule": "./src/index.tsx",
+              "type": "cjs self exports reference",
+              "active": true,
+              "explanation": "",
+              "userRequest": null,
+              "loc": "2:23-27",
+              "moduleId": 187,
+              "resolvedModuleId": 187
+            },
+            {
+              "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+              "module": "./src/index.tsx",
+              "moduleName": "./src/index.tsx",
+              "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+              "resolvedModule": "./src/index.tsx",
+              "type": "cjs self exports reference",
+              "active": true,
+              "explanation": "",
+              "userRequest": null,
+              "loc": "2:31-51",
+              "moduleId": 187,
+              "resolvedModuleId": 187
+            },
+            {
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "resolvedModuleIdentifier": null,
+              "resolvedModule": null,
+              "type": "entry",
+              "active": true,
+              "explanation": "",
+              "userRequest": "C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+              "loc": "main",
+              "moduleId": null,
+              "resolvedModuleId": null
+            }
+          ],
+          "usedExports": null,
+          "providedExports": null,
+          "optimizationBailout": [
+            "CommonJS bailout: this is used directly at 2:23-27",
+            "Statement (VariableDeclaration) with side effects in source code at 2:0-4:2",
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 0
+        }
+      ],
+      "origins": [
+        {
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "main",
+          "request": "C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx"
+        }
+      ]
+    },
+    {
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "recorded": false,
+      "size": 147340,
+      "sizes": {
+        "javascript": 144636,
+        "runtime": 2704
+      },
+      "names": [
+        "vendor"
+      ],
+      "idHints": [],
+      "runtime": [
+        "vendor"
+      ],
+      "files": [
+        "vendor.min.js"
+      ],
+      "auxiliaryFiles": [],
+      "hash": "5e934c90a26638ba53c1",
+      "childrenByOrder": {},
+      "id": 736,
+      "siblings": [],
+      "parents": [],
+      "children": [
+        179
+      ],
+      "modules": [
+        {
+          "type": "module",
+          "moduleType": "javascript/auto",
+          "layer": null,
+          "size": 131737,
+          "sizes": {
+            "javascript": 131737
+          },
+          "built": true,
+          "codeGenerated": true,
+          "buildTimeExecuted": false,
+          "cached": false,
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\cjs\\react-dom.production.min.js",
+          "name": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/cjs/react-dom.production.min.js",
+          "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\cjs\\react-dom.production.min.js",
+          "index": 3,
+          "preOrderIndex": 3,
+          "index2": 4,
+          "postOrderIndex": 4,
+          "cacheable": true,
+          "optional": false,
+          "orphan": false,
+          "dependent": true,
+          "issuer": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\index.js",
+          "issuerName": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/index.js",
+          "issuerPath": [
+            {
+              "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\index.js",
+              "name": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/index.js",
+              "id": 422
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": 746,
+          "issuerId": 422,
+          "chunks": [
+            736
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\index.js",
+              "module": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/index.js",
+              "moduleName": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/index.js",
+              "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\index.js",
+              "resolvedModule": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/index.js",
+              "type": "cjs export require",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./cjs/react-dom.production.min.js",
+              "loc": "35:2-63",
+              "moduleId": 422,
+              "resolvedModuleId": 422
+            }
+          ],
+          "usedExports": true,
+          "providedExports": [
+            "__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED",
+            "createPortal",
+            "createRoot",
+            "findDOMNode",
+            "flushSync",
+            "hydrate",
+            "hydrateRoot",
+            "render",
+            "unmountComponentAtNode",
+            "unstable_batchedUpdates",
+            "unstable_renderSubtreeIntoContainer",
+            "version"
+          ],
+          "optimizationBailout": [
+            "Statement (VariableDeclaration) with side effects in source code at 13:13-61",
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 1
+        },
+        {
+          "type": "module",
+          "moduleType": "javascript/auto",
+          "layer": null,
+          "size": 1363,
+          "sizes": {
+            "javascript": 1363
+          },
+          "built": true,
+          "codeGenerated": true,
+          "buildTimeExecuted": false,
+          "cached": false,
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\index.js",
+          "name": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/index.js",
+          "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\index.js",
+          "index": 2,
+          "preOrderIndex": 2,
+          "index2": 5,
+          "postOrderIndex": 5,
+          "cacheable": true,
+          "optional": false,
+          "orphan": false,
+          "dependent": false,
+          "issuer": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": 422,
+          "issuerId": null,
+          "chunks": [
+            736
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\client.js",
+              "module": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/client.js",
+              "moduleName": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/client.js",
+              "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\client.js",
+              "resolvedModule": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/client.js",
+              "type": "cjs require",
+              "active": true,
+              "explanation": "",
+              "userRequest": "react-dom",
+              "loc": "3:8-28",
+              "moduleId": 478,
+              "resolvedModuleId": 478
+            },
+            {
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "resolvedModuleIdentifier": null,
+              "resolvedModule": null,
+              "type": "entry",
+              "active": true,
+              "explanation": "",
+              "userRequest": "react-dom",
+              "loc": "vendor",
+              "moduleId": null,
+              "resolvedModuleId": null
+            }
+          ],
+          "usedExports": true,
+          "providedExports": [
+            "__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED",
+            "createPortal",
+            "createRoot",
+            "findDOMNode",
+            "flushSync",
+            "hydrate",
+            "hydrateRoot",
+            "render",
+            "unmountComponentAtNode",
+            "unstable_batchedUpdates",
+            "unstable_renderSubtreeIntoContainer",
+            "version"
+          ],
+          "optimizationBailout": [
+            "Statement (ExpressionStatement) with side effects in source code at 34:2-13",
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 0
+        },
+        {
+          "type": "module",
+          "moduleType": "javascript/auto",
+          "layer": null,
+          "size": 6913,
+          "sizes": {
+            "javascript": 6913
+          },
+          "built": true,
+          "codeGenerated": true,
+          "buildTimeExecuted": false,
+          "cached": false,
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\cjs\\react.production.min.js",
+          "name": "./node_modules/.pnpm/react@18.2.0/node_modules/react/cjs/react.production.min.js",
+          "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\cjs\\react.production.min.js",
+          "index": 1,
+          "preOrderIndex": 1,
+          "index2": 0,
+          "postOrderIndex": 0,
+          "cacheable": true,
+          "optional": false,
+          "orphan": false,
+          "dependent": true,
+          "issuer": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\index.js",
+          "issuerName": "./node_modules/.pnpm/react@18.2.0/node_modules/react/index.js",
+          "issuerPath": [
+            {
+              "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\index.js",
+              "name": "./node_modules/.pnpm/react@18.2.0/node_modules/react/index.js",
+              "id": 959
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": 257,
+          "issuerId": 959,
+          "chunks": [
+            736
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\index.js",
+              "module": "./node_modules/.pnpm/react@18.2.0/node_modules/react/index.js",
+              "moduleName": "./node_modules/.pnpm/react@18.2.0/node_modules/react/index.js",
+              "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\index.js",
+              "resolvedModule": "./node_modules/.pnpm/react@18.2.0/node_modules/react/index.js",
+              "type": "cjs export require",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./cjs/react.production.min.js",
+              "loc": "4:2-59",
+              "moduleId": 959,
+              "resolvedModuleId": 959
+            }
+          ],
+          "usedExports": true,
+          "providedExports": [
+            "Children",
+            "Component",
+            "Fragment",
+            "Profiler",
+            "PureComponent",
+            "StrictMode",
+            "Suspense",
+            "__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED",
+            "cloneElement",
+            "createContext",
+            "createElement",
+            "createFactory",
+            "createRef",
+            "forwardRef",
+            "isValidElement",
+            "lazy",
+            "memo",
+            "startTransition",
+            "unstable_act",
+            "useCallback",
+            "useContext",
+            "useDebugValue",
+            "useDeferredValue",
+            "useEffect",
+            "useId",
+            "useImperativeHandle",
+            "useInsertionEffect",
+            "useLayoutEffect",
+            "useMemo",
+            "useReducer",
+            "useRef",
+            "useState",
+            "useSyncExternalStore",
+            "useTransition",
+            "version"
+          ],
+          "optimizationBailout": [
+            "Statement (VariableDeclaration) with side effects in source code at 10:13-370",
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 1
+        },
+        {
+          "type": "module",
+          "moduleType": "javascript/auto",
+          "layer": null,
+          "size": 190,
+          "sizes": {
+            "javascript": 190
+          },
+          "built": true,
+          "codeGenerated": true,
+          "buildTimeExecuted": false,
+          "cached": false,
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\index.js",
+          "name": "./node_modules/.pnpm/react@18.2.0/node_modules/react/index.js",
+          "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\index.js",
+          "index": 0,
+          "preOrderIndex": 0,
+          "index2": 1,
+          "postOrderIndex": 1,
+          "cacheable": true,
+          "optional": false,
+          "orphan": false,
+          "dependent": true,
+          "issuer": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": 959,
+          "issuerId": null,
+          "chunks": [
+            736
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\cjs\\react-dom.production.min.js",
+              "module": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/cjs/react-dom.production.min.js",
+              "moduleName": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/cjs/react-dom.production.min.js",
+              "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\cjs\\react-dom.production.min.js",
+              "resolvedModule": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/cjs/react-dom.production.min.js",
+              "type": "cjs require",
+              "active": true,
+              "explanation": "",
+              "userRequest": "react",
+              "loc": "13:20-36",
+              "moduleId": 746,
+              "resolvedModuleId": 746
+            },
+            {
+              "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\cjs\\react-jsx-runtime.production.min.js",
+              "module": "./node_modules/.pnpm/react@18.2.0/node_modules/react/cjs/react-jsx-runtime.production.min.js",
+              "moduleName": "./node_modules/.pnpm/react@18.2.0/node_modules/react/cjs/react-jsx-runtime.production.min.js",
+              "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\cjs\\react-jsx-runtime.production.min.js",
+              "resolvedModule": "./node_modules/.pnpm/react@18.2.0/node_modules/react/cjs/react-jsx-runtime.production.min.js",
+              "type": "cjs require",
+              "active": true,
+              "explanation": "",
+              "userRequest": "react",
+              "loc": "10:19-35",
+              "moduleId": 354,
+              "resolvedModuleId": 354
+            },
+            {
+              "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+              "module": "./src/index.tsx",
+              "moduleName": "./src/index.tsx",
+              "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+              "resolvedModule": "./src/index.tsx",
+              "type": "cjs require",
+              "active": true,
+              "explanation": "",
+              "userRequest": "react",
+              "loc": "7:16-32",
+              "moduleId": 187,
+              "resolvedModuleId": 187
+            },
+            {
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "resolvedModuleIdentifier": null,
+              "resolvedModule": null,
+              "type": "entry",
+              "active": true,
+              "explanation": "",
+              "userRequest": "react",
+              "loc": "vendor",
+              "moduleId": null,
+              "resolvedModuleId": null
+            }
+          ],
+          "usedExports": true,
+          "providedExports": [
+            "Children",
+            "Component",
+            "Fragment",
+            "Profiler",
+            "PureComponent",
+            "StrictMode",
+            "Suspense",
+            "__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED",
+            "cloneElement",
+            "createContext",
+            "createElement",
+            "createFactory",
+            "createRef",
+            "forwardRef",
+            "isValidElement",
+            "lazy",
+            "memo",
+            "startTransition",
+            "unstable_act",
+            "useCallback",
+            "useContext",
+            "useDebugValue",
+            "useDeferredValue",
+            "useEffect",
+            "useId",
+            "useImperativeHandle",
+            "useInsertionEffect",
+            "useLayoutEffect",
+            "useMemo",
+            "useReducer",
+            "useRef",
+            "useState",
+            "useSyncExternalStore",
+            "useTransition",
+            "version"
+          ],
+          "optimizationBailout": [
+            "Statement (ExpressionStatement) with side effects in source code at 4:2-60",
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 0
+        },
+        {
+          "type": "module",
+          "moduleType": "javascript/auto",
+          "layer": null,
+          "size": 4235,
+          "sizes": {
+            "javascript": 4235
+          },
+          "built": true,
+          "codeGenerated": true,
+          "buildTimeExecuted": false,
+          "cached": false,
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+          "name": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+          "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+          "index": 5,
+          "preOrderIndex": 5,
+          "index2": 2,
+          "postOrderIndex": 2,
+          "cacheable": true,
+          "optional": false,
+          "orphan": false,
+          "dependent": true,
+          "issuer": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\index.js",
+          "issuerName": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/index.js",
+          "issuerPath": [
+            {
+              "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\index.js",
+              "name": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/index.js",
+              "id": 422
+            },
+            {
+              "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\cjs\\react-dom.production.min.js",
+              "name": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/cjs/react-dom.production.min.js",
+              "id": 746
+            },
+            {
+              "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\index.js",
+              "name": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/index.js",
+              "id": 962
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": 568,
+          "issuerId": 962,
+          "chunks": [
+            736
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+              "module": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+              "moduleName": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+              "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+              "resolvedModule": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+              "type": "cjs self exports reference",
+              "active": true,
+              "explanation": "",
+              "userRequest": null,
+              "loc": "13:227-247",
+              "moduleId": 568,
+              "resolvedModuleId": 568
+            },
+            {
+              "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+              "module": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+              "moduleName": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+              "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+              "resolvedModule": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+              "type": "cjs self exports reference",
+              "active": true,
+              "explanation": "",
+              "userRequest": null,
+              "loc": "14:20-40",
+              "moduleId": 568,
+              "resolvedModuleId": 568
+            },
+            {
+              "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+              "module": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+              "moduleName": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+              "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+              "resolvedModule": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+              "type": "cjs self exports reference",
+              "active": true,
+              "explanation": "",
+              "userRequest": null,
+              "loc": "14:85-105",
+              "moduleId": 568,
+              "resolvedModuleId": 568
+            },
+            {
+              "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+              "module": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+              "moduleName": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+              "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+              "resolvedModule": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+              "type": "cjs self exports reference",
+              "active": true,
+              "explanation": "",
+              "userRequest": null,
+              "loc": "14:449-469",
+              "moduleId": 568,
+              "resolvedModuleId": 568
+            },
+            {
+              "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+              "module": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+              "moduleName": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+              "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+              "resolvedModule": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+              "type": "cjs self exports reference",
+              "active": true,
+              "explanation": "",
+              "userRequest": null,
+              "loc": "18:56-76",
+              "moduleId": 568,
+              "resolvedModuleId": 568
+            },
+            {
+              "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\index.js",
+              "module": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/index.js",
+              "moduleName": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/index.js",
+              "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\index.js",
+              "resolvedModule": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/index.js",
+              "type": "cjs export require",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./cjs/scheduler.production.min.js",
+              "loc": "4:2-63",
+              "moduleId": 962,
+              "resolvedModuleId": 962
+            }
+          ],
+          "usedExports": true,
+          "providedExports": [
+            "unstable_IdlePriority",
+            "unstable_ImmediatePriority",
+            "unstable_LowPriority",
+            "unstable_NormalPriority",
+            "unstable_Profiling",
+            "unstable_UserBlockingPriority",
+            "unstable_cancelCallback",
+            "unstable_continueExecution",
+            "unstable_forceFrameRate",
+            "unstable_getCurrentPriorityLevel",
+            "unstable_getFirstCallbackNode",
+            "unstable_next",
+            "unstable_now",
+            "unstable_pauseExecution",
+            "unstable_requestPaint",
+            "unstable_runWithPriority",
+            "unstable_scheduleCallback",
+            "unstable_shouldYield",
+            "unstable_wrapCallback"
+          ],
+          "optimizationBailout": [
+            "CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 13:227-247",
+            "CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 14:20-40",
+            "CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 14:85-105",
+            "CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 14:449-469",
+            "CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 18:56-76",
+            "Statement (IfStatement) with side effects in source code at 11:71-284",
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 3
+        },
+        {
+          "type": "module",
+          "moduleType": "javascript/auto",
+          "layer": null,
+          "size": 198,
+          "sizes": {
+            "javascript": 198
+          },
+          "built": true,
+          "codeGenerated": true,
+          "buildTimeExecuted": false,
+          "cached": false,
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\index.js",
+          "name": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/index.js",
+          "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\index.js",
+          "index": 4,
+          "preOrderIndex": 4,
+          "index2": 3,
+          "postOrderIndex": 3,
+          "cacheable": true,
+          "optional": false,
+          "orphan": false,
+          "dependent": true,
+          "issuer": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\cjs\\react-dom.production.min.js",
+          "issuerName": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/cjs/react-dom.production.min.js",
+          "issuerPath": [
+            {
+              "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\index.js",
+              "name": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/index.js",
+              "id": 422
+            },
+            {
+              "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\cjs\\react-dom.production.min.js",
+              "name": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/cjs/react-dom.production.min.js",
+              "id": 746
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": 962,
+          "issuerId": 746,
+          "chunks": [
+            736
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\cjs\\react-dom.production.min.js",
+              "module": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/cjs/react-dom.production.min.js",
+              "moduleName": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/cjs/react-dom.production.min.js",
+              "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\cjs\\react-dom.production.min.js",
+              "resolvedModule": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/cjs/react-dom.production.min.js",
+              "type": "cjs require",
+              "active": true,
+              "explanation": "",
+              "userRequest": "scheduler",
+              "loc": "13:40-60",
+              "moduleId": 746,
+              "resolvedModuleId": 746
+            }
+          ],
+          "usedExports": true,
+          "providedExports": [
+            "unstable_IdlePriority",
+            "unstable_ImmediatePriority",
+            "unstable_LowPriority",
+            "unstable_NormalPriority",
+            "unstable_Profiling",
+            "unstable_UserBlockingPriority",
+            "unstable_cancelCallback",
+            "unstable_continueExecution",
+            "unstable_forceFrameRate",
+            "unstable_getCurrentPriorityLevel",
+            "unstable_getFirstCallbackNode",
+            "unstable_next",
+            "unstable_now",
+            "unstable_pauseExecution",
+            "unstable_requestPaint",
+            "unstable_runWithPriority",
+            "unstable_scheduleCallback",
+            "unstable_shouldYield",
+            "unstable_wrapCallback"
+          ],
+          "optimizationBailout": [
+            "Statement (ExpressionStatement) with side effects in source code at 4:2-64",
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 2
+        },
+        {
+          "type": "module",
+          "moduleType": "runtime",
+          "layer": null,
+          "size": 953,
+          "sizes": {
+            "runtime": 953
+          },
+          "built": false,
+          "codeGenerated": true,
+          "buildTimeExecuted": false,
+          "cached": false,
+          "identifier": "webpack/runtime/chunk loaded",
+          "name": "webpack/runtime/chunk loaded",
+          "nameForCondition": null,
+          "index": null,
+          "preOrderIndex": null,
+          "index2": null,
+          "postOrderIndex": null,
+          "optional": false,
+          "orphan": false,
+          "dependent": false,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": "",
+          "chunks": [
+            736
+          ],
+          "assets": [],
+          "reasons": [],
+          "usedExports": null,
+          "providedExports": [],
+          "optimizationBailout": [],
+          "depth": null
+        },
+        {
+          "type": "module",
+          "moduleType": "runtime",
+          "layer": null,
+          "size": 103,
+          "sizes": {
+            "runtime": 103
+          },
+          "built": false,
+          "codeGenerated": true,
+          "buildTimeExecuted": false,
+          "cached": false,
+          "identifier": "webpack/runtime/hasOwnProperty shorthand",
+          "name": "webpack/runtime/hasOwnProperty shorthand",
+          "nameForCondition": null,
+          "index": null,
+          "preOrderIndex": null,
+          "index2": null,
+          "postOrderIndex": null,
+          "optional": false,
+          "orphan": false,
+          "dependent": false,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": "",
+          "chunks": [
+            736
+          ],
+          "assets": [],
+          "reasons": [],
+          "usedExports": null,
+          "providedExports": [],
+          "optimizationBailout": [],
+          "depth": null
+        },
+        {
+          "type": "module",
+          "moduleType": "runtime",
+          "layer": null,
+          "size": 1648,
+          "sizes": {
+            "runtime": 1648
+          },
+          "built": false,
+          "codeGenerated": true,
+          "buildTimeExecuted": false,
+          "cached": false,
+          "identifier": "webpack/runtime/jsonp chunk loading",
+          "name": "webpack/runtime/jsonp chunk loading",
+          "nameForCondition": null,
+          "index": null,
+          "preOrderIndex": null,
+          "index2": null,
+          "postOrderIndex": null,
+          "optional": false,
+          "orphan": false,
+          "dependent": false,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": "",
+          "chunks": [
+            736
+          ],
+          "assets": [],
+          "reasons": [],
+          "usedExports": null,
+          "providedExports": [],
+          "optimizationBailout": [],
+          "depth": null
+        }
+      ],
+      "origins": [
+        {
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "vendor",
+          "request": "react"
+        },
+        {
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "vendor",
+          "request": "react-dom"
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "type": "module",
+      "moduleType": "javascript/auto",
+      "layer": null,
+      "size": 190,
+      "sizes": {
+        "javascript": 190
+      },
+      "built": true,
+      "codeGenerated": true,
+      "buildTimeExecuted": false,
+      "cached": false,
+      "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\index.js",
+      "name": "./node_modules/.pnpm/react@18.2.0/node_modules/react/index.js",
+      "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\index.js",
+      "index": 0,
+      "preOrderIndex": 0,
+      "index2": 1,
+      "postOrderIndex": 1,
+      "cacheable": true,
+      "optional": false,
+      "orphan": false,
+      "issuer": null,
+      "issuerName": null,
+      "issuerPath": null,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": 959,
+      "issuerId": null,
+      "chunks": [
+        736
+      ],
+      "assets": [],
+      "reasons": [
+        {
+          "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\cjs\\react-dom.production.min.js",
+          "module": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/cjs/react-dom.production.min.js",
+          "moduleName": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/cjs/react-dom.production.min.js",
+          "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\cjs\\react-dom.production.min.js",
+          "resolvedModule": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/cjs/react-dom.production.min.js",
+          "type": "cjs require",
+          "active": true,
+          "explanation": "",
+          "userRequest": "react",
+          "loc": "13:20-36",
+          "moduleId": 746,
+          "resolvedModuleId": 746
+        },
+        {
+          "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\cjs\\react-jsx-runtime.production.min.js",
+          "module": "./node_modules/.pnpm/react@18.2.0/node_modules/react/cjs/react-jsx-runtime.production.min.js",
+          "moduleName": "./node_modules/.pnpm/react@18.2.0/node_modules/react/cjs/react-jsx-runtime.production.min.js",
+          "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\cjs\\react-jsx-runtime.production.min.js",
+          "resolvedModule": "./node_modules/.pnpm/react@18.2.0/node_modules/react/cjs/react-jsx-runtime.production.min.js",
+          "type": "cjs require",
+          "active": true,
+          "explanation": "",
+          "userRequest": "react",
+          "loc": "10:19-35",
+          "moduleId": 354,
+          "resolvedModuleId": 354
+        },
+        {
+          "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+          "module": "./src/index.tsx",
+          "moduleName": "./src/index.tsx",
+          "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+          "resolvedModule": "./src/index.tsx",
+          "type": "cjs require",
+          "active": true,
+          "explanation": "",
+          "userRequest": "react",
+          "loc": "7:16-32",
+          "moduleId": 187,
+          "resolvedModuleId": 187
+        },
+        {
+          "moduleIdentifier": null,
+          "module": null,
+          "moduleName": null,
+          "resolvedModuleIdentifier": null,
+          "resolvedModule": null,
+          "type": "entry",
+          "active": true,
+          "explanation": "",
+          "userRequest": "react",
+          "loc": "vendor",
+          "moduleId": null,
+          "resolvedModuleId": null
+        }
+      ],
+      "usedExports": true,
+      "providedExports": [
+        "Children",
+        "Component",
+        "Fragment",
+        "Profiler",
+        "PureComponent",
+        "StrictMode",
+        "Suspense",
+        "__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED",
+        "cloneElement",
+        "createContext",
+        "createElement",
+        "createFactory",
+        "createRef",
+        "forwardRef",
+        "isValidElement",
+        "lazy",
+        "memo",
+        "startTransition",
+        "unstable_act",
+        "useCallback",
+        "useContext",
+        "useDebugValue",
+        "useDeferredValue",
+        "useEffect",
+        "useId",
+        "useImperativeHandle",
+        "useInsertionEffect",
+        "useLayoutEffect",
+        "useMemo",
+        "useReducer",
+        "useRef",
+        "useState",
+        "useSyncExternalStore",
+        "useTransition",
+        "version"
+      ],
+      "optimizationBailout": [
+        "Statement (ExpressionStatement) with side effects in source code at 4:2-60",
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 0
+    },
+    {
+      "type": "module",
+      "moduleType": "javascript/auto",
+      "layer": null,
+      "size": 1363,
+      "sizes": {
+        "javascript": 1363
+      },
+      "built": true,
+      "codeGenerated": true,
+      "buildTimeExecuted": false,
+      "cached": false,
+      "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\index.js",
+      "name": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/index.js",
+      "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\index.js",
+      "index": 2,
+      "preOrderIndex": 2,
+      "index2": 5,
+      "postOrderIndex": 5,
+      "cacheable": true,
+      "optional": false,
+      "orphan": false,
+      "issuer": null,
+      "issuerName": null,
+      "issuerPath": null,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": 422,
+      "issuerId": null,
+      "chunks": [
+        736
+      ],
+      "assets": [],
+      "reasons": [
+        {
+          "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\client.js",
+          "module": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/client.js",
+          "moduleName": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/client.js",
+          "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\client.js",
+          "resolvedModule": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/client.js",
+          "type": "cjs require",
+          "active": true,
+          "explanation": "",
+          "userRequest": "react-dom",
+          "loc": "3:8-28",
+          "moduleId": 478,
+          "resolvedModuleId": 478
+        },
+        {
+          "moduleIdentifier": null,
+          "module": null,
+          "moduleName": null,
+          "resolvedModuleIdentifier": null,
+          "resolvedModule": null,
+          "type": "entry",
+          "active": true,
+          "explanation": "",
+          "userRequest": "react-dom",
+          "loc": "vendor",
+          "moduleId": null,
+          "resolvedModuleId": null
+        }
+      ],
+      "usedExports": true,
+      "providedExports": [
+        "__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED",
+        "createPortal",
+        "createRoot",
+        "findDOMNode",
+        "flushSync",
+        "hydrate",
+        "hydrateRoot",
+        "render",
+        "unmountComponentAtNode",
+        "unstable_batchedUpdates",
+        "unstable_renderSubtreeIntoContainer",
+        "version"
+      ],
+      "optimizationBailout": [
+        "Statement (ExpressionStatement) with side effects in source code at 34:2-13",
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 0
+    },
+    {
+      "type": "module",
+      "moduleType": "javascript/auto",
+      "layer": null,
+      "size": 612,
+      "sizes": {
+        "javascript": 612
+      },
+      "built": true,
+      "codeGenerated": true,
+      "buildTimeExecuted": false,
+      "cached": false,
+      "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+      "name": "./src/index.tsx",
+      "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+      "index": 6,
+      "preOrderIndex": 6,
+      "index2": 10,
+      "postOrderIndex": 10,
+      "cacheable": true,
+      "optional": false,
+      "orphan": false,
+      "issuer": null,
+      "issuerName": null,
+      "issuerPath": null,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": 187,
+      "issuerId": null,
+      "chunks": [
+        179
+      ],
+      "assets": [],
+      "reasons": [
+        {
+          "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+          "module": "./src/index.tsx",
+          "moduleName": "./src/index.tsx",
+          "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+          "resolvedModule": "./src/index.tsx",
+          "type": "cjs self exports reference",
+          "active": true,
+          "explanation": "",
+          "userRequest": null,
+          "loc": "2:23-27",
+          "moduleId": 187,
+          "resolvedModuleId": 187
+        },
+        {
+          "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+          "module": "./src/index.tsx",
+          "moduleName": "./src/index.tsx",
+          "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+          "resolvedModule": "./src/index.tsx",
+          "type": "cjs self exports reference",
+          "active": true,
+          "explanation": "",
+          "userRequest": null,
+          "loc": "2:31-51",
+          "moduleId": 187,
+          "resolvedModuleId": 187
+        },
+        {
+          "moduleIdentifier": null,
+          "module": null,
+          "moduleName": null,
+          "resolvedModuleIdentifier": null,
+          "resolvedModule": null,
+          "type": "entry",
+          "active": true,
+          "explanation": "",
+          "userRequest": "C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+          "loc": "main",
+          "moduleId": null,
+          "resolvedModuleId": null
+        }
+      ],
+      "usedExports": null,
+      "providedExports": null,
+      "optimizationBailout": [
+        "CommonJS bailout: this is used directly at 2:23-27",
+        "Statement (VariableDeclaration) with side effects in source code at 2:0-4:2",
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 0
+    },
+    {
+      "type": "module",
+      "moduleType": "javascript/auto",
+      "layer": null,
+      "size": 6913,
+      "sizes": {
+        "javascript": 6913
+      },
+      "built": true,
+      "codeGenerated": true,
+      "buildTimeExecuted": false,
+      "cached": false,
+      "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\cjs\\react.production.min.js",
+      "name": "./node_modules/.pnpm/react@18.2.0/node_modules/react/cjs/react.production.min.js",
+      "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\cjs\\react.production.min.js",
+      "index": 1,
+      "preOrderIndex": 1,
+      "index2": 0,
+      "postOrderIndex": 0,
+      "cacheable": true,
+      "optional": false,
+      "orphan": false,
+      "issuer": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\index.js",
+      "issuerName": "./node_modules/.pnpm/react@18.2.0/node_modules/react/index.js",
+      "issuerPath": [
+        {
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\index.js",
+          "name": "./node_modules/.pnpm/react@18.2.0/node_modules/react/index.js",
+          "id": 959
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": 257,
+      "issuerId": 959,
+      "chunks": [
+        736
+      ],
+      "assets": [],
+      "reasons": [
+        {
+          "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\index.js",
+          "module": "./node_modules/.pnpm/react@18.2.0/node_modules/react/index.js",
+          "moduleName": "./node_modules/.pnpm/react@18.2.0/node_modules/react/index.js",
+          "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\index.js",
+          "resolvedModule": "./node_modules/.pnpm/react@18.2.0/node_modules/react/index.js",
+          "type": "cjs export require",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./cjs/react.production.min.js",
+          "loc": "4:2-59",
+          "moduleId": 959,
+          "resolvedModuleId": 959
+        }
+      ],
+      "usedExports": true,
+      "providedExports": [
+        "Children",
+        "Component",
+        "Fragment",
+        "Profiler",
+        "PureComponent",
+        "StrictMode",
+        "Suspense",
+        "__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED",
+        "cloneElement",
+        "createContext",
+        "createElement",
+        "createFactory",
+        "createRef",
+        "forwardRef",
+        "isValidElement",
+        "lazy",
+        "memo",
+        "startTransition",
+        "unstable_act",
+        "useCallback",
+        "useContext",
+        "useDebugValue",
+        "useDeferredValue",
+        "useEffect",
+        "useId",
+        "useImperativeHandle",
+        "useInsertionEffect",
+        "useLayoutEffect",
+        "useMemo",
+        "useReducer",
+        "useRef",
+        "useState",
+        "useSyncExternalStore",
+        "useTransition",
+        "version"
+      ],
+      "optimizationBailout": [
+        "Statement (VariableDeclaration) with side effects in source code at 10:13-370",
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 1
+    },
+    {
+      "type": "module",
+      "moduleType": "javascript/auto",
+      "layer": null,
+      "size": 131737,
+      "sizes": {
+        "javascript": 131737
+      },
+      "built": true,
+      "codeGenerated": true,
+      "buildTimeExecuted": false,
+      "cached": false,
+      "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\cjs\\react-dom.production.min.js",
+      "name": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/cjs/react-dom.production.min.js",
+      "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\cjs\\react-dom.production.min.js",
+      "index": 3,
+      "preOrderIndex": 3,
+      "index2": 4,
+      "postOrderIndex": 4,
+      "cacheable": true,
+      "optional": false,
+      "orphan": false,
+      "issuer": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\index.js",
+      "issuerName": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/index.js",
+      "issuerPath": [
+        {
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\index.js",
+          "name": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/index.js",
+          "id": 422
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": 746,
+      "issuerId": 422,
+      "chunks": [
+        736
+      ],
+      "assets": [],
+      "reasons": [
+        {
+          "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\index.js",
+          "module": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/index.js",
+          "moduleName": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/index.js",
+          "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\index.js",
+          "resolvedModule": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/index.js",
+          "type": "cjs export require",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./cjs/react-dom.production.min.js",
+          "loc": "35:2-63",
+          "moduleId": 422,
+          "resolvedModuleId": 422
+        }
+      ],
+      "usedExports": true,
+      "providedExports": [
+        "__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED",
+        "createPortal",
+        "createRoot",
+        "findDOMNode",
+        "flushSync",
+        "hydrate",
+        "hydrateRoot",
+        "render",
+        "unmountComponentAtNode",
+        "unstable_batchedUpdates",
+        "unstable_renderSubtreeIntoContainer",
+        "version"
+      ],
+      "optimizationBailout": [
+        "Statement (VariableDeclaration) with side effects in source code at 13:13-61",
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 1
+    },
+    {
+      "type": "module",
+      "moduleType": "javascript/auto",
+      "layer": null,
+      "size": 214,
+      "sizes": {
+        "javascript": 214
+      },
+      "built": true,
+      "codeGenerated": true,
+      "buildTimeExecuted": false,
+      "cached": false,
+      "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\jsx-runtime.js",
+      "name": "./node_modules/.pnpm/react@18.2.0/node_modules/react/jsx-runtime.js",
+      "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\jsx-runtime.js",
+      "index": 7,
+      "preOrderIndex": 7,
+      "index2": 7,
+      "postOrderIndex": 7,
+      "cacheable": true,
+      "optional": false,
+      "orphan": false,
+      "issuer": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+      "issuerName": "./src/index.tsx",
+      "issuerPath": [
+        {
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+          "name": "./src/index.tsx",
+          "id": 187
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": 527,
+      "issuerId": 187,
+      "chunks": [
+        179
+      ],
+      "assets": [],
+      "reasons": [
+        {
+          "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\App.tsx",
+          "module": "./src/App.tsx",
+          "moduleName": "./src/App.tsx",
+          "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\App.tsx",
+          "resolvedModule": "./src/App.tsx",
+          "type": "cjs require",
+          "active": true,
+          "explanation": "",
+          "userRequest": "react/jsx-runtime",
+          "loc": "3:22-50",
+          "moduleId": 705,
+          "resolvedModuleId": 705
+        },
+        {
+          "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+          "module": "./src/index.tsx",
+          "moduleName": "./src/index.tsx",
+          "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+          "resolvedModule": "./src/index.tsx",
+          "type": "cjs require",
+          "active": true,
+          "explanation": "",
+          "userRequest": "react/jsx-runtime",
+          "loc": "6:22-50",
+          "moduleId": 187,
+          "resolvedModuleId": 187
+        }
+      ],
+      "usedExports": true,
+      "providedExports": [
+        "Fragment",
+        "jsx",
+        "jsxs"
+      ],
+      "optimizationBailout": [
+        "Statement (ExpressionStatement) with side effects in source code at 4:2-72",
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 1
+    },
+    {
+      "type": "module",
+      "moduleType": "javascript/auto",
+      "layer": null,
+      "size": 619,
+      "sizes": {
+        "javascript": 619
+      },
+      "built": true,
+      "codeGenerated": true,
+      "buildTimeExecuted": false,
+      "cached": false,
+      "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\client.js",
+      "name": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/client.js",
+      "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\client.js",
+      "index": 9,
+      "preOrderIndex": 9,
+      "index2": 8,
+      "postOrderIndex": 8,
+      "cacheable": true,
+      "optional": false,
+      "orphan": false,
+      "issuer": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+      "issuerName": "./src/index.tsx",
+      "issuerPath": [
+        {
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+          "name": "./src/index.tsx",
+          "id": 187
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": 478,
+      "issuerId": 187,
+      "chunks": [
+        179
+      ],
+      "assets": [],
+      "reasons": [
+        {
+          "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+          "module": "./src/index.tsx",
+          "moduleName": "./src/index.tsx",
+          "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+          "resolvedModule": "./src/index.tsx",
+          "type": "cjs require",
+          "active": true,
+          "explanation": "",
+          "userRequest": "react-dom/client",
+          "loc": "8:17-44",
+          "moduleId": 187,
+          "resolvedModuleId": 187
+        }
+      ],
+      "usedExports": true,
+      "providedExports": [
+        "createRoot",
+        "hydrateRoot"
+      ],
+      "optimizationBailout": [
+        "Statement (VariableDeclaration) with side effects in source code at 3:0-29",
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 1
+    },
+    {
+      "type": "module",
+      "moduleType": "javascript/auto",
+      "layer": null,
+      "size": 344,
+      "sizes": {
+        "javascript": 344
+      },
+      "built": true,
+      "codeGenerated": true,
+      "buildTimeExecuted": false,
+      "cached": false,
+      "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\App.tsx",
+      "name": "./src/App.tsx",
+      "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\App.tsx",
+      "index": 10,
+      "preOrderIndex": 10,
+      "index2": 9,
+      "postOrderIndex": 9,
+      "cacheable": true,
+      "optional": false,
+      "orphan": false,
+      "issuer": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+      "issuerName": "./src/index.tsx",
+      "issuerPath": [
+        {
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+          "name": "./src/index.tsx",
+          "id": 187
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": 705,
+      "issuerId": 187,
+      "chunks": [
+        179
+      ],
+      "assets": [],
+      "reasons": [
+        {
+          "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+          "module": "./src/index.tsx",
+          "moduleName": "./src/index.tsx",
+          "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+          "resolvedModule": "./src/index.tsx",
+          "type": "cjs require",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./App",
+          "loc": "9:30-46",
+          "moduleId": 187,
+          "resolvedModuleId": 187
+        }
+      ],
+      "usedExports": true,
+      "providedExports": [
+        "__esModule",
+        "default"
+      ],
+      "optimizationBailout": [
+        "Statement (ExpressionStatement) with side effects in source code at 2:0-62",
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 1
+    },
+    {
+      "type": "module",
+      "moduleType": "javascript/auto",
+      "layer": null,
+      "size": 198,
+      "sizes": {
+        "javascript": 198
+      },
+      "built": true,
+      "codeGenerated": true,
+      "buildTimeExecuted": false,
+      "cached": false,
+      "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\index.js",
+      "name": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/index.js",
+      "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\index.js",
+      "index": 4,
+      "preOrderIndex": 4,
+      "index2": 3,
+      "postOrderIndex": 3,
+      "cacheable": true,
+      "optional": false,
+      "orphan": false,
+      "issuer": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\cjs\\react-dom.production.min.js",
+      "issuerName": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/cjs/react-dom.production.min.js",
+      "issuerPath": [
+        {
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\index.js",
+          "name": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/index.js",
+          "id": 422
+        },
+        {
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\cjs\\react-dom.production.min.js",
+          "name": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/cjs/react-dom.production.min.js",
+          "id": 746
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": 962,
+      "issuerId": 746,
+      "chunks": [
+        736
+      ],
+      "assets": [],
+      "reasons": [
+        {
+          "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\cjs\\react-dom.production.min.js",
+          "module": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/cjs/react-dom.production.min.js",
+          "moduleName": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/cjs/react-dom.production.min.js",
+          "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\cjs\\react-dom.production.min.js",
+          "resolvedModule": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/cjs/react-dom.production.min.js",
+          "type": "cjs require",
+          "active": true,
+          "explanation": "",
+          "userRequest": "scheduler",
+          "loc": "13:40-60",
+          "moduleId": 746,
+          "resolvedModuleId": 746
+        }
+      ],
+      "usedExports": true,
+      "providedExports": [
+        "unstable_IdlePriority",
+        "unstable_ImmediatePriority",
+        "unstable_LowPriority",
+        "unstable_NormalPriority",
+        "unstable_Profiling",
+        "unstable_UserBlockingPriority",
+        "unstable_cancelCallback",
+        "unstable_continueExecution",
+        "unstable_forceFrameRate",
+        "unstable_getCurrentPriorityLevel",
+        "unstable_getFirstCallbackNode",
+        "unstable_next",
+        "unstable_now",
+        "unstable_pauseExecution",
+        "unstable_requestPaint",
+        "unstable_runWithPriority",
+        "unstable_scheduleCallback",
+        "unstable_shouldYield",
+        "unstable_wrapCallback"
+      ],
+      "optimizationBailout": [
+        "Statement (ExpressionStatement) with side effects in source code at 4:2-64",
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 2
+    },
+    {
+      "type": "module",
+      "moduleType": "javascript/auto",
+      "layer": null,
+      "size": 859,
+      "sizes": {
+        "javascript": 859
+      },
+      "built": true,
+      "codeGenerated": true,
+      "buildTimeExecuted": false,
+      "cached": false,
+      "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\cjs\\react-jsx-runtime.production.min.js",
+      "name": "./node_modules/.pnpm/react@18.2.0/node_modules/react/cjs/react-jsx-runtime.production.min.js",
+      "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\cjs\\react-jsx-runtime.production.min.js",
+      "index": 8,
+      "preOrderIndex": 8,
+      "index2": 6,
+      "postOrderIndex": 6,
+      "cacheable": true,
+      "optional": false,
+      "orphan": false,
+      "issuer": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\jsx-runtime.js",
+      "issuerName": "./node_modules/.pnpm/react@18.2.0/node_modules/react/jsx-runtime.js",
+      "issuerPath": [
+        {
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\ts-loader@9.4.2_hhrrucqyg4eysmfpujvov2ym5u\\node_modules\\ts-loader\\index.js??ruleSet[1].rules[0].use!C:\\Users\\kej19\\Desktop\\webpack-TS\\src\\index.tsx",
+          "name": "./src/index.tsx",
+          "id": 187
+        },
+        {
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\jsx-runtime.js",
+          "name": "./node_modules/.pnpm/react@18.2.0/node_modules/react/jsx-runtime.js",
+          "id": 527
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": 354,
+      "issuerId": 527,
+      "chunks": [
+        179
+      ],
+      "assets": [],
+      "reasons": [
+        {
+          "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\jsx-runtime.js",
+          "module": "./node_modules/.pnpm/react@18.2.0/node_modules/react/jsx-runtime.js",
+          "moduleName": "./node_modules/.pnpm/react@18.2.0/node_modules/react/jsx-runtime.js",
+          "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react@18.2.0\\node_modules\\react\\jsx-runtime.js",
+          "resolvedModule": "./node_modules/.pnpm/react@18.2.0/node_modules/react/jsx-runtime.js",
+          "type": "cjs export require",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./cjs/react-jsx-runtime.production.min.js",
+          "loc": "4:2-71",
+          "moduleId": 527,
+          "resolvedModuleId": 527
+        }
+      ],
+      "usedExports": true,
+      "providedExports": [
+        "Fragment",
+        "jsx",
+        "jsxs"
+      ],
+      "optimizationBailout": [
+        "Statement (VariableDeclaration) with side effects in source code at 10:13-244",
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 2
+    },
+    {
+      "type": "module",
+      "moduleType": "javascript/auto",
+      "layer": null,
+      "size": 4235,
+      "sizes": {
+        "javascript": 4235
+      },
+      "built": true,
+      "codeGenerated": true,
+      "buildTimeExecuted": false,
+      "cached": false,
+      "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+      "name": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+      "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+      "index": 5,
+      "preOrderIndex": 5,
+      "index2": 2,
+      "postOrderIndex": 2,
+      "cacheable": true,
+      "optional": false,
+      "orphan": false,
+      "issuer": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\index.js",
+      "issuerName": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/index.js",
+      "issuerPath": [
+        {
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\index.js",
+          "name": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/index.js",
+          "id": 422
+        },
+        {
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\react-dom@18.2.0_react@18.2.0\\node_modules\\react-dom\\cjs\\react-dom.production.min.js",
+          "name": "./node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/cjs/react-dom.production.min.js",
+          "id": 746
+        },
+        {
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\index.js",
+          "name": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/index.js",
+          "id": 962
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": 568,
+      "issuerId": 962,
+      "chunks": [
+        736
+      ],
+      "assets": [],
+      "reasons": [
+        {
+          "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+          "module": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+          "moduleName": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+          "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+          "resolvedModule": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+          "type": "cjs self exports reference",
+          "active": true,
+          "explanation": "",
+          "userRequest": null,
+          "loc": "13:227-247",
+          "moduleId": 568,
+          "resolvedModuleId": 568
+        },
+        {
+          "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+          "module": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+          "moduleName": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+          "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+          "resolvedModule": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+          "type": "cjs self exports reference",
+          "active": true,
+          "explanation": "",
+          "userRequest": null,
+          "loc": "14:20-40",
+          "moduleId": 568,
+          "resolvedModuleId": 568
+        },
+        {
+          "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+          "module": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+          "moduleName": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+          "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+          "resolvedModule": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+          "type": "cjs self exports reference",
+          "active": true,
+          "explanation": "",
+          "userRequest": null,
+          "loc": "14:85-105",
+          "moduleId": 568,
+          "resolvedModuleId": 568
+        },
+        {
+          "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+          "module": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+          "moduleName": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+          "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+          "resolvedModule": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+          "type": "cjs self exports reference",
+          "active": true,
+          "explanation": "",
+          "userRequest": null,
+          "loc": "14:449-469",
+          "moduleId": 568,
+          "resolvedModuleId": 568
+        },
+        {
+          "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+          "module": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+          "moduleName": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+          "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\cjs\\scheduler.production.min.js",
+          "resolvedModule": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/cjs/scheduler.production.min.js",
+          "type": "cjs self exports reference",
+          "active": true,
+          "explanation": "",
+          "userRequest": null,
+          "loc": "18:56-76",
+          "moduleId": 568,
+          "resolvedModuleId": 568
+        },
+        {
+          "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\index.js",
+          "module": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/index.js",
+          "moduleName": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/index.js",
+          "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\scheduler@0.23.0\\node_modules\\scheduler\\index.js",
+          "resolvedModule": "./node_modules/.pnpm/scheduler@0.23.0/node_modules/scheduler/index.js",
+          "type": "cjs export require",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./cjs/scheduler.production.min.js",
+          "loc": "4:2-63",
+          "moduleId": 962,
+          "resolvedModuleId": 962
+        }
+      ],
+      "usedExports": true,
+      "providedExports": [
+        "unstable_IdlePriority",
+        "unstable_ImmediatePriority",
+        "unstable_LowPriority",
+        "unstable_NormalPriority",
+        "unstable_Profiling",
+        "unstable_UserBlockingPriority",
+        "unstable_cancelCallback",
+        "unstable_continueExecution",
+        "unstable_forceFrameRate",
+        "unstable_getCurrentPriorityLevel",
+        "unstable_getFirstCallbackNode",
+        "unstable_next",
+        "unstable_now",
+        "unstable_pauseExecution",
+        "unstable_requestPaint",
+        "unstable_runWithPriority",
+        "unstable_scheduleCallback",
+        "unstable_shouldYield",
+        "unstable_wrapCallback"
+      ],
+      "optimizationBailout": [
+        "CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 13:227-247",
+        "CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 14:20-40",
+        "CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 14:85-105",
+        "CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 14:449-469",
+        "CommonJS bailout: exports.unstable_now(...) prevents optimization as exports is passed as call context at 18:56-76",
+        "Statement (IfStatement) with side effects in source code at 11:71-284",
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 3
+    },
+    {
+      "type": "module",
+      "moduleType": "runtime",
+      "layer": null,
+      "size": 953,
+      "sizes": {
+        "runtime": 953
+      },
+      "built": false,
+      "codeGenerated": true,
+      "buildTimeExecuted": false,
+      "cached": false,
+      "identifier": "webpack/runtime/chunk loaded",
+      "name": "webpack/runtime/chunk loaded",
+      "nameForCondition": null,
+      "index": null,
+      "preOrderIndex": null,
+      "index2": null,
+      "postOrderIndex": null,
+      "optional": false,
+      "orphan": false,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": "",
+      "chunks": [
+        736
+      ],
+      "assets": [],
+      "reasons": [],
+      "usedExports": null,
+      "providedExports": [],
+      "optimizationBailout": [],
+      "depth": null
+    },
+    {
+      "type": "module",
+      "moduleType": "runtime",
+      "layer": null,
+      "size": 103,
+      "sizes": {
+        "runtime": 103
+      },
+      "built": false,
+      "codeGenerated": true,
+      "buildTimeExecuted": false,
+      "cached": false,
+      "identifier": "webpack/runtime/hasOwnProperty shorthand",
+      "name": "webpack/runtime/hasOwnProperty shorthand",
+      "nameForCondition": null,
+      "index": null,
+      "preOrderIndex": null,
+      "index2": null,
+      "postOrderIndex": null,
+      "optional": false,
+      "orphan": false,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": "",
+      "chunks": [
+        736
+      ],
+      "assets": [],
+      "reasons": [],
+      "usedExports": null,
+      "providedExports": [],
+      "optimizationBailout": [],
+      "depth": null
+    },
+    {
+      "type": "module",
+      "moduleType": "runtime",
+      "layer": null,
+      "size": 1648,
+      "sizes": {
+        "runtime": 1648
+      },
+      "built": false,
+      "codeGenerated": true,
+      "buildTimeExecuted": false,
+      "cached": false,
+      "identifier": "webpack/runtime/jsonp chunk loading",
+      "name": "webpack/runtime/jsonp chunk loading",
+      "nameForCondition": null,
+      "index": null,
+      "preOrderIndex": null,
+      "index2": null,
+      "postOrderIndex": null,
+      "optional": false,
+      "orphan": false,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": "",
+      "chunks": [
+        736
+      ],
+      "assets": [],
+      "reasons": [],
+      "usedExports": null,
+      "providedExports": [],
+      "optimizationBailout": [],
+      "depth": null
+    }
+  ],
+  "entrypoints": {
+    "main": {
+      "name": "main",
+      "chunks": [
+        179
+      ],
+      "assets": [
+        {
+          "name": "main.min.js",
+          "size": 1450
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": 1450,
+      "auxiliaryAssets": [],
+      "filteredAuxiliaryAssets": 0,
+      "auxiliaryAssetsSize": 0,
+      "children": {},
+      "childAssets": {},
+      "isOverSizeLimit": false
+    },
+    "vendor": {
+      "name": "vendor",
+      "chunks": [
+        736
+      ],
+      "assets": [
+        {
+          "name": "vendor.min.js",
+          "size": 140709
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": 140709,
+      "auxiliaryAssets": [],
+      "filteredAuxiliaryAssets": 0,
+      "auxiliaryAssetsSize": 0,
+      "children": {},
+      "childAssets": {},
+      "isOverSizeLimit": false
+    }
+  },
+  "namedChunkGroups": {
+    "main": {
+      "name": "main",
+      "chunks": [
+        179
+      ],
+      "assets": [
+        {
+          "name": "main.min.js",
+          "size": 1450
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": 1450,
+      "auxiliaryAssets": [],
+      "filteredAuxiliaryAssets": 0,
+      "auxiliaryAssetsSize": 0,
+      "children": {},
+      "childAssets": {},
+      "isOverSizeLimit": false
+    },
+    "vendor": {
+      "name": "vendor",
+      "chunks": [
+        736
+      ],
+      "assets": [
+        {
+          "name": "vendor.min.js",
+          "size": 140709
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": 140709,
+      "auxiliaryAssets": [],
+      "filteredAuxiliaryAssets": 0,
+      "auxiliaryAssetsSize": 0,
+      "children": {},
+      "childAssets": {},
+      "isOverSizeLimit": false
+    }
+  },
+  "errors": [],
+  "errorsCount": 0,
+  "warnings": [
+    {
+      "message": "\"imageminMinify\" function do not support generate to \"jpg\" from \"static/test.png\". Please use \"imageminGenerate\" function.",
+      "stack": "Error: \"imageminMinify\" function do not support generate to \"jpg\" from \"static/test.png\". Please use \"imageminGenerate\" function.\n    at Object.imageminMinify [as implementation] (C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\image-minimizer-webpack-plugin@3.8.1_mawotdtszuy2egvmrz3kn2d6n4\\node_modules\\image-minimizer-webpack-plugin\\dist\\utils.js:562:30)\n    at async worker (C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\image-minimizer-webpack-plugin@3.8.1_mawotdtszuy2egvmrz3kn2d6n4\\node_modules\\image-minimizer-webpack-plugin\\dist\\worker.js:77:25)\n    at async C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\image-minimizer-webpack-plugin@3.8.1_mawotdtszuy2egvmrz3kn2d6n4\\node_modules\\image-minimizer-webpack-plugin\\dist\\index.js:326:18"
+    }
+  ],
+  "warningsCount": 1,
+  "children": [
+    {
+      "name": "HtmlWebpackCompiler",
+      "hash": "eb18d3d94bb93b6fed70",
+      "version": "5.75.0",
+      "time": 166,
+      "builtAt": 1677764604457,
+      "publicPath": "",
+      "outputPath": "C:\\Users\\kej19\\Desktop\\webpack-TS\\build",
+      "assetsByChunkName": {},
+      "assets": [],
+      "chunks": [
+        {
+          "rendered": true,
+          "initial": true,
+          "entry": true,
+          "recorded": false,
+          "size": 1663,
+          "sizes": {
+            "javascript": 1208,
+            "runtime": 455
+          },
+          "names": [
+            "HtmlWebpackPlugin_0-0"
+          ],
+          "idHints": [],
+          "runtime": [
+            "HtmlWebpackPlugin_0-0"
+          ],
+          "files": [],
+          "auxiliaryFiles": [],
+          "hash": "84cab7126481334f4efc",
+          "childrenByOrder": {},
+          "id": 563,
+          "siblings": [],
+          "parents": [],
+          "children": [],
+          "modules": [
+            {
+              "type": "module",
+              "moduleType": "javascript/auto",
+              "layer": null,
+              "size": 1131,
+              "sizes": {
+                "javascript": 1131
+              },
+              "built": true,
+              "codeGenerated": true,
+              "buildTimeExecuted": false,
+              "cached": false,
+              "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\html-webpack-plugin@5.5.0_webpack@5.75.0\\node_modules\\html-webpack-plugin\\lib\\loader.js!C:\\Users\\kej19\\Desktop\\webpack-TS\\public\\index.html",
+              "name": "./node_modules/.pnpm/html-webpack-plugin@5.5.0_webpack@5.75.0/node_modules/html-webpack-plugin/lib/loader.js!./public/index.html",
+              "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\public\\index.html",
+              "index": 1,
+              "preOrderIndex": 1,
+              "index2": 1,
+              "postOrderIndex": 1,
+              "cacheable": true,
+              "optional": false,
+              "orphan": false,
+              "dependent": false,
+              "issuer": null,
+              "issuerName": null,
+              "issuerPath": null,
+              "failed": false,
+              "errors": 0,
+              "warnings": 0,
+              "id": 59,
+              "issuerId": null,
+              "chunks": [
+                563
+              ],
+              "assets": [],
+              "reasons": [
+                {
+                  "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\html-webpack-plugin@5.5.0_webpack@5.75.0\\node_modules\\html-webpack-plugin\\lib\\loader.js!C:\\Users\\kej19\\Desktop\\webpack-TS\\public\\index.html",
+                  "module": "./node_modules/.pnpm/html-webpack-plugin@5.5.0_webpack@5.75.0/node_modules/html-webpack-plugin/lib/loader.js!./public/index.html",
+                  "moduleName": "./node_modules/.pnpm/html-webpack-plugin@5.5.0_webpack@5.75.0/node_modules/html-webpack-plugin/lib/loader.js!./public/index.html",
+                  "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\html-webpack-plugin@5.5.0_webpack@5.75.0\\node_modules\\html-webpack-plugin\\lib\\loader.js!C:\\Users\\kej19\\Desktop\\webpack-TS\\public\\index.html",
+                  "resolvedModule": "./node_modules/.pnpm/html-webpack-plugin@5.5.0_webpack@5.75.0/node_modules/html-webpack-plugin/lib/loader.js!./public/index.html",
+                  "type": "cjs self exports reference",
+                  "active": true,
+                  "explanation": "",
+                  "userRequest": null,
+                  "loc": "1:143-157",
+                  "moduleId": 59,
+                  "resolvedModuleId": 59
+                },
+                {
+                  "moduleIdentifier": null,
+                  "module": null,
+                  "moduleName": null,
+                  "resolvedModuleIdentifier": null,
+                  "resolvedModule": null,
+                  "type": "entry",
+                  "active": true,
+                  "explanation": "",
+                  "userRequest": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\html-webpack-plugin@5.5.0_webpack@5.75.0\\node_modules\\html-webpack-plugin\\lib\\loader.js!C:\\Users\\kej19\\Desktop\\webpack-TS\\public\\index.html",
+                  "loc": "HtmlWebpackPlugin_0-0",
+                  "moduleId": null,
+                  "resolvedModuleId": null
+                },
+                {
+                  "moduleIdentifier": null,
+                  "module": null,
+                  "moduleName": null,
+                  "resolvedModuleIdentifier": null,
+                  "resolvedModule": null,
+                  "type": null,
+                  "active": true,
+                  "explanation": "used as library export",
+                  "userRequest": null,
+                  "moduleId": null,
+                  "resolvedModuleId": null
+                }
+              ],
+              "usedExports": null,
+              "providedExports": null,
+              "optimizationBailout": [
+                "CommonJS bailout: module.exports is used directly at 1:143-157",
+                "Statement (VariableDeclaration) with side effects in source code at 1:0-143",
+                "ModuleConcatenation bailout: Module is not an ECMAScript module"
+              ],
+              "depth": 0
+            },
+            {
+              "type": "module",
+              "moduleType": "javascript/esm",
+              "layer": null,
+              "size": 77,
+              "sizes": {
+                "javascript": 77
+              },
+              "built": true,
+              "codeGenerated": true,
+              "buildTimeExecuted": false,
+              "cached": false,
+              "identifier": "javascript/esm|data:text/javascript,__webpack_public_path__ = __webpack_base_uri__ = htmlWebpackPluginPublicPath;",
+              "name": "data:text/javascript,__webpack_public_path__ = __webpack_base_uri__ = htmlWebpackPluginPublicPath;",
+              "nameForCondition": "data:text/javascript,__webpack_public_path__ = __webpack_base_uri__ = htmlWebpackPluginPublicPath;",
+              "index": 0,
+              "preOrderIndex": 0,
+              "index2": 0,
+              "postOrderIndex": 0,
+              "cacheable": true,
+              "optional": false,
+              "orphan": false,
+              "dependent": false,
+              "issuer": null,
+              "issuerName": null,
+              "issuerPath": null,
+              "failed": false,
+              "errors": 0,
+              "warnings": 0,
+              "id": 163,
+              "issuerId": null,
+              "chunks": [
+                563
+              ],
+              "assets": [],
+              "reasons": [
+                {
+                  "moduleIdentifier": null,
+                  "module": null,
+                  "moduleName": null,
+                  "resolvedModuleIdentifier": null,
+                  "resolvedModule": null,
+                  "type": "entry",
+                  "active": true,
+                  "explanation": "",
+                  "userRequest": "data:text/javascript,__webpack_public_path__ = __webpack_base_uri__ = htmlWebpackPluginPublicPath;",
+                  "loc": "HtmlWebpackPlugin_0-0",
+                  "moduleId": null,
+                  "resolvedModuleId": null
+                }
+              ],
+              "usedExports": [],
+              "providedExports": [],
+              "optimizationBailout": [
+                "Statement (ExpressionStatement) with side effects in source code at 1:0-77"
+              ],
+              "depth": 0
+            },
+            {
+              "type": "module",
+              "moduleType": "runtime",
+              "layer": null,
+              "size": 103,
+              "sizes": {
+                "runtime": 103
+              },
+              "built": false,
+              "codeGenerated": true,
+              "buildTimeExecuted": false,
+              "cached": false,
+              "identifier": "webpack/runtime/hasOwnProperty shorthand",
+              "name": "webpack/runtime/hasOwnProperty shorthand",
+              "nameForCondition": null,
+              "index": null,
+              "preOrderIndex": null,
+              "index2": null,
+              "postOrderIndex": null,
+              "optional": false,
+              "orphan": false,
+              "dependent": false,
+              "failed": false,
+              "errors": 0,
+              "warnings": 0,
+              "id": "",
+              "chunks": [
+                563
+              ],
+              "assets": [],
+              "reasons": [],
+              "usedExports": null,
+              "providedExports": [],
+              "optimizationBailout": [],
+              "depth": null
+            },
+            {
+              "type": "module",
+              "moduleType": "runtime",
+              "layer": null,
+              "size": 27,
+              "sizes": {
+                "runtime": 27
+              },
+              "built": false,
+              "codeGenerated": true,
+              "buildTimeExecuted": false,
+              "cached": false,
+              "identifier": "webpack/runtime/publicPath",
+              "name": "webpack/runtime/publicPath",
+              "nameForCondition": null,
+              "index": null,
+              "preOrderIndex": null,
+              "index2": null,
+              "postOrderIndex": null,
+              "optional": false,
+              "orphan": false,
+              "dependent": false,
+              "failed": false,
+              "errors": 0,
+              "warnings": 0,
+              "id": "",
+              "chunks": [
+                563
+              ],
+              "assets": [],
+              "reasons": [],
+              "usedExports": null,
+              "providedExports": [],
+              "optimizationBailout": [],
+              "depth": null
+            },
+            {
+              "type": "module",
+              "moduleType": "runtime",
+              "layer": null,
+              "size": 325,
+              "sizes": {
+                "runtime": 325
+              },
+              "built": false,
+              "codeGenerated": true,
+              "buildTimeExecuted": false,
+              "cached": false,
+              "identifier": "webpack/runtime/require chunk loading",
+              "name": "webpack/runtime/require chunk loading",
+              "nameForCondition": null,
+              "index": null,
+              "preOrderIndex": null,
+              "index2": null,
+              "postOrderIndex": null,
+              "optional": false,
+              "orphan": false,
+              "dependent": false,
+              "failed": false,
+              "errors": 0,
+              "warnings": 0,
+              "id": "",
+              "chunks": [
+                563
+              ],
+              "assets": [],
+              "reasons": [],
+              "usedExports": null,
+              "providedExports": [],
+              "optimizationBailout": [],
+              "depth": null
+            }
+          ],
+          "origins": [
+            {
+              "module": "",
+              "moduleIdentifier": "",
+              "moduleName": "",
+              "loc": "HtmlWebpackPlugin_0-0",
+              "request": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\html-webpack-plugin@5.5.0_webpack@5.75.0\\node_modules\\html-webpack-plugin\\lib\\loader.js!C:\\Users\\kej19\\Desktop\\webpack-TS\\public\\index.html"
+            },
+            {
+              "module": "",
+              "moduleIdentifier": "",
+              "moduleName": "",
+              "loc": "HtmlWebpackPlugin_0-0",
+              "request": "data:text/javascript,__webpack_public_path__ = __webpack_base_uri__ = htmlWebpackPluginPublicPath;"
+            }
+          ]
+        }
+      ],
+      "modules": [
+        {
+          "type": "module",
+          "moduleType": "javascript/esm",
+          "layer": null,
+          "size": 77,
+          "sizes": {
+            "javascript": 77
+          },
+          "built": true,
+          "codeGenerated": true,
+          "buildTimeExecuted": false,
+          "cached": false,
+          "identifier": "javascript/esm|data:text/javascript,__webpack_public_path__ = __webpack_base_uri__ = htmlWebpackPluginPublicPath;",
+          "name": "data:text/javascript,__webpack_public_path__ = __webpack_base_uri__ = htmlWebpackPluginPublicPath;",
+          "nameForCondition": "data:text/javascript,__webpack_public_path__ = __webpack_base_uri__ = htmlWebpackPluginPublicPath;",
+          "index": 0,
+          "preOrderIndex": 0,
+          "index2": 0,
+          "postOrderIndex": 0,
+          "cacheable": true,
+          "optional": false,
+          "orphan": false,
+          "issuer": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": 163,
+          "issuerId": null,
+          "chunks": [
+            563
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "resolvedModuleIdentifier": null,
+              "resolvedModule": null,
+              "type": "entry",
+              "active": true,
+              "explanation": "",
+              "userRequest": "data:text/javascript,__webpack_public_path__ = __webpack_base_uri__ = htmlWebpackPluginPublicPath;",
+              "loc": "HtmlWebpackPlugin_0-0",
+              "moduleId": null,
+              "resolvedModuleId": null
+            }
+          ],
+          "usedExports": [],
+          "providedExports": [],
+          "optimizationBailout": [
+            "Statement (ExpressionStatement) with side effects in source code at 1:0-77"
+          ],
+          "depth": 0
+        },
+        {
+          "type": "module",
+          "moduleType": "javascript/auto",
+          "layer": null,
+          "size": 1131,
+          "sizes": {
+            "javascript": 1131
+          },
+          "built": true,
+          "codeGenerated": true,
+          "buildTimeExecuted": false,
+          "cached": false,
+          "identifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\html-webpack-plugin@5.5.0_webpack@5.75.0\\node_modules\\html-webpack-plugin\\lib\\loader.js!C:\\Users\\kej19\\Desktop\\webpack-TS\\public\\index.html",
+          "name": "./node_modules/.pnpm/html-webpack-plugin@5.5.0_webpack@5.75.0/node_modules/html-webpack-plugin/lib/loader.js!./public/index.html",
+          "nameForCondition": "C:\\Users\\kej19\\Desktop\\webpack-TS\\public\\index.html",
+          "index": 1,
+          "preOrderIndex": 1,
+          "index2": 1,
+          "postOrderIndex": 1,
+          "cacheable": true,
+          "optional": false,
+          "orphan": false,
+          "issuer": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": 59,
+          "issuerId": null,
+          "chunks": [
+            563
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\html-webpack-plugin@5.5.0_webpack@5.75.0\\node_modules\\html-webpack-plugin\\lib\\loader.js!C:\\Users\\kej19\\Desktop\\webpack-TS\\public\\index.html",
+              "module": "./node_modules/.pnpm/html-webpack-plugin@5.5.0_webpack@5.75.0/node_modules/html-webpack-plugin/lib/loader.js!./public/index.html",
+              "moduleName": "./node_modules/.pnpm/html-webpack-plugin@5.5.0_webpack@5.75.0/node_modules/html-webpack-plugin/lib/loader.js!./public/index.html",
+              "resolvedModuleIdentifier": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\html-webpack-plugin@5.5.0_webpack@5.75.0\\node_modules\\html-webpack-plugin\\lib\\loader.js!C:\\Users\\kej19\\Desktop\\webpack-TS\\public\\index.html",
+              "resolvedModule": "./node_modules/.pnpm/html-webpack-plugin@5.5.0_webpack@5.75.0/node_modules/html-webpack-plugin/lib/loader.js!./public/index.html",
+              "type": "cjs self exports reference",
+              "active": true,
+              "explanation": "",
+              "userRequest": null,
+              "loc": "1:143-157",
+              "moduleId": 59,
+              "resolvedModuleId": 59
+            },
+            {
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "resolvedModuleIdentifier": null,
+              "resolvedModule": null,
+              "type": "entry",
+              "active": true,
+              "explanation": "",
+              "userRequest": "C:\\Users\\kej19\\Desktop\\webpack-TS\\node_modules\\.pnpm\\html-webpack-plugin@5.5.0_webpack@5.75.0\\node_modules\\html-webpack-plugin\\lib\\loader.js!C:\\Users\\kej19\\Desktop\\webpack-TS\\public\\index.html",
+              "loc": "HtmlWebpackPlugin_0-0",
+              "moduleId": null,
+              "resolvedModuleId": null
+            },
+            {
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "resolvedModuleIdentifier": null,
+              "resolvedModule": null,
+              "type": null,
+              "active": true,
+              "explanation": "used as library export",
+              "userRequest": null,
+              "moduleId": null,
+              "resolvedModuleId": null
+            }
+          ],
+          "usedExports": null,
+          "providedExports": null,
+          "optimizationBailout": [
+            "CommonJS bailout: module.exports is used directly at 1:143-157",
+            "Statement (VariableDeclaration) with side effects in source code at 1:0-143",
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 0
+        },
+        {
+          "type": "module",
+          "moduleType": "runtime",
+          "layer": null,
+          "size": 103,
+          "sizes": {
+            "runtime": 103
+          },
+          "built": false,
+          "codeGenerated": true,
+          "buildTimeExecuted": false,
+          "cached": false,
+          "identifier": "webpack/runtime/hasOwnProperty shorthand",
+          "name": "webpack/runtime/hasOwnProperty shorthand",
+          "nameForCondition": null,
+          "index": null,
+          "preOrderIndex": null,
+          "index2": null,
+          "postOrderIndex": null,
+          "optional": false,
+          "orphan": false,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": "",
+          "chunks": [
+            563
+          ],
+          "assets": [],
+          "reasons": [],
+          "usedExports": null,
+          "providedExports": [],
+          "optimizationBailout": [],
+          "depth": null
+        },
+        {
+          "type": "module",
+          "moduleType": "runtime",
+          "layer": null,
+          "size": 27,
+          "sizes": {
+            "runtime": 27
+          },
+          "built": false,
+          "codeGenerated": true,
+          "buildTimeExecuted": false,
+          "cached": false,
+          "identifier": "webpack/runtime/publicPath",
+          "name": "webpack/runtime/publicPath",
+          "nameForCondition": null,
+          "index": null,
+          "preOrderIndex": null,
+          "index2": null,
+          "postOrderIndex": null,
+          "optional": false,
+          "orphan": false,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": "",
+          "chunks": [
+            563
+          ],
+          "assets": [],
+          "reasons": [],
+          "usedExports": null,
+          "providedExports": [],
+          "optimizationBailout": [],
+          "depth": null
+        },
+        {
+          "type": "module",
+          "moduleType": "runtime",
+          "layer": null,
+          "size": 325,
+          "sizes": {
+            "runtime": 325
+          },
+          "built": false,
+          "codeGenerated": true,
+          "buildTimeExecuted": false,
+          "cached": false,
+          "identifier": "webpack/runtime/require chunk loading",
+          "name": "webpack/runtime/require chunk loading",
+          "nameForCondition": null,
+          "index": null,
+          "preOrderIndex": null,
+          "index2": null,
+          "postOrderIndex": null,
+          "optional": false,
+          "orphan": false,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": "",
+          "chunks": [
+            563
+          ],
+          "assets": [],
+          "reasons": [],
+          "usedExports": null,
+          "providedExports": [],
+          "optimizationBailout": [],
+          "depth": null
+        }
+      ],
+      "entrypoints": {
+        "HtmlWebpackPlugin_0-0": {
+          "name": "HtmlWebpackPlugin_0-0",
+          "chunks": [
+            563
+          ],
+          "assets": [],
+          "filteredAssets": 0,
+          "assetsSize": 0,
+          "auxiliaryAssets": [],
+          "filteredAuxiliaryAssets": 0,
+          "auxiliaryAssetsSize": 0,
+          "children": {},
+          "childAssets": {},
+          "isOverSizeLimit": false
+        }
+      },
+      "namedChunkGroups": {
+        "HtmlWebpackPlugin_0-0": {
+          "name": "HtmlWebpackPlugin_0-0",
+          "chunks": [
+            563
+          ],
+          "assets": [],
+          "filteredAssets": 0,
+          "assetsSize": 0,
+          "auxiliaryAssets": [],
+          "filteredAuxiliaryAssets": 0,
+          "auxiliaryAssetsSize": 0,
+          "children": {},
+          "childAssets": {},
+          "isOverSizeLimit": false
+        }
+      },
+      "errors": [],
+      "errorsCount": 0,
+      "warnings": [],
+      "warningsCount": 0,
+      "children": []
+    }
+  ]
+}
