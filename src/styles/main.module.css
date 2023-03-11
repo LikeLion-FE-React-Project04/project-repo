@@ -1,3 +1,5 @@
-@import './_config.css';
+@import './_a11y.css';
 @import './_base.css';
-@import './_react-figure.css';
+@import './_reset.css';
+@import './_theme.css';
+@import './_normalize.css';
