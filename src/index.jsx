@@ -10,7 +10,7 @@ import {
 } from 'react-router-dom';
 import '@/styles/main.module.css';
 
-// import { loader as productDetailLoader } from '@/pages/ProductDetail/ProductDetail.jsx';
+import { loader as productDetailLoader } from '@/pages/ProductDetail/ProductDetail.jsx';
 
 const Layout = lazy(() => import('@/pages/Layout/Layout'));
 const Home = lazy(() => import('@/pages/Home/Home'));
@@ -30,10 +30,9 @@ const router = createBrowserRouter(
       <Route element={<SignUp />} path="signUp" />
       <Route element={<ProductList />} path="productList" />
       <Route
-        type="text/html"
         element={<ProductDetail />}
-        // loader={productDetailLoader}
-        path="productDetail/:id"
+        loader={productDetailLoader}
+        path="productDetail/:productId"
       />
       <Route element={<Cart />} path="cart" />
     </Route>
@@ -42,13 +41,14 @@ const router = createBrowserRouter(
 
 const rootContainer = document.getElementById('root');
 
-
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 
 createRoot(rootContainer).render(
   <StrictMode>
     <RecoilRoot>
-      <RouterProvider router={router} />
+      <Suspense fallback={<div>로딩 중...</div>}>
+        <RouterProvider router={router} />
+      </Suspense>
       <RecoilLogger />
     </RecoilRoot>
   </StrictMode>
