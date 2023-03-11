@@ -16,7 +16,7 @@ const styleLoader = {
       },
     },
     'postcss-loader',
-    // 'sass-loader',
+    'sass-loader',
   ],
   exclude: /\.module\.s?[ac]css$/i,
 };
