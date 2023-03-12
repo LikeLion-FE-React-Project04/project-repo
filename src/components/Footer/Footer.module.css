@@ -1,14 +1,16 @@
 
 /* ------------------------------- 큰 틀 Wrapper ------------------------------ */
-.footerWrap {
+/* .footerWrap {
   width: 1050px;
   margin: 0 auto;
-}
+} */
 .footerInformationWrap {
   background-color: antiquewhite;
 }
 .footerAllianceWrap {
   background-color: aquamarine;
+  width: 1050px;
+  margin: 0 auto;
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 400;
@@ -21,14 +23,19 @@
   border-top: 1px solid var(--gray-100);
 }
 .footerCopyrightWrap {
-  background-color: blue;
+  background-color: #F9F9F9;
+  width: 100%;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 160%;
+  text-align: center;
+  color: #898989;
+  padding: 20px 4px 32px 4px;
 }
 
 /* -------------------------- footerAllianceWrap 부분 ------------------------- */
-.allianceImg {
-  width: 34px;
-  height: 34px;
-}
 .allianceBtn {
   display: flex;
   flex-flow: row wrap;
@@ -45,5 +52,10 @@
   width: 34px;
   height: 34px;
   text-align: center;
+}
+
+/* ------------------------- .footerCopyrightWrap 부분 ------------------------ */
+.copyrightEnglishText {
+  margin-top: 8px;
 }
 
