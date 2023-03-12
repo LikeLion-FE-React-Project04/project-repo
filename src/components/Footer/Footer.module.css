@@ -6,6 +6,13 @@
 } */
 .footerInformationWrap {
   background-color: antiquewhite;
+  width: 1050px;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 150px;
+  justify-content: space-between;
+  padding: 28px 0px 32px 0px;
 }
 .footerAllianceWrap {
   background-color: aquamarine;
@@ -35,6 +42,80 @@
   padding: 20px 4px 32px 4px;
 }
 
+/* ------------------------ footerInformationWrap 부분 ------------------------ */
+/* footerCustomerInfo */
+.footerCustomerInfo {
+  background-color: rgb(244, 213, 218);
+  color: #333333;
+  font-weight: 700;
+  font-size: 21.328px;
+  line-height: 140%;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 16px;
+}
+.numberInfoWrapper {
+  background-color: lightblue;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+.customerServiceNumber {
+  font-weight: 700;
+  font-size: 37.897px;
+  line-height: 140%;
+}
+.availableTime {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+}
+.inquiryBtn {
+  width: 140px;
+  height: 40px;
+  margin-right: 16px;
+  border: 1px solid var(--gray-200);
+  font-size: 16px;
+  font-weight: 400;
+  background-color:#ffffff;
+  cursor: pointer;
+  line-height: initial;
+}
+.customerInquiryInfo {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 16px;
+}
+.inquiryKakao,
+.inquiryOneOnOne,
+.inquiryLargeOrder {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+.inquiryText {
+  color: #333333;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 160%;
+}
+.customerInquiryEmail {
+  font-weight: 400;
+  font-size: 12.003px;
+  line-height: 160%;
+  color: #333333;
+}
+.nonMemberEmail {
+  color: #5F0080;
+}
+/* footerCompanyInfo */
+.footerCompanyInfo {
+  background-color: rgb(236, 146, 160);
+}
+
+
 /* -------------------------- footerAllianceWrap 부분 ------------------------- */
 .allianceBtn {
   display: flex;
@@ -48,14 +129,10 @@
   background-color: transparent;
   border: none;
 }
-.img1 {
-  width: 34px;
-  height: 34px;
-  text-align: center;
-}
 
 /* ------------------------- .footerCopyrightWrap 부분 ------------------------ */
 .copyrightEnglishText {
   margin-top: 8px;
 }
+
 

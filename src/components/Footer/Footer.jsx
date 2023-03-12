@@ -11,9 +11,52 @@ export function Footer() {
   return (
     <>
       <footer className={styles.footerWrap}>
-        {/* <section className={styles.footerInformationWrap}>
+        <section className={styles.footerInformationWrap}>
+          <article className={styles.footerCustomerInfo}>
+            <div className={styles.customerService}>
+              고객행복센터
+              <div className={styles.numberInfoWrapper}>
+                <span className={styles.customerServiceNumber}>1644-1107</span>
+                <span className={styles.availableTime}>월~토요일 오전 7시 ~ 오후 6시</span>
+              </div>
+            </div>
+            <div className={styles.customerInquiryInfo}>
+              <div className={styles.inquiryKakao}>
+                <button className={styles.inquiryBtn}>카카오톡 문의</button>
+                <span className={styles.inquiryText}>
+                  <p>월~토요일 | 오전 7시 ~ 오후 6시</p>
+                  <p>일/공휴일 | 오전 7시 ~ 오후 1시</p>
+                </span>
+              </div>
+              <div className={styles.inquiryOneOnOne}>
+                <button className={styles.inquiryBtn}>1:1 문의</button>
+                <span className={styles.inquiryText}>
+                  <p>365일</p>
+                  <p>고객센터 운영시간에 순차적으로 답변드리겠습니다.</p>
+                </span>
+              </div>
+              <div className={styles.inquiryLargeOrder}>
+                <button className={styles.inquiryBtn}>대량주문 문의</button>
+                <span className={styles.inquiryText}>
+                  <p>월~금요일 | 오전 9시 ~ 오후 6시</p>
+                  <p>점심시간 | 낮 12시 ~ 오후 1시</p>
+                </span>
+              </div>
+            </div>
+            <div className={styles.customerInquiryEmail}>
+              <p className={styles.nonMemberInquiry}>비회원 문의 : 
+                <a href="#!" className={styles.nonMemberEmail}> help@karlycorp.com</a>
+              </p>
+              <p className={styles.nonMemberLargeOrder}>비회원 대량주문 문의 : 
+                <a href="#!" className={styles.nonMemberEmail}> help@karlycorp.com</a>
+              </p>
+            </div>
 
-        </section> */}
+          </article>
+          <article className={styles.footerCompanyInfo}>
+            companyInfo 정보
+          </article>
+        </section>
         <section className={styles.footerAllianceWrap}>
           <button className={styles.allianceBtn}>
             <Isms style={{width:'34px', height:'34px'}} alt="" />
