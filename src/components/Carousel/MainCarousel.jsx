@@ -60,7 +60,6 @@ const MainCarousel = () => {
         }}
         onSlideChange={() => console.log('slide change')}
       >
-        <SlideNextButton />
         {swiperSlides}
       </Swiper>
       <button
@@ -72,23 +71,3 @@ const MainCarousel = () => {
 };
 
 export default MainCarousel
-
-export function SlideNextButton() {
-  const swiper = useSwiper();
-
-  return (
-    <button className={classes.swiperBtn} onClick={() => swiper.slideNext()}>
-      Slide to the next slide
-    </button>
-  );
-}
-
-export function SlidePrevButton() {
-  const swiper = useSwiper();
-
-  return (
-    <button className={classes.swiperBtn} onClick={() => swiper.slidePrev()}>
-      Slide to the next slide
-    </button>
-  );
-}
