@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { ReactComponent as Isms } from "../../../public/assets/footer/isms.svg";
-import { ReactComponent as Privacy } from "../../../public/assets/footer/privacy.svg";
-import { ReactComponent as Tosspayments } from "../../../public/assets/footer/tosspayments.svg";
-import { ReactComponent as Wooribank } from "../../../public/assets/footer/wooribank.svg";
-
 import styles from './Footer.module.css';
+
+import { ReactComponent as Isms } from '@/assets/footer/logo-isms.svg';
+import { ReactComponent as Privacy } from '@/assets/footer/logo-privacy.svg';
+import { ReactComponent as Tosspayments } from '@/assets/footer/logo-tosspayments.svg';
+import { ReactComponent as Wooribank } from '@/assets/footer/logo-woori-bank.svg';
 
 export function Footer() {
   return (
