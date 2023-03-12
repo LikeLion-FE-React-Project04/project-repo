@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './Footer.module.css';
+import styles from './Footer.module.scss';
 
 import { ReactComponent as Isms } from '@/assets/footer/logo-isms.svg';
 import { ReactComponent as Privacy } from '@/assets/footer/logo-privacy.svg';
@@ -51,10 +51,38 @@ export function Footer() {
                 <a href="#!" className={styles.nonMemberEmail}> help@karlycorp.com</a>
               </p>
             </div>
-
           </article>
           <article className={styles.footerCompanyInfo}>
-            companyInfo 정보
+            <nav className={styles.footerNavigation}>
+              <a href="#!">칼리소개</a>
+              <a href="#!">칼리소개영상</a>
+              <a href="#!">인재채용</a>
+              <a href="#!">이용약관</a>
+              <a href="#!">개인정보처리방침</a>
+              <a href="#!">이용안내</a>
+            </nav>
+            <div className={styles.footerCompanyIntroduce}>
+              <p>
+                법인명 (상호) : 주식회사 컬리
+                <span className={styles.footerBar}>|</span>
+                사업자등록번호 : 261-81-23567
+                <span className={styles.footerBar}>|</span>
+                <a href="#!">사업자정보 확인</a>
+              </p>
+              <p>
+                통신판매업 : 제 2018-서울강남-01646 호<span className={styles.footerBar}>|</span>개인정보보호책임자 : 이원준
+              </p>
+              <p>
+                주소 : 서울특별시 강남구 테헤란로 133, 18층(역삼동)<span className={styles.footerBar}>|</span>대표이사 : 김슬아
+              </p>
+              <p>
+                입점문의 : <a href="#">입정문의하기</a>
+                <span className={styles.footerBar}>|</span>
+                제휴문의 : <a href="#!">business@karlycorp.com</a>
+              </p>
+              <p>채용문의 : recruit@karlycorp    .com</p>
+              <p>팩스 : 070 - 7500 - 6098</p>
+            </div>
           </article>
         </section>
         <section className={styles.footerAllianceWrap}>
