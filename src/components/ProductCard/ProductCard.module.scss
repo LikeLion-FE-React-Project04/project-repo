@@ -1,0 +1,73 @@
+.Button {
+  user-select: none;
+  cursor: pointer;
+  border: 0;
+  border-radius: 2px;
+  padding: 1em 2em;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.45);
+
+  svg {
+    pointer-events: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.productCard {
+  width: 250px;
+  height: 428px;
+  // background: salmon;
+  font-weight: 400;
+  font-size: var(--text-base);
+}
+
+.img {
+  width: 250;
+  height: 320px;
+  background: url('@/assets/product/bacon/detail-view.jpg') 50% 50%/ 100% no-repeat;
+  font-weight: 400;
+  line-height: 160%;
+  position: relative;
+}
+
+.productName {
+  margin-top: var(--spacing-xs);
+  color: var(--content);
+  font-weight: 400;
+}
+
+.productPrice {
+  margin-top: var(--spacing-base);
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+.salePercent {
+  margin-right: var(--spacing-xs);
+  color: var(--accent-yellow);
+}
+
+.originPrice {
+  margin-top: var(--spacing-xs);
+  font-size: var(--text-sm);
+  color: var(--gray-400);
+  text-decoration: line-through;
+}
+
+.cartBtn {
+  all: unset;
+  width: 45px;
+  height: 45px;
+  // background: url(../assets/main/ic-add-cart.svg) no-repeat;
+  background: url('@/assets/main/ic-add-cart.svg') no-repeat 50% 50% / 100%;
+  background-position: center;
+  position: absolute;
+  right: 15px;
+  bottom: 17px;
+  z-index: 3;
+}
