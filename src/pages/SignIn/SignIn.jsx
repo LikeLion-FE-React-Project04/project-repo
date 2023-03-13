@@ -1,5 +1,4 @@
 import PageTitle from './../../components/PageTitle/PageTitle';
-
 import styles from './SignIn.module.scss';
 
 import { FormInput, Button } from '@/components';
@@ -22,6 +21,11 @@ function SignIn() {
           placeholder="비밀번호를 입력해주세요"
           type="password"
         />
+
+        <div className={styles.loginFind}>
+          <a href="https://www.kurly.com/member/find/id">아이디 찾기</a>
+          <a href="https://www.kurly.com/member/find/password">비밀번호 찾기</a>
+        </div>
 
         <div className={styles.button}>
           <Button

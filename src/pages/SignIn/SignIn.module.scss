@@ -20,5 +20,16 @@
   display: flex;
   gap: 12px;
   flex-flow: column;
-  align-items: center;
+}
+
+.loginFind{
+  font-weight: 400;
+  font-size: 12.003px;
+  line-height: 160%;
+  margin-left: 205px;
+}
+
+.loginFind :first-child::after{
+  content: '|';
+  margin: 0px 4px;
 }

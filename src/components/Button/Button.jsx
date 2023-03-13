@@ -4,8 +4,6 @@ export function Button({
   uiType = 'primary',
   ...restProps
 }) {
-  console.log('...restProps', restProps);
-
   const combinedClassNames = `${styles.button} ${getUiStyle(uiType)}`
 
   return (
