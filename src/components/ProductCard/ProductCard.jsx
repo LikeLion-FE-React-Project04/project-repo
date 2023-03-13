@@ -1,33 +1,88 @@
-import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+
+import { attr, getPriceFormat, getSalePercent } from '../../utils';
+
 import classes from '@/components/ProductCard/ProductCard.module.scss';
+import {
+  selectedproductId,
+  productCartModalState,
+} from '@/store/productListState.js';
+import { useSetRecoilState } from 'recoil';
 
 /* Component ---------------------------------------------------------------- */
 
-export function ProductCard() {
-  return (
-    <div className={classes.productCard}>
-      <div className={classes.img}>
-        <CartButton />
+export function ProductCard({ product }) {
+  const setProductCartModalState = useSetRecoilState(productCartModalState);
+  const setSelectedproductId = useSetRecoilState(selectedproductId);
+  const movePage = useNavigate();
+
+  function productCardClickHandler(e) {
+    let target = e.target;
+
+    while (!attr(target, 'data-name')) {
+      target = target.parentNode;
+      if (target.nodeName === 'BODY') {
+        target = null;
+
+        return;
+      }
+    }
+
+    if (target.dataset.name === 'cartbutton') {
+      console.log('CartBtn 클릭되었습니다');
+      setSelectedproductId(product.id);
+      setProductCartModalState(true);
+
+      return;
+    }
+
+    if (target.dataset.name === 'productCard') {
+      movePage(`/productDetail/${product.id}`);
+
+      return;
+    }
+  }
+
+  if (product) {
+    return (
+      // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+      <div
+        className={classes.productCard}
+        data-name="productCard"
+        onClick={productCardClickHandler}
+      >
+        <div
+          className={classes.img}
+          style={{
+            background: `url(${product.image.thumbnail}) 50% 50%/ 100% no-repeat`,
+          }}
+        >
+          <CartButton />
+        </div>
+        <p className={classes.productName}>{product.name}</p>
+        <ProductCardPrice product={product} />
       </div>
-      <p className={classes.productName}>{'[크라운] 크림산도'}</p>
-      <ProductCardPrice isSale={true} />
-    </div>
-  );
+    );
+  }
 }
 
-function ProductCardPrice(props) {
-  if (props.isSale) {
+function ProductCardPrice({ product }) {
+  if (product.saleRatio) {
     return (
       <>
         <p className={classes.productPrice}>
-          <span className={classes.salePercent}>{'24%'}</span>
-          {5000}원
+          <span className={classes.salePercent}>
+            {getSalePercent(product.saleRatio)}%
+          </span>
+          {getPriceFormat(product.salePrice)}원
         </p>
-        <p className={classes.originPrice}>{5000}원</p>
+        <p className={classes.originPrice}>{getPriceFormat(product.price)}원</p>
       </>
     );
   } else {
-    return <p className={classes.productPrice}>{5000}원</p>;
+    return (
+      <p className={classes.productPrice}>{getPriceFormat(product.price)}원</p>
+    );
   }
 }
 
@@ -37,12 +92,9 @@ function CartButton() {
       aria-label={'임시'}
       className={classes.cartBtn}
       data-id={1}
-      data-name="button"
+      data-name="cartbutton"
       type="button"
-      onClick={()=>{
-        console.log('CartBtn 클릭되었습니다');
-      }}
-     />
+    />
   );
 }
 
