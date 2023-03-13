@@ -1,12 +1,30 @@
-.SignIn{
+// .SignIn{
+// }
+
+// .loginFind{
+//   margin-left: 647px;
+//   margin-bottom: 28px;
+//   width: 161px;
+//   height: 19px;
+// }
+
+// .form{
+// }
+
+.layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.loginFind{
-  margin-left: 647px;
-  margin-bottom: 28px;
-  width: 161px;
-  height: 19px;
+.test {
+  margin-bottom: 44px;
 }
 
-.form{
+.test2 {
+  display: block;
+  margin-top: 44px;
+  margin-bottom: 44px;
+  width: 100px
 }
