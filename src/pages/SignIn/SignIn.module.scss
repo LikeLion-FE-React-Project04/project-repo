@@ -1,30 +1,24 @@
-// .SignIn{
-// }
-
-// .loginFind{
-//   margin-left: 647px;
-//   margin-bottom: 28px;
-//   width: 161px;
-//   height: 19px;
-// }
-
-// .form{
-// }
-
-.layout {
+.signIn {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.test {
+.pageTitle {
   margin-bottom: 44px;
 }
 
-.test2 {
-  display: block;
-  margin-top: 44px;
-  margin-bottom: 44px;
-  width: 100px
+.form {
+  display: flex;
+  gap: 12px;
+  flex-flow: column;
+  align-items: center;
+}
+
+.button{
+  display: flex;
+  gap: 12px;
+  flex-flow: column;
+  align-items: center;
 }

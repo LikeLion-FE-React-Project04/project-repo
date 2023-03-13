@@ -1,24 +1,5 @@
-// .FormInput {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   // justify-content: center;
-//   // text-align: center;
-
-//   input{
-//     width: 340px;
-//     height: 50px;
-//     border-radius: 4px;
-//     margin-bottom: 12px;
-//     border: 1px solid var(--gray-100);
-//     font-size: 16px;
-//     padding-left: 20px;
-//   }
-// }
-
 .input {
   width: 340px;
-  margin-top: 10px;
   height: 50px;
   border-radius: 4px;
   border: 1px solid var(--gray-100);
@@ -27,10 +8,12 @@
 }
 
 .primary {
-  background: salmon;
+  width: 340px;
+  height: 50px;
 }
 
 .secondary {
-  background: aqua;
+  width: 333px;
+  height: 44px;
 }
 
