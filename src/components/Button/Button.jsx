@@ -1,7 +1,34 @@
-function Button() {
+import styles from "./Button.module.scss";
+
+export function Button({
+  uiType = 'primary',
+  ...restProps
+}) {
+  console.log('...restProps', restProps);
+
+  const combinedClassNames = `${styles.button} ${getUiStyle(uiType)}`
+
   return (
-    <div>중간에 누가 만들었음</div>
+    <div>
+      <button className={combinedClassNames} type='button'>{restProps.name}</button>
+    </div>
   )
 }
 
-export default Button
+function getUiStyle(uiType) {
+  let uiStyle;
+
+  switch (uiType) {
+    case 'primary':
+      uiStyle = styles.primary;
+      break;
+    case 'secondary':
+      uiStyle = styles.secondary;
+      break;
+    case 'third':
+      uiStyle = styles.third;
+      break;
+  }
+
+  return uiStyle;
+}
