@@ -1,7 +1,8 @@
+import styles from './Header.module.css';
+import { Topbanner } from './';
+
 function Header() {
-  return (
-    <div>Header</div>
-  )
+  return <Topbanner />;
 }
 
-export default Header
+export default Header;
