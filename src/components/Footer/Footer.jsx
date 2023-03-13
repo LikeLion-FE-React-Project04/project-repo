@@ -50,21 +50,21 @@ export function Footer() {
             </div>
             <div className={styles.customerInquiryEmail}>
               <p className={styles.nonMemberInquiry}>비회원 문의 : 
-                <a className={styles.nonMemberEmail} href="#!"> help@karlycorp.com</a>
+                <a className={styles.nonMemberEmail} href="#!" aria-label="비회원 문의를 하기 위한 Email"> help@karlycorp.com</a>
               </p>
               <p className={styles.nonMemberLargeOrder}>비회원 대량주문 문의 : 
-                <a className={styles.nonMemberEmail} href="#!"> help@karlycorp.com</a>
+                <a className={styles.nonMemberEmail} href="#!" aria-label="비회원 대량주문을 하기 위한 Email"> help@karlycorp.com</a>
               </p>
             </div>
           </article>
           <article className={styles.footerCompanyInfo}>
             <nav className={styles.footerNavigation}>
-              <a href="#!">칼리소개</a>
-              <a href="#!">칼리소개영상</a>
-              <a href="#!">인재채용</a>
-              <a href="#!">이용약관</a>
-              <a href="#!">개인정보처리방침</a>
-              <a href="#!">이용안내</a>
+              <a href="#!" aria-label="칼리소개 보기">칼리소개</a>
+              <a href="#!" aria-label="칼리소개 영상 보기">칼리소개영상</a>
+              <a href="#!" aria-label="인재채용 정보 확인하기">인재채용</a>
+              <a href="#!" aria-label="이용약관 확인하기">이용약관</a>
+              <a href="#!" aria-label="개인정보처리방침 확인하기">개인정보처리방침</a>
+              <a href="#!" aria-label="이용안내">이용안내</a>
             </nav>
             <div className={styles.footerCompanyIntroduce}>
               <p>
@@ -72,7 +72,7 @@ export function Footer() {
                 <span className={styles.footerBar}>|</span>
                 사업자등록번호 : 261-81-23567
                 <span className={styles.footerBar}>|</span>
-                <a href="#!" style={{color: "#5F0080"}}>사업자정보 확인</a>
+                <a href="#!" aria-label="사업자 정보 확인하러 가기" style={{color: "#5F0080"}}>사업자정보 확인</a>
               </p>
               <p>
                 통신판매업 : 제 2018-서울강남-01646 호<span className={styles.footerBar}>|</span>개인정보보호책임자 : 이원준
@@ -81,27 +81,27 @@ export function Footer() {
                 주소 : 서울특별시 강남구 테헤란로 133, 18층(역삼동)<span className={styles.footerBar}>|</span>대표이사 : 김슬아
               </p>
               <p>
-                입점문의 : <a href="#!" style={{color: "#5F0080"}}>입정문의하기</a>
+                입점문의 : <a href="#!" aria-label="입정문의하기" style={{color: "#5F0080"}}>입정문의하기</a>
                 <span className={styles.footerBar}>|</span>
-                제휴문의 : <a href="#!" style={{color: "#5F0080"}}>business@karlycorp.com</a>
+                제휴문의 : <a href="#!" aria-label="제휴문의 Email" style={{color: "#5F0080"}}>business@karlycorp.com</a>
               </p>
               <p>채용문의 : recruit@karlycorp.com</p>
               <p>팩스 : 070 - 7500 - 6098</p>
             </div>
             <div className={styles.footerCompanySns}>
-              <a href="#!">
+              <a href="#!" aria-label="컬리 네이버 블로그 바로가기">
                 <Blog alt="" />
               </a>
-              <a href="#!">
+              <a href="#!" aria-label="컬리 페이스북 바로가기">
                 <Facebook alt="" />
               </a>
-              <a href="#!">
+              <a href="#!" aria-label="컬리 인스타그램 바로가기">
                 <Instagram alt="" />
               </a>
-              <a href="#!">
+              <a href="#!" aria-label="컬리 네이버포스트 바로가기">
                 <Naver alt="" />
               </a>
-              <a href="#!">
+              <a href="#!" aria-label="컬리 유튜브 바로기">
                 <Youtube alt="" />
               </a>
             </div>
@@ -109,7 +109,7 @@ export function Footer() {
         </section>
         <section className={styles.footerAllianceWrap}>
           <button className={styles.allianceBtn}>
-            <Isms style={{width:'34px', height:'34px'}} alt="" />
+            <Isms style={{width:'34px', height:'34px'}} alt="ISMS 로고" />
             <p>
               [인증범위] 마켓칼리 쇼핑몰 서비스 개발 운영<br/>
               (심사받지 않은 물리적 인프라 제외)<br/>
@@ -117,20 +117,20 @@ export function Footer() {
             </p>
           </button>
           <button className={styles.allianceBtn}>
-            <Privacy style={{width:'34px', height:'34px'}} alt="" />
+            <Privacy style={{width:'34px', height:'34px'}} alt="E.privacy plus 로고" />
             <p>
               개인정보보호 우수 웹사이트<br/>
               개인정보처리시스템 인증 (ePRIVACY PLUS)
             </p>
           </button>
           <button className={styles.allianceBtn}>
-            <Tosspayments style={{width:'102px', height:'32px'}} alt="" />
+            <Tosspayments style={{width:'102px', height:'32px'}} alt="Toss payments 로고" />
             <p>
               토이페이먼츠 구매안전(에스크로)<br/>서비스를 이용하실 수 있습니다.
             </p>
           </button>
           <button className={styles.allianceBtn}>
-            <Wooribank style={{width:'34px', height:'34px'}} alt="" />
+            <Wooribank style={{width:'34px', height:'34px'}} alt="우리은행 로고" />
             <p>
               고객님이 현금으로 결제한 금액에 대해 우리은행과<br/>재무지급보증 계약을 체결하여 안전거래를 보장하고<br/>있습니다.
             </p>
