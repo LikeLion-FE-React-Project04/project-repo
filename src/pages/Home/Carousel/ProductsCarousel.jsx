@@ -3,8 +3,13 @@ import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import { Navigation } from 'swiper';
 import { useRef } from 'react';
 import classnames from 'classnames';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { ProductCard } from '../ProductCard/ProductCard';
+import { ProductCard } from '../../../components/ProductCard/ProductCard';
+import {
+  productListState,
+  selectedproductId,
+} from '@/store/productListState.js';
 
 import classes from './ProductsCarousel.module.scss';
 
@@ -12,18 +17,20 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 // Import Swiper styles
-const tmp = new Array(10).fill(null);
-
-const productCards = tmp.map((_, index) => {
-  return (
-    // eslint-disable-next-line react/jsx-key
-    <SwiperSlide>
-      <ProductCard />
-    </SwiperSlide>
-  );
-});
 
 const ProductsCarousel = () => {
+  const productList = useRecoilValue(productListState);
+  const tmp = new Array(10).fill(null);
+
+  const productCards = productList.map((product, index) => {
+    return (
+      // eslint-disable-next-line react/jsx-key
+      <SwiperSlide>
+        <ProductCard product={product} />
+      </SwiperSlide>
+    );
+  });
+
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
 
