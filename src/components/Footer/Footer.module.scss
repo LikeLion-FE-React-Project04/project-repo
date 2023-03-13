@@ -1,7 +1,8 @@
 
 /* ------------------------------- 큰 틀 Wrapper ------------------------------ */
 .footerWrap {
-  border-top: 1px solid #E1E1E1;
+  border-top: 1px solid var(--gray-100);
+  font-family: 'Pretendard';
 }
 .footerInformationWrap {
   background-color: antiquewhite;
@@ -16,8 +17,6 @@
   background-color: aquamarine;
   width: 1050px;
   margin: 0 auto;
-  font-family: 'Pretendard';
-  font-style: normal;
   font-weight: 400;
   font-size: 10px;
   line-height: 160%;
@@ -28,15 +27,13 @@
   border-top: 1px solid var(--gray-100);
 }
 .footerCopyrightWrap {
-  background-color: #F9F9F9;
+  background-color: var(--gray-50);
   width: 100%;
-  font-family: 'Pretendard';
-  font-style: normal;
   font-weight: 400;
   font-size: 10px;
   line-height: 160%;
   text-align: center;
-  color: #898989;
+  color: var(-gray-400);
   padding: 20px 4px 32px 4px;
 }
 
@@ -44,7 +41,7 @@
 /* footerCustomerInfo */
 .footerCustomerInfo {
   background-color: rgb(244, 213, 218);
-  color: #333333;
+  color: var(--content);
   font-weight: 700;
   font-size: 21.328px;
   line-height: 140%;
@@ -77,7 +74,7 @@
   border: 1px solid var(--gray-200);
   font-size: 16px;
   font-weight: 400;
-  background-color:#ffffff;
+  background-color: var(--white);
   cursor: pointer;
   line-height: initial;
 }
@@ -94,7 +91,7 @@
   align-items: center;
 }
 .inquiryText {
-  color: #333333;
+  color: var(--content);
   font-weight: 400;
   font-size: 16px;
   line-height: 160%;
@@ -103,10 +100,10 @@
   font-weight: 400;
   font-size: 12.003px;
   line-height: 160%;
-  color: #333333;
+  color: var(--content);
 }
 .nonMemberEmail {
-  color: #5F0080;
+  color: var(--primary);
 }
 
 /* footerCompanyInfo */
@@ -132,7 +129,7 @@
   font-weight: 400;
   font-size: 12.003px;
   line-height: 160%;
-  color: #333333;
+  color: var(--content);
 }
 .footerBar {
   margin: 0px 8px;
@@ -153,7 +150,7 @@
   display: flex;
   flex-flow: row wrap;
   align-items: flex-start;
-  appearance: button;
+  // appearance: button;
   line-height: 16px;
   text-align: left;
   gap: 8px;
