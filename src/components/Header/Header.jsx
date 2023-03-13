@@ -1,6 +1,6 @@
 import styles from './Header.module.css';
 
-import { Topbanner, Member, HeaderLogoContainer } from './';
+import { Topbanner, Member, HeaderLogoContainer, SearchInput } from './';
 
 function Header() {
   return (
@@ -10,6 +10,7 @@ function Header() {
         <Member />
         <div className={styles.headerMain}>
           <HeaderLogoContainer />
+          <SearchInput />
         </div>
       </header>
     </>
