@@ -2,7 +2,7 @@ import PageTitle from './../../components/PageTitle/PageTitle';
 
 import styles from './SignIn.module.scss';
 
-import { FormInput } from '@/components';
+import { FormInput, Button } from '@/components';
 
 function SignIn() {
   return (
@@ -22,6 +22,19 @@ function SignIn() {
           placeholder="비밀번호를 입력해주세요"
           type="password"
         />
+
+        <div className={styles.button}>
+          <Button
+            name='로그인'
+            type='submit'
+          />
+
+          <Button
+            name='회원가입'
+            type='submit'
+            uiType='secondary'
+          />
+        </div>
       </form>
     </div>
   );
