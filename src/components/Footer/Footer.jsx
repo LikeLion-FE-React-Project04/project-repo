@@ -6,6 +6,11 @@ import { ReactComponent as Isms } from '@/assets/footer/logo-isms.svg';
 import { ReactComponent as Privacy } from '@/assets/footer/logo-privacy.svg';
 import { ReactComponent as Tosspayments } from '@/assets/footer/logo-tosspayments.svg';
 import { ReactComponent as Wooribank } from '@/assets/footer/logo-woori-bank.svg';
+import { ReactComponent as Blog } from '@/assets/footer/ic-blog-30.svg'
+import { ReactComponent as Facebook } from '@/assets/footer/ic-face-book-30.svg'
+import { ReactComponent as Instagram } from '@/assets/footer/ic-instagram-30.svg'
+import { ReactComponent as Naver } from '@/assets/footer/ic-naver-post-30.svg'
+import { ReactComponent as Youtube } from '@/assets/footer/ic-youtube-30.svg'
 
 export function Footer() {
   return (
@@ -45,10 +50,10 @@ export function Footer() {
             </div>
             <div className={styles.customerInquiryEmail}>
               <p className={styles.nonMemberInquiry}>비회원 문의 : 
-                <a href="#!" className={styles.nonMemberEmail}> help@karlycorp.com</a>
+                <a className={styles.nonMemberEmail} href="#!"> help@karlycorp.com</a>
               </p>
               <p className={styles.nonMemberLargeOrder}>비회원 대량주문 문의 : 
-                <a href="#!" className={styles.nonMemberEmail}> help@karlycorp.com</a>
+                <a className={styles.nonMemberEmail} href="#!"> help@karlycorp.com</a>
               </p>
             </div>
           </article>
@@ -67,7 +72,7 @@ export function Footer() {
                 <span className={styles.footerBar}>|</span>
                 사업자등록번호 : 261-81-23567
                 <span className={styles.footerBar}>|</span>
-                <a href="#!">사업자정보 확인</a>
+                <a href="#!" style={{color: "#5F0080"}}>사업자정보 확인</a>
               </p>
               <p>
                 통신판매업 : 제 2018-서울강남-01646 호<span className={styles.footerBar}>|</span>개인정보보호책임자 : 이원준
@@ -76,12 +81,29 @@ export function Footer() {
                 주소 : 서울특별시 강남구 테헤란로 133, 18층(역삼동)<span className={styles.footerBar}>|</span>대표이사 : 김슬아
               </p>
               <p>
-                입점문의 : <a href="#">입정문의하기</a>
+                입점문의 : <a href="#!" style={{color: "#5F0080"}}>입정문의하기</a>
                 <span className={styles.footerBar}>|</span>
-                제휴문의 : <a href="#!">business@karlycorp.com</a>
+                제휴문의 : <a href="#!" style={{color: "#5F0080"}}>business@karlycorp.com</a>
               </p>
-              <p>채용문의 : recruit@karlycorp    .com</p>
+              <p>채용문의 : recruit@karlycorp.com</p>
               <p>팩스 : 070 - 7500 - 6098</p>
+            </div>
+            <div className={styles.footerCompanySns}>
+              <a href="#!">
+                <Blog alt="" />
+              </a>
+              <a href="#!">
+                <Facebook alt="" />
+              </a>
+              <a href="#!">
+                <Instagram alt="" />
+              </a>
+              <a href="#!">
+                <Naver alt="" />
+              </a>
+              <a href="#!">
+                <Youtube alt="" />
+              </a>
             </div>
           </article>
         </section>
