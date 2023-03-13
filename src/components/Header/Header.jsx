@@ -1,8 +1,16 @@
 import styles from './Header.module.css';
-import { Topbanner } from './';
+
+import { Topbanner, Member } from './';
 
 function Header() {
-  return <Topbanner />;
+  return (
+    <>
+      <Topbanner />
+      <header className={styles.header}>
+        <Member />
+      </header>
+    </>
+  );
 }
 
 export default Header;

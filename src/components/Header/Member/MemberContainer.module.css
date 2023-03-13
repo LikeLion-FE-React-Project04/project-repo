@@ -1,0 +1,24 @@
+.headerMember {
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 0.625rem;
+  margin: 0.625rem 0;
+  color: var(--content);
+  /* order: -1; */
+}
+
+.headerMember a {
+  padding: var(--spacing-xs);
+  font-size: var(--text-xs);
+}
+
+.headerMember li:nth-child(-n + 2)::after {
+  content: '';
+  display: inline-block;
+  width: 0.125rem;
+  height: var(--spacing-xs);
+  background-color: var(--gray-200);
+  margin-left: 0.25rem;
+}
