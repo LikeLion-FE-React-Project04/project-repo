@@ -1,0 +1,24 @@
+/* ul */
+.headerNavMenuGroup {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  margin-left: 3.125rem;
+}
+
+/* li, a */
+.headerNavMenuItem a,
+.headerNavMenuItem button {
+  border: none;
+  background-color: transparent;
+  color: var(--content);
+  font-weight: 600;
+  padding: 24px 4px;
+  display: inline-block;
+}
+
+.headerNavMenuItem > a:hover {
+  text-decoration: underline;
+  color: var(--primary);
+}
