@@ -6,20 +6,24 @@ import {
   HeaderLogoContainer,
   SearchInput,
   HeaderIcon,
+  HeaderNav,
 } from './';
 
 function Header() {
   return (
     <>
       <Topbanner />
-      <header className={styles.header}>
-        <Member />
-        <div className={styles.headerMain}>
-          <HeaderLogoContainer />
-          <SearchInput />
-          <HeaderIcon />
-        </div>
-      </header>
+      <div className={styles.headerBorder}>
+        <header className={styles.header}>
+          <Member />
+          <div className={styles.headerMain}>
+            <HeaderLogoContainer />
+            <SearchInput />
+            <HeaderIcon />
+          </div>
+          <HeaderNav />
+        </header>
+      </div>
     </>
   );
 }
