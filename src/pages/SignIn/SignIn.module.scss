@@ -11,20 +11,20 @@
 
 .form {
   display: flex;
-  gap: 12px;
+  gap: var(--spacing-sm);
   flex-flow: column;
   align-items: center;
 }
 
 .button{
   display: flex;
-  gap: 12px;
+  gap: var(--spacing-sm);
   flex-flow: column;
 }
 
 .loginFind{
   font-weight: 400;
-  font-size: 12.003px;
+  font-size: var(--text-xs);
   line-height: 160%;
   margin-left: 205px;
 }
