@@ -1,24 +1,29 @@
 import { useRef } from 'react';
 
+import { Link, useNavigate } from 'react-router-dom';
+
 import PageTitle from './../../components/PageTitle/PageTitle';
 import styles from './SignIn.module.scss';
 
 import { FormInput, Button } from '@/components';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
-import { useSignIn } from '@/firebase/auth';
+import { useSignIn, useAuthState, useSignOut } from '@/firebase/auth';
 
 const initialFormState = {
   email: '',
   password: '',
 };
 
+
 function SignIn() {
   useDocumentTitle('로그인');
 
-  // useRef - 1. DOM 요소 참조 / 2. 이전의 값을 기억 (컴포넌트 렌더링 영향 X)
+  const movePage = useNavigate();
   const formStateRef = useRef(initialFormState);
 
-  const { signIn } = useSignIn();
+  const { isLoading: isLoadingSignIn, signIn } = useSignIn();
+  const { signOut } = useSignOut();
+  const { isLoading, error, user } = useAuthState();
 
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -26,14 +31,26 @@ function SignIn() {
     const { email, password } = formStateRef.current;
 
     await signIn(email, password);
+    if (user) movePage('/');
+  };
+
+  const handleSignOut = async () => {
+    signOut();
   };
 
   const handleChangeInput = (e) => {
-    console.log('handleChangeInput', e);
     const { name, value } = e.target;
 
     formStateRef.current[name] = value;
   };
+
+  if (isLoading) {
+    return <div>페이지를 준비 중입니다.</div>;
+  }
+
+  if (error) {
+    return <div role="alert">오류! {error.message}</div>;
+  }
 
   return (
     <div className={styles.signIn}>
@@ -56,21 +73,22 @@ function SignIn() {
         />
 
         <div className={styles.loginFind}>
-          <a href="https://www.kurly.com/member/find/id">아이디 찾기</a>
-          <a href="https://www.kurly.com/member/find/password">비밀번호 찾기</a>
+          <Link to="https://www.kurly.com/member/find/id">아이디 찾기</Link>
+          <Link to="https://www.kurly.com/member/find/password">비밀번호 찾기</Link>
         </div>
 
 
         <div className={styles.button}>
-          <Button
-            type='submit'
-          >로그인</Button>
+          <Button disabled={isLoadingSignIn} type='submit'>
+            {!isLoadingSignIn ? '로그인' : '로그인 중...'}
+          </Button>
 
-
-          <Button
-            type='button'
-            uiType='secondary'
-          >회원가입</Button>
+          <Link to='/SignUp'>
+            <Button
+              type='button'
+              uiType='secondary'
+            >회원가입</Button>
+          </Link>
         </div>
       </form>
     </div>
