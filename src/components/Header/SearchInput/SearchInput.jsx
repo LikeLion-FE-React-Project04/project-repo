@@ -1,8 +1,15 @@
 import styles from './SearchInput.module.css';
-
+import { atom, useRecoilState } from 'recoil';
 import Search from '@/assets/header/ic-search.svg';
+import { inputState } from '../@recoil/inputState';
+
+// console.log(atom);
+
+console.log(inputState);
 
 function SearchInput() {
+  const [input, setInput] = useRecoilState(inputState);
+
   return (
     <>
       <h2 className={styles.a11yHidden}>검색</h2>
