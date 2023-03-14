@@ -45,6 +45,6 @@
 .formGroupButton {
   background-color: transparent;
   border: none;
-  flex-shrink: 0;
-  padding: var(--spacing-base);
+  padding: 0px;
+  margin-top: 4px;
 }
