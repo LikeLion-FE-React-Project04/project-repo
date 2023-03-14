@@ -1,15 +1,20 @@
-import styles from "./Button.module.scss";
+import styles from './Button.module.scss';
 
 export function Button({
   uiType = 'primary',
   children,
+  className = '',
   ...restProps
 }) {
-  const combinedClassNames = `${styles.button} ${getUiStyle(uiType)}`
+  const combinedClassNames = `${styles.button} ${getUiStyle(
+    uiType
+  )} ${className}`;
 
   return (
-    <button className={combinedClassNames} {...restProps}>{children}</button>
-  )
+    <button className={combinedClassNames} {...restProps}>
+      {children}
+    </button>
+  );
 }
 
 function getUiStyle(uiType) {
@@ -25,6 +30,8 @@ function getUiStyle(uiType) {
     case 'third':
       uiStyle = styles.third;
       break;
+    case 'fourth':
+      uiStyle = styles.fourth;
   }
 
   return uiStyle;
