@@ -3,10 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { attr, getPriceFormat, getSalePercent } from '../../utils';
 
 import classes from '@/components/ProductCard/ProductCard.module.scss';
-import {
-  selectedproductId,
-  productCartModalState,
-} from '@/store/productListState.js';
+import { selectedproductId } from '@/store/productListState.js';
+import { productCartModalState } from '@/store/cartModalState.js';
 import { useSetRecoilState } from 'recoil';
 
 /* Component ---------------------------------------------------------------- */
