@@ -6,6 +6,11 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 150%;
+
+  &:disabled {
+    cursor: not-allowed;
+    background: var(--gray-200);
+  }
 }
 
 .primary{
