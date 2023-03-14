@@ -1,9 +1,31 @@
-import styles from "./FormInput.module.scss";
+import styles from './FormInput.module.scss';
 
-export function FormInput(props) {
+export function FormInput({
+  uiType = 'primary',
+  className = '',
+  ...restProps
+}) {
+  const combinedClassNames = `${styles.input} ${className} ${getUiStyle(
+    uiType
+  )}`.trim();
+
   return (
-    <div className={styles.FormInput}>
-      <input id="" name={props.name} placeholder={props.placeholder} type={props.type} />
-    </div>
-  )
+    <input {...restProps} className={combinedClassNames} />
+  );
 }
+
+function getUiStyle(uiType) {
+  let uiStyle;
+
+  switch (uiType) {
+    case 'primary':
+      uiStyle = styles.primary;
+      break;
+    case 'secondary':
+      uiStyle = styles.secondary;
+      break;
+  }
+
+  return uiStyle;
+}
+
