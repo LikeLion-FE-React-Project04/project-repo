@@ -32,16 +32,15 @@
   display: inline-block;
 }
 
-.headerNavMenuItem a,
+/* .headerNavMenuItem a,
 .headerNavMenuItem button {
   border: none;
   background-color: transparent;
   color: var(--content);
   font-weight: 600;
-  /* padding: var(--spacing-xs); */
   padding: 24px 4px;
   display: inline-block;
-}
+} */
 
 .headerNavHamburger {
   transform: translateY(1px);
@@ -92,10 +91,6 @@
   color: var(--primary);
 }
 
-.headerNavMenuItem.closed .headerNavSubMen {
-  display: flex;
-}
-
 .headerNavMenuGroup {
   flex-grow: 1;
   display: flex;
@@ -109,10 +104,10 @@
   font-weight: 500;
 }
 
-.headerNavMenuItem > button:hover {
+/* .headerNavMenuItem > a:hover {
   text-decoration: underline;
   color: var(--primary);
-}
+} */
 
 .headerNavProductList button {
   border: none;
@@ -123,7 +118,7 @@
   display: inline-block;
 }
 
-.testBorder {
+.wideContainer {
   background: var(--white);
   width: 100%;
   /* box-shadow: 0rem 0.25rem 1.5rem rgba(0, 0, 0, 0.1); */

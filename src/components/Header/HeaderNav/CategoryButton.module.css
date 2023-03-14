@@ -33,10 +33,9 @@
 }
 
 .NavSubMenu li {
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
   width: 100%;
   padding-left: 0.25rem;
-  border-bottom: 1px solid var(--gray-100);
 }
 
 .NavSubMenu img {
@@ -55,4 +54,9 @@
 }
 .NavSubMenu li:hover a {
   color: var(--primary);
+}
+
+.test01 img {
+  width: 24px;
+  height: 24px;
 }
