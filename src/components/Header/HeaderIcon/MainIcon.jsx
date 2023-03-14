@@ -1,9 +1,11 @@
+import { Link } from 'react-router-dom';
+
 function MainIcon({ href, img, alt }) {
   return (
-    <a href={href}>
+    <Link to={href}>
       <img src={img} alt={alt} />
-    </a>
-  )
+    </Link>
+  );
 }
 
 // MainIcon.propTypes = {
@@ -12,4 +14,4 @@ function MainIcon({ href, img, alt }) {
 //   alt: String,
 // }
 
-export default MainIcon
+export default MainIcon;

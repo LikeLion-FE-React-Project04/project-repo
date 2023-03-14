@@ -1,9 +1,11 @@
+import { Link } from 'react-router-dom';
+
 import styles from './HeaderNavMenu.module.css';
 
 export const HeaderNavMenu = ({ className, href, text }) => {
   return (
     <li className={className}>
-      <a href={href}>{text}</a>
+      <Link to={href}>{text}</Link>
     </li>
   );
 };
