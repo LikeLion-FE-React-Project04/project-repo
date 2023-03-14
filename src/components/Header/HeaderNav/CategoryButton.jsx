@@ -4,7 +4,7 @@ import styles from './CategoryButton.module.css';
 
 import { categoryData } from './categoryDate';
 
-import Hamburger from '@/assets/icons/Icon/header-hamburger.svg';
+import Hamburger from '@/assets/header/ic-hamburger.svg';
 
 const CategoryData = ({ href, title, img, alt }) => {
   return (
