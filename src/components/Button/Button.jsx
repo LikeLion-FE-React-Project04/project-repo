@@ -25,6 +25,8 @@ function getUiStyle(uiType) {
     case 'third':
       uiStyle = styles.third;
       break;
+    case 'fourth':
+      uiStyle = styles.fourth;
   }
 
   return uiStyle;
