@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import { Link } from 'react-router-dom';
 import styles from './CategoryButton.module.css';
 
 import { categoryData } from './categoryDate';
@@ -9,10 +9,10 @@ import Hamburger from '@/assets/icons/Icon/header-hamburger.svg';
 const CategoryData = ({ href, title, img, alt }) => {
   return (
     <li className={styles.test01}>
-      <a href={href}>
+      <Link to={href}>
         <img src={img} alt={alt} />
         {title}
-      </a>
+      </Link>
     </li>
   );
 };
