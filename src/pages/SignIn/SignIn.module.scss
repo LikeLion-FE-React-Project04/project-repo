@@ -1,12 +1,35 @@
-.SignIn{
+.signIn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pageTitle {
+  margin-bottom: 44px;
+}
+
+.form {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-flow: column;
+  align-items: center;
+}
+
+.button{
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-flow: column;
 }
 
 .loginFind{
-  margin-left: 647px;
-  margin-bottom: 28px;
-  width: 161px;
-  height: 19px;
+  font-weight: 400;
+  font-size: var(--text-xs);
+  line-height: 160%;
+  margin-left: 205px;
 }
 
-.form{
+.loginFind :first-child::after{
+  content: '|';
+  margin: 0px 4px;
 }

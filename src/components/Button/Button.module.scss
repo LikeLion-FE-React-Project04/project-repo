@@ -1,0 +1,32 @@
+.button{
+  width: 340px;
+  height: 54px;
+  border: 1px solid var(--primary);
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.primary{
+  background: var(--primary);
+  color: var(--white);
+}
+
+.secondary{
+  background: var(--white);
+  color: var(--primary);
+}
+
+.third{
+  width: 143px;
+  height: 44px;
+  background: var(--white);
+  color: var(--primary);
+}
+
+.fourth{
+  background: var(--white);
+  color: var(--content);
+  border-color: var(--content);
+}

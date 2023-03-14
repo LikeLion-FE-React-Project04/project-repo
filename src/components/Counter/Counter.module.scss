@@ -1,0 +1,11 @@
+.countLayout {
+      border: var(--gray-200) 1px solid;
+      width: 84px;
+      height: 30px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
