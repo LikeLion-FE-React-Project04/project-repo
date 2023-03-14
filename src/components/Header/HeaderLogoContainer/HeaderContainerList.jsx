@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom';
+
 function HeaderContainerList({ className, text }) {
   return (
-    <a className={className} href="/">
+    <Link className={className} to="/">
       {text}
-    </a>
+    </Link>
   );
 }
 

@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom';
+
 function MemberList({ href, className, text, img }) {
   return (
     <li>
-      <a href={href} className={className}>
+      <Link to={href} className={className}>
         {text}
         {img === undefined ? null : (
           <img
@@ -12,9 +14,9 @@ function MemberList({ href, className, text, img }) {
             }}
           />
         )}
-      </a>
+      </Link>
     </li>
-  )
+  );
 }
 
 // MemberList.propTypes ={
@@ -22,4 +24,4 @@ function MemberList({ href, className, text, img }) {
 
 // }
 
-export default MemberList
+export default MemberList;
