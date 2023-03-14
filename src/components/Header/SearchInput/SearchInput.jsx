@@ -1,11 +1,8 @@
-import styles from './SearchInput.module.css';
-import Search from '@/assets/header/ic-search.svg';
-import { inputState } from '../@recoil/inputState';
 import { inputHook } from '../@recoilhooks/inputHook';
 
-// console.log(atom);
+import styles from './SearchInput.module.css';
 
-console.log(inputState);
+import Search from '@/assets/header/ic-search.svg';
 
 function SearchInput() {
   const { input, setInputValue, setSubmitValue, removeValue } = inputHook();
