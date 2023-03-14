@@ -2,14 +2,13 @@ import styles from "./Button.module.scss";
 
 export function Button({
   uiType = 'primary',
+  children,
   ...restProps
 }) {
   const combinedClassNames = `${styles.button} ${getUiStyle(uiType)}`
 
   return (
-    <div>
-      <button className={combinedClassNames} type='button'>{restProps.name}</button>
-    </div>
+    <button className={combinedClassNames} {...restProps}>{children}</button>
   )
 }
 
