@@ -5,6 +5,7 @@ import { attr, getPriceFormat, getSalePercent } from '../../utils';
 import classes from '@/components/ProductCard/ProductCard.module.scss';
 import { selectedproductId } from '@/store/productListState.js';
 import { productCartModalState } from '@/store/cartModalState.js';
+import { darkFilterState } from '@/store/darkFilterState.js';
 import { useSetRecoilState } from 'recoil';
 
 /* Component ---------------------------------------------------------------- */
@@ -12,6 +13,7 @@ import { useSetRecoilState } from 'recoil';
 export function ProductCard({ product }) {
   const setProductCartModalState = useSetRecoilState(productCartModalState);
   const setSelectedproductId = useSetRecoilState(selectedproductId);
+  const setDarkFilterState = useSetRecoilState(darkFilterState);
   const movePage = useNavigate();
 
   function productCardClickHandler(e) {
@@ -30,6 +32,7 @@ export function ProductCard({ product }) {
       console.log('CartBtn 클릭되었습니다');
       setSelectedproductId(product.id);
       setProductCartModalState(true);
+      setDarkFilterState(true);
 
       return;
     }
