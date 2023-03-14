@@ -2,7 +2,7 @@ import styles from './Member.module.css';
 
 import { MemberList, MemberContainer } from './';
 
-import headerDown from '@/assets/icons/Icon/header-down.svg';
+import headerDown from '@/assets/header/ic-down.svg';
 
 function Member() {
   return (
