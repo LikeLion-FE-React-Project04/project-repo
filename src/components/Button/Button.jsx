@@ -6,9 +6,7 @@ export function Button({
   className = '',
   ...restProps
 }) {
-  const combinedClassNames = `${styles.button} ${getUiStyle(
-    uiType
-  )} ${className}`;
+  const combinedClassNames = `${styles.button} ${getUiStyle(uiType)} ${className}`;
 
   return (
     <button className={combinedClassNames} {...restProps}>
