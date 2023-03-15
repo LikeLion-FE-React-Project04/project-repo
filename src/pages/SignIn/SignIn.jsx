@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -13,7 +13,6 @@ const initialFormState = {
   email: '',
   password: '',
 };
-
 
 function SignIn() {
   useDocumentTitle('로그인');
@@ -31,8 +30,14 @@ function SignIn() {
     const { email, password } = formStateRef.current;
 
     await signIn(email, password);
-    if (user) movePage('/');
   };
+
+  // user 사용자 변화(디펜던시)가 있을 때 movePage 실행
+  useEffect(() => {
+    if (user) {
+      movePage('/');
+    }
+  }, [user]);
 
   const handleSignOut = async () => {
     signOut();
@@ -76,7 +81,6 @@ function SignIn() {
           <Link to="https://www.kurly.com/member/find/id">아이디 찾기</Link>
           <Link to="https://www.kurly.com/member/find/password">비밀번호 찾기</Link>
         </div>
-
 
         <div className={styles.button}>
           <Button disabled={isLoadingSignIn} type='submit'>
