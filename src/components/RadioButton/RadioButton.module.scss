@@ -1,0 +1,39 @@
+.RadioButtonBox{
+
+  display: flex;
+  align-items: center;
+
+  .RadioButton[type="radio"]{
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--gray-200);
+    appearance: none;
+    border-radius: 50%;
+
+  }
+
+  .RadioButton[type="radio"]:checked{
+    border: 1px solid var(--primary);
+    background: var(--primary);
+    position: relative;
+  }  
+
+  .RadioButton[type="radio"]:checked::before{
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--gray-200);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }    
+
+  span{
+    font-size: var(--text-base);
+    padding-left: 8px;
+    font-weight: 600;    
+    
+  }
+}
