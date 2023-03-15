@@ -1,0 +1,39 @@
+.InputBundle{
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0 8px;  
+  align-items: center;
+
+  .SubInfoBox{
+    width: 139px;
+  }
+
+  .SubInfoBox p{
+    position: relative;
+    display: inline-block;
+    font-weight: 600;
+  }
+
+  .SubInfoBox .Must::before{
+    content: '*';
+    color: var(--info-error);
+    position: absolute;
+    font-size: var(--text-base);
+    position: absolute;
+    top: -6px;
+    right: -10px;
+  }
+  
+  input{
+    width: 333px;
+    height: 44px;
+  }
+
+
+
+
+}
+
+
