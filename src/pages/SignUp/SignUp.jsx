@@ -57,13 +57,13 @@ function SignUp() {
 
           <Input text={"성별"}>
             <div className={styles.RadioButtonBundle}>
-              <RadioButton>
+              <RadioButton name={'gender'}>
                 <span>남자</span>
               </RadioButton>
-              <RadioButton>
+              <RadioButton  name={'gender'}>
                 <span>여자</span>
               </RadioButton>            
-              <RadioButton>
+              <RadioButton  name={'gender'}>
                 <span>선택안함</span>
               </RadioButton>                   
             </div>
@@ -81,10 +81,10 @@ function SignUp() {
 
           <Input text={"추가입력 사항"}>
             <div className={styles.RadioButtonBundle}>
-              <RadioButton>
+              <RadioButton name={'addInfo'}>
                 <span>친구초대 추천인 아이디</span>
               </RadioButton>
-              <RadioButton>
+              <RadioButton name={'addInfo'}>
                 <span>참여 이벤트명</span>
               </RadioButton>            
             </div>
@@ -100,7 +100,7 @@ function SignUp() {
             <ul>
               <li>
                 <div>
-                  <RadioButton className={styles.SelectRadio}>
+                  <RadioButton className={styles.SelectRadio} name={'agreeInfo1'} uiType={'secondary'}>
                     <span className={styles.AllAgreeTitle}>전체 동의합니다.</span>
                   </RadioButton>                              
                 </div>
@@ -111,7 +111,7 @@ function SignUp() {
                 </div>
               </li>
               <li className={styles.AgreeSelectList}>
-                <RadioButton className={styles.SelectRadio}>
+                <RadioButton className={styles.SelectRadio} name={'agreeInfo2'} uiType={'secondary'}>
                   <span>이용약관 동의 (필수)</span>
                 </RadioButton>                                              
                 <div>
@@ -120,7 +120,7 @@ function SignUp() {
                 </div>
               </li>
               <li className={styles.AgreeSelectList}>
-                <RadioButton className={styles.SelectRadio}>
+                <RadioButton className={styles.SelectRadio} name={'agreeInfo3'} uiType={'secondary'}>
                   <span>개인정보 수집 · 이용 동의 (필수)</span>
                 </RadioButton>                                              
                 <div>
@@ -129,7 +129,7 @@ function SignUp() {
                 </div>
               </li>
               <li className={styles.AgreeSelectList}>
-                <RadioButton className={styles.SelectRadio}>
+                <RadioButton className={styles.SelectRadio} name={'agreeInfo4'} uiType={'secondary'}>
                   <span>무료배송, 할인쿠폰 등 혜택/정보 수신 동의 (선택)</span>
                 </RadioButton>                                              
                 <div>
@@ -138,7 +138,7 @@ function SignUp() {
                 </div>
               </li>
               <li className={styles.AgreeSelectList}>
-                <RadioButton className={styles.SelectRadio}>
+                <RadioButton className={styles.SelectRadio} name={'agreeInfo5'} uiType={'secondary'}>
                   <span>본인은 만 14세 이상입니다. (필수)</span>
                 </RadioButton>                                              
                 <div>
