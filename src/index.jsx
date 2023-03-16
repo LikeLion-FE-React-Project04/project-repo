@@ -31,7 +31,7 @@ const router = createBrowserRouter(
       <Route element={<ProductList />} path="productList" />
       <Route
         element={<ProductDetail />}
-        loader={productDetailLoader}
+        // loader={productDetailLoader}
         path="productDetail/:productId"
       />
       <Route element={<Cart />} path="cart" />

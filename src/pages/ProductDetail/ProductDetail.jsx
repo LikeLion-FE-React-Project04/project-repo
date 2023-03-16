@@ -1,16 +1,16 @@
 import { useLoaderData, useParams, Link } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { productListFamily } from '@/store/productListState.js';
 
 function ProductDetail() {
-  const post = useLoaderData();
   const { productId } = useParams();
+  const product = useRecoilValue(productListFamily(productId));
 
-  console.log({ productId, post });
+  console.log(product);
 
   return (
     <div>
       <h2>ProductDetail {productId}</h2>
-      <h3>{post.title}</h3>
-      <p>{post.body}</p>
       <Link to="/">Go to Home</Link>
     </div>
   );
@@ -19,14 +19,13 @@ function ProductDetail() {
 export default ProductDetail;
 
 // GET (READ)
-export async function loader({ params }) {
-  const response = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${params.productId}`
-  );
+// export async function loader({ params }) {
+//   console.log('zzz');
+//   console.log(params.productId);
+//   console.log(typeof params.productId);
+//   const product = await useRecoilValue(productListFamily(params.productId));
 
-  if (!response.ok) {
-    throw new Error({ message: '서버 오류', status: 500 });
-  }
+//   console.log(product);
 
-  return response.json();
-}
+//   return product;
+// }

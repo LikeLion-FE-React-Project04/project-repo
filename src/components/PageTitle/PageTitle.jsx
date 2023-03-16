@@ -1,9 +1,9 @@
 import styles from '@/components/PageTitle/PageTitle.module.scss';
 
-function PageTitle({ className = null, text = '기본'}) {
+function PageTitle({ className = null, children}) {
   const combinedClassNames = `${styles.SubpageTitle} ${className}`.trim();
 
-  return <h2 className={combinedClassNames}>{text}</h2>;
+  return <h2 className={combinedClassNames}>{children}</h2>;
 }
 
 export default PageTitle;
