@@ -30,6 +30,10 @@ function getUiStyle(uiType) {
       break;
     case 'fourth':
       uiStyle = styles.fourth;
+      break;
+    case 'fifth':
+      uiStyle = styles.fifth;
+      break;
   }
 
   return uiStyle;
