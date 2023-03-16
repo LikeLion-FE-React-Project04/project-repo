@@ -23,6 +23,7 @@ export const useScrollEvent = () => {
         searchForm.current.style = `display:block`;
 
         wideContainer.current.style = `position:fixed;
+        z-index:1000;
         left: 50%;
         width:100%;
         height:66.39px;
@@ -33,6 +34,7 @@ export const useScrollEvent = () => {
 
         test1.style.cssText = `
         position:fixed;
+        z-index:1000;
         left: 50%;
         transform: translateX( -50% );
         width:1050px;
