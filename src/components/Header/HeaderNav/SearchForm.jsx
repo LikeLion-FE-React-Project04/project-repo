@@ -12,7 +12,7 @@ const SearchForm = forwardRef((_, ref) => {
   return (
     <div ref={ref} style={{ display: 'none' }}>
       <h2 className={styles.a11yHidden}>검색</h2>
-      <form action="#" className={styles.searchForm} method="post">
+      <form action="/" className={styles.searchForm} method="get">
         <div className={styles.searchFormInner}>
           <div className={styles.formGroup}>
             <label htmlFor="search" className={styles.formGroupLabel}>

@@ -12,7 +12,7 @@ function SearchInput() {
       <h2 className={styles.a11yHidden}>검색</h2>
       <div className={styles.searchFormInner}>
         <div className={styles.formGroup}>
-          <form action="#" method="post">
+          <form action="/" method="get">
             <label htmlFor="Search">
               <input
                 className={styles.formGroupInput}
