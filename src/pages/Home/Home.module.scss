@@ -1,0 +1,15 @@
+.home{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+  .subTitle{
+    margin-top: 52px;
+    margin-bottom: 40px;
+    font-size: var(--text-xl);
+  }
+
+  .productCarouselLayout{
+    margin-bottom: 60px;
+  }
+}
