@@ -6,13 +6,10 @@ import MainCarousel from './Carousel/MainCarousel';
 import ProductsCarousel from './Carousel/ProductsCarousel';
 import styles from './Home.module.scss';
 import PageTitle from '../../components/PageTitle/PageTitle';
+import CartModal from '@/components/CartModal/CartModal';
 
 function Home() {
   const { isModalOpen, setModalOpen } = useGetCookieEvent();
-  const { signOut } = useSignOut();
-  const handleSignOut = async () => {
-    signOut();
-  };
 
   return (
     <div className={styles.home}>
@@ -27,6 +24,7 @@ function Home() {
         <ProductsCarousel />
       </div>
       {isModalOpen ? <Mainmodal setModalOpen={setModalOpen} /> : null}
+      <CartModal />
     </div>
   );
 }
