@@ -59,7 +59,7 @@ function SignIn() {
 
   return (
     <div className={styles.signIn}>
-      <PageTitle className={styles.pageTitle} text="로그인" />
+      <PageTitle className={styles.pageTitle}>로그인</PageTitle>
       <form className={styles.form} onSubmit={handleSignIn}>
         <FormInput
           label="이메일"
