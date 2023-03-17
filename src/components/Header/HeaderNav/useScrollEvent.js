@@ -41,7 +41,8 @@ export const useScrollEvent = () => {
          top:0;
          
         `;
-      } else {
+      }
+      if (window.scrollY < 190 && isAllElementFound) {
         deliveryBtn.current.style = `display:block`;
         mainIcons.current.style = `display:none`;
         searchForm.current.style = `display:none`;
