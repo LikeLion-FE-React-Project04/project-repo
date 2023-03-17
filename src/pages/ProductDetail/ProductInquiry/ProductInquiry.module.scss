@@ -1,0 +1,57 @@
+.productInquiryWrap {
+  background-color: pink;
+  width: 1050px;
+  margin: 0 auto;
+
+  h2 {
+    font-weight: 700;
+    font-size: 28.43px;
+    line-height: 140%;
+  }
+}
+
+.aboutInquiry {
+  ul {
+    margin-top: 24px;
+  }
+  li {
+    font-weight: 600;
+    font-size: 12.003px;
+    line-height: 150%;
+    color: #6b6b6b;
+  }
+  div {
+    background-color: aquamarine;
+    flex-grow: 1;
+  }
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 56px;
+}
+
+thead {
+  background-color: white; 
+  width: 1050px;
+  height: 58px;
+  tr {
+    border-top: 2px solid black;
+    border-bottom: 1px solid black;
+    height: 58px;
+  }
+  th {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 58px;
+  }
+}
+
+.inquiryTable {
+  .writingTitle {
+    width: 750px;
+  }
+  .writer,
+  .reportingDate,
+  .answerStatus {
+    width: 100px;
+  }
+}

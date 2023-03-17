@@ -34,6 +34,9 @@ const router = createBrowserRouter(
         // loader={productDetailLoader}
         path="productDetail/:productId"
       />
+      {/* 내가 혼자 추가 */}
+      <Route element={<ProductDetail />} path="detail" /> 
+      {/* 내가 혼자 추가 끝 */}
       <Route element={<Cart />} path="cart" />
     </Route>
   )
