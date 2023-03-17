@@ -1,10 +1,12 @@
 import { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export const useScrollEvent = () => {
   const wideContainer = useRef(null);
   const deliveryBtn = useRef(null);
   const mainIcons = useRef(null);
   const searchForm = useRef(null);
+  const location = useLocation();
 
   useEffect(() => {
     //getElementById를 이용하여 특정elem를 target하는 방법도 사용해보고 싶었다.
@@ -61,6 +63,20 @@ export const useScrollEvent = () => {
       window.removeEventListener('scroll', listener);
     };
   }, []);
+
+  useEffect(() => {
+    const test1 = document.getElementById('1');
+
+    deliveryBtn.current.style = `display:block`;
+    mainIcons.current.style = `display:none`;
+    searchForm.current.style = `display:none`;
+    wideContainer.current.style = `;
+    width:100%;
+    `;
+    test1.style.cssText = `position:relative;
+    width:1050px;
+      `;
+  }, [location.pathname]);
 
   return {
     wideContainer,
