@@ -1,5 +1,5 @@
 import styles from './Button.module.scss';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 export function Button({
   uiType = 'primary',
