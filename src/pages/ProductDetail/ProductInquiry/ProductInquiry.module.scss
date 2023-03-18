@@ -1,12 +1,12 @@
 .productInquiryWrap {
-  background-color: pink;
+  // background-color: pink;
   width: 1050px;
-  margin: 0 auto;
-
+  margin: 0 auto 96px auto;
   h2 {
     font-weight: 700;
     font-size: 28.43px;
     line-height: 140%;
+    text-align: left;
   }
 }
 
@@ -18,24 +18,25 @@
     font-weight: 600;
     font-size: 12.003px;
     line-height: 150%;
-    color: #6b6b6b;
+    color: var(--gray-500);
+    list-style: inside;
   }
   div {
-    background-color: aquamarine;
-    flex-grow: 1;
+    // background-color: aquamarine;
   }
   display: flex;
   flex-flow: row wrap;
   margin-bottom: 56px;
+  justify-content: space-between;
 }
 
 thead {
-  background-color: white; 
+  background-color: var(--white); 
   width: 1050px;
   height: 58px;
   tr {
-    border-top: 2px solid black;
-    border-bottom: 1px solid black;
+    border-top: 2px solid var(--black);
+    border-bottom: 1px solid var(--black);
     height: 58px;
   }
   th {
@@ -46,12 +47,45 @@ thead {
 }
 
 .inquiryTable {
-  .writingTitle {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  .writingTitleHead {
     width: 750px;
   }
-  .writer,
-  .reportingDate,
-  .answerStatus {
+  .writerHead,
+  .reportingDateHead,
+  .answerStatusHead {
     width: 100px;
   }
+  .writingTitleBtn {
+    width: 750px;
+    border: 0;
+    background-color: transparent;
+    padding: 4px 20px;
+    display: block;
+  }
+  tbody td {
+    height: 58px;
+    line-height: 58px; 
+    text-align: center;
+  }
+  .noticeBadge {
+    margin-right: 20px;
+  }
+}
+
+.writingTitle {
+  font-weight: 600;
+  color: #333333;
+}
+
+.writer,
+.reportingDate,
+.answerStatus {
+  color: var(--gray-400);
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--gray-100);
 }

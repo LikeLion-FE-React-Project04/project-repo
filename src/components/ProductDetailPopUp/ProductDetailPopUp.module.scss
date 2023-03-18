@@ -1,0 +1,91 @@
+.detailPopUpWrap { 
+  h2 {
+    font-weight: 700;
+    font-size: 28.43px;
+    line-height: 140%;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  background-color: lightblue;
+  padding: 32px;
+  margin: 0 auto;
+  width: 793px;
+  height: 630px;  
+  border-radius: 16px;
+}
+
+.productInformation {
+  background-color: white;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 0px;
+  border-bottom: 1px solid #E1E1E1;
+  border-top: 1px solid #E1E1E1;
+  img {
+    width: 72px;
+    height: 72px;
+  }
+  p {
+    color: var(--black);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+  }
+}
+
+.inquiryTitleWrapper {
+  input {
+    width: 645px;
+    height: 32px;
+    display: inline-block;
+    color:#898989;
+    padding: 9px 20px;
+    background-color: transparent;
+  }
+}
+
+.inquiryContentWrapper {
+  margin-top: 12px;
+}
+
+.inputField {
+  padding-top: 16px;
+  background-color: lightgreen;
+  label {
+    padding: 8px;
+    display: inline-block;
+    width: 100px;
+    height: 42px;
+    line-height: 150%;
+    background-color: white;
+    font-weight: 600;
+    font-size: 16px;
+    color: #333333;
+  }
+  input {
+    padding: 0px;
+    width: 629px;
+    height: 44px;
+  }
+  textarea {
+    overflow-y: scroll;
+    width: 629px;
+    height: 198px;
+    color: #A6A6A6;
+    display: inline-block;
+    background-color: transparent;
+    // margin-left: 64px;
+    padding: 16px;
+    resize: none;
+
+  }
+  .countSpan {
+    margin-left: 100px;
+    width: 629px;
+    height: 30px;
+    display: block;
+    background-color: lightsalmon;
+  }
+}
