@@ -1,6 +1,6 @@
-import type { Preview } from '@storybook/react';
+// import style from '../src/styles/main.module.css';
 
-const preview: Preview = {
+const preview = {
   parameters: {
     backgrounds: {
       default: 'light',
@@ -16,3 +16,11 @@ const preview: Preview = {
 };
 
 export default preview;
+
+export const decorators = [
+  (Story) => (
+    <div >
+      <Story />
+    </div>
+  ),
+];
