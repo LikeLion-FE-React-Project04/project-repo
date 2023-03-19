@@ -54,6 +54,7 @@
     display: inline-block;
     color: var(--gray-400);
     padding: 9px 20px;
+    
   }
   // background-color: orange;
 }
@@ -65,7 +66,7 @@
   .inquiryCount {
     position: absolute;
     right: 4px;
-    bottom: 0px;
+    bottom: 4px;
     width: 100%;
     text-align: right;
   }
@@ -86,7 +87,6 @@
     color: var(--content);
   }
   input {
-    padding: 0px;
     width: 629px;
     height: 44px;
   }
@@ -95,10 +95,11 @@
     height: 198px;
     color: var(--gray-300);
     display: inline-block;
-    background-color: transparent;
+    // background-color: salmon;
     border: 0px;
     padding: 16px;
     resize: none;
+    // position: relative;
   }
   .textAreaWrap {
     border: 1px solid var(--gray-300);
