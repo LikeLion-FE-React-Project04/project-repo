@@ -2,7 +2,8 @@ import styles from './ProductDetailPopUp.module.scss';
 
 import { default as PageTitle } from '@/components/PageTitle/PageTitle.jsx'
 import productImg from "@/assets/product/tangtang/thumbnail.jpg";
-import { Placeholder } from './Placeholder/Placeholder';
+import { PlaceholderInquiry } from './PlaceholderInquiry/PlaceholderInquiry';
+import { PlaceholderReview } from './PlaceholderReview/PlaceholderReview';
 import { useState } from 'react';
 import { useRef } from 'react';
 
@@ -43,7 +44,7 @@ export function ProductDetailPopUp() {
             <label htmlFor='inquiryText'>내용</label>
             <div className={styles.textAreaWrap} onClick={handlePlaceholder}>
               <textarea id="inquiryText" inputMode='text' name="content" ref={area} required maxLength="5000" onBlur={handlePlaceholderT}></textarea>
-              {isActiveP?<Placeholder />:null}
+              {isActiveP?<PlaceholderReview />:null}
               <p className={styles.inquiryCount} id="inquiryCount">0/5000</p>
             </div>
           </fieldset>

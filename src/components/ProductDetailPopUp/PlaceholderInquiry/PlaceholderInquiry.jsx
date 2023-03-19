@@ -1,4 +1,4 @@
-import styles from './Placeholder.module.scss';
+import styles from './PlaceholderInquiry.module.scss';
 
 export function Placeholder() {
   return (
