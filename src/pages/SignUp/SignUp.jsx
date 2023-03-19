@@ -73,7 +73,7 @@ function SignUp() {
 
   return (
     <div className={styles.SignUp}>
-      <PageTitle text={'회원가입'} className={styles.MarginTopBottom} />
+      <PageTitle className={styles.MarginTopBottom}>회원가입</PageTitle>
       <div className={styles.SignUpPage}>
         <span className={styles.MustInputText}>필수입력사항</span>
         <form className={styles.FormField} onSubmit={handleSubmit}>

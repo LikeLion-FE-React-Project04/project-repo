@@ -1,5 +1,5 @@
 import styles from './Button.module.scss';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 export function Button({
   uiType = 'primary',
@@ -33,6 +33,10 @@ function getUiStyle(uiType = 'primary') {
       break;
     case 'fourth':
       uiStyle = styles.fourth;
+      break;
+    case 'fifth':
+      uiStyle = styles.fifth;
+      break;
   }
 
   return uiStyle;

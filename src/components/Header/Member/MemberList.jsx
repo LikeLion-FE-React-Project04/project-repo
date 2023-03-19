@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 
-function MemberList({ href, className, text, img }) {
+function MemberList({ href, className, text, img, onClick }) {
   return (
     <li>
-      <Link to={href} className={className}>
+      <Link to={href} className={className} onClick={onClick}>
         {text}
         {img === undefined ? null : (
           <img
