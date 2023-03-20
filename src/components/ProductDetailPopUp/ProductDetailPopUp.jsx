@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import ReactDOM from 'react-dom';
 
 import styles from './ProductDetailPopUp.module.scss';
 import { PlaceholderInquiry } from './PlaceholderInquiry/PlaceholderInquiry';
@@ -39,8 +40,8 @@ export function ProductDetailPopUp({uiType}) {
     // 그래서 랜더링을 시키기 위해서 state 사용
     setInputCount(textAreaText.current.length);
   };
-
-  return (
+  
+  return ReactDOM.createPortal(
     <>
       <article className={styles.detailPopUpWrap}>
         <div className={styles.popUpHeader}>
@@ -74,5 +75,7 @@ export function ProductDetailPopUp({uiType}) {
         </div>
       </article>
     </>
+    ,
+    document.getElementById("detailPortal")
   );
 }

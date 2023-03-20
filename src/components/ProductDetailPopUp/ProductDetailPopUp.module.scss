@@ -1,4 +1,14 @@
 .detailPopUpWrap { 
+  /*------portal 띄우기------*/
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 650px;
+  transform: translate(0, -50%);
+  /*------/portal 띄우기------*/
+
   h2 {
     font-weight: 700;
     font-size: 28.43px;
