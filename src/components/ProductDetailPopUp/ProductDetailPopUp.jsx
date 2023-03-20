@@ -58,7 +58,7 @@ export function ProductDetailPopUp({uiType}) {
           </fieldset>
           <fieldset className={styles.inquiryContentWrapper}>
             <label htmlFor='inquiryText'>내용</label>
-            <div className={styles.textAreaWrap} onClick={handlePlaceholder}>
+            <div className={styles.textAreaWrap} onClick={handlePlaceholder} aria-hidden="true">
               <textarea onChange={textareaInputHandler} id="inquiryText" inputMode='text' name="content" ref={area} required maxLength="5000" onBlur={handlePlaceholderT}></textarea>
               {isActiveP?(uiType=='inquiry'?<PlaceholderInquiry />:<PlaceholderReview />):null}
               <p className={styles.inquiryCount} id="inquiryCount">{inputCount}/5000</p>

@@ -19,7 +19,7 @@
       border: 0;
     }
   }
-  background-color: lightblue;
+  background-color: whitesmoke;
   padding: 32px 32px 0px 32px;
   margin: 0 auto;
   width: 793px;
@@ -27,7 +27,7 @@
 }
 
 .productInformation {
-  background-color: var(--white);
+  // background-color: var(--white);
   display: flex;
   flex-flow: row wrap;
   align-items: center;
@@ -80,7 +80,7 @@
     width: 100px;
     height: 42px;
     line-height: 150%;
-    background-color: var(--white);
+    // background-color: var(--white);
     font-weight: 600;
     font-size: 16px;
     color: var(--content);

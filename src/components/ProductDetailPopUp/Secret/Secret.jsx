@@ -4,7 +4,7 @@ export function Secret() {
   return (
     <>
       <div className={styles.secretCheckBox}>
-        <input type="checkbox" name="checker" id="isSecret" role="tab" aria-checked="false" tabindex="0" />
+        <input id="isSecret" name="checker" role="tab" tabIndex="0" type="checkbox" />
         <label htmlFor="isSecret"></label>
         <span>비밀글로 문의하기</span>
       </div>

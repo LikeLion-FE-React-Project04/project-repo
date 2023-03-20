@@ -76,5 +76,11 @@ module.exports = {
         reservedFirst: true,
       },
     ],
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "labelAttributes": ["htmlFor"]
+      }
+    ],
   },
 };
