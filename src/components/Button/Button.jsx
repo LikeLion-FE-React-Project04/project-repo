@@ -3,7 +3,7 @@ import styles from './Button.module.scss';
 
 export function Button({
   uiType = 'primary',
-  children = '테스트',
+  children = 'test',
   className = '',
   ...restProps
 }) {

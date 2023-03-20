@@ -18,15 +18,21 @@ export const Secondary = {
 
 export const third = {
   args: {
-    children: '2',
     uiType: 'third',
   },
 };
 
-// SecondaryDisabled
-export const SecondaryDisabled = {
+export const fourth = {
   args: {
-    disabled: true,
-    ...Secondary.args,
+    uiType: 'fourth',
   },
 };
+
+export const fifth = {
+  args: {
+    uiType: 'fifth',
+  },
+};
+
+
+
