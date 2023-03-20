@@ -1,14 +1,15 @@
+import { useState, useRef } from 'react';
+
 import styles from './ProductDetailPopUp.module.scss';
+import { PlaceholderInquiry } from './PlaceholderInquiry/PlaceholderInquiry';
+import { PlaceholderReview } from './PlaceholderReview/PlaceholderReview';
 
 import { default as PageTitle } from '@/components/PageTitle/PageTitle.jsx'
 import productImg from "@/assets/product/tangtang/thumbnail.jpg";
-import { PlaceholderInquiry } from './PlaceholderInquiry/PlaceholderInquiry';
-import { PlaceholderReview } from './PlaceholderReview/PlaceholderReview';
-import { useState } from 'react';
-import { useRef } from 'react';
 
 
-export function ProductDetailPopUp() {
+
+export function ProductDetailPopUp({uiType}) {
   const area = useRef(); 
 
   // Placeholder가 띄워지냐 안지냐를 관리하는 state
@@ -44,7 +45,7 @@ export function ProductDetailPopUp() {
             <label htmlFor='inquiryText'>내용</label>
             <div className={styles.textAreaWrap} onClick={handlePlaceholder}>
               <textarea id="inquiryText" inputMode='text' name="content" ref={area} required maxLength="5000" onBlur={handlePlaceholderT}></textarea>
-              {isActiveP?<PlaceholderReview />:null}
+              {isActiveP?(uiType=='inquiry'?<PlaceholderInquiry />:<PlaceholderReview />):null}
               <p className={styles.inquiryCount} id="inquiryCount">0/5000</p>
             </div>
           </fieldset>

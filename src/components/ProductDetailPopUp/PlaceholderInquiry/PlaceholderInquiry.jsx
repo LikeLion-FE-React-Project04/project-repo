@@ -1,6 +1,6 @@
 import styles from './PlaceholderInquiry.module.scss';
 
-export function Placeholder() {
+export function PlaceholderInquiry() {
   return (
     <>
       <div className={styles.placeHolder}>
