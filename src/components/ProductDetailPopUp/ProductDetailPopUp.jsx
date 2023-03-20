@@ -44,7 +44,7 @@ export function ProductDetailPopUp({uiType}) {
     <>
       <article className={styles.detailPopUpWrap}>
         <div className={styles.popUpHeader}>
-          <PageTitle uiType='productReviewAndInquiry'>상품 문의하기</PageTitle>
+          <PageTitle uiType='productReviewAndInquiry'>{(uiType=='inquiry')?'상품 문의하기':'후기 작성'}</PageTitle>
           <button aria-label="창닫기"></button>
         </div>
         <div className={styles.productInformation}>
