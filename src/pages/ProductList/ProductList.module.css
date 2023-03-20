@@ -1,0 +1,255 @@
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  /* justify-content: center; */
+  align-items: center;
+  min-width: 1050px;
+  min-height: 100.3vh;
+}
+
+.productListTitle {
+  margin-top: 80px;
+  margin-bottom: 44px;
+  display: inline-block;
+  /* padding: var(--spacing-xs) 0; */
+  font-size: var(--text-lg);
+  /* background-color: gold; */
+  /* width: 1000px; */
+  font-weight: 600;
+  margin-bottom: 3rem;
+}
+
+.productListWrapper {
+  width: 783px;
+}
+
+.product {
+  width: 1050px;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+}
+
+/* ---------------------------------- test ---------------------------------- */
+.productListNav {
+  position: sticky;
+  top: 0;
+  margin-top: 14px;
+  width: 13.75rem;
+  flex-shrink: 0;
+  height: 100%;
+  margin-right: 45px;
+  border-bottom: var(--gray-100);
+}
+
+.productlistNav::-webkit-scrollbar {
+  display: none;
+}
+
+.productListNavFilter {
+  position: sticky;
+  top: 0px;
+  display: flex;
+  z-index: 100;
+  background-color: var(--white);
+  justify-content: space-between;
+  align-items: center;
+  padding: 1px 6px 1.25rem 6px;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.navFillterText {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--content);
+}
+
+.navFilterButton {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--gray-300);
+  background: transparent;
+  border: none;
+}
+
+.navMenuCategory {
+  border-bottom: 1px solid var(--gray-100);
+}
+.navMenuBrand {
+  border-bottom: 1px solid var(--gray-100);
+}
+.navMenuPrice {
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.navMenuBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 3.25rem;
+  overflow: hidden;
+  background-color: transparent;
+  border: none;
+}
+
+.navMenuBtn span {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  color: var(--content);
+}
+
+.navMenuCategorySvg,
+.navMenuBrandSvg,
+.navMenuPriceSvg {
+  /* 버튼 클릭 시 transform = rotate(n deg) 회전 초기값은 0 */
+  transform: rotateZ(0deg);
+}
+
+.navMenuUl {
+  /* display: none; */
+  transition: all 400ms ease-in-out;
+}
+
+.navMenuUlList {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.active {
+  display: block;
+}
+
+.navMenuUlList input[type='checkbox'] + label {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding-left: 30px;
+  z-index: 5;
+}
+
+.navMenuUlList input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  background: url('../../assets/icons/Icon/check-box-round.svg') no-repeat 0 0px;
+  background-size: 18px 18px;
+  position: absolute;
+  left: 0;
+  appearance: none;
+}
+
+.navMenuUlList input[type='checkbox']:checked + label {
+  background: url('../../assets/icons/Icon/checked-box-round.svg') no-repeat 0
+    0px;
+  background-size: 19px 19px;
+  z-index: 18;
+}
+
+.ulListCount {
+  /* margin-right: 200px; */
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1rem;
+  color: var(--gray-200);
+  /* background: red; */
+}
+
+/* ----------------------------------- 떨거지 ---------------------------------- */
+
+/* 샛별배송 */
+.productBriefList {
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 24px;
+  margin-top: 40px;
+}
+
+.productBriefContainer {
+  display: block;
+  height: 580px;
+  margin-left: 12px;
+}
+
+.product-brief__img {
+  width: 249px;
+  height: 320px;
+}
+
+.badge_faster {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: 18px;
+  color: var(--gray-400);
+  margin-bottom: var(--spacing-xs);
+}
+
+.product-brief__info .is-hidden {
+  display: none;
+}
+
+/* 제품설명 */
+.product-brief__description {
+  display: inline-block;
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--text-sm);
+  line-height: 18px;
+  color: var(--gray-400);
+}
+
+/* review */
+.product-brief__review {
+  display: flex;
+  align-items: center;
+  font-size: var(--text-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.review__img {
+  width: 12px;
+  margin-right: 3px;
+}
+
+/* badge */
+.product-brief__badge {
+  margin-bottom: var(--spacing-xs);
+}
+
+.badge {
+  background-color: var(--gray-100);
+  padding: 4px;
+  margin-right: 8px;
+  border-radius: 10%;
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.badge__karly-only {
+  color: var(--primary);
+}
+
+/* ----------------------------------- 1000 ----------------------------------- */
+
+.accordionHead {
+  width: 220px;
+  height: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-weight: 600;
+}
+
+.productListFilterTitle {
+  font-size: var(--text-base);
+  font-weight: 600;
+}
