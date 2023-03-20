@@ -20,10 +20,9 @@
     }
   }
   background-color: lightblue;
-  padding: 32px;
+  padding: 32px 32px 0px 32px;
   margin: 0 auto;
   width: 793px;
-  height: 630px;  
   border-radius: 16px;
 }
 
@@ -111,40 +110,17 @@
   }
 }
 
-/* --------------------------------- 비밀글 체크 --------------------------------- */
-.secretCheckBox {
-  // background-color: white;
-  height : 58px;
-  line-height: 30px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-left: 101px;
-  input[type="checkbox"]+label {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    background: url('../../assets/product-detail/secret-checked-false.svg') no-repeat 0 0px / contain;
-  }
-  input[type='checkbox']:checked+label {
-    background: url('../../assets/product-detail/secret-checked-true.svg') no-repeat 0 0px / contain;
-  }
-  input[type="checkbox"] {
-    display: none;
-  }
-  span {
-    font-weight: 400;
-    font-size: 12.003px;
-    line-height: 160%;
-    width: 87px;
-    height: 19px;
-  }
+/* ----------------------------------- 비밀글 ---------------------------------- */
+.isSecret {
+  height: 58px;
 }
+
 
 /* ------------------------------- 팝업 취소/등록 버튼 ------------------------------ */
 .popUpBtnWrapper {
   // background-color: lightcoral;
-  margin: 20px 0px 32px 0px;
+  border-top: 1px solid var(--gray-100);
+  padding: 20px 0px 32px 0px;
   display: flex;
   justify-content: center;
   gap: 12px;

@@ -3,6 +3,7 @@ import { useState, useRef } from 'react';
 import styles from './ProductDetailPopUp.module.scss';
 import { PlaceholderInquiry } from './PlaceholderInquiry/PlaceholderInquiry';
 import { PlaceholderReview } from './PlaceholderReview/PlaceholderReview';
+import { Secret } from './Secret/Secret';
 
 import { default as PageTitle } from '@/components/PageTitle/PageTitle.jsx'
 import productImg from "@/assets/product/tangtang/thumbnail.jpg";
@@ -64,10 +65,8 @@ export function ProductDetailPopUp({uiType}) {
             </div>
           </fieldset>
         </div>
-        <div className={styles.secretCheckBox}>
-          <input type="checkbox" name="checker" id="isSecret" role="tab" aria-checked="false" tabindex="0" />
-          <label htmlFor="isSecret"></label>
-          <span>비밀글로 문의하기</span>
+        <div className={styles.isSecret}>
+          {(uiType=='inquiry') ? <Secret/> : null}
         </div>
         <div className={styles.popUpBtnWrapper}>
           <button className={styles.cancelBtn}>취소</button>
