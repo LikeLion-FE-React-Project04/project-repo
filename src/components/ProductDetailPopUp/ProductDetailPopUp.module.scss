@@ -1,4 +1,5 @@
 .detailPopUpWrap { 
+  background-color: var(--white);
   z-index: 1200;
   /*------portal 띄우기------*/
   position: absolute;
@@ -21,7 +22,6 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    // background-color: antiquewhite;
     button {
       width: 30px;
       height: 30px;
@@ -30,7 +30,6 @@
       border: 0;
     }
   }
-  background-color: whitesmoke;
   padding: 32px 32px 0px 32px;
   margin: 0 auto;
   width: 793px;
@@ -38,7 +37,6 @@
 }
 
 .productInformation {
-  // background-color: var(--white);
   display: flex;
   flex-flow: row wrap;
   align-items: center;
@@ -66,11 +64,9 @@
     padding: 9px 20px;
     
   }
-  // background-color: orange;
 }
 
 .inquiryContentWrapper {
-  // background-color: rgb(228, 184, 102);
   display: flex;
   margin-top: 12px;
   .inquiryCount {
@@ -83,7 +79,6 @@
 }
 
 .inputField {
-  // background-color: lightgreen;
   padding-top: 16px;
   label {
     padding: 8px;
@@ -91,7 +86,6 @@
     width: 100px;
     height: 42px;
     line-height: 150%;
-    // background-color: var(--white);
     font-weight: 600;
     font-size: 16px;
     color: var(--content);
@@ -105,11 +99,9 @@
     height: 198px;
     color: var(--gray-300);
     display: inline-block;
-    // background-color: salmon;
     border: 0px;
     padding: 16px;
     resize: none;
-    // position: relative;
   }
   .textAreaWrap {
     border: 1px solid var(--gray-300);
@@ -129,7 +121,6 @@
 
 /* ------------------------------- 팝업 취소/등록 버튼 ------------------------------ */
 .popUpBtnWrapper {
-  // background-color: lightcoral;
   border-top: 1px solid var(--gray-100);
   padding: 20px 0px 32px 0px;
   display: flex;
