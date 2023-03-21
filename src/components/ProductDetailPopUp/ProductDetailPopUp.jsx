@@ -1,15 +1,26 @@
 import { useState, useRef } from 'react';
 import ReactDOM from 'react-dom';
 
+import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
+
 import styles from './ProductDetailPopUp.module.scss';
 import { PlaceholderInquiry } from './PlaceholderInquiry/PlaceholderInquiry';
 import { PlaceholderReview } from './PlaceholderReview/PlaceholderReview';
 import { Secret } from './Secret/Secret';
 
+import { productDetailModalState } from '@/store/detailModalState.js';
 import { default as PageTitle } from '@/components/PageTitle/PageTitle.jsx'
 import productImg from "@/assets/product/tangtang/thumbnail.jpg";
 
+import { darkFilterState } from '@/store/darkFilterState.js';
+
 export function ProductDetailPopUp({uiType}) {
+  // 다크필터
+  const setDarkFilter = useSetRecoilState(darkFilterState);
+
+  // 모달창을 띄울것인가 말것인가
+  const [isVisible, setIsVisible] = useRecoilState(productDetailModalState);
+
   // textarea를 참조하기 위한 ref
   const area = useRef(); 
   // textarea의 text를 관리하기 위한 ref
@@ -19,6 +30,7 @@ export function ProductDetailPopUp({uiType}) {
   const [isActiveP, setIsActiveP] = useState(true); 
   // textarea의 글자수를 관리하는 state
   const [inputCount, setInputCount] = useState(0);
+  
 
   // div태그(.textAreaWrap)을 클릭하면, 발생하는 이벤트
   function handlePlaceholder() { 
@@ -41,41 +53,50 @@ export function ProductDetailPopUp({uiType}) {
     setInputCount(textAreaText.current.length);
   };
   
-  return ReactDOM.createPortal(
-    <>
-      <article className={styles.detailPopUpWrap}>
-        <div className={styles.popUpHeader}>
-          <PageTitle uiType='productReviewAndInquiry'>{(uiType=='inquiry')?'상품 문의하기':'후기 작성'}</PageTitle>
-          <button aria-label="창닫기"></button>
-        </div>
-        <div className={styles.productInformation}>
-          <img alt="탱탱쫄면" src={productImg} />
-          <p>[풀무원] 탱탱쫄면 (4개입)</p>
-        </div>
-        <div className={styles.inputField}>
-          <fieldset className={styles.inquiryTitleWrapper}>
-            <label htmlFor='inquiryTitle'>제목</label>
-            <input required id="inquiryTitle" placeholder="제목을 입력해 주세요" type="text" />
-          </fieldset>
-          <fieldset className={styles.inquiryContentWrapper}>
-            <label htmlFor='inquiryText'>내용</label>
-            <div className={styles.textAreaWrap} onClick={handlePlaceholder} aria-hidden="true">
-              <textarea onChange={textareaInputHandler} id="inquiryText" inputMode='text' name="content" ref={area} required maxLength="5000" onBlur={handlePlaceholderT}></textarea>
-              {isActiveP?(uiType=='inquiry'?<PlaceholderInquiry />:<PlaceholderReview />):null}
-              <p className={styles.inquiryCount} id="inquiryCount">{inputCount}/5000</p>
-            </div>
-          </fieldset>
-        </div>
-        <div className={styles.isSecret}>
-          {(uiType=='inquiry') ? <Secret/> : null}
-        </div>
-        <div className={styles.popUpBtnWrapper}>
-          <button className={styles.cancelBtn}>취소</button>
-          <button className={styles.postBtn} id="postInquiry">등록</button>
-        </div>
-      </article>
-    </>
-    ,
-    document.getElementById("detailPortal")
-  );
+  // 사용자가 '취소'또는 'X'버튼을 클릭했을 때 발생하는 이트
+  const handleCancelBtnClick = () => {
+    setIsVisible(false); // 모달창을 띄우지 않는다
+    setDarkFilter(false); // 다크 필터를 끈다
+  };
+
+  if(isVisible) {
+    return ReactDOM.createPortal(
+      <>
+        <article className={styles.detailPopUpWrap}>
+          <div className={styles.popUpHeader}>
+            <PageTitle uiType='productReviewAndInquiry'>{(uiType=='inquiry')?'상품 문의하기':'후기 작성'}</PageTitle>
+            <button aria-label="창닫기" onClick={handleCancelBtnClick}></button>
+          </div>
+          <div className={styles.productInformation}>
+            <img alt="탱탱쫄면" src={productImg} />
+            <p>[풀무원] 탱탱쫄면 (4개입)</p>
+          </div>
+          <div className={styles.inputField}>
+            <fieldset className={styles.inquiryTitleWrapper}>
+              <label htmlFor='inquiryTitle'>제목</label>
+              <input required id="inquiryTitle" placeholder="제목을 입력해 주세요" type="text" />
+            </fieldset>
+            <fieldset className={styles.inquiryContentWrapper}>
+              <label htmlFor='inquiryText'>내용</label>
+              <div className={styles.textAreaWrap} onClick={handlePlaceholder} aria-hidden="true">
+                <textarea onChange={textareaInputHandler} id="inquiryText" inputMode='text' name="content" ref={area} required maxLength="5000" onBlur={handlePlaceholderT}></textarea>
+                {isActiveP?(uiType=='inquiry'?<PlaceholderInquiry />:<PlaceholderReview />):null}
+                <p className={styles.inquiryCount} id="inquiryCount">{inputCount}/5000</p>
+              </div>
+            </fieldset>
+          </div>
+          <div className={styles.isSecret}>
+            {(uiType=='inquiry') ? <Secret/> : null}
+          </div>
+          <div className={styles.popUpBtnWrapper}>
+            <button className={styles.cancelBtn} onClick={handleCancelBtnClick}>취소</button>
+            <button className={styles.postBtn} id="postInquiry">등록</button>
+          </div>
+        </article>
+      </>
+      ,
+      document.getElementById("detailPortal")
+    );
+  }
 }
+

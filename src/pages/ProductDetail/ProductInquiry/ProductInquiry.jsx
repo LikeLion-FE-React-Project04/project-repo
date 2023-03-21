@@ -1,3 +1,5 @@
+import { useSetRecoilState } from 'recoil';
+
 import classes from '../../../styles/main.module.css';
 
 import styles from './ProductInquiry.module.scss';
@@ -7,7 +9,17 @@ import { Button } from '@/components/Button/Button.jsx';
 import { default as PageTitle } from '@/components/PageTitle/PageTitle.jsx';
 import { ReactComponent as Lock } from '@/assets/product-detail/ic-lock.svg';
 
+import { productDetailModalState } from '@/store/detailModalState.js';
+import { darkFilterState } from '@/store/darkFilterState.js';
+
 export function ProductInquiry () {
+  const setProductDetailModalState = useSetRecoilState(productDetailModalState);
+  const setDarkFilterState = useSetRecoilState(darkFilterState);
+
+  function productModalClickHandler() {
+    setProductDetailModalState(true);
+    setDarkFilterState(true);
+  }
 
   return (
     <>
@@ -20,7 +32,7 @@ export function ProductInquiry () {
               <li>배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이컬리 내 1:1 문의에 남겨주세요.</li>
             </ul>
           </div>
-          <Button uiType='fifth'>문의하기</Button>
+          <Button uiType='fifth' onClick={productModalClickHandler}>문의하기</Button>
         </div>
         <article className={styles.inquiryTable}>
           <table>
