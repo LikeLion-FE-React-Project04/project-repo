@@ -5,7 +5,7 @@ import { useRef } from 'react';
 import classnames from 'classnames';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { ProductCard } from '../../../components/ProductCard/ProductCard';
+import ProductCard from '../../../components/ProductCard/ProductCard';
 import {
   productListState,
   selectedproductId,
