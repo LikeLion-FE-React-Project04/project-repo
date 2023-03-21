@@ -13,8 +13,6 @@ const Member = () => {
     signOut();
   };
 
-  console.log(user);
-
   if (user) {
     return (
       <MemberContainer>

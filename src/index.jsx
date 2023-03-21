@@ -44,12 +44,12 @@ const rootContainer = document.getElementById('root');
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 
 createRoot(rootContainer).render(
-  <StrictMode>
+  <>
     <RecoilRoot>
       <Suspense fallback={<div>로딩 중...</div>}>
         <RouterProvider router={router} />
       </Suspense>
       <RecoilLogger />
     </RecoilRoot>
-  </StrictMode>
+  </>
 );

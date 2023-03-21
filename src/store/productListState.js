@@ -1,4 +1,4 @@
-import { atom, atomFamily /* selector */ } from 'recoil';
+import { atom, atomFamily, selector, selectorFamily } from 'recoil'
 
 const initialProductList = [
   {
@@ -85,7 +85,7 @@ const initialProductList = [
     saleRatio: 0.25,
     salePrice: 3375,
     image: {
-      thumbnail: 'assets/product/bacon/thumbnail.jpg',
+      thumbnail: 'assets/produc t/bacon/thumbnail.jpg',
       view: 'bacon/detail-view.jpg',
       banner: 'bacon/detail_banner.jpg',
       info: 'bacon/detail_info.jpg',
@@ -297,21 +297,101 @@ const initialProductList = [
     kalryOnly: 'false',
     brand: '스윗밸런스',
   },
-];
+]
 
 export const productListState = atom({
   key: 'productListState',
   default: initialProductList,
-});
+})
 
 export const productListFamily = atomFamily({
   key: 'productListFamily',
   default: (id) => initialProductList.find((order) => order.id === id),
   // default: (order) => initialOrderList.find(({order: orderName}) => orderName === order),
   // default: (index) => initialOrderList[index],
-});
+})
 
 export const selectedproductId = atom({
   key: 'selectedproductId',
   default: 'order-1',
-});
+})
+
+export const categoryListSelector = selectorFamily({
+  key: 'categoryListSelector',
+
+  get: ({ get }) => {
+    const product = get(productListState)
+
+    const categoryList = product
+      .filter((arr, index, callback) => {
+        return (
+          index ===
+          callback.findIndex((product) => product.category === arr.category)
+        )
+      })
+      .map((item) => {
+        return item.category
+      })
+
+    return categoryList
+  },
+})
+
+export const categoryLengthListSelector = selector({
+  key: 'categoryLengthListSelector',
+
+  get: ({ get }) => {
+    const category = get(productListState)
+    const categoryList = get(categoryListSelectoror)
+
+    return categoryList.reduce((결과, 카테고리) => {
+      let 카운트 = 0
+
+      category.forEach((item) => {
+        if (item.category === 카테고리) {
+          카운트++
+        }
+      })
+
+      return {
+        ...결과,
+        [카테고리]: 카운트,
+      }
+    }, {})
+  },
+})
+
+// export const categoryListState = selector({
+//   key : 'categoryListState',
+
+//   get : ({ get }) => {
+//     const products  = get(productListState);
+
+//     // const categoryList =
+//     // product.filter((arr, index, callback) =>
+//     //     index ===
+//     //     callback.findIndex((product) => product.category === arr.category))
+
+//     let categoryList = []
+
+//     products.forEach(product=>{
+//       let f = true
+
+//       categoryList.map(item=>{
+//         if(item.category == product.category) {
+//           item.count += 1
+//           f = false
+//         }
+//       })
+//       if (f){
+//       categoryList.push({'category': product.category, 'count': 1})
+//       }
+//     })
+
+//     // console.log(categoryList);
+
+//     return categoryList;
+//   }
+// }
+
+// )
