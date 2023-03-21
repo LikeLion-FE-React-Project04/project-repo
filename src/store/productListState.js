@@ -313,5 +313,5 @@ export const productListFamily = atomFamily({
 
 export const selectedproductId = atom({
   key: 'selectedproductId',
-  default: 'order-1',
+  default: 'product-rksk',
 });
