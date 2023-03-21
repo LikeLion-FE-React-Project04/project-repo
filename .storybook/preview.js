@@ -1,4 +1,6 @@
 // import style from '../src/styles/main.module.css';
+import { RecoilRoot, RecoilEnv } from 'recoil';
+import { MemoryRouter } from 'react-router-dom';
 
 const preview = {
   parameters: {
@@ -19,8 +21,10 @@ export default preview;
 
 export const decorators = [
   (Story) => (
-    <div >
-      <Story />
-    </div>
+    <RecoilRoot>
+      <MemoryRouter>
+        <Story />
+      </MemoryRouter>
+    </RecoilRoot>
   ),
 ];
