@@ -1,0 +1,31 @@
+.handleButton {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  display: block;
+  position: relative;
+}
+
+.arrowDown {
+  width: 12px;
+  height: 12px;
+  background: url('@/assets/product-list/ic-arrow-down.svg') 50% 50% / 100%
+    no-repeat;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrowUp {
+  width: 12px;
+  height: 12px;
+  background: url('@/assets/product-list/ic-arrow-down.svg') 50% 50% / 100%
+    no-repeat;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  transform: rotate(180deg);
+}

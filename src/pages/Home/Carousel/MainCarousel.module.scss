@@ -12,15 +12,15 @@
       height: 100%;
     }
   }
-  .swiperButton{
+  .swiperButton {
     width: 50px;
     height: 50px;
-    background: url('@/assets/main/ic-banner-button.svg') 50% 50% / 100% ;
+    background: url('@/assets/main/ic-banner-button.svg') 50% 50% / 100%;
     position: absolute;
     top: 148px;
     z-index: 2;
     border: none;
-    }
+  }
 
   .swiperPrevBtn {
     left: 350px;
@@ -29,5 +29,24 @@
   .swiperNextBtn {
     transform: rotate(180deg);
     right: 350px;
+  }
+  .autoplayButton {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 93%;
+    z-index: 2;
+    border: none;
+    left: 47%;
+  }
+
+  .stop {
+    left: 47%;
+    background: url('@/assets/main/ic-pause-button.svg') no-repeat center;
+  }
+
+  .start {
+    left: 45.5%;
+    background: url('@/assets/main/ic-play-button.svg') no-repeat center;
   }
 }

@@ -27,7 +27,9 @@
     "@storybook/addon-essentials": "7.0.0-beta.64",
     "@storybook/addon-interactions": "7.0.0-beta.64",
     "@storybook/addon-links": "7.0.0-beta.64",
+    "@storybook/addon-postcss": "^2.0.0",
     "@storybook/blocks": "7.0.0-beta.64",
+    "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "7.0.0-beta.64",
     "@storybook/react-webpack5": "7.0.0-beta.64",
     "@storybook/testing-library": "0.0.14-next.1",
@@ -89,6 +91,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.2",
     "recoil": "^0.7.7",
+    "recoil-persist": "^4.2.0",
     "swiper": "^9.1.0"
   }
 }

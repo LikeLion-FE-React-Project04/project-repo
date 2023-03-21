@@ -1,12 +1,15 @@
 import styles from './Button.module.scss';
+// import PropTypes from 'prop-types';
 
 export function Button({
   uiType = 'primary',
-  children,
+  children = 'test',
   className = '',
   ...restProps
 }) {
-  const combinedClassNames = `${styles.button} ${getUiStyle(uiType)} ${className}`;
+  const combinedClassNames = `${styles.button} ${getUiStyle(
+    uiType
+  )} ${className}`.trim();
 
   return (
     <button className={combinedClassNames} {...restProps}>
@@ -15,7 +18,7 @@ export function Button({
   );
 }
 
-function getUiStyle(uiType) {
+function getUiStyle(uiType = 'primary') {
   let uiStyle;
 
   switch (uiType) {
@@ -38,3 +41,16 @@ function getUiStyle(uiType) {
 
   return uiStyle;
 }
+
+// Button.defaultProps = {
+//   uiType: 'primary',
+//   children: '테스트',
+//   className: '',
+// };
+
+// Button.propTypes = {
+//   /** 버튼 모양을 두번째(secondary)로 설정합니다. */
+//   uiType: PropTypes.string,
+//   children: PropTypes.string,
+//   className: PropTypes.string,
+// };

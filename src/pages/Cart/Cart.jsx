@@ -1,7 +1,12 @@
+// import AccordionItem from '@/components/Accordian/AccordionItem.jsx'
+
 function Cart() {
   return (
-    <div>Cart</div>
-  )
+    <div>
+      Cart
+      {/* <AccordionItem /> */}
+    </div>
+  );
 }
 
-export default Cart
+export default Cart;
