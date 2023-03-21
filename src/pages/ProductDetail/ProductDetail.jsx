@@ -3,6 +3,7 @@ import { useRecoilValue } from 'recoil';
 import { productListFamily } from '@/store/productListState.js';
 import ProductInquiry from './Productinquiry/Productinquiry';
 import { ProductDetailPopUp } from '../../components/ProductDetailPopUp/ProductDetailPopUp';
+import ProductDetailPopUpLayout from '../../components/ProductDetailPopUp/ProductDetailPopUpLayout';
 
 function ProductDetail() {
   const { productId } = useParams();
@@ -15,7 +16,7 @@ function ProductDetail() {
       <h2>ProductDetail {productId}</h2>
       <Link to="/">Go to Home</Link>
       <ProductInquiry />
-      <ProductDetailPopUp uiType='inquiry' />
+      <ProductDetailPopUpLayout />
     </div>
   ); 
 }

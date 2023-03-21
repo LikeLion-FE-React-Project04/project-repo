@@ -1,0 +1,13 @@
+.productDetailPopUpLayout {
+  z-index: 1200;
+  /*------portal 띄우기------*/
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  right: 0;
+  left: 50%;
+  transform: translate(-43.5%, -50%);
+  // transform: translate(0, -50%);
+  margin: 0 auto;
+  /*------/portal 띄우기------*/
+}

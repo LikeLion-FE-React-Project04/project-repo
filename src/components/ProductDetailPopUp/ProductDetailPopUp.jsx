@@ -39,13 +39,14 @@ export function ProductDetailPopUp({uiType='inquiry'}) {
   const area = useRef(); 
   // textarea의 text를 관리하기 위한 ref
   const textAreaText = useRef('');
+  // title의 text를 관리하기 위한 ref
+  const titleText = useRef('');
 
   // placeholder가 띄워야할지 말지를 관리하는 state
   const [isActiveP, setIsActiveP] = useState(true); 
   // textarea의 글자수를 관리하는 state
   const [inputCount, setInputCount] = useState(0);
   
-
   // div태그(.textAreaWrap)을 클릭하면, 발생하는 이벤트
   function handlePlaceholder() { 
     setIsActiveP(false); // placeholder는 사라져야 함. Why? 입력을 받아야되니..
@@ -65,16 +66,28 @@ export function ProductDetailPopUp({uiType='inquiry'}) {
     textAreaText.current = e.target.value;
     // 그래서 랜더링을 시키기 위해서 state 사용
     setInputCount(textAreaText.current.length);
+    console.log('textarea의 내용을 바꾸고 있습니다');
   };
   
+  // 제목의 내용이 바뀔때마다 넣어줌
+  const handleTitleData = (e) => {
+    titleText.current = e.target.value;
+    console.log('제목의 current값을 바꾸고 있습니다');
+  }
+
   // 사용자가 '취소'또는 'X'버튼을 클릭했을 때 발생하는 이트
   const handleCancelBtnClick = () => {
     setIsVisible(false); // 모달창을 띄우지 않는다
     setDarkFilter(false); // 다크 필터를 끈다
   };
 
-  if(isVisible) {
-    return ReactDOM.createPortal(
+  // 등록 버튼을 눌렀을 때 submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(titleText.current, textAreaText.current);
+  }
+
+  return (
       <>
         <article className={styles.detailPopUpWrap}>
           <div className={styles.popUpHeader}>
@@ -86,31 +99,30 @@ export function ProductDetailPopUp({uiType='inquiry'}) {
             <p>[풀무원] 탱탱쫄면 (4개입)</p>
           </div>
           <div className={styles.inputField}>
-            <fieldset className={styles.inquiryTitleWrapper}>
+            <form onSubmit={handleSubmit}>
+              <fieldset className={styles.inquiryTitleWrapper}>
               <label htmlFor='inquiryTitle'>제목</label>
-              <input required id="inquiryTitle" placeholder="제목을 입력해 주세요" type="text" />
-            </fieldset>
-            <fieldset className={styles.inquiryContentWrapper}>
+              <input required id="inquiryTitle" placeholder="제목을 입력해 주세요" type="text" onChange={handleTitleData} />
+              </fieldset>
+              <fieldset className={styles.inquiryContentWrapper}>
               <label htmlFor='inquiryText'>내용</label>
               <div className={styles.textAreaWrap} onClick={handlePlaceholder} aria-hidden="true">
                 <textarea onChange={textareaInputHandler} id="inquiryText" inputMode='text' name="content" ref={area} required maxLength="5000" onBlur={handlePlaceholderT}></textarea>
                 {isActiveP ? ph : null}
                 <p className={styles.inquiryCount} id="inquiryCount">{inputCount}/5000</p>
               </div>
-            </fieldset>
+              </fieldset>
+            </form>
           </div>
           <div className={styles.isSecret}>
             {(uiType=='inquiry') ? <Secret/> : null}
           </div>
           <div className={styles.popUpBtnWrapper}>
             <button className={styles.cancelBtn} onClick={handleCancelBtnClick}>취소</button>
-            <button className={styles.postBtn} id="postInquiry">등록</button>
+            <button className={styles.postBtn} id="postInquiry" type="submit" onClick={handleSubmit}>등록</button>
           </div>
         </article>
       </>
-      ,
-      document.getElementById("detailPortal")
-    );
-  }
+  );
 }
 
