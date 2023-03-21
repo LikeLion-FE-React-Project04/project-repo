@@ -14,6 +14,8 @@ function ProductDetail() {
     <div>
       <h2>ProductDetail {productId}</h2>
       <Link to="/">Go to Home</Link>
+      <ProductInquiry />
+      <ProductDetailPopUp uiType='inquiry' />
     </div>
   ); 
 }
