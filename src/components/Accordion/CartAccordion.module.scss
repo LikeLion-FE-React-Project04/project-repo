@@ -31,7 +31,6 @@
 
 .panel {
   width: 742px;
-  height: 400px;
 }
 
 .cartListImg {
@@ -70,3 +69,36 @@
   background: #000;
 }
 
+// 아코디언 패널
+
+.CartAccordionPanelItem {
+  width: 742px;
+  height: 118px;
+  display: flex;
+  align-items: center;
+  // background: salmon;
+}
+
+.panelImg {
+  width: 60px;
+  height: 78px;
+  background: var(--gray-100) 50% 50%/140% no-repeat;
+  margin-left: 6.5px;
+  margin-right: 8px;
+}
+
+.panelTitle {
+  width: 352px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.panelPrice {
+  margin-left: 8px;
+  margin-right: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: end;
+  width: 144px;
+}
