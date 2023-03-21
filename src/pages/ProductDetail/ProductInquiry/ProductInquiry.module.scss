@@ -1,0 +1,87 @@
+.productInquiryWrap {
+  width: 1050px;
+  margin: 0 auto 96px auto;
+  h2 {
+    font-weight: 700;
+    font-size: 28.43px;
+    line-height: 140%;
+    text-align: left;
+  }
+}
+
+.aboutInquiry {
+  ul {
+    margin-top: 24px;
+  }
+  li {
+    font-weight: 600;
+    font-size: 12.003px;
+    line-height: 150%;
+    color: var(--gray-500);
+    list-style: inside;
+  }
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 56px;
+  justify-content: space-between;
+}
+
+thead {
+  background-color: var(--white); 
+  width: 1050px;
+  height: 58px;
+  tr {
+    border-top: 2px solid var(--black);
+    border-bottom: 1px solid var(--black);
+    height: 58px;
+  }
+  th {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 58px;
+  }
+}
+
+.inquiryTable {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  .writingTitleHead {
+    width: 750px;
+  }
+  .writerHead,
+  .reportingDateHead,
+  .answerStatusHead {
+    width: 100px;
+  }
+  .writingTitleBtn {
+    width: 750px;
+    border: 0;
+    background-color: transparent;
+    padding: 4px 20px;
+    display: block;
+  }
+  tbody td {
+    height: 58px;
+    line-height: 58px; 
+    text-align: center;
+  }
+  .noticeBadge {
+    margin-right: 20px;
+  }
+}
+
+.writingTitle {
+  font-weight: 600;
+  color: var(--content);
+}
+
+.writer,
+.reportingDate,
+.answerStatus {
+  color: var(--gray-400);
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--gray-100);
+}

@@ -63,19 +63,22 @@ function CartModal() {
     }
   }
 
+
   return (
     <div className={styles.cartModal}>
       <div className={styles.info}>
         <span className={styles.title}>{product.name}</span>
         <span className={styles.priceLayout}>
           {product.saleRatio ? (
-            <>
+
+
               <span className={styles.price}>
                 {getPriceFormat(product.salePrice)}원
               </span>
               <span className={styles.sale}>
                 {getPriceFormat(product.price)}원
               </span>
+
             </>
           ) : (
             <span className={styles.price}>
@@ -95,6 +98,8 @@ function CartModal() {
           ) : (
             <TotalPrice price={product.price} />
           )}
+
+
         </div>
         <div className={styles.priceLayout3}>
           <span className={styles.mark}>적립</span>
