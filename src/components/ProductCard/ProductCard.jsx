@@ -10,7 +10,7 @@ import { useSetRecoilState } from 'recoil';
 
 /* Component ---------------------------------------------------------------- */
 
-export function ProductCard({ product }) {
+export default function ProductCard({ product }) {
   const setProductCartModalState = useSetRecoilState(productCartModalState);
   const setSelectedproductId = useSetRecoilState(selectedproductId);
   const setDarkFilterState = useSetRecoilState(darkFilterState);
@@ -98,7 +98,5 @@ function CartButton() {
     />
   );
 }
-
-export default ProductCardPrice;
 
 /* Props -------------------------------------------------------------------- */
