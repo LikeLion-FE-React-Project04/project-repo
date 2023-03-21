@@ -14,7 +14,21 @@ import productImg from "@/assets/product/tangtang/thumbnail.jpg";
 
 import { darkFilterState } from '@/store/darkFilterState.js';
 
-export function ProductDetailPopUp({uiType}) {
+function checkUiType(uiType) {
+  switch (uiType) {
+    case 'inquiry':
+      return { title: '문의하기', ph: <PlaceholderInquiry /> };
+    case 'review':
+      return { title: '후기 작성', ph: <PlaceholderReview /> };
+    default:
+      console.log(new Error('uiType이 올바르지 않습니다'));
+  }
+}
+
+export function ProductDetailPopUp({uiType='inquiry'}) {
+  // uiType검사
+  const { title, ph } = checkUiType(uiType);  
+
   // 다크필터
   const setDarkFilter = useSetRecoilState(darkFilterState);
 
@@ -64,7 +78,7 @@ export function ProductDetailPopUp({uiType}) {
       <>
         <article className={styles.detailPopUpWrap}>
           <div className={styles.popUpHeader}>
-            <PageTitle uiType='productReviewAndInquiry'>{(uiType=='inquiry')?'상품 문의하기':'후기 작성'}</PageTitle>
+            <PageTitle uiType='productReviewAndInquiry'>{title}</PageTitle>
             <button aria-label="창닫기" onClick={handleCancelBtnClick}></button>
           </div>
           <div className={styles.productInformation}>
@@ -80,7 +94,7 @@ export function ProductDetailPopUp({uiType}) {
               <label htmlFor='inquiryText'>내용</label>
               <div className={styles.textAreaWrap} onClick={handlePlaceholder} aria-hidden="true">
                 <textarea onChange={textareaInputHandler} id="inquiryText" inputMode='text' name="content" ref={area} required maxLength="5000" onBlur={handlePlaceholderT}></textarea>
-                {isActiveP?(uiType=='inquiry'?<PlaceholderInquiry />:<PlaceholderReview />):null}
+                {isActiveP ? ph : null}
                 <p className={styles.inquiryCount} id="inquiryCount">{inputCount}/5000</p>
               </div>
             </fieldset>
