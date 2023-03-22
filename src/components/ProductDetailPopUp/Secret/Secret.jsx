@@ -5,8 +5,9 @@ export function Secret() {
     <>
       <div className={styles.secretCheckBox}>
         <input id="isSecret" name="checker" role="tab" tabIndex="0" type="checkbox" />
-        <label htmlFor="isSecret"></label>
-        <span>비밀글로 문의하기</span>
+        <label htmlFor="isSecret">
+          <span>비밀글로 문의하기</span>
+        </label>
       </div>
     </>
   );
