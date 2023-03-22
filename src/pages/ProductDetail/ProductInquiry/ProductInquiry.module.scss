@@ -1,6 +1,8 @@
+/* ---------------------------- 문의 파트를 전체 감싸는 영역 ---------------------------- */
 .productInquiryWrap {
-  width: 1050px;
-  margin: 0 auto 96px auto;
+  // width: var(--container-width);
+  // margin: 0 auto 96px auto;
+  margin-bottom: 96px;
   h2 {
     font-weight: 700;
     font-size: 28.43px;
@@ -9,7 +11,12 @@
   }
 }
 
+/* ---------------------- 문의 파트 상단 : 문의 파트 설명과 문의하기 버튼 ---------------------- */
 .aboutInquiry {
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 56px;
+  justify-content: space-between;
   ul {
     margin-top: 24px;
   }
@@ -20,54 +27,64 @@
     color: var(--gray-500);
     list-style: inside;
   }
-  display: flex;
-  flex-flow: row wrap;
-  margin-bottom: 56px;
-  justify-content: space-between;
 }
 
-thead {
-  background-color: var(--white); 
-  width: 1050px;
-  height: 58px;
-  tr {
-    border-top: 2px solid var(--black);
-    border-bottom: 1px solid var(--black);
-    height: 58px;
-  }
-  th {
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 58px;
-  }
-}
-
+/* --------------------------------- 문의 테이블 --------------------------------- */
 .inquiryTable {
   font-weight: 600;
   font-size: 16px;
   line-height: 150%;
+  .inquiryTableHead { // 문의테이블 Head부분
+    background-color: lightblue;
+    width: var(--container-width);
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    border-width: 2px 0px 1px 0px;
+    border-style: solid;
+    border-color: var(--black);
+  }
   .writingTitleHead {
     width: 750px;
+    text-align: center;
+    height: 58px;
+    line-height: 58px;
   }
   .writerHead,
   .reportingDateHead,
   .answerStatusHead {
     width: 100px;
-  }
-  .writingTitleBtn {
-    width: 750px;
-    border: 0;
-    background-color: transparent;
-    padding: 4px 20px;
-    display: block;
-  }
-  tbody td {
-    height: 58px;
-    line-height: 58px; 
     text-align: center;
+    height: 58px;
+    line-height: 58px;
   }
   .noticeBadge {
     margin-right: 20px;
+  }
+}
+
+/* ---------------------------------- 핸들 부분 --------------------------------- */
+.handleDivWrapper {
+  background-color: pink;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: var(--container-width);
+  border-bottom: 1px solid var(--gray-100);
+  div:nth-child(1) {
+    width: 750px;
+    height: 58px;
+    line-height: 58px;
+    text-align: left;
+    padding: 0px 20px;
+  }
+  div:nth-child(2),
+  div:nth-child(3),
+  div:nth-child(4) {
+    width: 100px;
+    text-align: center;
+    height: 58px;
+    line-height: 58px;
   }
 }
 
@@ -75,13 +92,9 @@ thead {
   font-weight: 600;
   color: var(--content);
 }
-
 .writer,
 .reportingDate,
 .answerStatus {
   color: var(--gray-400);
 }
 
-tbody tr {
-  border-bottom: 1px solid var(--gray-100);
-}
