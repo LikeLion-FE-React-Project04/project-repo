@@ -1,18 +1,19 @@
 import { useSetRecoilState } from 'recoil';
 
-import classes from '../../../styles/main.module.css';
+// import classes from '../../../styles/main.module.css';
 
 import styles from './ProductInquiry.module.scss';
 
 import { Badge } from '@/components/Badge/Badge.jsx';
 import { Button } from '@/components/Button/Button.jsx';
+import { default as AccordionItem } from '@/components/Accordion/AccordionItem';
 import { default as PageTitle } from '@/components/PageTitle/PageTitle.jsx';
 import { ReactComponent as Lock } from '@/assets/product-detail/ic-lock.svg';
 
 import { productDetailModalState } from '@/store/detailModalState.js';
 import { darkFilterState } from '@/store/darkFilterState.js';
 
-export function ProductInquiry () {
+export default function ProductInquiry () {
   const setProductDetailModalState = useSetRecoilState(productDetailModalState);
   const setDarkFilterState = useSetRecoilState(darkFilterState);
 
@@ -35,7 +36,70 @@ export function ProductInquiry () {
           <Button uiType='fifth' onClick={productModalClickHandler}>문의하기</Button>
         </div>
         <article className={styles.inquiryTable}>
-          <table>
+          <div className={styles.inquiryTableHead}>
+            <div className={styles.writingTitleHead}>제목</div>
+            <div className={styles.writerHead}>작성자</div>
+            <div className={styles.reportingDateHead}>작성일</div>
+            <div className={styles.answerStatusHead}>답변상태</div>
+          </div>
+          <AccordionItem index={1} width="1024px">
+            {/* 핸들 */}
+            <div className={styles.handleDivWrapper}>
+              <div className={styles.writingTitle}>
+                <Badge className={styles.noticeBadge} uiType="noticeBadge">공지</Badge>
+                <span>판매(일시)중단 제품 안내 (22.11.10 업데이트)</span>
+              </div>
+              <div className={styles.writer}>칼리</div>
+              <div className={styles.reportingDate}>2017.02.01</div>
+              <div className={styles.answerStatus}>-</div>
+            </div>
+            {/* 패널 */}
+            <div style={{background: 'salmon'}}>
+              <span>패널테스트1</span>
+              <span>패널테스트2</span>
+            </div>
+          </AccordionItem>
+          <AccordionItem index={2} width="1024px">
+            {/* 핸들 */}
+            <div className={styles.handleDivWrapper}>
+              <div className={styles.writingTitle}>팩이 터져서 왔어요</div>
+              <div className={styles.writer}>김*식</div>
+              <div className={styles.reportingDate}>2022.11.11</div>
+              <div className={styles.answerStatus}>답변대기</div>
+            </div>
+            {/* 패널 */}
+            <div style={{background: 'salmon'}}>
+              <span>패널테스트1</span>
+              <span>패널테스트2</span>
+            </div>
+          </AccordionItem>
+          <AccordionItem index={3} width="1024px">
+            {/* 핸들 */}
+            <div className={styles.handleDivWrapper}>
+              <div className={styles.writingTitle}>
+                <span>비밀글입니다.</span>
+                <Lock alt="비밀글 자물쇠 아이콘" style={{marginLeft:'20px'}} />
+              </div>
+              <div className={styles.writer}>김*식</div>
+              <div className={styles.reportingDate}>2022.11.11</div>
+              <div className={styles.answerStatus}>답변대기</div>
+            </div>
+            {/* 패널 */}
+            <div style={{background: 'salmon'}}>
+              <span>패널테스트1</span>
+              <span>패널테스트2</span>
+            </div>
+          </AccordionItem>
+        </article>
+      </section>
+    </>
+  );
+
+};
+
+
+
+{/* <table>
             <caption className={classes.a11yHidden}>상품 문의글을 보여주는 테이블</caption>
             <thead>
               <tr>
@@ -79,14 +143,4 @@ export function ProductInquiry () {
                 <td className={styles.answerStatus}>답변대기</td>
               </tr>
             </tbody>
-          </table>
-          
-        </article>
-
-      </section>
-    </>
-  );
-
-};
-
-export default ProductInquiry;
+          </table> */}

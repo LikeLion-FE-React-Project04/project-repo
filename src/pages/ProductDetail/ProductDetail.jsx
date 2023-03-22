@@ -4,6 +4,7 @@ import { productListFamily } from '@/store/productListState.js';
 import ProductInquiry from './Productinquiry/Productinquiry';
 import { ProductDetailPopUp } from '../../components/ProductDetailPopUp/ProductDetailPopUp';
 import ProductDetailPopUpLayout from '../../components/ProductDetailPopUp/ProductDetailPopUpLayout';
+import styles from './ProductDetail.module.scss';
 
 function ProductDetail() {
   const { productId } = useParams();
@@ -12,7 +13,7 @@ function ProductDetail() {
   console.log(product);
 
   return (
-    <div>
+    <div className={styles.ProductDetailWrapper}>
       <h2>ProductDetail {productId}</h2>
       <Link to="/">Go to Home</Link>
       <ProductInquiry />
