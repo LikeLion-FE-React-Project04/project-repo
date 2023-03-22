@@ -1,36 +1,68 @@
 .container {
-  display: flex;
+  position: relative;
+  margin-bottom: 100px;
+
+  /* display: ;
   flex-flow: column nowrap;
-  align-items: center;
-  min-width: 1050px;
-  min-height: 100.3vh;
+  justify-content: space-between;
+  align-items: center; */
+  /* max-width: 1024px; */
+  /* height: 2800px; */
 }
 
+/* ---------------------------------- test ---------------------------------- */
+
+.gyungA {
+  /* display: flex; */
+  /* flex-flow: column nowrap; */
+  /* align-items: center; */
+  width: 1050px;
+  margin: 0px auto;
+  /* margin-bottom: 240px; */
+}
+
+.hoeng {
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: 260px 260px 260px;
+  /* grid-template-rows: 538px 538px;  */
+}
 .productListTitle {
   margin-top: 80px;
   margin-bottom: 44px;
-  display: inline-block;
+  text-align: center;
+  /* display: inline-block; */
   font-size: var(--text-lg);
   font-weight: 600;
-  margin-bottom: 3rem;
+
+  /* margin-bottom: 3rem; */
 }
 
 .product {
-  width: 1050px;
+  position: relative;
+  width: 1024px;
+  /* 얘의 높이를 줘야 sticky가 먹음 */
+  /* height: 1000px;  */
   display: flex;
-  justify-content: space-between;
-  flex-flow: row nowrap;
+  gap: 30px;
+  margin-top: 50px;
+  margin-bottom: 60px;
 }
 
 .productListNav {
   position: sticky;
-  top: 0;
-  margin-top: 14px;
-  width: 13.75rem;
+  width: 220px;
   flex-shrink: 0;
   height: 100%;
+  top: 80px;
+  margin-top: 14px;
+  /* width: 300px; */
+  /* z-index: 400; */
   margin-right: 45px;
   border-bottom: var(--gray-100);
+  max-height: calc(100vh - 100px);
+  transition: all 250ms;
+  overflow: hidden;
 }
 
 .productListNavFilter {
@@ -43,6 +75,7 @@
   align-items: center;
   padding: 1px 6px 1.25rem 6px;
   border-bottom: 1px solid var(--gray-100);
+  line-height: 20px;
 }
 
 .navFillterText {
@@ -89,6 +122,7 @@
   background: url('../../assets/icons/Icon/check-box-round.svg') no-repeat 0/18px;
   position: absolute;
   left: 0;
+  transition: all 400ms;
 }
 
 .navMenuUlList input[type='checkbox']:checked {
@@ -99,15 +133,9 @@
   /* margin-bottom: 2px; */
   font-size: 0.75rem;
   font-weight: 400;
-  line-height: 1rem;  
+  line-height: 1rem;
   color: var(--gray-200);
 }
-
-
-
-
-
-
 
 /* --------------------------------- 불러온 컴포넌트 chlidren css  -------------------------------- */
 
@@ -118,11 +146,14 @@
   align-items: center;
   font-weight: 600;
   padding-left: 8px;
+  overflow: hidden;
 }
 
 .panel {
-  width: 220px;
+  transition: all 250ms;
+  /* width: 220px; */
   height: auto;
+  overflow: hidden;
 }
 
 .accordionLine {
@@ -131,6 +162,46 @@
 
 .productExText {
   font-size: var(--text-sm);
+}
+/* ------------------------------- pagination ------------------------------- */
+
+.paginationContainer {
+  margin-left: 60%;
+}
+
+.pagination1 {
+  border: none;
+  width: 34px;
+  height: 34px;
+  background: url('@/assets/product-list/ic-pagination1.svg');
+}
+
+.pagination2 {
+  border: none;
+  width: 34px;
+  height: 34px;
+  background: url('@/assets/product-list/ic-pagination2.svg');
+}
+
+.pagination3 {
+  border: none;
+  width: 34px;
+  height: 34px;
+  background: url('@/assets/product-list/ic-pagination3.svg');
+}
+
+.paginationPrev {
+  border: none;
+  width: 34px;
+  height: 34px;
+  background: url('@/assets/product-list/ic-pagination-prev.svg');
+}
+
+.paginationNext {
+  border: none;
+  width: 34px;
+  height: 34px;
+  background: url('@/assets/product-list/ic-pagination-Next.svg');
 }
 
 /* ----------------------------------- 떨거지 ---------------------------------- */

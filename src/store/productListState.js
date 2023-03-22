@@ -85,7 +85,7 @@ const initialProductList = [
     saleRatio: 0.25,
     salePrice: 3375,
     image: {
-      thumbnail: 'assets/produc t/bacon/thumbnail.jpg',
+      thumbnail: 'assets/product/bacon/thumbnail.jpg',
       view: 'bacon/detail-view.jpg',
       banner: 'bacon/detail_banner.jpg',
       info: 'bacon/detail_info.jpg',
@@ -242,8 +242,8 @@ const initialProductList = [
     name: '[켄트] 콤팩트 초극세모 칫솔 4개입 세트',
     description: '작은 헤드로 구석구석 개운하게',
     price: 17200,
-    saleRatio: 0.42,
-    salePrice: 9900,
+    saleRatio: 0,
+    salePrice: 0,
     image: {
       thumbnail:
         'https://img-cf.kurly.com/cdn-cgi/image/quality=85,width=676/shop/data/goods/1655468290167l0.jpeg',
@@ -316,50 +316,258 @@ export const selectedproductId = atom({
   default: 'order-1',
 })
 
-export const categoryListSelector = selectorFamily({
-  key: 'categoryListSelector',
+/* ---------------------------- Category & Brand ---------------------------- */
 
-  get: ({ get }) => {
-    const product = get(productListState)
+export const categoryListSelectorFamily = selectorFamily({
+  key: 'categoryListSelectorFamily',
+  get:
+    (categoryName) =>
+    ({ get }) => {
+      const product = get(productListState)
 
-    const categoryList = product
-      .filter((arr, index, callback) => {
+      const categoryList = product.filter((arr, index, callback) => {
         return (
           index ===
-          callback.findIndex((product) => product.category === arr.category)
+          callback.findIndex(
+            (product) => product[categoryName] === arr[categoryName]
+          )
         )
       })
-      .map((item) => {
-        return item.category
-      })
 
-    return categoryList
-  },
+      return categoryList
+    },
 })
 
-export const categoryLengthListSelector = selector({
-  key: 'categoryLengthListSelector',
+export const categoryLengthListSelectorFamily = selectorFamily({
+  key: 'categoryLengthListSelectorFamily',
+  get:
+    (categoryName) =>
+    ({ get }) => {
+      const category = get(productListState)
+      const categoryList = get(categoryListSelectorFamily(categoryName))
 
-  get: ({ get }) => {
-    const category = get(productListState)
-    const categoryList = get(categoryListSelectoror)
+      return categoryList.reduce((결과, 카테고리) => {
+        let 카운트 = 0
 
-    return categoryList.reduce((결과, 카테고리) => {
-      let 카운트 = 0
+        category.forEach((item) => {
+          if (item[categoryName] === 카테고리[categoryName]) {
+            카운트++
+          }
+        })
 
-      category.forEach((item) => {
-        if (item.category === 카테고리) {
-          카운트++
+        return {
+          ...결과,
+          [카테고리[categoryName]]: 카운트,
         }
-      })
-
-      return {
-        ...결과,
-        [카테고리]: 카운트,
-      }
-    }, {})
-  },
+      }, {})
+    },
 })
+
+/* -------------------------------- karlyOnly ------------------------------- */
+
+export const karlyOnlyListSelectorFamily = selectorFamily({
+  key: 'karlyOnlyListSelectorFamily',
+  get:
+    (karlyOnly) =>
+    ({ get }) => {
+      const product = get(productListState)
+
+      const isKarlyOnly = (element) => {
+        if (element[karlyOnly] === 'true') {
+          return true
+        }
+      }
+
+      const karlyOnlyList = product.filter(isKarlyOnly)
+
+      // console.log(product)
+      // console.log(karlyOnlyList)
+
+      return karlyOnlyList
+    },
+})
+
+/* -------------------------------- karlyOnlyCount ------------------------------- */
+
+export const karlyOnlyLengthListSelectorFamily = selectorFamily({
+  key: 'karlyOnlyLengthListSelectorFamily',
+  get:
+    (karlyOnlyName) =>
+    ({ get }) => {
+      const karlyOnly = get(productListState)
+      const karlyOnlyList = get(categoryListSelectorFamily(karlyOnlyName))
+
+      return karlyOnlyList.reduce((결과, 카테고리) => {
+        let 카운트 = 0
+
+        karlyOnly.forEach((item) => {
+          if (item[karlyOnlyName] === 카테고리[karlyOnlyName]) {
+            카운트++
+          }
+        })
+
+        return {
+          ...결과,
+          [카테고리[karlyOnlyName]]: 카운트,
+        }
+      }, {})
+    },
+})
+
+/* -------------------------------- Benefits -------------------------------- */
+
+export const benefitsListSelectorFamily = selectorFamily({
+  key: 'benefitsListSelectorFamily',
+  get:
+    () =>
+    ({ get }) => {
+      const product = get(productListState)
+
+      const SaleProduct = (element) => {
+        if (element.saleRatio !== 0) {
+          return true
+        }
+      }
+      const limitedProduct = (element) => {
+        if (element.stock < 10) {
+          return true
+        }
+      }
+
+      const SaleProductList = product.filter(SaleProduct)
+      const saleBenefitsList = { 할인상품: SaleProductList }
+
+      const limitedProductList = product.filter(limitedProduct)
+      const limitedBenefitsList = { 한정수량: limitedProductList }
+
+      const benefitsMergeList = { ...saleBenefitsList, ...limitedBenefitsList }
+
+      // console.log(product)
+      // console.log(SaleProductList)
+      // console.log(saleBenefitsList)
+
+      // console.log(limitedProductList)
+      // console.log(limitedBenefitsList)
+
+      // console.log(benefitsMergeList)
+
+      return benefitsMergeList
+    },
+})
+
+// 사용하지않음
+export const benefitsLengthListSelectorFamily = selectorFamily({
+  key: 'benefitsLengthListSelectorFamily',
+  get:
+    (saleRatio) =>
+    ({ get }) => {
+      const benefits = get(productListState)
+      const benefitsList = get(benefitsListSelectorFamily(saleRatio))
+
+      const ArrayBenefitsList = Object.entries(benefitsList)
+
+      // console.log(benefits)
+      console.log(benefits[0].category, '전체리스트')
+      console.log(benefitsList['할인상품'][0].category, '내가 뽑아낸 데이터')
+      console.log(benefitsList['한정수량'][0].category, '내가 뽑아낸 데이터')
+      // console.log(ArrayBenefitsList, '가공한 데이터')
+
+      // return ArrayBenefitsList.reduce((결과, 카테고리) => {
+      //   let 카운트 = 0
+
+      //   benefits.forEach((item) => {
+      //     if (item.saleRatio === 카테고리['한정수량'].saleRatio) {
+      //       카운트++
+      //     }
+      //   })
+
+      //   return {
+      //     ...결과,
+      //     [카테고리[한정수량]]: 카운트,
+      //   }
+      // }, {})
+    },
+})
+
+/* ---------------------------------- price --------------------------------- */
+
+export const priceFilterListSelectorFamily = selectorFamily({
+  key: 'priceFilterListSelectorFamily',
+  get:
+    () =>
+    ({ get }) => {
+      const product = get(productListState)
+
+      const NonFilterProduct = (element) => {
+        if (element.Price != 0) {
+          return true
+        }
+      }
+      const lessThenFiveHundredFilter = (element) => {
+        if (
+          element.price > 1000 &&
+          element.salePrice < 10000 &&
+          element.price < 13000
+        ) {
+          return true
+        }
+      }
+      const lessThenTenHundredFilter = (element) => {
+        if (
+          element.price > 10000 &&
+          element.salePrice < 20000 &&
+          element.price < 25000
+        ) {
+          return true
+        }
+      }
+      const lessThenTwentyHundredFilter = (element) => {
+        if (element.price > 24000 && element.salePrice < 30000) {
+          return true
+        }
+      }
+
+      const totalProduct = product.filter(NonFilterProduct)
+      const totalProductList = { filter1: totalProduct }
+
+      const lessThenFiveHundredProduct = product.filter(
+        lessThenFiveHundredFilter
+      )
+      const lessThenFiveHundredProductList = {
+        filter2: lessThenFiveHundredProduct,
+      }
+
+      const lessThenTenHundredProduct = product.filter(lessThenTenHundredFilter)
+      const lessThenTenHundredProductList = {
+        filter3: lessThenTenHundredProduct,
+      }
+
+      const lessThenTwentyHundredProduct = product.filter(
+        lessThenTwentyHundredFilter
+      )
+      const lessThenTwentyHundredProductList = {
+        filter4: lessThenTwentyHundredProduct,
+      }
+
+      const priceFilterMergeList = {
+        ...totalProductList,
+        ...lessThenFiveHundredProductList,
+        ...lessThenTenHundredProductList,
+        ...lessThenTwentyHundredProductList,
+      }
+
+      // console.log(totalProductList)
+      // console.log(lessThenFiveHundredProductList, '만원미만')
+      // console.log(lessThenTenHundredProductList, '만원이상이만원미만')
+      // console.log(lessThenTwentyHundredProductList, '이만원이상')
+
+      // console.log(priceFilterMergeList)
+
+      return priceFilterMergeList
+    },
+})
+
+/* ---------------------------- ----------------- --------------------------- */
 
 // export const categoryListState = selector({
 //   key : 'categoryListState',

@@ -1,200 +1,20 @@
+import { useRecoilValue } from 'recoil'
+import { useState } from 'react'
 import styles from './ProductList.module.css'
+
+import {
+  CategoryList,
+  BrandList,
+  KalryOnlyList,
+  BenefitsList,
+  PriceList,
+} from './BrandList'
+
 import AccordionItem from '@/components/Accordion/AccordionItem'
-import arrowDown from '@/assets/product-list/ic-arrow-down.svg'
-import { useRef, useEffect, useState } from 'react'
-import classNames from 'classnames'
-import { 
-  productListState,
-  categoryListSelector,
-  categoryLengthListSelector,
-  // brandListState,
- 
-} from '@/store/productListState.js'
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 
-// const BrandList = () => {
-//   const brandList  = useRecoilValue(brandListState)
-  
-//   return (
-//     <>
-//       {
-//         brandList.map((product,index) =>{
-//           const key = `${product.id} ${index}`
+import { ProductCard } from '@/components/ProductCard/ProductCard.jsx'
 
-//           return <TestLi key={key} product={product.brand} />
-//         })
-//       }
-//     </>
-//   )
-// }
-
-const CategoryList = () => {
-  // const brandList  = useRecoilValue(brandListState)
-  
-  // return (
-  //   <>
-  //     {
-  //       brandList.map((product,index) =>{
-  //         const key = `${product.id} ${index}`
-
-  //         return <TestLi key={key} product={product.brand} />
-  //       })
-  //     }
-  //   </>
-  // )
-
-  // return <>야호</>
-}
-
-const ProductList = () => {
-  // const productList = useRecoilValue(productListState)
-  // const productCards = 
-  // productList.filter((arr, index, callback) =>
-  //     index ===
-  //     callback.findIndex((product) => product.category === arr.category))
-
-  // .map((product, index) => {
-  //   // console.log(`${product.id} ${index}`);
-  //   // console.log(product.category);
-  //   console.log(productList);
-
-  //   return <TestLi key={`${product.id} ${index}`} product={product} />
-  // })
-
-
-    // const categoryList  = useRecoilValue(categoryListSelector)
-
-    //   // console.log(categoryList);
-
-    // const categoryLists = 
-    
-    // categoryList.map((product) =>{
-    //   return <TestLi product={product.category} count={product.count}  />
-    // })
-
-
-
-
-  // const categoryLengthListSelector2 = useRecoilValue(categoryLengthListSelector)
-
-
-
-
-
-
-
-  return (
-    <>
-      <div className={styles.container}>
-        <div className={styles.productListTitle}>베스트</div>
-        <section className={styles.product}>
-          <div className={styles.productListNav}>
-            <FilterContainer />
-            {/* <div className={styles.productListNavMenu}>
-              <CategoryContainer
-                index={0}
-                title={'카테고리'}
-                productEx={'test1'}
-                count={'test1'}
-              />
-              <CategoryContainer
-                index={1}
-                title={'가격'}
-                productEx={'test2'}
-                count={'test2'}
-              />
-              <CategoryContainer
-                index={2}
-                title={'브랜드'}
-                productEx={'test3'}
-                count={'test3'}
-              />
-            </div> */}
-            <AccordionItem index={0} width="220px" handelArrow>
-              <div className={styles.Handle}>카테고리</div>
-              <div className={styles.panel}>
-                {/* <TestLi /> */}
-                {/* {categoryLists} */}
-                {/* {categoryLengthListSelectors} */}
-
-
-
-
-                {/* {productCards} */}
-                {/* {categoryLengthListSelectors} */}
-              </div>
-              <div className={styles.accordionLine}></div>
-            </AccordionItem>
-            <AccordionItem index={1} width="220px" handelArrow>
-              <div className={styles.Handle}>브랜드</div>
-              <div className={styles.panel}>
-              {/* <BrandList /> */}
-              </div>
-              <div className={styles.accordionLine}></div>
-            </AccordionItem>
-            <AccordionItem index={2} width="220px" handelArrow>
-              <div className={styles.Handle}>가격</div>
-              <div className={styles.panel}>
-                {/* <TestLi productEx={'테스트'} count={'0원'} />
-                <TestLi productEx={'테스트2'} count={'1000원'} /> */}
-              </div>
-              <div className={styles.accordionLine}></div>
-            </AccordionItem>
-            <AccordionItem index={3} width="220px" handelArrow>
-              <div className={styles.Handle}>혜택</div>
-              <div className={styles.panel}>
-                {/* <TestLi productEx={'테스트'} count={'0원'} />
-                <TestLi productEx={'테스트2'} count={'1000원'} /> */}
-              </div>
-              <div className={styles.accordionLine}></div>
-            </AccordionItem>
-            <AccordionItem index={3} width="220px" handelArrow>
-              <div className={styles.Handle}>유형</div>
-              <div className={styles.panel}>
-                {/* <TestLi productEx={'테스트'} count={'0원'} />
-                <TestLi productEx={'테스트2'} count={'1000원'} /> */}
-              </div>
-              <div className={styles.accordionLine}></div>
-            </AccordionItem>
-            <AccordionItem index={3} width="220px" handelArrow>
-              <div className={styles.Handle}>제외</div>
-              <div className={styles.panel}>
-                {/* <TestLi productEx={'테스트'} count={'0원'} />
-                <TestLi productEx={'테스트2'} count={'1000원'} /> */}
-              </div>
-              <div className={styles.accordionLine}></div>
-            </AccordionItem>
-          </div>
-        </section>
-      </div>
-    </>
-  )
-}
-
-export default ProductList
-
-export const TestLi = ({ product }) => {
-  const categoryLengthList = useRecoilValue(categoryLengthListSelector)
-  const count = categoryLengthList[product]
-
-  return (
-    <ul className={styles.navMenuUl}>
-      <li className={styles.navMenuUlList}>
-      <input
-        type="checkbox"
-        name="checkbox"
-        id="check-box"
-        value={product}
-      />
-        <label htmlFor="check-box">
-          <div className={styles.productExText}>{product}</div>
-        </label>
-        <span className={styles.ulListCount}>{count}</span>
-      </li>
-    </ul>
-  )
-}
-
+import { productListState } from '@/store/productListState.js'
 
 export const FilterContainer = () => {
   return (
@@ -204,6 +24,151 @@ export const FilterContainer = () => {
         초기화
       </button>
     </div>
+  )
+}
+
+export const ProductList = () => {
+  const [limit, setLimit] = useState(12)
+  const [page, setPage] = useState(1)
+  const offset = (page - 1) * limit
+
+  const productList = useRecoilValue(productListState)
+
+  // console.log(productList)
+  //8
+  // console.log(limit)
+  //1
+  // console.log(page)
+  //0
+  // console.log(offset)
+  //  => 0~8번 array(배열) 리턴
+  // console.log(productList.slice(0, 7)
+
+  const productCards = productList
+    .slice(offset, offset + limit)
+    .map((product, index) => {
+      return (
+        // eslint-disable-next-line react/jsx-key
+        <div style={{ marginBottom: '100px' }}>
+          <ProductCard product={product} />
+        </div>
+      )
+    })
+
+  return (
+    <>
+      <div className={styles.container}>
+        <div className={styles.gyungA}>
+          <div className={styles.productListTitle}>베스트</div>
+          <section className={styles.product}>
+            <div className={styles.productListNav}>
+              <FilterContainer />
+              {/* <div> */}
+              <AccordionItem index={0} width="220px" handelArrow>
+                <div className={styles.Handle}>카테고리</div>
+                <div className={styles.panel}>
+                  <CategoryList filterName={'category'} />
+                </div>
+                <div className={styles.accordionLine}></div>
+              </AccordionItem>
+              <AccordionItem index={1} width="220px" handelArrow>
+                <div className={styles.Handle}>브랜드</div>
+                <div className={styles.panel}>
+                  <BrandList />
+                </div>
+                <div className={styles.accordionLine}></div>
+              </AccordionItem>
+              <AccordionItem index={2} width="220px" handelArrow>
+                <div className={styles.Handle}>가격</div>
+                <div className={styles.panel}>
+                  <PriceList />
+                </div>
+                <div className={styles.accordionLine}></div>
+              </AccordionItem>
+              <AccordionItem index={3} width="220px" handelArrow>
+                <div className={styles.Handle}>혜택</div>
+                <div className={styles.panel}>
+                  <BenefitsList />
+                </div>
+                <div className={styles.accordionLine}></div>
+              </AccordionItem>
+              <AccordionItem index={4} width="220px" handelArrow>
+                <div className={styles.Handle}>유형</div>
+                <div className={styles.panel}>
+                  <KalryOnlyList />
+                </div>
+                <div className={styles.accordionLine}></div>
+              </AccordionItem>
+            </div>
+            <div style={{ width: '100%' }}>
+              <div className={styles.hoeng}>{productCards}</div>
+              {/* </div> */}
+            </div>
+          </section>
+          <Pagination
+            total={productList.length}
+            limit={limit}
+            page={page}
+            setPage={setPage}
+          />
+        </div>
+      </div>
+    </>
+  )
+}
+export default ProductList
+
+export const Pagination = ({ total, limit, page, setPage }) => {
+  const numPages = Math.ceil(total / limit)
+
+  // console.log(total)
+  // console.log(limit)
+  // console.log(numPages)
+
+  //math.ceil = 올림
+  //15
+  // console.log(total)
+  //8
+  // console.log(limit)
+  //2
+  // console.log(page)
+  //15/8 의올림 =2
+  //numPage
+  //페이지변환
+  // console.log(setpage)
+  //  => 0~8번 array(배열) 리턴
+  // console.log(productList.slice(0, 7))
+
+  // console.log(Array(numPages).fill().map())
+
+  return (
+    <>
+      <nav className={styles.paginationContainer}>
+        <button
+          className={styles.paginationPrev}
+          onClick={() => setPage(page - 1)}
+          disabled={page === 1}
+        />
+
+        {Array(numPages)
+          .fill()
+          .map((_, i) => (
+            <button
+              key={i + 1}
+              // className={style}
+              onClick={() => setPage(i + 1)}
+              aria-current={page === i + 1 ? 'page' : null}
+            >
+              {i + 1}
+            </button>
+          ))}
+        <button
+          className={styles.paginationNext}
+          onClick={() => setPage(page + 1)}
+          disabled={page === numPages}
+        />
+      </nav>
+    </>
   )
 }
 
@@ -273,18 +238,49 @@ export const FilterContainer = () => {
 //   );
 // };
 
+/* --------------------------------- 백업용 주석 --------------------------------- */
+// const BrandList = () => {
+//   const brandList = useRecoilValue(categoryListSelectorFamily('brand'))
 
+//   // console.log(brandList)
 
+//   return (
+//     <>
+//       {brandList.map((product, index) => {
+//         const key = `${product.id} ${index}`
 
-// locCdSet
-//   .filter(
-//     (arr, index, callback) =>
-//       index ===
-//       callback.findIndex((product) => product === product)
+//         return <TestLi key={key} name="brand" value={product.brand} />
+//       })}
+//     </>
 //   )
+// }
+// const CategoryList = () => {
+//   const categoryList = useRecoilValue(categoryListSelectorFamily('category'))
 
-//   .map( (address) => (
-//     <Option key={address.locSd} value={address.locSdName}>
-//       {address.locSdName}
-//     </Option>
-//   ))
+//   console.log(categoryList)
+
+//   return (
+//     <>
+//       {categoryList.map((product, index) => {
+//         const key = `${product.id} ${index}`
+
+//         return <TestLi key={key} name="category" value={product.category} />
+//       })}
+//     </>
+//   )
+// }
+// export const TestLi = ({ name = 'brand', value = '스타벅스' }) => {
+//   const countMap = useRecoilValue(categoryLengthListSelectorFamily(name))
+
+//   return (
+//     <ul className={styles.navMenuUl}>
+//       <li className={styles.navMenuUlList}>
+//         <input type="checkbox" name="checkbox" id="check-box" value={value} />
+//         <label htmlFor="check-box">
+//           <div className={styles.productExText}>{value}</div>
+//         </label>
+//         <span className={styles.ulListCount}>{countMap[value]}</span>
+//       </li>
+//     </ul>
+//   )
+// }
