@@ -1,0 +1,24 @@
+.productReviewText {
+  margin: 24px 0 56px 0;
+}
+
+.productReviewFrame{
+  display: flex;
+  justify-content: space-between;
+}
+
+li{
+  font-weight: 600;
+  font-size: var(--text-base);
+  line-height: 150%;
+}
+
+.li{
+  font-weight: 600;
+  font-size: var(--text-xs);
+  line-height: 150%;
+}
+
+.li::before{
+  content: '•'
+}
