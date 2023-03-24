@@ -20,6 +20,7 @@ import { default as PageTitle } from '@/components/PageTitle/PageTitle.jsx'
 import productImg from "@/assets/product/tangtang/thumbnail.jpg";
 
 import { darkFilterState } from '@/store/darkFilterState.js';
+import { productLayoutState } from '../../store/detailLayoutState.js';
 
 
 function checkUiType(uiType) {
