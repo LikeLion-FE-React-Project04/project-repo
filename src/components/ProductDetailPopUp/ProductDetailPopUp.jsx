@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom';
 
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 
+import { addDoc, collection, Timestamp } from 'firebase/firestore';
+
+import { useDetailFireStore } from '../../firebase/firestore/useDetailFireStore.js';
+import { db } from '../../firebase/firestore';
+import { app } from '../../firebase/app';
+import { useDetailCollection } from '../../firebase/firestore/useDetailCollection';
+
 import styles from './ProductDetailPopUp.module.scss';
 import { PlaceholderInquiry } from './PlaceholderInquiry/PlaceholderInquiry';
 import { PlaceholderReview } from './PlaceholderReview/PlaceholderReview';
@@ -14,12 +21,13 @@ import productImg from "@/assets/product/tangtang/thumbnail.jpg";
 
 import { darkFilterState } from '@/store/darkFilterState.js';
 
+
 function checkUiType(uiType) {
   switch (uiType) {
     case 'inquiry':
-      return { title: '문의하기', ph: <PlaceholderInquiry /> };
+      return { title: '문의하기', ph: <PlaceholderInquiry />, handleType: 'miyoung', collectionName: 'inquiryData'};
     case 'review':
-      return { title: '후기 작성', ph: <PlaceholderReview /> };
+      return { title: '후기 작성', ph: <PlaceholderReview />, handleType: 'jinki', collectionName: 'reviewData'};
     default:
       console.log(new Error('uiType이 올바르지 않습니다'));
   }
@@ -27,7 +35,12 @@ function checkUiType(uiType) {
 
 export function ProductDetailPopUp({uiType='inquiry'}) {
   // uiType검사
-  const { title, ph } = checkUiType(uiType);  
+  const { title, ph, handleType, collectionName } = checkUiType(uiType);  
+
+  // firestore 사용
+  const { addDocument } = useDetailFireStore(collectionName); 
+  // 한번 실행시켜 => useEffect가 실행될임
+  const { recentData } = useDetailCollection(collectionName);
 
   // 다크필터
   const setDarkFilter = useSetRecoilState(darkFilterState);
@@ -37,10 +50,19 @@ export function ProductDetailPopUp({uiType='inquiry'}) {
 
   // textarea를 참조하기 위한 ref
   const area = useRef(); 
-  // textarea의 text를 관리하기 위한 ref
-  const textAreaText = useRef('');
-  // title의 text를 관리하기 위한 ref
-  const titleText = useRef('');
+
+  const initialTextState = {
+    title: '',
+    textarea: '',
+  };
+
+  // title과 textarea의 텍스트를 관리하기 위한 ref
+  const textStateRef = useRef(initialTextState); // textStateRef == { current : {title:'', textarea:''} }
+
+  // // textarea의 text를 관리하기 위한 ref
+  // const textAreaText = useRef('');
+  // // title의 text를 관리하기 위한 ref
+  // const titleText = useRef('');
 
   // placeholder가 띄워야할지 말지를 관리하는 state
   const [isActiveP, setIsActiveP] = useState(true); 
@@ -63,15 +85,15 @@ export function ProductDetailPopUp({uiType='inquiry'}) {
   // textarea의 내용에 변화가 있을 때 발생하는 이벤트
   const textareaInputHandler = (e) => {
     // textarea의 내용이 바뀔때마다 ref의 current값을 변경해줌 => but리랜더링은 안되므로 화면에 반영이 안됨
-    textAreaText.current = e.target.value;
+    textStateRef.current.textarea = e.target.value;
     // 그래서 랜더링을 시키기 위해서 state 사용
-    setInputCount(textAreaText.current.length);
+    setInputCount(textStateRef.current.textarea.length);
     console.log('textarea의 내용을 바꾸고 있습니다');
   };
   
   // 제목의 내용이 바뀔때마다 넣어줌
   const handleTitleData = (e) => {
-    titleText.current = e.target.value;
+    textStateRef.current.title = e.target.value;
     console.log('제목의 current값을 바꾸고 있습니다');
   }
 
@@ -84,7 +106,8 @@ export function ProductDetailPopUp({uiType='inquiry'}) {
   // 등록 버튼을 눌렀을 때 submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(titleText.current, textAreaText.current);
+    console.log(textStateRef.current.title, textStateRef.current.textarea);
+    addDocument({title: textStateRef.current.title, textarea: textStateRef.current.textarea});
   }
 
   return (
