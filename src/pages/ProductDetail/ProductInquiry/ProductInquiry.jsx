@@ -1,6 +1,7 @@
 import { useSetRecoilState } from 'recoil';
 
 // import classes from '../../../styles/main.module.css';
+import { useDetailCollection } from '../../../firebase/firestore/useDetailCollection';
 
 import styles from './ProductInquiry.module.scss';
 
@@ -12,14 +13,31 @@ import { ReactComponent as Lock } from '@/assets/product-detail/ic-lock.svg';
 
 import { productDetailModalState } from '@/store/detailModalState.js';
 import { darkFilterState } from '@/store/darkFilterState.js';
+import ProductInquiryHandle from './ProductInquiryHandle/ProductInquiryHandle';
+import { useEffect } from 'react';
+import { productLayoutState } from '../../../store/detailLayoutState';
 
 export default function ProductInquiry () {
   const setProductDetailModalState = useSetRecoilState(productDetailModalState);
   const setDarkFilterState = useSetRecoilState(darkFilterState);
 
+  // (추가)uiType
+  const setLayoutState = useSetRecoilState(productLayoutState);
+
+  // 문서를 저장 할 컬렉션 이름 
+  const collectionName = 'inquiryData';
+  // 한번 실행시켜 => useEffect가 실행될임
+  const { dataState } = useDetailCollection(collectionName);
+
+  useEffect(() => {
+    console.log("[ProductInquiry] dataState: ", dataState);
+  }, [dataState]);
+
   function productModalClickHandler() {
     setProductDetailModalState(true);
     setDarkFilterState(true);
+    // 추가
+    setLayoutState('inquiry');
   }
 
   return (
@@ -78,6 +96,7 @@ export default function ProductInquiry () {
             <div className={styles.handleDivWrapper}>
               <div className={styles.writingTitle}>
                 <span>비밀글입니다.</span>
+                {/* <img src={Lock} alt="비밀글 자물쇠 아이콘" style={{marginLeft:'20px'}} /> */}
                 <Lock alt="비밀글 자물쇠 아이콘" style={{marginLeft:'20px'}} />
               </div>
               <div className={styles.writer}>김*식</div>
@@ -90,11 +109,11 @@ export default function ProductInquiry () {
               <span>패널테스트2</span>
             </div>
           </AccordionItem>
+          {/* { recentData ? <ProductInquiryHandle data={recentData} /> : null } */}
         </article>
       </section>
     </>
   );
-
 };
 
 
