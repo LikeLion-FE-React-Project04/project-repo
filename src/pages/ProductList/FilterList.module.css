@@ -50,3 +50,32 @@
   grid-template-columns: 260px 260px 260px;
   /* grid-template-rows: 538px 538px;  */
 }
+
+.navMenuUlList {
+  position: relative;
+  /* display: flex;
+  flex-flow: row nowrap;
+  justify-content: left;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 1rem;
+  padding-left: 12px;
+  transition: all 250ms; */
+}
+
+.navMenuUlList input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  cursor: pointer;
+  appearance: none;
+  background: url('../../assets/icons/Icon/check-box-round.svg') no-repeat 0/18px;
+}
+
+.navMenuUlList input[type='checkbox']:checked {
+  background: url('../../assets/icons/Icon/checked-box-round.svg') no-repeat 0/18px;
+}
+
+.formContainer {
+  position: relative;
+}

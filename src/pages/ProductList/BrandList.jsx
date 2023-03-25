@@ -1,28 +1,29 @@
-import { useRecoilValue } from 'recoil'
+import { useRecoilValue } from 'recoil';
 
-import { string } from 'prop-types'
+import { string } from 'prop-types';
 
 import {
   RenderFilterNameLi,
   RenderFilterKarlyOnlyLi,
   RenderFilterBenefitsLi,
-} from './RenderFilterLi'
+  RenderBrandFilterNameLi,
+} from './RenderFilterLi';
 
 import {
   categoryListSelectorFamily,
   karlyOnlyListSelectorFamily,
   benefitsListSelectorFamily,
   priceFilterListSelectorFamily,
-} from '@/store/productListState.js'
+} from '@/store/productListState.js';
 
 /* -------------------------------- category -------------------------------- */
-export const CategoryList = ({ filterName = '' }) => {
-  const categoryList = useRecoilValue(categoryListSelectorFamily(filterName))
+export const CategoryList = ({ filterName = '', children }) => {
+  const categoryList = useRecoilValue(categoryListSelectorFamily('category'));
 
   return (
     <>
       {categoryList.map((product, index) => {
-        const key = `${product.id} ${index}`
+        const key = `${product.id} ${index}`;
 
         return (
           <RenderFilterNameLi
@@ -30,50 +31,59 @@ export const CategoryList = ({ filterName = '' }) => {
             name={filterName}
             value={product.category}
           />
-        )
+        );
       })}
     </>
-  )
-}
+  );
+};
 
 CategoryList.propTypes = {
   filterName: string.isRequired,
-}
+};
 
 /* ---------------------------------- brand --------------------------------- */
 
-export const BrandList = () => {
-  const categoryList = useRecoilValue(categoryListSelectorFamily('brand'))
+export const BrandList = ({ filterName = '', children }) => {
+  const categoryList = useRecoilValue(categoryListSelectorFamily('brand'));
+
+  // console.log(categoryList);
 
   return (
     <>
       {categoryList.map((product, index) => {
-        const key = `${product.id} ${index}`
+        const key = `${product.id} ${index}`;
 
         return (
-          <RenderFilterNameLi key={key} name={'brand'} value={product.brand} />
-        )
+          <RenderBrandFilterNameLi
+            key={key}
+            name={filterName}
+            value={product.brand}
+          />
+        );
       })}
     </>
-  )
-}
+  );
+};
 
 /* -------------------------------- kalryOnly ------------------------------- */
-export const KalryOnlyList = () => {
-  const karlyOnlyList = useRecoilValue(karlyOnlyListSelectorFamily('kalryOnly'))
+export const KalryOnlyList = ({ filterName = '' }) => {
+  const karlyOnlyList = useRecoilValue(
+    karlyOnlyListSelectorFamily('kalryOnly')
+  );
+
+  // console.log(karlyOnlyList);
 
   return (
     <>
-      <RenderFilterKarlyOnlyLi name={'kalryOnly'} value={karlyOnlyList.true} />
-      {/* <RenderFilterKarlyOnlyLi name value /> */}
+      <RenderFilterKarlyOnlyLi name={filterName} value={karlyOnlyList.length} />
     </>
-  )
-}
+  );
+};
 
 /* -------------------------------- benefits -------------------------------- */
 
 export const BenefitsList = () => {
-  const benefitsList = useRecoilValue(benefitsListSelectorFamily('saleRatio'))
+  const benefitsList = useRecoilValue(benefitsListSelectorFamily('saleRatio'));
 
   return (
     <>
@@ -86,12 +96,14 @@ export const BenefitsList = () => {
         value={benefitsList['한정수량'].length}
       />
     </>
-  )
-}
+  );
+};
 
 /* ---------------------------------- price --------------------------------- */
 export const PriceList = () => {
-  const priceList = useRecoilValue(priceFilterListSelectorFamily('priceFilter'))
+  const priceList = useRecoilValue(
+    priceFilterListSelectorFamily('priceFilter')
+  );
 
   return (
     <>
@@ -112,5 +124,5 @@ export const PriceList = () => {
         value={priceList['filter4'].length}
       />
     </>
-  )
-}
+  );
+};

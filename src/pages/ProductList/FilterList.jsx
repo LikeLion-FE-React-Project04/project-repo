@@ -1,97 +1,161 @@
-import styles from './FilterList.module.css'
+import styles from './FilterList.module.css';
+import { useSetRecoilState, useRecoilState, useResetRecoilState } from 'recoil';
+import { useRef } from 'react';
 
-import AccordionItem from '@/components/Accordion/AccordionItem'
-
+import { FilterContainer } from './FilterContainer';
 import {
   CategoryList,
   BrandList,
   KalryOnlyList,
   BenefitsList,
   PriceList,
-} from './BrandList'
+} from './BrandList';
 
-import { FilterContainer } from './FilterContainer'
+import {
+  checkedCategoryListAtom,
+  checkedBrandListAtom,
+  checkedKarlyOnlyListAtom,
+} from '@/store/productListState.js';
 
-import { ProductCard } from '@/components/ProductCard/ProductCard.jsx'
+import AccordionItem from '@/components/Accordion/AccordionItem';
 
-import { useRecoilValue } from 'recoil'
-import { useState } from 'react'
-
-import { productListState } from '@/store/productListState.js'
+export const NavMenuUl = ({ children }) => {
+  return (
+    <ul className={styles.navMenuUl}>
+      <li className={styles.navMenuUlList}>{children}</li>
+    </ul>
+  );
+};
 
 export const FilterList = () => {
-  const [limit, setLimit] = useState(12)
-  const [page, setPage] = useState(1)
-  const offset = (page - 1) * limit
+  //category form controlled
+  const setCheckedCategory = useSetRecoilState(checkedCategoryListAtom);
+  // const setCheckedCategory = useSetRecoilState(sumTestSelector);
 
-  const productList = useRecoilValue(productListState)
+  const formRef = useRef();
+  const categoryOnChange = (e) => {
+    e.preventDefault;
+    const formData = new FormData(formRef.current);
 
-  // console.log(productList)
-  //8
-  // console.log(limit)
-  //1
-  // console.log(page)
-  //0
-  // console.log(offset)
-  //  => 0~8번 array(배열) 리턴
-  // console.log(productList.slice(0, 7)
+    setCheckedCategory(formData.getAll('category') || []);
+  };
 
-  const productCards = productList
-    .slice(offset, offset + limit)
-    .map((product, index) => {
-      return (
-        // eslint-disable-next-line react/jsx-key
-        <div key={`product-${index}`} style={{ marginBottom: '100px' }}>
-          <ProductCard product={product} />
-        </div>
-      )
-    })
+  //brand form cotrolled
+  const setCheckedBrand = useSetRecoilState(checkedBrandListAtom);
+  const formRef2 = useRef();
+  const brandOnChange = (e) => {
+    e.preventDefault;
+    const formData = new FormData(formRef2.current);
+
+    setCheckedBrand(formData.getAll('brand') || []);
+    console.log(formRef2.current);
+  };
+
+  //kalryOnly form cotrolled
+  const [CheckedKarlyOnly, setCheckedKarlyOnly] = useRecoilState(
+    checkedKarlyOnlyListAtom
+  );
+  const formRef3 = useRef();
+  const karlyOnlyOnChange = (e) => {
+    e.preventDefault;
+    const formData3 = new FormData(formRef3.current);
+
+    // console.log(formData3.get('kalryOnly'));
+
+    //왜 checkedKarlyOnly에 문자열이 들어갈까... 배열이아니라?
+    setCheckedKarlyOnly(formData3.get('kalryOnly'));
+    console.log(CheckedKarlyOnly);
+
+    // debugger;
+    // console.log(formRef3.current);
+  };
+
+  // 초기화
+  const setCategoryFilter = useSetRecoilState(checkedCategoryListAtom);
+  const setBrandFilter = useSetRecoilState(checkedBrandListAtom);
+  const onClick = () => {
+    setCategoryFilter([]);
+    setBrandFilter([]);
+  };
 
   return (
-    <section className={styles.product}>
-      <div className={styles.productListNav}>
-        <FilterContainer />
-        {/* <div> */}
-        <AccordionItem index={0} width="220px" handelArrow>
-          <div className={styles.Handle}>카테고리</div>
-          <div className={styles.panel}>
-            <CategoryList filterName={'category'} />
-          </div>
-          <div className={styles.accordionLine} />
-        </AccordionItem>
-        <AccordionItem index={1} width="220px" handelArrow>
-          <div className={styles.Handle}>브랜드</div>
-          <div className={styles.panel}>
-            <BrandList />
-          </div>
-          <div className={styles.accordionLine} />
-        </AccordionItem>
-        <AccordionItem index={2} width="220px" handelArrow>
-          <div className={styles.Handle}>가격</div>
-          <div className={styles.panel}>
-            <PriceList />
-          </div>
-          <div className={styles.accordionLine} />
-        </AccordionItem>
-        <AccordionItem index={3} width="220px" handelArrow>
-          <div className={styles.Handle}>혜택</div>
-          <div className={styles.panel}>
-            <BenefitsList />
-          </div>
-          <div className={styles.accordionLine} />
-        </AccordionItem>
-        <AccordionItem index={4} width="220px" handelArrow>
-          <div className={styles.Handle}>유형</div>
-          <div className={styles.panel}>
-            <KalryOnlyList />
-          </div>
-          <div className={styles.accordionLine} />
-        </AccordionItem>
-      </div>
-      <div style={{ width: '100%' }}>
-        <div className={styles.hoeng}>{productCards}</div>
-        {/* </div> */}
-      </div>
-    </section>
-  )
-}
+    <div className={styles.productListNav}>
+      <FilterContainer onClick={onClick} />
+      <AccordionItem index={0} width="220px" handelArrow>
+        <div className={styles.Handle}>카테고리</div>
+        <div className={styles.panel}>
+          <NavMenuUl>
+            <form
+              className={styles.formContainer}
+              onChange={categoryOnChange}
+              ref={formRef}
+            >
+              <CategoryList filterName={'category'} />
+            </form>
+          </NavMenuUl>
+        </div>
+        <div className={styles.accordionLine} />
+      </AccordionItem>
+      <AccordionItem index={1} width="220px" handelArrow>
+        <div className={styles.Handle}>브랜드</div>
+        <div className={styles.panel}>
+          <NavMenuUl>
+            <form
+              className={styles.formContainer}
+              onChange={brandOnChange}
+              ref={formRef2}
+            >
+              <BrandList filterName={'brand'} />
+            </form>
+          </NavMenuUl>
+        </div>
+        <div className={styles.accordionLine} />
+      </AccordionItem>
+      <AccordionItem index={2} width="220px" handelArrow>
+        <div className={styles.Handle}>가격</div>
+        <div className={styles.panel}>
+          <NavMenuUl>
+            <form
+              className={styles.formContainer}
+              // onChange={brandOnChange}
+              // ref={formRef3}
+            >
+              <PriceList />
+            </form>
+          </NavMenuUl>
+        </div>
+        <div className={styles.accordionLine} />
+      </AccordionItem>
+      <AccordionItem index={3} width="220px" handelArrow>
+        <div className={styles.Handle}>혜택</div>
+        <div className={styles.panel}>
+          <NavMenuUl>
+            <form
+              className={styles.formContainer}
+              // onChange={brandOnChange}
+              // ref={formRef2}
+            >
+              <BenefitsList />
+            </form>
+          </NavMenuUl>
+        </div>
+        <div className={styles.accordionLine} />
+      </AccordionItem>
+      <AccordionItem index={4} width="220px" handelArrow>
+        <div className={styles.Handle}>유형</div>
+        <div className={styles.panel}>
+          <NavMenuUl>
+            <form
+              className={styles.formContainer}
+              onChange={karlyOnlyOnChange}
+              ref={formRef3}
+            >
+              <KalryOnlyList filterName={'kalryOnly'} />
+            </form>
+          </NavMenuUl>
+        </div>
+        <div className={styles.accordionLine} />
+      </AccordionItem>
+    </div>
+  );
+};

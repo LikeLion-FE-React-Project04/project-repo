@@ -1,0 +1,26 @@
+.sortLowerPriceButton {
+  background: transparent;
+  color: var(--gray-300);
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.sortUpperPriceButton {
+  background: transparent;
+  color: var(--gray-300);
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.dummybutton {
+  background: transparent;
+  background-color: var(--white);
+  color: var(--gray-300);
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* 클릭시 color바꿔주는 함수를 넣어버리자 --content 로 */

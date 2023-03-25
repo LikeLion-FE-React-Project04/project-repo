@@ -1,46 +1,46 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
-import { attr, getPriceFormat, getSalePercent } from '../../utils';
+import { attr, getPriceFormat, getSalePercent } from '../../utils'
 
-import classes from '@/components/ProductCard/ProductCard.module.scss';
-import { selectedproductId } from '@/store/productListState.js';
-import { productCartModalState } from '@/store/cartModalState.js';
-import { darkFilterState } from '@/store/darkFilterState.js';
-import { useSetRecoilState } from 'recoil';
+import classes from '@/components/ProductCard/ProductCard.module.scss'
+import { selectedproductId } from '@/store/productListState.js'
+import { productCartModalState } from '@/store/cartModalState.js'
+import { darkFilterState } from '@/store/darkFilterState.js'
+import { useSetRecoilState } from 'recoil'
 
 /* Component ---------------------------------------------------------------- */
 
 export function ProductCard({ product }) {
-  const setProductCartModalState = useSetRecoilState(productCartModalState);
-  const setSelectedproductId = useSetRecoilState(selectedproductId);
-  const setDarkFilterState = useSetRecoilState(darkFilterState);
-  const movePage = useNavigate();
+  const setProductCartModalState = useSetRecoilState(productCartModalState)
+  const setSelectedproductId = useSetRecoilState(selectedproductId)
+  const setDarkFilterState = useSetRecoilState(darkFilterState)
+  const movePage = useNavigate()
 
   function productCardClickHandler(e) {
-    let target = e.target;
+    let target = e.target
 
     while (!attr(target, 'data-name')) {
-      target = target.parentNode;
+      target = target.parentNode
       if (target.nodeName === 'BODY') {
-        target = null;
+        target = null
 
-        return;
+        return
       }
     }
 
     if (target.dataset.name === 'cartbutton') {
-      console.log('CartBtn 클릭되었습니다');
-      setSelectedproductId(product.id);
-      setProductCartModalState(true);
-      setDarkFilterState(true);
+      console.log('CartBtn 클릭되었습니다')
+      setSelectedproductId(product.id)
+      setProductCartModalState(true)
+      setDarkFilterState(true)
 
-      return;
+      return
     }
 
     if (target.dataset.name === 'productCard') {
-      movePage(`/productDetail/${product.id}`);
+      movePage(`/productDetail/${product.id}`)
 
-      return;
+      return
     }
   }
 
@@ -63,7 +63,7 @@ export function ProductCard({ product }) {
         <p className={classes.productName}>{product.name}</p>
         <ProductCardPrice product={product} />
       </div>
-    );
+    )
   }
 }
 
@@ -79,11 +79,11 @@ function ProductCardPrice({ product }) {
         </p>
         <p className={classes.originPrice}>{getPriceFormat(product.price)}원</p>
       </>
-    );
+    )
   } else {
     return (
       <p className={classes.productPrice}>{getPriceFormat(product.price)}원</p>
-    );
+    )
   }
 }
 
@@ -96,9 +96,9 @@ function CartButton() {
       data-name="cartbutton"
       type="button"
     />
-  );
+  )
 }
 
-export default ProductCardPrice;
+export default ProductCardPrice
 
 /* Props -------------------------------------------------------------------- */

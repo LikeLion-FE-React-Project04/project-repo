@@ -1,6 +1,6 @@
-import { atom, atomFamily, selector, selectorFamily } from 'recoil'
+import { atom, atomFamily, selector, selectorFamily } from 'recoil';
 
-const initialProductList = [
+export const initialProductList = [
   {
     id: 'product-rksk',
     name: '[대구 반할만떡] 유부호만두',
@@ -161,8 +161,8 @@ const initialProductList = [
     name: '[브룩클린688] 호주산 목초육 치마살 구이용 300g (냉장)',
     description: '100g 당 5166원',
     price: 15500,
-    saleRatio: 0.15,
-    salePrice: 13175,
+    saleRatio: 0.1,
+    salePrice: 13975,
     image: {
       thumbnail:
         'https://img-cf.kurly.com/cdn-cgi/image/quality=85,width=676/shop/data/goods/165303917855l0.jpeg',
@@ -297,71 +297,200 @@ const initialProductList = [
     kalryOnly: 'false',
     brand: '스윗밸런스',
   },
-]
+];
 
 export const productListState = atom({
   key: 'productListState',
   default: initialProductList,
-})
+});
 
 export const productListFamily = atomFamily({
   key: 'productListFamily',
   default: (id) => initialProductList.find((order) => order.id === id),
   // default: (order) => initialOrderList.find(({order: orderName}) => orderName === order),
   // default: (index) => initialOrderList[index],
-})
+});
 
 export const selectedproductId = atom({
   key: 'selectedproductId',
   default: 'order-1',
-})
+});
 
 /* ---------------------------- Category & Brand ---------------------------- */
 
 export const categoryListSelectorFamily = selectorFamily({
   key: 'categoryListSelectorFamily',
   get:
-    (categoryName) =>
+    (catagoryName) =>
     ({ get }) => {
-      const product = get(productListState)
+      //product = initialProductList 전체 15개의 정적Local Data
+      const product = get(productListState);
 
+      //categoryList = category의 중복을 제거해줌
       const categoryList = product.filter((arr, index, callback) => {
         return (
           index ===
           callback.findIndex(
-            (product) => product[categoryName] === arr[categoryName]
+            (product) => product[catagoryName] === arr[catagoryName]
           )
-        )
-      })
+        );
+      });
 
-      return categoryList
+      // console.log(product[][categoryName]);
+
+      // console.log(categoryList);
+
+      return categoryList;
     },
-})
+});
 
 export const categoryLengthListSelectorFamily = selectorFamily({
   key: 'categoryLengthListSelectorFamily',
   get:
     (categoryName) =>
     ({ get }) => {
-      const category = get(productListState)
-      const categoryList = get(categoryListSelectorFamily(categoryName))
+      const category = get(productListState);
+      const categoryList = get(categoryListSelectorFamily(categoryName));
 
       return categoryList.reduce((결과, 카테고리) => {
-        let 카운트 = 0
+        let 카운트 = 0;
 
         category.forEach((item) => {
           if (item[categoryName] === 카테고리[categoryName]) {
-            카운트++
+            카운트++;
           }
-        })
+        });
 
         return {
           ...결과,
           [카테고리[categoryName]]: 카운트,
-        }
-      }, {})
+        };
+      }, {});
     },
-})
+});
+
+//all 체크박스 ver.
+export const allCategoryNameListSelectorFamily = selectorFamily({
+  key: 'allCategoryNameListSelectorFamily',
+  get:
+    (catagoryName) =>
+    ({ get }) => {
+      const checkedAllCategoryName = get(
+        categoryListSelectorFamily(catagoryName)
+      );
+
+      return checkedAllCategoryName.map((a) => {
+        return a.category;
+      });
+    },
+});
+
+export const checkedCategoryListAtom = atom({
+  key: 'checkedCategoryListAtom',
+  // default: allCategoryNameListSelectorFamily('category'),
+  default: [],
+});
+
+export const renderCategorySelector = selector({
+  key: 'renderCategorySelector',
+  get: ({ get }) => {
+    //product = initialProductList 전체 15개의 정적Local Data
+    const products = get(productListState);
+    const checkedCategoryList = get(checkedCategoryListAtom);
+
+    //early return으로 인해 초기화상태가 전체리스트를 내뱉게해줌
+    // if (checkedCategoryList.length <= 0) {
+    //   return products;
+    // }
+
+    const realRenderCategory = products.filter((product) => {
+      return checkedCategoryList.some((c) => {
+        return c === product.category;
+      });
+    });
+
+    return realRenderCategory;
+  },
+});
+
+//sort 테스트 = 실패
+export const sortCategorySelector = selector({
+  key: 'sortCategorySelector',
+  get: ({ get }) => {
+    const sortedCategory = get(renderCategorySelector);
+    const products = get(productListState);
+
+    if (sortedCategory.length <= 0) {
+      return products.sort((a, b) => a.price - b.price);
+    }
+
+    // console.log(sortedCategory.sort((a, b) => a.price - b.price));
+    const test01 = [...sortedCategory];
+
+    test01.sort((a, b) => a.price - b.price);
+
+    return test01;
+  },
+});
+
+/* ---------------------------- brandcheckRender ---------------------------- */
+export const checkedBrandListAtom = atom({
+  key: 'checkedBrandListAtom',
+  // default: allBrandNameListSelectorFamily('Brand'),
+  default: [],
+});
+
+export const renderBrandSelector = selector({
+  key: 'renderBrandSelector',
+  get: ({ get }) => {
+    //product = initialProductList 전체 15개의 정적Local Data
+    const products = get(productListState);
+    const checkedBrandList = get(checkedBrandListAtom);
+
+    //early return으로 인해 초기화상태가 전체리스트를 내뱉게해줌
+    // if (checkedBrandList.length <= 0) {
+    //   return products;
+    // }
+
+    const realRenderBrand = products.filter((product) => {
+      return checkedBrandList.some((c) => {
+        return c === product.brand;
+      });
+    });
+
+    return realRenderBrand;
+  },
+});
+
+/* --------------------------------- 합치기테스트 --------------------------------- */
+
+export const sumTestSelector = selector({
+  key: 'sumTestSelector',
+  get: ({ get }) => {
+    const products = get(productListState);
+    const renderBrand = get(renderBrandSelector);
+    const renderCategory = get(renderCategorySelector);
+    const sumList = [...renderCategory, ...renderBrand];
+
+    const sumFilterList = sumList.filter(
+      (arr, index, callback) =>
+        index === callback.findIndex((t) => t.id === arr.id)
+    );
+
+    if (sumFilterList.length <= 0) {
+      return products;
+    }
+
+    console.log(sumFilterList);
+
+    // debugger;
+    // console.log(renderCategory);
+    // console.log(renderBrand);
+    // console.log(sumList);
+
+    return sumFilterList;
+  },
+});
 
 /* -------------------------------- karlyOnly ------------------------------- */
 
@@ -370,22 +499,22 @@ export const karlyOnlyListSelectorFamily = selectorFamily({
   get:
     (karlyOnly) =>
     ({ get }) => {
-      const product = get(productListState)
+      const product = get(productListState);
 
       const isKarlyOnly = (element) => {
         if (element[karlyOnly] === 'true') {
-          return true
+          return true;
         }
-      }
+      };
 
-      const karlyOnlyList = product.filter(isKarlyOnly)
+      const karlyOnlyList = product.filter(isKarlyOnly);
 
       // console.log(product)
-      // console.log(karlyOnlyList)
+      // console.log(karlyOnlyList);
 
-      return karlyOnlyList
+      return karlyOnlyList;
     },
-})
+});
 
 /* -------------------------------- karlyOnlyCount ------------------------------- */
 
@@ -394,25 +523,58 @@ export const karlyOnlyLengthListSelectorFamily = selectorFamily({
   get:
     (karlyOnlyName) =>
     ({ get }) => {
-      const karlyOnly = get(productListState)
-      const karlyOnlyList = get(categoryListSelectorFamily(karlyOnlyName))
+      const karlyOnly = get(productListState);
+      const karlyOnlyList = get(karlyOnlyListSelectorFamily(karlyOnly));
 
-      return karlyOnlyList.reduce((결과, 카테고리) => {
-        let 카운트 = 0
+      return karlyOnlyList.reduce((결과, 칼리온니) => {
+        let 카운트 = 0;
 
         karlyOnly.forEach((item) => {
-          if (item[karlyOnlyName] === 카테고리[karlyOnlyName]) {
-            카운트++
+          if (item[karlyOnlyName] === 칼리온니[karlyOnlyName]) {
+            카운트++;
           }
-        })
+        });
 
         return {
           ...결과,
-          [카테고리[karlyOnlyName]]: 카운트,
-        }
-      }, {})
+          [칼리온니[karlyOnlyName]]: 카운트,
+        };
+      }, {});
     },
-})
+});
+
+/* ---------------------------- kalryOnlycheckRender ---------------------------- */
+export const checkedKarlyOnlyListAtom = atom({
+  key: 'checkedKarlyOnlyListAtom',
+  // default: allBrandNameListSelectorFamily('Brand'),
+  default: [],
+});
+
+export const renderKarlyOnlySelector = selector({
+  key: 'renderKarlyOnlySelector',
+  get: ({ get }) => {
+    //product = initialProductList 전체 15개의 정적Local Data
+    const products = get(productListState);
+    const checkedKarlyOnlyList = get(checkedKarlyOnlyListAtom);
+    //칼리가 들어갔을때,  [kallyonly] 가될거고,
+    //전체를 순환돌면서 key가 karlyonly인게 있는지 찾기
+
+    const isKalryOnly = (element) => {
+      if (element.checkedKarlyOnlyList === 'true') {
+        return true;
+      }
+    };
+
+    const karlyOnlyList = products.filter(isKalryOnly);
+
+    console.log(karlyOnlyList);
+    // console.log(checkedKarlyOnlyList);
+
+    // debugger;
+
+    return karlyOnlyList;
+  },
+});
 
 /* -------------------------------- Benefits -------------------------------- */
 
@@ -421,39 +583,29 @@ export const benefitsListSelectorFamily = selectorFamily({
   get:
     () =>
     ({ get }) => {
-      const product = get(productListState)
+      const product = get(productListState);
 
       const SaleProduct = (element) => {
         if (element.saleRatio !== 0) {
-          return true
+          return true;
         }
-      }
+      };
       const limitedProduct = (element) => {
         if (element.stock < 10) {
-          return true
+          return true;
         }
-      }
+      };
+      const SaleProductList = product.filter(SaleProduct);
+      const saleBenefitsList = { 할인상품: SaleProductList };
 
-      const SaleProductList = product.filter(SaleProduct)
-      const saleBenefitsList = { 할인상품: SaleProductList }
+      const limitedProductList = product.filter(limitedProduct);
+      const limitedBenefitsList = { 한정수량: limitedProductList };
 
-      const limitedProductList = product.filter(limitedProduct)
-      const limitedBenefitsList = { 한정수량: limitedProductList }
+      const benefitsMergeList = { ...saleBenefitsList, ...limitedBenefitsList };
 
-      const benefitsMergeList = { ...saleBenefitsList, ...limitedBenefitsList }
-
-      // console.log(product)
-      // console.log(SaleProductList)
-      // console.log(saleBenefitsList)
-
-      // console.log(limitedProductList)
-      // console.log(limitedBenefitsList)
-
-      // console.log(benefitsMergeList)
-
-      return benefitsMergeList
+      return benefitsMergeList;
     },
-})
+});
 
 // 사용하지않음
 export const benefitsLengthListSelectorFamily = selectorFamily({
@@ -461,15 +613,15 @@ export const benefitsLengthListSelectorFamily = selectorFamily({
   get:
     (saleRatio) =>
     ({ get }) => {
-      const benefits = get(productListState)
-      const benefitsList = get(benefitsListSelectorFamily(saleRatio))
+      const benefits = get(productListState);
+      const benefitsList = get(benefitsListSelectorFamily(saleRatio));
 
-      const ArrayBenefitsList = Object.entries(benefitsList)
+      const ArrayBenefitsList = Object.entries(benefitsList);
 
       // console.log(benefits)
-      console.log(benefits[0].category, '전체리스트')
-      console.log(benefitsList['할인상품'][0].category, '내가 뽑아낸 데이터')
-      console.log(benefitsList['한정수량'][0].category, '내가 뽑아낸 데이터')
+      console.log(benefits[0].category, '전체리스트');
+      console.log(benefitsList['할인상품'][0].category, '내가 뽑아낸 데이터');
+      console.log(benefitsList['한정수량'][0].category, '내가 뽑아낸 데이터');
       // console.log(ArrayBenefitsList, '가공한 데이터')
 
       // return ArrayBenefitsList.reduce((결과, 카테고리) => {
@@ -487,7 +639,7 @@ export const benefitsLengthListSelectorFamily = selectorFamily({
       //   }
       // }, {})
     },
-})
+});
 
 /* ---------------------------------- price --------------------------------- */
 
@@ -496,65 +648,67 @@ export const priceFilterListSelectorFamily = selectorFamily({
   get:
     () =>
     ({ get }) => {
-      const product = get(productListState)
+      const product = get(productListState);
 
       const NonFilterProduct = (element) => {
         if (element.Price != 0) {
-          return true
+          return true;
         }
-      }
+      };
       const lessThenFiveHundredFilter = (element) => {
         if (
           element.price > 1000 &&
           element.salePrice < 10000 &&
           element.price < 13000
         ) {
-          return true
+          return true;
         }
-      }
+      };
       const lessThenTenHundredFilter = (element) => {
         if (
           element.price > 10000 &&
           element.salePrice < 20000 &&
           element.price < 25000
         ) {
-          return true
+          return true;
         }
-      }
+      };
       const lessThenTwentyHundredFilter = (element) => {
         if (element.price > 24000 && element.salePrice < 30000) {
-          return true
+          return true;
         }
-      }
+      };
 
-      const totalProduct = product.filter(NonFilterProduct)
-      const totalProductList = { filter1: totalProduct }
+      const totalProduct = product.filter(NonFilterProduct);
+      const totalProductList = { filter1: totalProduct };
 
       const lessThenFiveHundredProduct = product.filter(
         lessThenFiveHundredFilter
-      )
+      );
       const lessThenFiveHundredProductList = {
         filter2: lessThenFiveHundredProduct,
-      }
+      };
 
-      const lessThenTenHundredProduct = product.filter(lessThenTenHundredFilter)
+      const lessThenTenHundredProduct = product.filter(
+        lessThenTenHundredFilter
+      );
       const lessThenTenHundredProductList = {
         filter3: lessThenTenHundredProduct,
-      }
+      };
 
       const lessThenTwentyHundredProduct = product.filter(
         lessThenTwentyHundredFilter
-      )
+      );
       const lessThenTwentyHundredProductList = {
         filter4: lessThenTwentyHundredProduct,
-      }
+      };
 
       const priceFilterMergeList = {
         ...totalProductList,
         ...lessThenFiveHundredProductList,
         ...lessThenTenHundredProductList,
         ...lessThenTwentyHundredProductList,
-      }
+      };
 
       // console.log(totalProductList)
       // console.log(lessThenFiveHundredProductList, '만원미만')
@@ -563,9 +717,77 @@ export const priceFilterListSelectorFamily = selectorFamily({
 
       // console.log(priceFilterMergeList)
 
-      return priceFilterMergeList
+      return priceFilterMergeList;
     },
-})
+});
+
+/* ---------------------------------- 필터렌더링 --------------------------------- */
+
+export const productListAtom = atom({
+  key: 'productListAtom',
+  default: initialProductList,
+});
+
+export const filterAtom = atom({
+  key: 'filterAtom',
+  default: [
+    {
+      brand: [
+        '대구 반할만떡',
+        '풀무원',
+        '홍대주꾸미',
+        '강남면옥',
+        "Kalry's",
+        '유명산지',
+        '이연복의 목란',
+        '브룩클린688',
+        '포비베이글',
+        '그래놀라 하우스',
+        '스타벅스',
+        '켄트',
+        'KF365',
+        '스윗밸런스',
+      ],
+      // prices: [1000, 5000],
+    },
+  ],
+});
+
+// export const productListSelectorFamily = selectorFamily({
+//   key: 'productListSelectorFamily',
+//   get:
+//     (categoryName) =>
+//     ({ get }) => {
+//       const productList = get(productListAtom);
+//       const categoryList = get(categoryListSelectorFamily(categoryName));
+
+//       const 카테고리필터 = (상품) => {
+//         const 카테고리조건배열 =
+//           categoryList?.find((필터) => 필터.category)?.category || [];
+
+//         // console.log(카테고리조건배열);
+
+//         return 카테고리조건배열;
+//       };
+//       const 브랜드필터 = (상품) => {
+//         const 브랜드조건배열 =
+//           categoryList?.find((필터) => 필터.brand)?.brand || [];
+
+//         // console.log(브랜드조건배열);
+
+//         return 브랜드조건배열;
+//       };
+//       const 가격필터 = (상품) => {
+//         const [최솟값, 최댓값] =
+//           priceFilterList?.find((필터) => 필터.price)?.price || [];
+
+//         return 상품.price >= 최솟값 && 상품.price <= 최댓값;
+//       };
+
+//       return productList.filter(카테고리필터).filter(브랜드필터);
+//       // .filter(가격필터)
+//     },
+// });
 
 /* ---------------------------- ----------------- --------------------------- */
 
@@ -603,3 +825,16 @@ export const priceFilterListSelectorFamily = selectorFamily({
 // }
 
 // )
+
+/* --------------------------------- 필터링 로직1 -------------------------------- */
+// const realRenderCategory = products.filter((product) => {
+//   let 상태의불린값 = false;
+
+//   checkedCategory.forEach((c) => {
+//     if (c == product.category) {
+//       상태의불린값 = true;
+//     }
+//   });
+
+//   return 상태의불린값;
+// });
