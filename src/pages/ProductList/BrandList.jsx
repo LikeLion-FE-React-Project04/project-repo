@@ -71,12 +71,10 @@ export const KalryOnlyList = ({ filterName = '' }) => {
     karlyOnlyListSelectorFamily('kalryOnly')
   );
 
-  // console.log(karlyOnlyList);
+  console.log(karlyOnlyList);
 
   return (
-    <>
-      <RenderFilterKarlyOnlyLi name={filterName} value={karlyOnlyList.length} />
-    </>
+    <RenderFilterKarlyOnlyLi name={filterName} value={karlyOnlyList.length} />
   );
 };
 

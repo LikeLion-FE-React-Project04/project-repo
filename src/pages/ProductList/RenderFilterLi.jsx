@@ -35,7 +35,6 @@ export const RenderFilterNameLi = ({ name = 'brand', value = '스타벅스' }) =
           // defaultValue
           type="checkbox"
           name={name}
-          id="check-box"
           value={value}
         />
         <div className={styles.productExText}>{value}</div>
@@ -68,7 +67,6 @@ export const RenderBrandFilterNameLi = ({
           // defaultValue
           type="checkbox"
           name={name}
-          id="check-box"
           value={value}
         />
         <div className={styles.productExText}>{value}</div>
@@ -81,7 +79,7 @@ export const RenderBrandFilterNameLi = ({
 // 여기서 2개 체크되는거같음
 export const RenderFilterKarlyOnlyLi = ({ name, value }) => {
   // const countMap = useRecoilValue(categoryLengthListSelectorFamily(name));
-  const checkedKarlyOnlyList = useRecoilValue(checkedKarlyOnlyListAtom);
+  const checkedKarlyOnlyList = useRecoilValue(checkedKarlyOnlyListAtom); // []
 
   // console.log(checkedKarlyOnlyList);
 
@@ -93,7 +91,7 @@ export const RenderFilterKarlyOnlyLi = ({ name, value }) => {
           readOnly
           //제어 컴포넌트 => 비제어보다 성능이 안좋음
           // checked={checkedKarlyOnlyList.some(
-          //   (karlyOnly) => karlyOnly === value
+          //   (b) => b === value
           // )}
           checked={
             checkedKarlyOnlyList === 'kalryOnly' ? { kalryOnly: 'true' } : null
@@ -103,8 +101,7 @@ export const RenderFilterKarlyOnlyLi = ({ name, value }) => {
           // defaultValue
           type="checkbox"
           name={name}
-          id="check-box"
-          value={true}
+          value={name}
         />
         <div className={styles.productExText}>{name}</div>
         <span className={styles.ulListCount}>{value}</span>
@@ -131,7 +128,6 @@ export const RenderFilterBenefitsLi = ({
           // defaultValue
           type="checkbox"
           name={name}
-          id="check-box"
           value={value}
         />
         <div className={styles.productExText}>{name}</div>

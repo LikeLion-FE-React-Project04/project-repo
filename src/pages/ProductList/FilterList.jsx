@@ -63,7 +63,7 @@ export const FilterList = () => {
     // console.log(formData3.get('kalryOnly'));
 
     //왜 checkedKarlyOnly에 문자열이 들어갈까... 배열이아니라?
-    setCheckedKarlyOnly(formData3.get('kalryOnly'));
+    setCheckedKarlyOnly(formData3.getAll('kalryOnly'));
     console.log(CheckedKarlyOnly);
 
     // debugger;

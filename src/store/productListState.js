@@ -17,7 +17,7 @@ export const initialProductList = [
     },
     stock: 3,
     category: '샐러드ㆍ간편식',
-    kalryOnly: 'false',
+    kalryOnly: false,
     brand: '대구 반할만떡',
   },
   {
@@ -36,7 +36,7 @@ export const initialProductList = [
     },
     stock: 11,
     category: '샐러드ㆍ간편식',
-    kalryOnly: 'false',
+    kalryOnly: false,
     brand: '풀무원',
   },
   {
@@ -55,7 +55,7 @@ export const initialProductList = [
     },
     stock: 8,
     category: '수산ㆍ해산ㆍ건어물',
-    kalryOnly: 'true',
+    kalryOnly: true,
     brand: '홍대주꾸미',
   },
   {
@@ -74,7 +74,7 @@ export const initialProductList = [
     },
     stock: 2,
     category: '국ㆍ반찬ㆍ메인요리',
-    kalryOnly: 'true',
+    kalryOnly: true,
     brand: '강남면옥',
   },
   {
@@ -93,7 +93,7 @@ export const initialProductList = [
     },
     stock: 13,
     category: '정육ㆍ계란',
-    kalryOnly: 'true',
+    kalryOnly: true,
     brand: "Kalry's",
   },
   {
@@ -113,7 +113,7 @@ export const initialProductList = [
     },
     stock: 13,
     category: '과일ㆍ견과ㆍ쌀',
-    kalryOnly: 'false',
+    kalryOnly: false,
     brand: '유명산지',
   },
   {
@@ -133,7 +133,7 @@ export const initialProductList = [
     },
     stock: 4,
     category: '정육ㆍ계란',
-    kalryOnly: 'true',
+    kalryOnly: true,
     brand: "Kalry's",
   },
   {
@@ -153,7 +153,7 @@ export const initialProductList = [
     },
     stock: 13,
     category: '면ㆍ양념ㆍ오일',
-    kalryOnly: 'true',
+    kalryOnly: true,
     brand: '이연복의 목란',
   },
   {
@@ -173,7 +173,7 @@ export const initialProductList = [
     },
     stock: 4,
     category: '정육ㆍ계란',
-    kalryOnly: 'false',
+    kalryOnly: false,
     brand: '브룩클린688',
   },
   {
@@ -193,7 +193,7 @@ export const initialProductList = [
     },
     stock: 13,
     category: '베이커리ㆍ치즈ㆍ델리',
-    kalryOnly: 'false',
+    kalryOnly: false,
     brand: '포비베이글',
   },
   {
@@ -213,7 +213,7 @@ export const initialProductList = [
     },
     stock: 7,
     category: '간식ㆍ과자ㆍ떡',
-    kalryOnly: 'true',
+    kalryOnly: true,
     brand: '그래놀라 하우스',
   },
   {
@@ -234,7 +234,7 @@ export const initialProductList = [
     },
     stock: 6,
     category: '생수ㆍ음료ㆍ우유ㆍ커피',
-    kalryOnly: 'false',
+    kalryOnly: false,
     brand: '스타벅스',
   },
   {
@@ -254,7 +254,7 @@ export const initialProductList = [
     },
     stock: 13,
     category: '헤어ㆍ바디ㆍ구강',
-    kalryOnly: 'false',
+    kalryOnly: false,
     brand: '켄트',
   },
   {
@@ -274,7 +274,7 @@ export const initialProductList = [
     },
     stock: 13,
     category: '샐러드ㆍ간편식',
-    kalryOnly: 'true',
+    kalryOnly: true,
     brand: 'KF365',
   },
   {
@@ -294,7 +294,7 @@ export const initialProductList = [
     },
     stock: 6,
     category: '샐러드ㆍ간편식',
-    kalryOnly: 'false',
+    kalryOnly: false,
     brand: '스윗밸런스',
   },
 ];
@@ -472,6 +472,9 @@ export const sumTestSelector = selector({
     const renderCategory = get(renderCategorySelector);
     const sumList = [...renderCategory, ...renderBrand];
 
+    console.log(renderBrand);
+    console.log(renderCategory);
+
     const sumFilterList = sumList.filter(
       (arr, index, callback) =>
         index === callback.findIndex((t) => t.id === arr.id)
@@ -559,13 +562,20 @@ export const renderKarlyOnlySelector = selector({
     //칼리가 들어갔을때,  [kallyonly] 가될거고,
     //전체를 순환돌면서 key가 karlyonly인게 있는지 찾기
 
-    const isKalryOnly = (element) => {
-      if (element.checkedKarlyOnlyList === 'true') {
-        return true;
+    const hasKalryOnly = (product) => {
+      const kalryOnlyFound = checkedKarlyOnlyList.some(
+        (item) => item === 'kalryOnly'
+      );
+
+      if (kalryOnlyFound) {
+        return product.kalryOnly;
       }
+
+      return true;
     };
 
-    const karlyOnlyList = products.filter(isKalryOnly);
+    // const karlyOnlyList = products.filter(isKalryOnly);
+    const karlyOnlyList = products.filter(hasKalryOnly);
 
     console.log(karlyOnlyList);
     // console.log(checkedKarlyOnlyList);
