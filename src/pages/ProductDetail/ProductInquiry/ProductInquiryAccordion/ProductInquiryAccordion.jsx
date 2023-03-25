@@ -23,8 +23,7 @@ export default function ProductInquiryHandle({ data }) {
               <div className={styles.handleDivWrapper}>
                 <div className={styles.writingTitle}>{item.title}</div>
                 <div className={styles.writer}>{item.writer}</div>
-                {/* <div className={styles.reportingData}>2023.03.25</div> */}
-                <div className={styles.reportingDate}>{item.date.toDate().toLocalDateString()}</div>
+                <div className={styles.reportingDate}>{item.date.toDate().toLocaleDateString()}</div>
                 <div className={styles.answerStatus}>{(item.state=='pending' ? '답변대기' : '답변완료')}</div>
               </div>
               {/* 패널 */}
