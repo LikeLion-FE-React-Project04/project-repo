@@ -109,7 +109,7 @@ export default function ProductInquiry () {
               <span>패널테스트2</span>
             </div>
           </AccordionItem>
-          {/* { recentData ? <ProductInquiryHandle data={recentData} /> : null } */}
+          { dataState ? <ProductInquiryHandle data={dataState} /> : null }
         </article>
       </section>
     </>
