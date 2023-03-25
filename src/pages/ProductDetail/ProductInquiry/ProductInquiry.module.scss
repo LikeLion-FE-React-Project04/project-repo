@@ -35,7 +35,6 @@
   font-size: 16px;
   line-height: 150%;
   .inquiryTableHead { // 문의테이블 Head부분
-    background-color: lightblue;
     width: var(--container-width);
     display: flex;
     flex-flow: row nowrap;
@@ -65,7 +64,6 @@
 
 /* ---------------------------------- 핸들 부분 --------------------------------- */
 .handleDivWrapper {
-  background-color: pink;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;

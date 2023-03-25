@@ -9,7 +9,7 @@ import { Badge } from '@/components/Badge/Badge.jsx';
 import { Button } from '@/components/Button/Button.jsx';
 import { default as AccordionItem } from '@/components/Accordion/AccordionItem';
 import { default as PageTitle } from '@/components/PageTitle/PageTitle.jsx';
-import { ReactComponent as Lock } from '@/assets/product-detail/ic-lock.svg';
+
 
 import { productDetailModalState } from '@/store/detailModalState.js';
 import { darkFilterState } from '@/store/darkFilterState.js';
@@ -91,25 +91,6 @@ export default function ProductInquiry () {
               </div>
             </div>
           </AccordionItem>
-          <AccordionItem index={2} width="1024px">
-            {/* 핸들 */}
-            <div className={styles.handleDivWrapper}>
-              <div className={styles.writingTitle}>
-                <span>비밀글입니다.</span>
-                {/* <img src={Lock} alt="비밀글 자물쇠 아이콘" style={{marginLeft:'20px'}} /> */}
-                <Lock alt="비밀글 자물쇠 아이콘" style={{marginLeft:'20px'}} />
-              </div>
-              <div className={styles.writer}>김*식</div>
-              <div className={styles.reportingDate}>2022.11.11</div>
-              <div className={styles.answerStatus}>답변대기</div>
-            </div>
-            {/* 패널 */}
-            <div style={{background: 'salmon'}}>
-              <span>패널테스트1</span>
-              <span>패널테스트2</span>
-            </div>
-          </AccordionItem>
-
           {/* 데이터 뿌려주기 */}
           { dataState ? <ProductInquiryAccordion data={dataState} /> : null }
         </article>
