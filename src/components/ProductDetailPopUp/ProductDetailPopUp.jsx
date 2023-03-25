@@ -41,7 +41,8 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
 
   useEffect(() => {
     if (user) {
-      console.log('user dp1', user.displayName);
+      console.log('user', user);
+      console.log('user dpN', user.displayName);
     }
   }, [user]);
 
