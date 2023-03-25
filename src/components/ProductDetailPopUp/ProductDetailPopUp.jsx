@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
@@ -22,6 +22,7 @@ import productImg from "@/assets/product/tangtang/thumbnail.jpg";
 import { darkFilterState } from '@/store/darkFilterState.js';
 import { productLayoutState } from '../../store/detailLayoutState.js';
 
+import { useAuthState } from '@/firebase/auth';
 
 function checkUiType(uiType) {
   switch (uiType) {
@@ -34,7 +35,16 @@ function checkUiType(uiType) {
   }
 }
 
-export function ProductDetailPopUp({uiType='inquiry'}) {
+export function ProductDetailPopUp({uiType='inquiry', writer}) {
+  // 현재 로그인된 사용자의 사용자명 불러오기
+  const { user } = useAuthState();
+
+  useEffect(() => {
+    if (user) {
+      console.log('user dp1', user.displayName);
+    }
+  }, [user]);
+
   // uiType검사
   const { title, ph, handleType, collectionName } = checkUiType(uiType);  
 
@@ -108,7 +118,7 @@ export function ProductDetailPopUp({uiType='inquiry'}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(textStateRef.current.title, textStateRef.current.textarea);
-    addDocument({title: textStateRef.current.title, textarea: textStateRef.current.textarea});
+    addDocument({title: textStateRef.current.title, textarea: textStateRef.current.textarea, writer: user.displayName});
   }
 
   return (
