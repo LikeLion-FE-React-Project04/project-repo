@@ -82,26 +82,16 @@ export default function ProductInquiry () {
               <div className={styles.answerStatus}>-</div>
             </div>
             {/* 패널 */}
-            <div style={{background: 'salmon'}}>
-              <span>패널테스트1</span>
-              <span>패널테스트2</span>
+            <div className={styles.panelDivWrapper}> 
+              <div>
+                안녕하세요. 칼리 입니다.<br />
+                다음과 같은 사유로 인하여 <span>판매(일시)중단</span> 되었음을 안내드립니다. <br />
+                감사합니다.<br />
+                칼리 드림
+              </div>
             </div>
           </AccordionItem>
           <AccordionItem index={2} width="1024px">
-            {/* 핸들 */}
-            <div className={styles.handleDivWrapper}>
-              <div className={styles.writingTitle}>팩이 터져서 왔어요</div>
-              <div className={styles.writer}>김*식</div>
-              <div className={styles.reportingDate}>2022.11.11</div>
-              <div className={styles.answerStatus}>답변대기</div>
-            </div>
-            {/* 패널 */}
-            <div style={{background: 'salmon'}}>
-              <span>패널테스트1</span>
-              <span>패널테스트2</span>
-            </div>
-          </AccordionItem>
-          <AccordionItem index={3} width="1024px">
             {/* 핸들 */}
             <div className={styles.handleDivWrapper}>
               <div className={styles.writingTitle}>
@@ -119,6 +109,8 @@ export default function ProductInquiry () {
               <span>패널테스트2</span>
             </div>
           </AccordionItem>
+
+          {/* 데이터 뿌려주기 */}
           { dataState ? <ProductInquiryAccordion data={dataState} /> : null }
         </article>
       </section>

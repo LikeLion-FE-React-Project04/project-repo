@@ -98,3 +98,15 @@
   color: var(--gray-400);
 }
 
+.panelDivWrapper {
+  background: var(--gray-50);
+  border-bottom: 1px solid var(--gray-100);
+  padding: 20px;
+  font-weight: 600;
+  font-size: 12.003px;
+  line-height: 150%;
+  color: var(--content);
+  span {
+    font-weight: 800;
+  }
+}
