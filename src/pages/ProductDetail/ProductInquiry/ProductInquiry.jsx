@@ -13,7 +13,7 @@ import { ReactComponent as Lock } from '@/assets/product-detail/ic-lock.svg';
 
 import { productDetailModalState } from '@/store/detailModalState.js';
 import { darkFilterState } from '@/store/darkFilterState.js';
-import ProductInquiryHandle from './ProductInquiryHandle/ProductInquiryHandle';
+import ProductInquiryAccordion from './ProductInquiryAccordion/ProductInquiryAccordion';
 import { useEffect } from 'react';
 import { productLayoutState } from '../../../store/detailLayoutState';
 
@@ -109,7 +109,7 @@ export default function ProductInquiry () {
               <span>패널테스트2</span>
             </div>
           </AccordionItem>
-          { dataState ? <ProductInquiryHandle data={dataState} /> : null }
+          { dataState ? <ProductInquiryAccordion data={dataState} /> : null }
         </article>
       </section>
     </>
