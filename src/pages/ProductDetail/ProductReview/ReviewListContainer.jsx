@@ -1,9 +1,27 @@
+import { useEffect, useRef, React } from 'react';
+
+import { ReactDOM } from 'react-dom';
+
 import styles from "./ReviewListContainer.module.scss";
+
+import { useDetailCollection } from './../../../firebase/firestore/useDetailCollection';
+
+import ProductReviewList from "./ProductReviewList/ProductReviewList";
 
 import { Badge } from '@/components/Badge/Badge.jsx';
 import AccordionItem from '@/components/Accordion/AccordionItem';
 
+
 export default function ReviewListContainer() {
+  // 문서를 저장 할 컬렉션 이름 
+  const collectionName = 'reviewData';
+  // 한번 실행시켜 => useEffect가 실행될임
+  const { dataState } = useDetailCollection(collectionName);
+
+  useEffect(() => {
+    console.log("[ProductReview] dataState> ", dataState);
+  }, [dataState]);
+
   return (
     <div>
       <div className={styles.productReviewTotal}>
@@ -186,6 +204,8 @@ export default function ReviewListContainer() {
             <footer className={styles.productInfo}>2022.11.10</footer>
           </article>
         </div>
+
+        {dataState ? <ProductReviewList data={dataState} /> : null}
       </div>
     </div>
   )

@@ -1,19 +1,36 @@
 import { useSetRecoilState } from 'recoil';
 
+import { useEffect } from 'react';
+
+import { productLayoutState } from "../../../store/detailLayoutState";
+
 import styles from "./ReviewTitleContainer.module.scss";
+
+import { useDetailCollection } from './../../../firebase/firestore/useDetailCollection';
 
 import { Button, PageTitle } from '@/components';
 import { productDetailModalState } from '@/store/detailModalState.js';
 import { darkFilterState } from '@/store/darkFilterState.js';
-
+import { useAuthState } from '@/firebase/auth';
 
 export default function ReviewTitleContainer() {
+  // user의 정보 받기
+  const { user } = useAuthState();
+
   const setProductDetailModalState = useSetRecoilState(productDetailModalState);
   const setDarkFilterState = useSetRecoilState(darkFilterState);
 
+  // (추가)uiType
+  const setLayoutState = useSetRecoilState(productLayoutState);
+
   function productModalClickHandler() {
-    setProductDetailModalState(true);
-    setDarkFilterState(true);
+    if (user == null) { // 로그인이 안 된 상태라면? 팝업창을 띄우면 안됨
+      alert("로그인하셔야 본 서비스를 이용하실 수 있습니다.");
+    } else {
+      setProductDetailModalState(true);
+      setDarkFilterState(true);
+      setLayoutState('review');
+    }
   }
 
   return (

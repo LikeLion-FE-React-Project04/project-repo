@@ -1,0 +1,27 @@
+.productReviewList{
+  display: flex;
+  padding: 20px 0 20px 20px;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.purpleBadge{
+  margin: 0 8px 0 8px;
+}
+
+.name{
+  margin-right: 82px;
+}
+
+.productInfo{
+  font-weight: 600;
+  font-size: var(--text-xs);
+  line-height: 150%;
+  color: var(--gray-400);
+}
+
+.productDescription{
+  font-weight: 400;
+  font-size: var(--text-xs);
+  line-height: 160%;
+  margin: 20px 0 20px 0;
+}
