@@ -92,7 +92,7 @@ export const sortByPriceDescAtom = atom({
 
 export const limitAtom = atom({
   key: 'limitAtom',
-  default: 10,
+  default: 12,
 });
 
 export const pageAtom = atom({
