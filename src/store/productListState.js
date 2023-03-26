@@ -307,8 +307,6 @@ export const productListState = atom({
 export const productListFamily = atomFamily({
   key: 'productListFamily',
   default: (id) => initialProductList.find((order) => order.id === id),
-  // default: (order) => initialOrderList.find(({order: orderName}) => orderName === order),
-  // default: (index) => initialOrderList[index],
 });
 
 export const selectedproductId = atom({
