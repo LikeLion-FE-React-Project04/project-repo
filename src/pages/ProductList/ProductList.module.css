@@ -1,0 +1,45 @@
+.container {
+  position: relative;
+  margin-bottom: 100px;
+}
+
+.innerContainer {
+  width: 1050px;
+  margin: 0px auto;
+}
+
+.productCardsWrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: 260px 260px 260px;
+  /* grid-template-rows: 538px 538px;  */
+}
+.productListTitle {
+  margin-top: 80px;
+  margin-bottom: 44px;
+  text-align: center;
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+.product {
+  position: relative;
+  width: 1024px;
+  display: flex;
+  gap: 30px;
+  margin-top: 50px;
+  margin-bottom: 60px;
+}
+
+.productExText {
+  font-size: var(--text-sm);
+}
+
+.sortButtonContainer {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  top: -30px;
+  right: 0;
+  gap: 4px;
+}
