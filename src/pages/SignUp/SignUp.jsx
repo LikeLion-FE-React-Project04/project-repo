@@ -8,7 +8,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import RightArrow from '@/assets/common/ic-right-arrow.svg';
 
 import { useSignUp, useAuthState } from '@/firebase/auth';
-import { useCreateAuthUser } from '../../firebase/firestrore/useCreateAuthUser';
+import { useCreateAuthUser } from '../../firebase/firestore/useCreateAuthUser';
 import { useRef } from 'react';
 
 const initialFormState = {

@@ -6,14 +6,14 @@ import styles from './ProductList.module.css';
 import { FilterList } from './FilterList';
 import { Pagination } from './Pagination';
 
-import { ProductCard } from '@/components/ProductCard/ProductCard';
+import ProductCard from '@/components/ProductCard/ProductCard';
+
 import {
-  categoryListSelectorFamily,
-  renderCategorySelector,
-  sortCategorySelector,
-  sumTestSelector,
+  renderAllFilterListSelector,
   renderKarlyOnlySelector,
-} from '@/store/productListState.js';
+} from '@/pages/ProductList/@recoil/renderState';
+
+import { categoryListSelectorFamily } from '@/pages/ProductList/@recoil/checkState.js';
 
 import {
   SortLowerPriceButton,
@@ -24,7 +24,7 @@ import {
 export const ProductList = () => {
   const productList = useRecoilValue(categoryListSelectorFamily('brand'));
   // const testCategory = useRecoilValue(renderCategorySelector);
-  const testCategory = useRecoilValue(sumTestSelector);
+  const testCategory = useRecoilValue(renderAllFilterListSelector);
   const renderKarlyTest = useRecoilValue(renderKarlyOnlySelector);
 
   console.log(renderKarlyTest);

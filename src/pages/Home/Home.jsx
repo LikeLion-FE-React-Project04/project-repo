@@ -7,6 +7,7 @@ import ProductsCarousel from './Carousel/ProductsCarousel';
 import styles from './Home.module.scss';
 import PageTitle from '../../components/PageTitle/PageTitle';
 import CartModal from '@/components/CartModal/CartModal';
+import CartModalLayout from '../../components/CartModal/CartModalLayout';
 
 function Home() {
   const { isModalOpen, setModalOpen } = useGetCookieEvent();
@@ -28,7 +29,7 @@ function Home() {
         <ProductsCarousel />
       </div>
       {isModalOpen ? <Mainmodal setModalOpen={setModalOpen} /> : null}
-      <CartModal />
+      <CartModalLayout />
     </div>
   );
 }

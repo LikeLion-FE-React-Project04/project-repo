@@ -6,11 +6,12 @@ import styles from './RenderFilterLi.module.css';
 import { checkHook } from './@recoilHook/checkHook';
 
 import {
-  categoryLengthListSelectorFamily,
   checkedCategoryListAtom,
   checkedBrandListAtom,
-  checkedKarlyOnlyListAtom,
-} from '@/store/productListState.js';
+  checkedKalryOnlyListAtom,
+} from '@/pages/ProductList/@recoil/renderState';
+
+import { categoryLengthListSelectorFamily } from '@/pages/ProductList/@recoil/checkState';
 
 //TODO: 클릭했을떄 전송되는 데이터 (예를들자면, {category:샐러드&간편식}) 와
 // 전체 15개의 Local Data를 하나의 Selector Family(혹은 Selector, 왜냐면 브랜드랑 카테고리가 하나의 Selector Family로 묶였으니까) 로 묶은다음,
@@ -79,9 +80,9 @@ export const RenderBrandFilterNameLi = ({
 // 여기서 2개 체크되는거같음
 export const RenderFilterKarlyOnlyLi = ({ name, value }) => {
   // const countMap = useRecoilValue(categoryLengthListSelectorFamily(name));
-  const checkedKarlyOnlyList = useRecoilValue(checkedKarlyOnlyListAtom); // []
+  const checkedKarlyOnlyList = useRecoilValue(checkedKalryOnlyListAtom); // []
 
-  // console.log(checkedKarlyOnlyList);
+  console.log(checkedKarlyOnlyList);
 
   return (
     <>

@@ -9,7 +9,7 @@ import {
   filterAtom,
   productListSelectorFamily,
   productListFamily,
-} from '@/store/productListState.js';
+} from '@/pages/ProductList/@recoil/checkState.js';
 
 //TODO : checkHook -> usecheckhook 수정
 //필터조건만 넣고 뺴는거에 집중

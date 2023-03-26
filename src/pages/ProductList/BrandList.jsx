@@ -14,7 +14,7 @@ import {
   karlyOnlyListSelectorFamily,
   benefitsListSelectorFamily,
   priceFilterListSelectorFamily,
-} from '@/store/productListState.js';
+} from '@/pages/ProductList/@recoil/checkState';
 
 /* -------------------------------- category -------------------------------- */
 export const CategoryList = ({ filterName = '', children }) => {
@@ -71,7 +71,7 @@ export const KalryOnlyList = ({ filterName = '' }) => {
     karlyOnlyListSelectorFamily('kalryOnly')
   );
 
-  console.log(karlyOnlyList);
+  console.log(karlyOnlyList, '이거의 렝쓰가뭐에요?');
 
   return (
     <RenderFilterKarlyOnlyLi name={filterName} value={karlyOnlyList.length} />

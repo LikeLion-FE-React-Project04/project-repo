@@ -1,5 +1,5 @@
 import styles from './FilterList.module.css';
-import { useSetRecoilState, useRecoilState, useResetRecoilState } from 'recoil';
+import { useSetRecoilState, useRecoilState } from 'recoil';
 import { useRef } from 'react';
 
 import { FilterContainer } from './FilterContainer';
@@ -14,8 +14,8 @@ import {
 import {
   checkedCategoryListAtom,
   checkedBrandListAtom,
-  checkedKarlyOnlyListAtom,
-} from '@/store/productListState.js';
+  checkedKalryOnlyListAtom,
+} from '@/pages/ProductList/@recoil/renderState';
 
 import AccordionItem from '@/components/Accordion/AccordionItem';
 
@@ -30,7 +30,7 @@ export const NavMenuUl = ({ children }) => {
 export const FilterList = () => {
   //category form controlled
   const setCheckedCategory = useSetRecoilState(checkedCategoryListAtom);
-  // const setCheckedCategory = useSetRecoilState(sumTestSelector);
+  // const setCheckedCategory = useSetRecoilState(renderAllFilterListSelector);
 
   const formRef = useRef();
   const categoryOnChange = (e) => {
@@ -53,7 +53,7 @@ export const FilterList = () => {
 
   //kalryOnly form cotrolled
   const [CheckedKarlyOnly, setCheckedKarlyOnly] = useRecoilState(
-    checkedKarlyOnlyListAtom
+    checkedKalryOnlyListAtom
   );
   const formRef3 = useRef();
   const karlyOnlyOnChange = (e) => {
@@ -73,9 +73,11 @@ export const FilterList = () => {
   // 초기화
   const setCategoryFilter = useSetRecoilState(checkedCategoryListAtom);
   const setBrandFilter = useSetRecoilState(checkedBrandListAtom);
+  const setKalryOnlyFilter = useSetRecoilState(checkedKalryOnlyListAtom);
   const onClick = () => {
     setCategoryFilter([]);
     setBrandFilter([]);
+    // setKalryOnlyFilter([]);
   };
 
   return (

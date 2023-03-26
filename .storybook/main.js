@@ -1,7 +1,5 @@
 import commonConfig from '../webpack/common';
 
-console.log(commonConfig.module.rules);
-
 const config = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
@@ -16,6 +14,7 @@ const config = {
       },
     },
   ],
+  staticDirs: ['../src'],
   framework: {
     name: '@storybook/react-webpack5',
     options: {},
@@ -24,18 +23,22 @@ const config = {
     builder: '@storybook/builder-webpack5',
   },
   webpackFinal: async (config) => {
-    // console.log(config);
-    return {
+    const customConfig = {
       ...config,
-      // resolve: {
-      //   ...config.resolve,
-      //   // ...commonConfig.resolve,
-      // },
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...config.resolve.alias,
+          ...commonConfig.resolve.alias,
+        },
+      },
       module: {
         ...config.module,
         rules: [...config.module.rules, ...commonConfig.module.rules],
       },
     };
+
+    return customConfig;
   },
   docs: {
     autodocs: 'tag',
