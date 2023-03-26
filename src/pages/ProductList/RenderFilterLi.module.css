@@ -16,11 +16,11 @@
   display: inline-block;
   cursor: pointer;
   appearance: none;
-  background: url('../../assets/icons/Icon/check-box-round.svg') no-repeat 0/18px;
+  background: url('@/assets/cart/ic-checked-false.svg') no-repeat 0/18px;
 }
 
 .navMenuUlList input[type='checkbox']:checked {
-  background: url('../../assets/icons/Icon/checked-box-round.svg') no-repeat 0/18px;
+  background: url('@/assets/cart/ic-checked-true.svg') no-repeat 0/18px;
 }
 
 .ulListCount {
