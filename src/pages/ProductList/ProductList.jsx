@@ -45,16 +45,20 @@ export const ProductList = () => {
   };
 
   //페이지네이션은 적용 o
-  const productCards = testCategory
-    .slice(offset, offset + limit)
-    .map((product, index) => {
-      return (
-        // eslint-disable-next-line react/jsx-key
-        <div key={`product-${index}`} style={{ marginBottom: '100px' }}>
-          <ProductCard product={product} />
-        </div>
-      );
-    });
+  const ProductCards = () => {
+    return (
+      <>
+        {testCategory.slice(offset, offset + limit).map((product, index) => {
+          return (
+            // eslint-disable-next-line react/jsx-key
+            <div key={`product-${index}`} style={{ marginBottom: '100px' }}>
+              <ProductCard product={product} />
+            </div>
+          );
+        })}
+      </>
+    );
+  };
 
   return (
     <>
@@ -73,8 +77,7 @@ export const ProductList = () => {
                 />
                 <SortUpperPriceButton handler={upperPriceSort} />
               </div>
-
-              {productCards}
+              <ProductCards />
             </div>
           </section>
           <Pagination
