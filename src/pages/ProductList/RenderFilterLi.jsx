@@ -82,8 +82,6 @@ export const RenderFilterKarlyOnlyLi = ({ name, value }) => {
   // const countMap = useRecoilValue(categoryLengthListSelectorFamily(name));
   const checkedKarlyOnlyList = useRecoilValue(checkedKalryOnlyListAtom); // []
 
-  console.log(checkedKarlyOnlyList);
-
   return (
     <>
       <label className={styles.inputContainer}>
@@ -95,13 +93,13 @@ export const RenderFilterKarlyOnlyLi = ({ name, value }) => {
           //   (b) => b === value
           // )}
           checked={
-            checkedKarlyOnlyList === 'kalryOnly' ? { kalryOnly: 'true' } : null
+            checkedKarlyOnlyList.length > 0
           }
           //비제어 컴포넌트 => 상태관리를 브라우저에게 맡김(리액트가아니라)
           // defaultChecked={false}
           // defaultValue
-          type="checkbox"
           name={name}
+          type="checkbox"
           value={name}
         />
         <div className={styles.productExText}>{name}</div>

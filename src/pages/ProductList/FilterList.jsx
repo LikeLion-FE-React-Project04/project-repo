@@ -77,7 +77,7 @@ export const FilterList = () => {
   const onClick = () => {
     setCategoryFilter([]);
     setBrandFilter([]);
-    // setKalryOnlyFilter([]);
+    setKalryOnlyFilter([]);
   };
 
   return (
