@@ -11,6 +11,8 @@ import ProductCard from '@/components/ProductCard/ProductCard';
 import {
   renderAllFilterListSelector,
   renderKarlyOnlySelector,
+  limitAtom,
+  offsetSelector,
 } from '@/pages/ProductList/@recoil/renderState';
 
 import { categoryListSelectorFamily } from '@/pages/ProductList/@recoil/checkState.js';
@@ -23,26 +25,12 @@ import {
 
 export const ProductList = () => {
   const productList = useRecoilValue(categoryListSelectorFamily('brand'));
-  // const testCategory = useRecoilValue(renderCategorySelector);
   const renderAllFilterList = useRecoilValue(renderAllFilterListSelector);
   const renderKarlyTest = useRecoilValue(renderKarlyOnlySelector);
+  const limit = useRecoilValue(limitAtom);
+  const offset = useRecoilValue(offsetSelector);
 
   console.log(renderKarlyTest);
-
-  // const [card, setCard] = useRecoilState(renderCategorySelector);
-  const [card, setCard] = useState(renderAllFilterList);
-  const [limit] = useState(10);
-  const [page, setPage] = useState(1);
-  const offset = (page - 1) * limit;
-
-  //sort 기능 안먹히는 이슈발생 (renderCategorySelector를가져올떄)
-  // Recoil의 set을 써야할거같은데..?
-  const upperPriceSort = () => {
-    let upperPriceSortCard = [...card];
-
-    upperPriceSortCard.sort((a, b) => b.price - a.price);
-    setCard(upperPriceSortCard);
-  };
 
   //페이지네이션은 적용 o
   const ProductCards = () => {
@@ -50,14 +38,16 @@ export const ProductList = () => {
 
     return (
       <>
-        {renderAllFilterList.slice(offset, offset + limit).map((product, index) => {
-          return (
-            // eslint-disable-next-line react/jsx-key
-            <div key={`product-${index}`} style={{ marginBottom: '100px' }}>
-              <ProductCard product={product} />
-            </div>
-          );
-        })}
+        {renderAllFilterList
+          .slice(offset, offset + limit)
+          .map((product, index) => {
+            return (
+              // eslint-disable-next-line react/jsx-key
+              <div key={`product-${index}`} style={{ marginBottom: '100px' }}>
+                <ProductCard product={product} />
+              </div>
+            );
+          })}
       </>
     );
   };
@@ -74,20 +64,13 @@ export const ProductList = () => {
                 <DummyButtons text={'신상품순'} />
                 <DummyButtons text={'판매량순'} />
                 <DummyButtons text={'혜택순'} />
-                <SortLowerPriceButton
-                // handler={lowerPriceSort}
-                />
-                <SortUpperPriceButton handler={upperPriceSort} />
+                <SortLowerPriceButton />
+                <SortUpperPriceButton />
               </div>
               <ProductCards />
             </div>
           </section>
-          <Pagination
-            limit={limit}
-            page={page}
-            setPage={setPage}
-            total={productList.length}
-          />
+          <Pagination />
         </div>
       </div>
     </>

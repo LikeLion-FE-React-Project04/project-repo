@@ -1,7 +1,26 @@
 import styles from './Pagination.module.css';
 
-export const Pagination = ({ total, limit, page, setPage }) => {
-  const numPages = Math.ceil(total / limit);
+import {
+  renderAllFilterListSelector,
+  limitAtom,
+  pageAtom,
+} from '@/pages/ProductList/@recoil/renderState';
+
+import { useRecoilValue, useRecoilState } from 'recoil';
+import { productListState } from '../../store/productListState';
+
+export const Pagination = () => {
+  const renderAllFilterList = useRecoilValue(renderAllFilterListSelector);
+  // const renderAllFilterList = useRecoilValue();
+
+  // productListState
+  const limit = useRecoilValue(limitAtom);
+  const [page, setPage] = useRecoilState(pageAtom);
+  // total = 15개
+
+  console.log(renderAllFilterList, 'renderAllFilterList');
+
+  const numPages = Math.ceil(renderAllFilterList.length / limit);
 
   return (
     <>

@@ -1,32 +1,36 @@
+import { useSetRecoilState } from 'recoil';
+
 import styles from './SortButton.module.css';
+import { sortByPriceDescAtom } from './@recoil/renderState';
 
 const onSubmit = (e) => {
   e.preventDefault;
 };
 
-export const SortLowerPriceButton = ({ handler }) => {
+export const SortLowerPriceButton = () => {
+  const setDesc = useSetRecoilState(sortByPriceDescAtom);
+
   return (
     <button
       className={styles.sortLowerPriceButton}
       type="button"
-      // onSubmit={onSubmit}
-      onClick={handler}
+      onClick={() => setDesc(false)}
     >
       낮은가격순
     </button>
   );
 };
-export const SortUpperPriceButton = ({ handler }) => {
+export const SortUpperPriceButton = () => {
+  const setDesc = useSetRecoilState(sortByPriceDescAtom);
+
   return (
-    <form onSubmit={onSubmit} onChange={handler}>
-      <button
-        // type="button"
-        className={styles.sortUpperPriceButton}
-        // onChange={handler}
-      >
-        높은가격순
-      </button>
-    </form>
+    <button
+      className={styles.sortUpperPriceButton}
+      type="button"
+      onClick={() => setDesc(true)}
+    >
+      높은가격순
+    </button>
   );
 };
 
