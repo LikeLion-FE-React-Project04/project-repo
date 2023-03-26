@@ -24,13 +24,13 @@ import {
 export const ProductList = () => {
   const productList = useRecoilValue(categoryListSelectorFamily('brand'));
   // const testCategory = useRecoilValue(renderCategorySelector);
-  const testCategory = useRecoilValue(renderAllFilterListSelector);
+  const renderAllFilterList = useRecoilValue(renderAllFilterListSelector);
   const renderKarlyTest = useRecoilValue(renderKarlyOnlySelector);
 
   console.log(renderKarlyTest);
 
   // const [card, setCard] = useRecoilState(renderCategorySelector);
-  const [card, setCard] = useState(testCategory);
+  const [card, setCard] = useState(renderAllFilterList);
   const [limit] = useState(10);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
@@ -46,9 +46,11 @@ export const ProductList = () => {
 
   //페이지네이션은 적용 o
   const ProductCards = () => {
+    console.log('renderAllFilterList', renderAllFilterList);
+
     return (
       <>
-        {testCategory.slice(offset, offset + limit).map((product, index) => {
+        {renderAllFilterList.slice(offset, offset + limit).map((product, index) => {
           return (
             // eslint-disable-next-line react/jsx-key
             <div key={`product-${index}`} style={{ marginBottom: '100px' }}>
