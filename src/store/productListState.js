@@ -470,28 +470,38 @@ export const sumTestSelector = selector({
     const products = get(productListState);
     const renderBrand = get(renderBrandSelector);
     const renderCategory = get(renderCategorySelector);
-    const sumList = [...renderCategory, ...renderBrand];
+    // const sumList = [...renderCategory, ...renderBrand];
 
-    console.log(renderBrand);
-    console.log(renderCategory);
+    console.log(renderBrand, '랜더브랜드');
+    console.log(renderCategory, '랜더카테고리');
 
-    const sumFilterList = sumList.filter(
-      (arr, index, callback) =>
-        index === callback.findIndex((t) => t.id === arr.id)
+    // const sumFilterList = products.filter((it) => renderCategory.includes(it));
+    // const sumFilterList1 = products.filter((it) => renderBrand.includes(it));
+    // const testSumFilter = sumFilterList && sumFilterList1;
+
+    const testFilterList = renderCategory.filter((x) =>
+      renderBrand.includes(x)
     );
 
-    if (sumFilterList.length <= 0) {
+    // console.log(testSumFilter, '테스트썸필터');
+    console.log(testFilterList, '여길봐 이거봐야되 테스트 두개 중복체크');
+    console.log(renderCategory[0], '카테고리0번쨰인덱스');
+    console.log(renderBrand[0], '브랜드0번쨰인덱스');
+
+    if (renderCategory.length <= 0 && renderBrand <= 0) {
       return products;
     }
 
-    console.log(sumFilterList);
+    if (renderCategory.length > 0 && renderBrand <= 0) {
+      return renderCategory;
+    }
 
-    // debugger;
-    // console.log(renderCategory);
-    // console.log(renderBrand);
-    // console.log(sumList);
+    if (renderCategory.length <= 0 && renderBrand.length > 0) {
+      return renderBrand;
+    }
 
-    return sumFilterList;
+    return testFilterList;
+    // && sumFilterList1;
   },
 });
 
