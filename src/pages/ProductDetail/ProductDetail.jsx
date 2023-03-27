@@ -1,21 +1,27 @@
 import { useLoaderData, useParams, Link } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useRecoilState } from 'recoil';
 
 import { ProductDetailPopUp } from '../../components/ProductDetailPopUp/ProductDetailPopUp';
 import ProductDetailPopUpLayout from '../../components/ProductDetailPopUp/ProductDetailPopUpLayout';
+
 import styles from './ProductDetail.module.scss';
 
 import ProductInquiry from './Productinquiry/Productinquiry';
 import ProductReview from './ProductReview/ProductReview';
 
-import { productListFamily } from '@/store/productListState.js';
 import ProductThumbnail from './ProductThumbnail/ProductThumbnail';
+import { productNameAtom } from './ProductReview/@recoil/renderState';
+
+import { productListFamily } from '@/store/productListState.js';
 
 function ProductDetail() {
   const { productId } = useParams();
   const product = useRecoilValue(productListFamily(productId));
 
+  const [productName, setProductName] = useRecoilState(productNameAtom)
+
+  setProductName(product.name);
 
   return (
     <div className={styles.ProductDetailWrapper}>
