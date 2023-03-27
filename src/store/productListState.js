@@ -1,6 +1,6 @@
-import { atom, atomFamily /* selector */ } from 'recoil';
+import { atom, atomFamily, selector, selectorFamily } from 'recoil';
 
-const initialProductList = [
+export const initialProductList = [
   {
     id: 'product-rksk',
     name: '[대구 반할만떡] 유부호만두',
@@ -17,7 +17,7 @@ const initialProductList = [
     },
     stock: 3,
     category: '샐러드ㆍ간편식',
-    kalryOnly: 'false',
+    kalryOnly: false,
     brand: '대구 반할만떡',
   },
   {
@@ -36,7 +36,7 @@ const initialProductList = [
     },
     stock: 11,
     category: '샐러드ㆍ간편식',
-    kalryOnly: 'false',
+    kalryOnly: false,
     brand: '풀무원',
   },
   {
@@ -55,7 +55,7 @@ const initialProductList = [
     },
     stock: 8,
     category: '수산ㆍ해산ㆍ건어물',
-    kalryOnly: 'true',
+    kalryOnly: true,
     brand: '홍대주꾸미',
   },
   {
@@ -74,7 +74,7 @@ const initialProductList = [
     },
     stock: 2,
     category: '국ㆍ반찬ㆍ메인요리',
-    kalryOnly: 'true',
+    kalryOnly: true,
     brand: '강남면옥',
   },
   {
@@ -93,7 +93,7 @@ const initialProductList = [
     },
     stock: 13,
     category: '정육ㆍ계란',
-    kalryOnly: 'true',
+    kalryOnly: true,
     brand: "Kalry's",
   },
   {
@@ -113,7 +113,7 @@ const initialProductList = [
     },
     stock: 13,
     category: '과일ㆍ견과ㆍ쌀',
-    kalryOnly: 'false',
+    kalryOnly: false,
     brand: '유명산지',
   },
   {
@@ -133,7 +133,7 @@ const initialProductList = [
     },
     stock: 4,
     category: '정육ㆍ계란',
-    kalryOnly: 'true',
+    kalryOnly: true,
     brand: "Kalry's",
   },
   {
@@ -153,7 +153,7 @@ const initialProductList = [
     },
     stock: 13,
     category: '면ㆍ양념ㆍ오일',
-    kalryOnly: 'true',
+    kalryOnly: true,
     brand: '이연복의 목란',
   },
   {
@@ -161,8 +161,8 @@ const initialProductList = [
     name: '[브룩클린688] 호주산 목초육 치마살 구이용 300g (냉장)',
     description: '100g 당 5166원',
     price: 15500,
-    saleRatio: 0.15,
-    salePrice: 13175,
+    saleRatio: 0.1,
+    salePrice: 13975,
     image: {
       thumbnail:
         'https://img-cf.kurly.com/cdn-cgi/image/quality=85,width=676/shop/data/goods/165303917855l0.jpeg',
@@ -173,7 +173,7 @@ const initialProductList = [
     },
     stock: 4,
     category: '정육ㆍ계란',
-    kalryOnly: 'false',
+    kalryOnly: false,
     brand: '브룩클린688',
   },
   {
@@ -193,7 +193,7 @@ const initialProductList = [
     },
     stock: 13,
     category: '베이커리ㆍ치즈ㆍ델리',
-    kalryOnly: 'false',
+    kalryOnly: false,
     brand: '포비베이글',
   },
   {
@@ -213,7 +213,7 @@ const initialProductList = [
     },
     stock: 7,
     category: '간식ㆍ과자ㆍ떡',
-    kalryOnly: 'true',
+    kalryOnly: true,
     brand: '그래놀라 하우스',
   },
   {
@@ -234,7 +234,7 @@ const initialProductList = [
     },
     stock: 6,
     category: '생수ㆍ음료ㆍ우유ㆍ커피',
-    kalryOnly: 'false',
+    kalryOnly: false,
     brand: '스타벅스',
   },
   {
@@ -242,8 +242,8 @@ const initialProductList = [
     name: '[켄트] 콤팩트 초극세모 칫솔 4개입 세트',
     description: '작은 헤드로 구석구석 개운하게',
     price: 17200,
-    saleRatio: 0.42,
-    salePrice: 9900,
+    saleRatio: 0,
+    salePrice: 0,
     image: {
       thumbnail:
         'https://img-cf.kurly.com/cdn-cgi/image/quality=85,width=676/shop/data/goods/1655468290167l0.jpeg',
@@ -254,7 +254,7 @@ const initialProductList = [
     },
     stock: 13,
     category: '헤어ㆍ바디ㆍ구강',
-    kalryOnly: 'false',
+    kalryOnly: false,
     brand: '켄트',
   },
   {
@@ -274,7 +274,7 @@ const initialProductList = [
     },
     stock: 13,
     category: '샐러드ㆍ간편식',
-    kalryOnly: 'true',
+    kalryOnly: true,
     brand: 'KF365',
   },
   {
@@ -294,7 +294,7 @@ const initialProductList = [
     },
     stock: 6,
     category: '샐러드ㆍ간편식',
-    kalryOnly: 'false',
+    kalryOnly: false,
     brand: '스윗밸런스',
   },
 ];
@@ -307,8 +307,6 @@ export const productListState = atom({
 export const productListFamily = atomFamily({
   key: 'productListFamily',
   default: (id) => initialProductList.find((order) => order.id === id),
-  // default: (order) => initialOrderList.find(({order: orderName}) => orderName === order),
-  // default: (index) => initialOrderList[index],
 });
 
 export const selectedproductId = atom({

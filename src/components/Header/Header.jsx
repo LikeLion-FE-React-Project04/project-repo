@@ -18,7 +18,12 @@ function Header() {
           <Member />
           <div className={styles.headerMain}>
             <HeaderLogoContainer />
-            <SearchInput />
+            <div
+              style={{ paddingRight: '100px' }}
+              // className={s}
+            >
+              <SearchInput />
+            </div>
             <HeaderIcon />
           </div>
           <HeaderNav />

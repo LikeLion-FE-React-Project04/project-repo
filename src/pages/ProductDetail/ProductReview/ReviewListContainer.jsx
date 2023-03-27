@@ -1,9 +1,27 @@
+import { useEffect, useRef, React } from 'react';
+
+import { ReactDOM } from 'react-dom';
+
 import styles from "./ReviewListContainer.module.scss";
+
+import { useDetailCollection } from './../../../firebase/firestore/useDetailCollection';
+
+import ProductReviewList from "./ProductReviewList/ProductReviewList";
 
 import { Badge } from '@/components/Badge/Badge.jsx';
 import AccordionItem from '@/components/Accordion/AccordionItem';
 
+
 export default function ReviewListContainer() {
+  // 문서를 저장 할 컬렉션 이름 
+  const collectionName = 'reviewData';
+  // 한번 실행시켜 => useEffect가 실행될임
+  const { dataState } = useDetailCollection(collectionName);
+
+  useEffect(() => {
+    console.log("[ProductReview] dataState> ", dataState);
+  }, [dataState]);
+
   return (
     <div>
       <div className={styles.productReviewTotal}>
@@ -173,19 +191,7 @@ export default function ReviewListContainer() {
           <div className={styles.accordionLine} />
         </AccordionItem>
 
-        <div className={styles.productReviewList}>
-          <div>
-            <Badge uiType='bestBadge'>베스트</Badge>
-            <Badge className={styles.purpleBadge} uiType='purpleBadge'>퍼플</Badge>
-            <span className={styles.name}>김*진</span>
-          </div>
-
-          <article>
-            <div className={styles.productInfo}>[풀무원] 탱탱쫄면 (4개입)</div>
-            <p className={styles.productDescription}>너무 맛있어여~ 면이 쫄깃하고 양념도 짱맛나요!!</p>
-            <footer className={styles.productInfo}>2022.11.10</footer>
-          </article>
-        </div>
+        {dataState ? <ProductReviewList data={dataState} /> : null}
       </div>
     </div>
   )

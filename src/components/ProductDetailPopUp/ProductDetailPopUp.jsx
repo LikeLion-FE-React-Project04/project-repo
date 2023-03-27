@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
@@ -20,7 +20,9 @@ import { default as PageTitle } from '@/components/PageTitle/PageTitle.jsx'
 import productImg from "@/assets/product/tangtang/thumbnail.jpg";
 
 import { darkFilterState } from '@/store/darkFilterState.js';
+import { productLayoutState } from '../../store/detailLayoutState.js';
 
+import { useAuthState } from '@/firebase/auth';
 
 function checkUiType(uiType) {
   switch (uiType) {
@@ -33,7 +35,17 @@ function checkUiType(uiType) {
   }
 }
 
-export function ProductDetailPopUp({uiType='inquiry'}) {
+export function ProductDetailPopUp({uiType='inquiry', writer}) {
+  // 현재 로그인된 사용자의 사용자명 불러오기
+  const { user } = useAuthState();
+
+  useEffect(() => {
+    if (user) {
+      console.log('user', user);
+      console.log('user dpN', user.displayName);
+    }
+  }, [user]);
+
   // uiType검사
   const { title, ph, handleType, collectionName } = checkUiType(uiType);  
 
@@ -69,6 +81,9 @@ export function ProductDetailPopUp({uiType='inquiry'}) {
   // textarea의 글자수를 관리하는 state
   const [inputCount, setInputCount] = useState(0);
   
+  // secret의 상태를 관리하는 state
+  const [isSecret, setIsSecret] = useState(false);
+
   // div태그(.textAreaWrap)을 클릭하면, 발생하는 이벤트
   function handlePlaceholder() { 
     setIsActiveP(false); // placeholder는 사라져야 함. Why? 입력을 받아야되니..
@@ -97,7 +112,7 @@ export function ProductDetailPopUp({uiType='inquiry'}) {
     console.log('제목의 current값을 바꾸고 있습니다');
   }
 
-  // 사용자가 '취소'또는 'X'버튼을 클릭했을 때 발생하는 이트
+  // 사용자가 '취소'또는 'X'버튼을 클릭했을 때 발생하는 이벤트
   const handleCancelBtnClick = () => {
     setIsVisible(false); // 모달창을 띄우지 않는다
     setDarkFilter(false); // 다크 필터를 끈다
@@ -107,7 +122,22 @@ export function ProductDetailPopUp({uiType='inquiry'}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(textStateRef.current.title, textStateRef.current.textarea);
-    addDocument({title: textStateRef.current.title, textarea: textStateRef.current.textarea});
+    let deliverArr = {
+      title: textStateRef.current.title, 
+      textarea: textStateRef.current.textarea, 
+      writer: user.displayName
+    };
+
+    // secret 관련
+    if(uiType == 'inquiry') {
+      deliverArr = {
+        title: textStateRef.current.title, 
+        textarea: textStateRef.current.textarea, 
+        writer: user.displayName, 
+        isSecret: isSecret,
+      };
+    }
+    addDocument(deliverArr);
   }
 
   return (
@@ -138,7 +168,7 @@ export function ProductDetailPopUp({uiType='inquiry'}) {
             </form>
           </div>
           <div className={styles.isSecret}>
-            {(uiType=='inquiry') ? <Secret/> : null}
+            {(uiType=='inquiry') ? <Secret isSecret={isSecret} setIsSecret={setIsSecret} /> : null}
           </div>
           <div className={styles.popUpBtnWrapper}>
             <button className={styles.cancelBtn} onClick={handleCancelBtnClick}>취소</button>

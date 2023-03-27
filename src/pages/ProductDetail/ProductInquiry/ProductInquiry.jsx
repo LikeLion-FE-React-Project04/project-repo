@@ -1,6 +1,7 @@
 import { useSetRecoilState } from 'recoil';
 
 // import classes from '../../../styles/main.module.css';
+import { useDetailCollection } from '../../../firebase/firestore/useDetailCollection';
 
 import styles from './ProductInquiry.module.scss';
 
@@ -8,18 +9,45 @@ import { Badge } from '@/components/Badge/Badge.jsx';
 import { Button } from '@/components/Button/Button.jsx';
 import { default as AccordionItem } from '@/components/Accordion/AccordionItem';
 import { default as PageTitle } from '@/components/PageTitle/PageTitle.jsx';
-import { ReactComponent as Lock } from '@/assets/product-detail/ic-lock.svg';
+
 
 import { productDetailModalState } from '@/store/detailModalState.js';
 import { darkFilterState } from '@/store/darkFilterState.js';
+import ProductInquiryAccordion from './ProductInquiryAccordion/ProductInquiryAccordion';
+import { useEffect } from 'react';
+import { productLayoutState } from '../../../store/detailLayoutState';
+import { useAuthState } from '@/firebase/auth';
 
 export default function ProductInquiry () {
+  // user의 정보 받기
+  const { user } = useAuthState();
+
   const setProductDetailModalState = useSetRecoilState(productDetailModalState);
   const setDarkFilterState = useSetRecoilState(darkFilterState);
 
+  // (추가)uiType
+  const setLayoutState = useSetRecoilState(productLayoutState);
+
+  // 문서를 저장 할 컬렉션 이름 
+  const collectionName = 'inquiryData';
+  // 한번 실행시켜 => useEffect가 실행될임
+  const { dataState } = useDetailCollection(collectionName);
+
+  useEffect(() => {
+    console.log("[ProductInquiry] dataState: ", dataState);
+  }, [dataState]);
+
   function productModalClickHandler() {
-    setProductDetailModalState(true);
-    setDarkFilterState(true);
+    console.log("user출력:", user);
+    if(user==null) { // 로그인이 안 된 상태라면? 팝업창을 띄우면 안됨
+      alert("로그인하셔야 본 서비스를 이용하실 수 있습니다.");
+    }
+    else {
+      setProductDetailModalState(true);
+      setDarkFilterState(true);
+      // 추가
+      setLayoutState('inquiry');
+    }
   }
 
   return (
@@ -54,47 +82,21 @@ export default function ProductInquiry () {
               <div className={styles.answerStatus}>-</div>
             </div>
             {/* 패널 */}
-            <div style={{background: 'salmon'}}>
-              <span>패널테스트1</span>
-              <span>패널테스트2</span>
-            </div>
-          </AccordionItem>
-          <AccordionItem index={2} width="1024px">
-            {/* 핸들 */}
-            <div className={styles.handleDivWrapper}>
-              <div className={styles.writingTitle}>팩이 터져서 왔어요</div>
-              <div className={styles.writer}>김*식</div>
-              <div className={styles.reportingDate}>2022.11.11</div>
-              <div className={styles.answerStatus}>답변대기</div>
-            </div>
-            {/* 패널 */}
-            <div style={{background: 'salmon'}}>
-              <span>패널테스트1</span>
-              <span>패널테스트2</span>
-            </div>
-          </AccordionItem>
-          <AccordionItem index={3} width="1024px">
-            {/* 핸들 */}
-            <div className={styles.handleDivWrapper}>
-              <div className={styles.writingTitle}>
-                <span>비밀글입니다.</span>
-                <Lock alt="비밀글 자물쇠 아이콘" style={{marginLeft:'20px'}} />
+            <div className={styles.panelDivWrapper}> 
+              <div>
+                안녕하세요. 칼리 입니다.<br />
+                다음과 같은 사유로 인하여 <span>판매(일시)중단</span> 되었음을 안내드립니다. <br />
+                감사합니다.<br />
+                칼리 드림
               </div>
-              <div className={styles.writer}>김*식</div>
-              <div className={styles.reportingDate}>2022.11.11</div>
-              <div className={styles.answerStatus}>답변대기</div>
-            </div>
-            {/* 패널 */}
-            <div style={{background: 'salmon'}}>
-              <span>패널테스트1</span>
-              <span>패널테스트2</span>
             </div>
           </AccordionItem>
+          {/* 데이터 뿌려주기 */}
+          { dataState ? <ProductInquiryAccordion data={dataState} /> : null }
         </article>
       </section>
     </>
   );
-
 };
 
 

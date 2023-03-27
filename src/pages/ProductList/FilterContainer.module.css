@@ -1,0 +1,26 @@
+.productListNavFilter {
+  position: sticky;
+  top: 0px;
+  display: flex;
+  z-index: 100;
+  background-color: var(--white);
+  justify-content: space-between;
+  align-items: center;
+  padding: 1px 6px 1.25rem 6px;
+  border-bottom: 1px solid var(--gray-100);
+  line-height: 20px;
+}
+
+.navFillterText {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--content);
+}
+
+.navFilterButton {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--gray-300);
+  background: transparent;
+  border: none;
+}
