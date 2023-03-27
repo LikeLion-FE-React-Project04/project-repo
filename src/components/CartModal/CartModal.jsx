@@ -20,6 +20,7 @@ import { useId } from 'react';
 import { countState } from '@/store/CounterState.js';
 import { useEffect } from 'react';
 import EarnPointsMark from './EarnPointsMark';
+import { saveCartData } from '../../utils';
 
 function CartModal() {
   const productId = useRecoilValue(selectedproductId);
@@ -36,7 +37,7 @@ function CartModal() {
   };
 
   const handleCartBtnClick = () => {
-    saveCartData(product.id, count[product.id]);
+    saveCartData(product.id, count[product.id], cartData, setCartData);
     setIsVisible(false);
     setDarkFilter(false);
     console.log('cartData', cartData);
@@ -48,31 +49,6 @@ function CartModal() {
       [product.id]: 1,
     });
   }, []);
-
-  function saveCartData(id, count) {
-    let cartItems = [...cartData];
-    let cartItemIndex;
-
-    cartItemIndex = cartItems.findIndex((item) => item.productId == id);
-    console.log('cartItemIndex', cartItemIndex);
-    if (cartItemIndex == -1) {
-      console.log(`못찾음 ${cartItemIndex}`);
-      cartItems.push({ productId: id, quantity: count });
-      setCartData(cartItems);
-      return;
-    } else {
-      const addCount = cartItems[cartItemIndex].quantity + count;
-      // console.log(typeof cartItems[cartItemIndex].quantity);
-
-      cartItems[cartItemIndex] = {
-        ...cartItems[cartItemIndex],
-        quantity: addCount,
-      };
-      setCartData(cartItems);
-
-      return;
-    }
-  }
 
   return (
     <div className={styles.cartModal}>
