@@ -1,12 +1,22 @@
+import { useRecoilValue } from "recoil";
+
 import styles from "./ProductReviewList.module.scss";
 
 import { Badge } from '@/components/Badge/Badge.jsx';
 
+import {
+  reviewLimitAtom,
+  offsetSelector,
+} from '@/pages/ProductDetail/ProductReview/@recoil/renderState';
+
 export default function ProductReviewList({ data }) {
+  const limit = useRecoilValue(reviewLimitAtom);
+  const offset = useRecoilValue(offsetSelector);
+
   return (
     <>
       {
-        data.map((item, index) => {
+        data.slice(offset, offset + limit).map((item, index) => {
           return (
             // eslint-disable-next-line react/jsx-key
             <div className={styles.productReviewList}>
