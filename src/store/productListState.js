@@ -9,10 +9,10 @@ export const initialProductList = [
     saleRatio: 0.24,
     salePrice: 5244,
     image: {
-      thumbnail: 'assets/product/ubuho/thumbnail.jpg',
-      view: 'ubuho/detail-view.jpg',
-      banner: 'ubuho/detail-banner.jpg',
-      info: 'ubuho/detail-info.jpg',
+      thumbnail: '/assets/product/ubuho/thumbnail.jpg',
+      view: '/assets/product/ubuho/detail-view.jpg',
+      banner: '/assets/product/ubuho/detail-banner.jpg',
+      info: '/assets/product/ubuho/detail-info.jpg',
       alt: '유부호 만두',
     },
     stock: 3,
@@ -29,10 +29,10 @@ export const initialProductList = [
     saleRatio: 0,
     salePrice: 0,
     image: {
-      thumbnail: 'assets/product/tangtang/thumbnail.jpg',
-      view: 'tangtang/detail-view.jpg',
-      banner: 'tangtang/detail-banner.jpg',
-      info: 'tangtang/detail-info.jpg',
+      thumbnail: '/assets/product/tangtang/thumbnail.jpg',
+      view: '/assets/product/tangtang/detail-view.jpg',
+      banner: '/assets/product/tangtang/detail-banner.jpg',
+      info: '/assets/product/tangtang/detail-info.jpg',
       alt: '풀무원 탱탱쫄면',
     },
     stock: 11,
@@ -49,10 +49,10 @@ export const initialProductList = [
     saleRatio: 0.13,
     salePrice: 6800,
     image: {
-      thumbnail: 'assets/product/jukkumi/thumbnail.jpg',
-      view: 'jukkumi/detail-view.jpg',
-      banner: 'jukkumi/detail-banner.jpg',
-      info: 'jukkumi/detail-info.jpg',
+      thumbnail: '/assets/product/jukkumi/thumbnail.jpg',
+      view: '/assets/product/jukkumi/detail-view.jpg',
+      banner: '/assets/product/jukkumi/detail-banner.jpg',
+      info: '/assets/product/jukkumi/detail-info.jpg',
       alt: '홍대 주꾸미',
     },
     stock: 8,
@@ -69,10 +69,10 @@ export const initialProductList = [
     saleRatio: 0,
     salePrice: 0,
     image: {
-      thumbnail: 'assets/product/kangnam/thumbnail.jpg',
-      view: 'kangnam/detail-view.jpg',
-      banner: 'kangnam/detail-banner.jpg',
-      info: 'kangnam/detail-info.jpg',
+      thumbnail: '/assets/product/kangnam/thumbnail.jpg',
+      view: '/assets/product/kangnam/detail-view.jpg',
+      banner: '/assets/product/kangnam/detail-banner.jpg',
+      info: '/assets/product/kangnam/detail-info.jpg',
       alt: '강남면옥 소갈비찜',
     },
     stock: 2,
@@ -89,17 +89,17 @@ export const initialProductList = [
     saleRatio: 0.25,
     salePrice: 3375,
     image: {
-      thumbnail: 'assets/product/bacon/thumbnail.jpg',
-      view: 'bacon/detail-view.jpg',
-      banner: 'bacon/detail_banner.jpg',
-      info: 'bacon/detail_info.jpg',
+      thumbnail: '/assets/product/bacon/thumbnail.jpg',
+      view: '/assets/product/bacon/detail-view.jpg',
+      banner: '/assets/product/bacon/detail_banner.jpg',
+      info: '/assets/product/bacon/detail_info.jpg',
       alt: '칼리 한돈 삼겹 베이컨',
-      storageType: 'cold',
     },
     stock: 13,
     category: '정육ㆍ계란',
     kalryOnly: true,
     brand: "Kalry's",
+    storageType: 'cold',
   },
   {
     id: 'product-aaaa',
@@ -322,7 +322,15 @@ export const productListState = atom({
 
 export const productListFamily = atomFamily({
   key: 'productListFamily',
-  default: (id) => initialProductList.find((order) => order.id === id),
+  default: (id) => {
+    console.log('패밀리작동');
+
+    const t = initialProductList.find((order) => order.id === id);
+
+    console.log('패밀리작동: ', t);
+
+    return t;
+  },
 });
 
 export const selectedproductId = atom({
