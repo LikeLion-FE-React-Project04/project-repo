@@ -199,7 +199,7 @@
             border-style: solid;
             background-color: rgb(250, 250, 250);
 
-            a{
+            button{
                 display: flex;
                 flex: 1 1 0%;
                 -webkit-box-pack: center;
@@ -210,6 +210,8 @@
                 font-size: 16px;
                 font-weight: 500;
                 color: rgb(102, 102, 102);
+                background: transparent;
+                border: none;
                 
                 span{
                     margin-left: 4px;
@@ -219,10 +221,11 @@
                     line-height: 16px; 
                 }
 
-                .Active{
+                
+            }
+            .Active{
                     background-color: var(--white);
                 }
-            }
         }
     }
 

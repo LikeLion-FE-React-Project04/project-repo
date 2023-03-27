@@ -147,28 +147,28 @@ function ProductThumbnail({ product }) {
       <section className={styles.ProductDetail}>
         <ul>
           <li>
-            <a href="" className={styles.Active}>
+            <button href="" className={styles.Active}>
               상품설명
-            </a>
+            </button>
           </li>
           <li>
-            <a href="">상세정보</a>
+            <button href="">상세정보</button>
           </li>
           <li>
-            <a href="">
+            <button href="">
               후기 <span>(1,000)</span>
-            </a>
+            </button>
           </li>
           <li>
-            <a href="">문의</a>
+            <button href="">문의</button>
           </li>
         </ul>
         <div className={styles.ProductDetailInner}>
           <div className={styles.GoodsIntro}>
             <img src={product.image.banner} alt="탱탱 쫄면" />
             <p className={styles.GoodsTitle}>
-              <span>튀기지 않아 부담 없는 매콤함</span>
-              [풀무원] 탱탱쫄면
+              <span>{product.description}</span>
+              {product.name}
             </p>
             <p className={styles.GoodsDescription}>
               쫄면의 진가는 매콤새콤한 양념과 탱탱한 면발에서 찾을 수 있지요.
