@@ -10,7 +10,7 @@ import {
 } from 'react-router-dom';
 import '@/styles/main.module.css';
 
-import { loader as productDetailLoader } from '@/pages/ProductDetail/ProductDetail.jsx';
+// import { loader as productDetailLoader } from '@/pages/ProductDetail/ProductDetail.jsx';
 
 const Layout = lazy(() => import('@/pages/Layout/Layout'));
 const Home = lazy(() => import('@/pages/Home/Home'));
