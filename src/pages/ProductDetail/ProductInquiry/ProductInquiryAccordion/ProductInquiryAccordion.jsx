@@ -1,3 +1,4 @@
+
 import styles from './ProductInquiryAccordion.module.scss';
 
 import { useAuthState } from '@/firebase/auth';
@@ -6,21 +7,21 @@ import AccordionItem from '@/components/Accordion/AccordionItem.jsx';
 import { ReactComponent as Question } from '@/assets/product-detail/ic-question.svg';
 import { ReactComponent as Answer } from '@/assets/product-detail/ic-answer.svg';
 import { ReactComponent as Lock } from '@/assets/product-detail/ic-lock.svg';
-import { useState } from 'react';
-import { useEffect } from 'react';
 
-import { useRecoilValue } from 'recoil';
 
-import {
-  limitAtom,
-  offsetSelector,
-} from '@/pages/ProductList/@recoil/renderState';
 
-export default function ProductInquiryHandle({ data }) {
+
+export default function ProductInquiryHandle({ data,limit,page }) {
   const { user } = useAuthState(); // 현재 로그인된 사용자의 정보를 가져오기 위해
 
-  const limit = useRecoilValue(limitAtom);
-  const offset = useRecoilValue(offsetSelector);
+  // const limit = useRecoilValue(inquiryLimitAtom);
+  // const offset = useRecoilValue(inquiryOffsetSelector);
+
+  const offset = (page - 1) * limit;
+
+
+  
+
 
   console.log('핸들안에 data출력: ', data);
 
