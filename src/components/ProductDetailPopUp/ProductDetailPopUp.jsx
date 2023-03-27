@@ -125,7 +125,8 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
     let deliverArr = {
       title: textStateRef.current.title, 
       textarea: textStateRef.current.textarea, 
-      writer: user.displayName
+      writer: user.displayName,
+      date: Timestamp.fromDate(new Date()),
     };
 
     // secret 관련
@@ -135,6 +136,7 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
         textarea: textStateRef.current.textarea, 
         writer: user.displayName, 
         isSecret: isSecret,
+        date: Timestamp.fromDate(new Date()),
       };
     }
     addDocument(deliverArr);
