@@ -19,6 +19,7 @@ export const initialProductList = [
     category: '샐러드ㆍ간편식',
     kalryOnly: false,
     brand: '대구 반할만떡',
+    storageType: 'frozen',
   },
   {
     id: 'product-ekfk',
@@ -38,6 +39,7 @@ export const initialProductList = [
     category: '샐러드ㆍ간편식',
     kalryOnly: false,
     brand: '풀무원',
+    storageType: 'temperature',
   },
   {
     id: 'product-akqk',
@@ -57,6 +59,7 @@ export const initialProductList = [
     category: '수산ㆍ해산ㆍ건어물',
     kalryOnly: true,
     brand: '홍대주꾸미',
+    storageType: 'cold',
   },
   {
     id: 'product-tkwk',
@@ -76,6 +79,7 @@ export const initialProductList = [
     category: '국ㆍ반찬ㆍ메인요리',
     kalryOnly: true,
     brand: '강남면옥',
+    storageType: 'temperature',
   },
   {
     id: 'product-ckzk',
@@ -90,6 +94,7 @@ export const initialProductList = [
       banner: 'bacon/detail_banner.jpg',
       info: 'bacon/detail_info.jpg',
       alt: '칼리 한돈 삼겹 베이컨',
+      storageType: 'cold',
     },
     stock: 13,
     category: '정육ㆍ계란',
@@ -115,6 +120,7 @@ export const initialProductList = [
     category: '과일ㆍ견과ㆍ쌀',
     kalryOnly: false,
     brand: '유명산지',
+    storageType: 'frozen',
   },
   {
     id: 'product-aaab',
@@ -135,6 +141,7 @@ export const initialProductList = [
     category: '정육ㆍ계란',
     kalryOnly: true,
     brand: "Kalry's",
+    storageType: 'cold',
   },
   {
     id: 'product-aaac',
@@ -155,6 +162,7 @@ export const initialProductList = [
     category: '면ㆍ양념ㆍ오일',
     kalryOnly: true,
     brand: '이연복의 목란',
+    storageType: 'cold',
   },
   {
     id: 'product-aaad',
@@ -175,6 +183,7 @@ export const initialProductList = [
     category: '정육ㆍ계란',
     kalryOnly: false,
     brand: '브룩클린688',
+    storageType: 'temperature',
   },
   {
     id: 'product-aaae',
@@ -195,6 +204,7 @@ export const initialProductList = [
     category: '베이커리ㆍ치즈ㆍ델리',
     kalryOnly: false,
     brand: '포비베이글',
+    storageType: 'cold',
   },
   {
     id: 'product-aaaf',
@@ -215,6 +225,8 @@ export const initialProductList = [
     category: '간식ㆍ과자ㆍ떡',
     kalryOnly: true,
     brand: '그래놀라 하우스',
+
+    storageType: 'temperature',
   },
   {
     id: 'product-aaag',
@@ -236,6 +248,7 @@ export const initialProductList = [
     category: '생수ㆍ음료ㆍ우유ㆍ커피',
     kalryOnly: false,
     brand: '스타벅스',
+    storageType: 'frozen',
   },
   {
     id: 'product-aaah',
@@ -256,6 +269,7 @@ export const initialProductList = [
     category: '헤어ㆍ바디ㆍ구강',
     kalryOnly: false,
     brand: '켄트',
+    storageType: 'temperature',
   },
   {
     id: 'product-aaai',
@@ -276,6 +290,7 @@ export const initialProductList = [
     category: '샐러드ㆍ간편식',
     kalryOnly: true,
     brand: 'KF365',
+    storageType: 'cold',
   },
   {
     id: 'product-aaaj',
@@ -296,6 +311,7 @@ export const initialProductList = [
     category: '샐러드ㆍ간편식',
     kalryOnly: false,
     brand: '스윗밸런스',
+    storageType: 'frozen',
   },
 ];
 
