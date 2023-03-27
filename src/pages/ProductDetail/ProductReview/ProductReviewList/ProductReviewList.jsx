@@ -6,12 +6,12 @@ import { Badge } from '@/components/Badge/Badge.jsx';
 
 import {
   reviewLimitAtom,
-  offsetSelector,
+  riviewOffsetSelector,
 } from '@/pages/ProductDetail/ProductReview/@recoil/renderState';
 
 export default function ProductReviewList({ data }) {
   const limit = useRecoilValue(reviewLimitAtom);
-  const offset = useRecoilValue(offsetSelector);
+  const offset = useRecoilValue(riviewOffsetSelector);
 
   return (
     <>
