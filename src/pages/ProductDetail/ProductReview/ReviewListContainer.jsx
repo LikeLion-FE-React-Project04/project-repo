@@ -33,7 +33,7 @@ export default function ReviewListContainer() {
   return (
     <div>
       <div className={styles.productReviewTotal}>
-        <span className={styles.productReviewCount}>총2개</span>
+        <span className={styles.productReviewCount}>총 {dataState.length}개</span>
         <div className={styles.productReviewOrder}>
           <button>추천순</button>
           <button>최근 등록순</button>
@@ -200,6 +200,7 @@ export default function ReviewListContainer() {
         </AccordionItem>
 
         {dataState ? <ProductReviewList data={dataState} /> : null}
+
       </div>
 
       {/* 페이지네이션 하드코딩 */}
