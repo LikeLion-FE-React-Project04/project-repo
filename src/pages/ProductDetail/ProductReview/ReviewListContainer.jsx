@@ -1,6 +1,6 @@
-import { useEffect, useRef, React } from 'react';
+import { useEffect } from 'react';
 
-import { ReactDOM } from 'react-dom';
+import { useRecoilValue, useRecoilState } from 'recoil';
 
 import styles from "./ReviewListContainer.module.scss";
 
@@ -8,15 +8,23 @@ import { useDetailCollection } from './../../../firebase/firestore/useDetailColl
 
 import ProductReviewList from "./ProductReviewList/ProductReviewList";
 
+import { reviewLimitAtom, reviewPageAtom } from './@recoil/renderState';
+
 import { Badge } from '@/components/Badge/Badge.jsx';
 import AccordionItem from '@/components/Accordion/AccordionItem';
-
 
 export default function ReviewListContainer() {
   // 문서를 저장 할 컬렉션 이름 
   const collectionName = 'reviewData';
   // 한번 실행시켜 => useEffect가 실행될임
   const { dataState } = useDetailCollection(collectionName);
+
+  // 페이지네이션 테스트
+  const limit = useRecoilValue(reviewLimitAtom);
+  const [page, setPage] = useRecoilState(reviewPageAtom);
+  // total = 15개
+
+  const numPages = Math.ceil(15 / limit);
 
   useEffect(() => {
     console.log("[ProductReview] dataState> ", dataState);
@@ -193,6 +201,32 @@ export default function ReviewListContainer() {
 
         {dataState ? <ProductReviewList data={dataState} /> : null}
       </div>
+
+      {/* 페이지네이션 하드코딩 */}
+      <nav className={styles.paginationContainer}>
+        <button
+          className={styles.paginationPrev}
+          disabled={page === 1}
+          onClick={() => setPage(page - 1)}
+        />
+        {/* {Array(numPages)
+          .fill()
+          .map((_, i) => (
+            <button
+              key={i + 1}
+              aria-current={page === i + 1 ? 'page' : null}
+              className={styles.paginationNum}
+              onClick={() => setPage(i + 1)}
+            >
+              {i + 1}
+            </button>
+          ))} */}
+        <button
+          className={styles.paginationNext}
+          disabled={page === numPages}
+          onClick={() => setPage(page + 1)}
+        />
+      </nav>
     </div>
   )
 }
