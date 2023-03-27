@@ -184,61 +184,53 @@ export const priceFilterListSelectorFamily = selectorFamily({
     ({ get }) => {
       const product = get(productListState);
 
-      const NonFilterProduct = (element) => {
-        if (element.Price != 0) {
-          return true;
+      const 최종가격 = (product) => {
+        if (product.saleRatio) {
+          return product.salePrice;
         }
+
+        return product.price;
       };
-      const lessThenFiveHundredFilter = (element) => {
-        if (
-          element.price > 1000 &&
-          element.salePrice < 10000 &&
-          element.price < 13000
-        ) {
-          return true;
-        }
-      };
-      const lessThenTenHundredFilter = (element) => {
-        if (
-          element.price > 10000 &&
-          element.salePrice < 20000 &&
-          element.price < 25000
-        ) {
-          return true;
-        }
-      };
-      const lessThenTwentyHundredFilter = (element) => {
-        if (element.price > 24000 && element.salePrice < 30000) {
+
+      const lessThenFiveHundredFilter = (product) => {
+        if (최종가격(product) < 10000) {
           return true;
         }
       };
 
-      const totalProduct = product.filter(NonFilterProduct);
-      const totalProductList = { filter1: totalProduct };
+      const lessThenTenHundredFilter = (product) => {
+        if (최종가격(product) > 10000 && 최종가격(product) < 20000) {
+          return true;
+        }
+      };
+      const lessThenTwentyHundredFilter = (product) => {
+        if (최종가격(product) > 20000) {
+          return true;
+        }
+      };
 
       const lessThenFiveHundredProduct = product.filter(
         lessThenFiveHundredFilter
       );
       const lessThenFiveHundredProductList = {
-        filter2: lessThenFiveHundredProduct,
+        filter1: lessThenFiveHundredProduct,
       };
 
       const lessThenTenHundredProduct = product.filter(
         lessThenTenHundredFilter
       );
       const lessThenTenHundredProductList = {
-        filter3: lessThenTenHundredProduct,
+        filter2: lessThenTenHundredProduct,
       };
 
       const lessThenTwentyHundredProduct = product.filter(
         lessThenTwentyHundredFilter
       );
       const lessThenTwentyHundredProductList = {
-        filter4: lessThenTwentyHundredProduct,
+        filter3: lessThenTwentyHundredProduct,
       };
 
       const priceFilterMergeList = {
-        ...totalProductList,
         ...lessThenFiveHundredProductList,
         ...lessThenTenHundredProductList,
         ...lessThenTwentyHundredProductList,

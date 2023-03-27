@@ -46,8 +46,6 @@ CategoryList.propTypes = {
 export const BrandList = ({ filterName = '', children }) => {
   const categoryList = useRecoilValue(categoryListSelectorFamily('brand'));
 
-  // console.log(categoryList);
-
   return (
     <>
       {categoryList.map((product, index) => {
@@ -70,8 +68,6 @@ export const KalryOnlyList = ({ filterName = '' }) => {
   const karlyOnlyList = useRecoilValue(
     karlyOnlyListSelectorFamily('kalryOnly')
   );
-
-  console.log(karlyOnlyList, '이거의 렝쓰가뭐에요?');
 
   return (
     <RenderFilterKarlyOnlyLi name={filterName} value={karlyOnlyList.length} />
@@ -106,20 +102,16 @@ export const PriceList = () => {
   return (
     <>
       <RenderFilterBenefitsLi
-        name={'전체'}
+        name={'0원 ~ 10,000원'}
         value={priceList['filter1'].length}
       />
       <RenderFilterBenefitsLi
-        name={'0원 ~ 10,000원'}
+        name={'10,000원 ~ 20,000원'}
         value={priceList['filter2'].length}
       />
       <RenderFilterBenefitsLi
-        name={'10,000원 ~ 20,000원'}
-        value={priceList['filter3'].length}
-      />
-      <RenderFilterBenefitsLi
         name={'20,000원 이상'}
-        value={priceList['filter4'].length}
+        value={priceList['filter3'].length}
       />
     </>
   );

@@ -30,12 +30,8 @@ export const ProductList = () => {
   const limit = useRecoilValue(limitAtom);
   const offset = useRecoilValue(offsetSelector);
 
-  console.log(renderKarlyTest);
-
   //페이지네이션은 적용 o
   const ProductCards = () => {
-    console.log('renderAllFilterList', renderAllFilterList);
-
     return (
       <>
         {renderAllFilterList
