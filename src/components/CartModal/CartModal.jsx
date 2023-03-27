@@ -18,6 +18,8 @@ import { Button } from '../Button/Button';
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 import { useId } from 'react';
 import { countState } from '@/store/CounterState.js';
+import { useEffect } from 'react';
+import EarnPointsMark from './EarnPointsMark';
 
 function CartModal() {
   const productId = useRecoilValue(selectedproductId);
@@ -25,7 +27,8 @@ function CartModal() {
   const [isVisible, setIsVisible] = useRecoilState(productCartModalState);
   const setDarkFilter = useSetRecoilState(darkFilterState);
   const [cartData, setCartData] = useRecoilState(cartDataState);
-  const count = useRecoilValue(countState);
+
+  const [count, setCount] = useRecoilState(countState);
 
   const handleCancelBtnClick = () => {
     setIsVisible(false);
@@ -33,11 +36,18 @@ function CartModal() {
   };
 
   const handleCartBtnClick = () => {
-    saveCartData(product.id, count);
+    saveCartData(product.id, count[product.id]);
     setIsVisible(false);
     setDarkFilter(false);
     console.log('cartData', cartData);
   };
+
+  // Counter 초기화
+  useEffect(() => {
+    setCount({
+      [product.id]: 1,
+    });
+  }, []);
 
   function saveCartData(id, count) {
     let cartItems = [...cartData];
@@ -59,6 +69,7 @@ function CartModal() {
         quantity: addCount,
       };
       setCartData(cartItems);
+
       return;
     }
   }
@@ -84,20 +95,21 @@ function CartModal() {
           )}
         </span>
         <span className={styles.couterLayout}>
-          <Counter />
+          <Counter name={product.id} />
         </span>
       </div>
       <div className={styles.totalPrice}>
         <div className={styles.priceLayout1}>
           <span className={styles.total}>합계</span>
+          {/* 최적화 진행시 수정해야할듯 */}
           {product.saleRatio ? (
-            <TotalPrice price={product.salePrice} />
+            <TotalPrice price={product.salePrice} name={product.id} />
           ) : (
-            <TotalPrice price={product.price} />
+            <TotalPrice price={product.price} name={product.id} />
           )}
         </div>
         <div className={styles.priceLayout3}>
-          <span className={styles.mark}>적립</span>
+          <EarnPointsMark />
           <span className={styles.accumulate}>구매시 5원 적립</span>
         </div>
       </div>

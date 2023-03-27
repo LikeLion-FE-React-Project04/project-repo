@@ -8,9 +8,10 @@ export default function AccordionItem({
   children,
   width = '100px',
   handelArrow = false,
+  active = false,
 }) {
   // 리코일로 데이터 가져오기
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(active);
   const [hendle, panel] = children;
 
   let underLine;
