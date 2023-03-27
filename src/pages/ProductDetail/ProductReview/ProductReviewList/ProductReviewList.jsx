@@ -7,11 +7,13 @@ import { Badge } from '@/components/Badge/Badge.jsx';
 import {
   reviewLimitAtom,
   riviewOffsetSelector,
+  productNameAtom,
 } from '@/pages/ProductDetail/ProductReview/@recoil/renderState';
 
 export default function ProductReviewList({ data }) {
   const limit = useRecoilValue(reviewLimitAtom);
   const offset = useRecoilValue(riviewOffsetSelector);
+  const productName = useRecoilValue(productNameAtom)
 
   return (
     <>
@@ -27,7 +29,7 @@ export default function ProductReviewList({ data }) {
               </div>
 
               <article>
-                <div className={styles.productInfo}>{item.title}</div>
+                <div className={styles.productInfo}>{productName}</div>
                 <p className={styles.productDescription}>{item.textarea}</p>
                 <footer className={styles.productInfo}>{item.date.toDate().toLocaleDateString()}</footer>
               </article>
