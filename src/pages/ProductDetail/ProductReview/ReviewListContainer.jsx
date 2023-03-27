@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useRecoilValue, useRecoilState } from 'recoil';
 
@@ -30,10 +30,18 @@ export default function ReviewListContainer() {
     console.log("[ProductReview] dataState> ", dataState);
   }, [dataState]);
 
+  const [count, setCount] = useState();
+
+  useEffect(() => {
+    if (dataState) {
+      setCount(dataState.length);
+    }
+  }, [dataState]);
+
   return (
     <div>
       <div className={styles.productReviewTotal}>
-        <span className={styles.productReviewCount}>총 {dataState.length}개</span>
+        <span className={styles.productReviewCount}>총 {count}개</span>
         <div className={styles.productReviewOrder}>
           <button>추천순</button>
           <button>최근 등록순</button>
