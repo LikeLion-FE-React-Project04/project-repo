@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { useRecoilValue, useRecoilState, useSetRecoilValue } from 'recoil';
+import { Link } from 'react-router-dom';
 
 import styles from './ProductList.module.css';
 
 import { FilterList } from './FilterList';
 import { Pagination } from './Pagination';
 
+import CartModalLayout from './../../components/CartModal/CartModalLayout';
 import ProductCard from '@/components/ProductCard/ProductCard';
+import { categoryListSelectorFamily } from '@/pages/ProductList/@recoil/checkState.js';
 
 import {
   renderAllFilterListSelector,
@@ -15,15 +18,11 @@ import {
   offsetSelector,
 } from '@/pages/ProductList/@recoil/renderState';
 
-import { categoryListSelectorFamily } from '@/pages/ProductList/@recoil/checkState.js';
-
 import {
   SortLowerPriceButton,
   SortUpperPriceButton,
   DummyButtons,
 } from './SortButton';
-
-import CartModalLayout from './../../components/CartModal/CartModalLayout';
 
 const ProductCards = () => {
   const renderAllFilterList = useRecoilValue(renderAllFilterListSelector);
@@ -58,22 +57,34 @@ const 뭐가있는지확인후랜더링해주는함수 = () => {
 };
 
 export const ProductList = () => {
+  const test01 = useRecoilValue(renderAllFilterListSelector);
+
   return (
     <>
       <div className={styles.container}>
         <div className={styles.innerContainer}>
-          <div className={styles.productListTitle}>베스트</div>
+          <div>
+            <Link to="/productList">
+              <ficture alt="배너화면" className={styles.productListBanner} />
+            </Link>
+          </div>
+          <div className={styles.productListTitle}>신상품</div>
           <section className={styles.product}>
             <FilterList />
-            <div className={styles.productCardsWrapper}>
+            <div className={styles.girdContainer}>
               <div className={styles.sortButtonContainer}>
+                <div className={styles.totalRenderNum}>
+                  총 {test01.length}건
+                </div>
                 <DummyButtons text={'신상품순'} />
                 <DummyButtons text={'판매량순'} />
                 <DummyButtons text={'혜택순'} />
                 <SortLowerPriceButton />
                 <SortUpperPriceButton />
               </div>
-              <뭐가있는지확인후랜더링해주는함수 />
+              <div className={styles.productCardsWrapper}>
+                <뭐가있는지확인후랜더링해주는함수 />
+              </div>
             </div>
           </section>
           <Pagination />
