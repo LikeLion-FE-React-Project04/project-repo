@@ -23,35 +23,41 @@ import {
   DummyButtons,
 } from './SortButton';
 
-export const ProductList = () => {
-  const productList = useRecoilValue(categoryListSelectorFamily('brand'));
+import CartModalLayout from './../../components/CartModal/CartModalLayout';
+
+const ProductCards = () => {
   const renderAllFilterList = useRecoilValue(renderAllFilterListSelector);
-  const renderKarlyTest = useRecoilValue(renderKarlyOnlySelector);
   const limit = useRecoilValue(limitAtom);
   const offset = useRecoilValue(offsetSelector);
 
-  console.log(renderKarlyTest);
+  return (
+    <>
+      {renderAllFilterList
+        .slice(offset, offset + limit)
+        .map((product, index) => {
+          return (
+            // eslint-disable-next-line react/jsx-key
+            <div key={`product-${index}`} style={{ marginBottom: '100px' }}>
+              <ProductCard product={product} />
+            </div>
+          );
+        })}
+    </>
+  );
+};
 
-  //페이지네이션은 적용 o
-  const ProductCards = () => {
-    console.log('renderAllFilterList', renderAllFilterList);
+const 뭐가있는지확인후랜더링해주는함수 = () => {
+  const renderAllFilterList = useRecoilValue(renderAllFilterListSelector);
+  const 뭐가있다 = renderAllFilterList.length > 0;
 
-    return (
-      <>
-        {renderAllFilterList
-          .slice(offset, offset + limit)
-          .map((product, index) => {
-            return (
-              // eslint-disable-next-line react/jsx-key
-              <div key={`product-${index}`} style={{ marginBottom: '100px' }}>
-                <ProductCard product={product} />
-              </div>
-            );
-          })}
-      </>
-    );
-  };
+  if (뭐가있다) {
+    return <ProductCards />;
+  }
 
+  return <div>상품이없어용</div>;
+};
+
+export const ProductList = () => {
   return (
     <>
       <div className={styles.container}>
@@ -67,12 +73,13 @@ export const ProductList = () => {
                 <SortLowerPriceButton />
                 <SortUpperPriceButton />
               </div>
-              <ProductCards />
+              <뭐가있는지확인후랜더링해주는함수 />
             </div>
           </section>
           <Pagination />
         </div>
       </div>
+      <CartModalLayout />
     </>
   );
 };
