@@ -1,5 +1,8 @@
 import { useSetRecoilState, useRecoilValue, useRecoilState } from 'recoil';
 
+import {useState} from 'react'
+
+
 // import classes from '../../../styles/main.module.css';
 import { useDetailCollection } from '../../../firebase/firestore/useDetailCollection';
 
@@ -16,9 +19,7 @@ import ProductInquiryAccordion from './ProductInquiryAccordion/ProductInquiryAcc
 import { useEffect } from 'react';
 import { productLayoutState } from '../../../store/detailLayoutState';
 import { useAuthState } from '@/firebase/auth';
-import { Pagination } from '../../ProductList/Pagination.jsx';
 import { dataStateAtom } from './../../../firebase/firestore/useDetailCollection';
-import { pageAtom, limitAtom } from './../../ProductList/@recoil/renderState';
 import { inquiryLimitAtom, inquiryPageAtom } from './@recoil/renderState';
 
 export default function ProductInquiry() {
@@ -39,11 +40,17 @@ export default function ProductInquiry() {
 
   const { dataState } = useDetailCollection(collectionName);
 
-  console.log(dataState, '큰배열큰배열큰배열');
 
   // 페이지네이션 테스트
-  const limit = useRecoilValue(inquiryLimitAtom);
-  const [page, setPage] = useRecoilState(inquiryPageAtom);
+
+  //limit =  6
+  // const limit = useRecoilValue(inquiryLimitAtom);
+  const [limit,setState] = useState(6);
+
+
+
+  // const [page, setPage] = useRecoilState(inquiryPageAtom);
+  const [page, setPage] = useState(1);
   // total = 15개
 
   const numPages = Math.ceil(15 / limit);
@@ -120,7 +127,10 @@ export default function ProductInquiry() {
             </div>
           </AccordionItem>
           {/* 데이터 뿌려주기 */}
-          {dataState ? <ProductInquiryAccordion data={dataState} /> : null}
+          {dataState ? <ProductInquiryAccordion data={dataState}
+          limit={limit}
+          page={page}
+          /> : null}
         </article>
         {/* 페이지네이션 하드코딩 */}
         <nav className={styles.paginationContainer}>

@@ -3,18 +3,18 @@ import { atom } from "recoil";
 
 // 문의 파트 - 몇개씩 아코디언을 뿌려줄지를 정하기 위한 atom
 export const inquiryLimitAtom = atom({
-  key: 'limitAtom',
+  key: 'inquiryLimitAtom',
   default: 6,
 });
 
 // 문의 파트 - 현재 보고 있는 페이지를 구분하기 위한 atom
 export const inquiryPageAtom = atom({
-  key: 'pageAtom',
+  key: 'inquiryPageAtom',
   default: 1,
 });
 
-export const offsetSelector = selector({
-  key: 'offsetSelector',
+export const inquiryOffsetSelector = selector({
+  key: 'inquiryOffsetSelector',
   get: ({ get }) => {
     const limit = get(inquiryLimitAtom);
     const page = get(inquiryPageAtom);
