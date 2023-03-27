@@ -122,12 +122,11 @@ export default function CartAccordion() {
     <>
       <div className={styles.cartAccordionSelectLayout}>
         {/* 수정 필요 */}
-        <CartDataCheckBox name="selectedAll" />
-        <button className={styles.selectAll} onClick={handleselectAll}>
-          <span className={styles.p}>
+        <CartDataCheckBox name="selectedAll" visibleLabel>
+          <span className={styles.selectAll}>
             전체선택 ({totalActiveItemCount}/{totalItemCount})
           </span>
-        </button>
+        </CartDataCheckBox>
         <span className={styles.bar}>|</span>
         <button className={styles.delselectedItem} onClick={handleDeleteAll}>
           선택삭제
@@ -168,10 +167,11 @@ export default function CartAccordion() {
 
       <div className={styles.cartAccordionSelectLayout}>
         {/* 수정 필요 */}
-        <CartDataCheckBox name="selectedAll" />
-        <button className={styles.selectAll} onClick={handleselectAll}>
-          전체선택 ({totalActiveItemCount}/{totalItemCount})
-        </button>
+        <CartDataCheckBox name="selectedAll" visibleLabel>
+          <span className={styles.selectAll}>
+            전체선택 ({totalActiveItemCount}/{totalItemCount})
+          </span>
+        </CartDataCheckBox>
         <span className={styles.bar}>|</span>
         <button className={styles.delselectedItem} onClick={handleDeleteAll}>
           선택삭제

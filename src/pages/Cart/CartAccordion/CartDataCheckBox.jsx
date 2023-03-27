@@ -4,7 +4,11 @@ import { useRef } from 'react';
 import { useRecoilState } from 'recoil';
 import styles from './CartDataCheckBox.module.scss';
 
-function CartDataCheckBox({ name = 'default' }) {
+function CartDataCheckBox({
+  name = 'default',
+  visibleLabel = false,
+  children,
+}) {
   const [select, setSelect] = useRecoilState(selectedState);
   const [selectedAll, setSelectedAll] = useRecoilState(selectedAllState);
   let isChecked = select[name];
@@ -38,7 +42,7 @@ function CartDataCheckBox({ name = 'default' }) {
   }
 
   return (
-    <label htmlFor={name}>
+    <label htmlFor={name} className={styles.label}>
       <input
         type="checkbox"
         className={styles.CartDataCheckBox}
@@ -46,6 +50,7 @@ function CartDataCheckBox({ name = 'default' }) {
         checked={isChecked}
         onClick={handleClickBtn}
       />
+      {visibleLabel && children}
     </label>
   );
 }
