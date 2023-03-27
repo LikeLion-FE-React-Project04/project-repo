@@ -177,65 +177,61 @@ export const benefitsListSelectorFamily = selectorFamily({
 
 /* ---------------------------------- price --------------------------------- */
 
-export const priceFilterListSelectorFamily = selectorFamily({
+export const priceFilterListSelectorFamily = selector({
   key: 'priceFilterListSelectorFamily',
-  get:
-    () =>
-    ({ get }) => {
-      const product = get(productListState);
+  get: ({ get }) => {
+    const product = get(productListState);
 
-      const 최종가격 = (product) => {
-        if (product.saleRatio) {
-          return product.salePrice;
-        }
+    const 최종가격 = (product) => {
+      if (product.saleRatio) {
+        return product.salePrice;
+      }
 
-        return product.price;
-      };
+      return product.price;
+    };
 
-      const lessThenFiveHundredFilter = (product) => {
-        if (최종가격(product) < 10000) {
-          return true;
-        }
-      };
+    const lessThenFiveHundredFilter = (product) => {
+      if (최종가격(product) < 10000) {
+        return true;
+      }
+    };
 
-      const lessThenTenHundredFilter = (product) => {
-        if (최종가격(product) > 10000 && 최종가격(product) < 20000) {
-          return true;
-        }
-      };
-      const lessThenTwentyHundredFilter = (product) => {
-        if (최종가격(product) > 20000) {
-          return true;
-        }
-      };
+    const lessThenTenHundredFilter = (product) => {
+      if (최종가격(product) > 10000 && 최종가격(product) < 20000) {
+        return true;
+      }
+    };
+    const lessThenTwentyHundredFilter = (product) => {
+      if (최종가격(product) > 20000) {
+        return true;
+      }
+    };
 
-      const lessThenFiveHundredProduct = product.filter(
-        lessThenFiveHundredFilter
-      );
-      const lessThenFiveHundredProductList = {
-        filter1: lessThenFiveHundredProduct,
-      };
+    const lessThenFiveHundredProduct = product.filter(
+      lessThenFiveHundredFilter
+    );
+    const lessThenFiveHundredProductList = {
+      '0,10000': lessThenFiveHundredProduct,
+    };
 
-      const lessThenTenHundredProduct = product.filter(
-        lessThenTenHundredFilter
-      );
-      const lessThenTenHundredProductList = {
-        filter2: lessThenTenHundredProduct,
-      };
+    const lessThenTenHundredProduct = product.filter(lessThenTenHundredFilter);
+    const lessThenTenHundredProductList = {
+      '10000,19990': lessThenTenHundredProduct,
+    };
 
-      const lessThenTwentyHundredProduct = product.filter(
-        lessThenTwentyHundredFilter
-      );
-      const lessThenTwentyHundredProductList = {
-        filter3: lessThenTwentyHundredProduct,
-      };
+    const lessThenTwentyHundredProduct = product.filter(
+      lessThenTwentyHundredFilter
+    );
+    const lessThenTwentyHundredProductList = {
+      '20000,30000': lessThenTwentyHundredProduct,
+    };
 
-      const priceFilterMergeList = {
-        ...lessThenFiveHundredProductList,
-        ...lessThenTenHundredProductList,
-        ...lessThenTwentyHundredProductList,
-      };
+    const priceFilterMergeList = {
+      ...lessThenFiveHundredProductList,
+      ...lessThenTenHundredProductList,
+      ...lessThenTwentyHundredProductList,
+    };
 
-      return priceFilterMergeList;
-    },
+    return priceFilterMergeList;
+  },
 });

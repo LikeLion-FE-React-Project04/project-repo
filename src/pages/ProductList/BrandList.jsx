@@ -7,9 +7,11 @@ import {
   RenderFilterKarlyOnlyLi,
   RenderFilterBenefitsLi,
   RenderBrandFilterNameLi,
+  RenderFilterPriceLi,
 } from './RenderFilterLi';
 
 import {
+  checkedPriceListAtom,
   categoryListSelectorFamily,
   karlyOnlyListSelectorFamily,
   benefitsListSelectorFamily,
@@ -79,6 +81,8 @@ export const KalryOnlyList = ({ filterName = '' }) => {
 export const BenefitsList = () => {
   const benefitsList = useRecoilValue(benefitsListSelectorFamily('saleRatio'));
 
+  console.log(benefitsList, '리스트뭐나오냐이거');
+
   return (
     <>
       <RenderFilterBenefitsLi
@@ -95,23 +99,25 @@ export const BenefitsList = () => {
 
 /* ---------------------------------- price --------------------------------- */
 export const PriceList = () => {
-  const priceList = useRecoilValue(
-    priceFilterListSelectorFamily('priceFilter')
-  );
+  const priceList = useRecoilValue(priceFilterListSelectorFamily);
+
+  console.log(priceList, '가격필터뭐가져오냐얜');
+
+  // debugger;
 
   return (
     <>
-      <RenderFilterBenefitsLi
+      <RenderFilterPriceLi
         name={'0원 ~ 10,000원'}
-        value={priceList['filter1'].length}
+        value={priceList['0,10000'].length}
       />
-      <RenderFilterBenefitsLi
-        name={'10,000원 ~ 20,000원'}
-        value={priceList['filter2'].length}
+      <RenderFilterPriceLi
+        name={'10,000원 ~ 19,990원'}
+        value={priceList['10000,19990'].length}
       />
-      <RenderFilterBenefitsLi
+      <RenderFilterPriceLi
         name={'20,000원 이상'}
-        value={priceList['filter3'].length}
+        value={priceList['20000,30000'].length}
       />
     </>
   );
