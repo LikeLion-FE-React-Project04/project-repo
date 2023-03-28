@@ -1,9 +1,9 @@
-const CopyPlugin = require('copy-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin');
 
 const createCopyPlugin = (options = {}) => {
   const config = Object.assign(
     {
-      patterns: [{ from: 'public/assets', to: 'static' }],
+      patterns: [{ from: 'public/assets', to: 'assets' }],
     },
     options
   );
