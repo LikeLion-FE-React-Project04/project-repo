@@ -1,29 +1,28 @@
-import { useState } from 'react';
-import { useRecoilValue, useRecoilState, useSetRecoilValue } from 'recoil';
+import { useRecoilValue } from 'recoil';
+import { Link } from 'react-router-dom';
 
 import styles from './ProductList.module.css';
-
 import { FilterList } from './FilterList';
 import { Pagination } from './Pagination';
+import { useResetRenderAllFilter } from './@recoilHook/useResetRenderAllFilter';
 
-import ProductCard from '@/components/ProductCard/ProductCard';
-
-import {
-  renderAllFilterListSelector,
-  renderKarlyOnlySelector,
-  limitAtom,
-  offsetSelector,
-} from '@/pages/ProductList/@recoil/renderState';
-
-import { categoryListSelectorFamily } from '@/pages/ProductList/@recoil/checkState.js';
-
+import CartModalLayout from './../../components/CartModal/CartModalLayout';
 import {
   SortLowerPriceButton,
   SortUpperPriceButton,
   DummyButtons,
 } from './SortButton';
 
-import CartModalLayout from './../../components/CartModal/CartModalLayout';
+import banner from '@/assets/product-list/product-list-banner.png';
+import notFountIcon from '@/assets/product-list/ic-notFound.svg';
+import resetIcon from '@/assets/product-list/ic-return.svg';
+
+import {
+  renderAllFilterListSelector,
+  limitAtom,
+  offsetSelector,
+} from '@/pages/ProductList/@recoil/renderState';
+import ProductCard from '@/components/ProductCard/ProductCard';
 
 const ProductCards = () => {
   const renderAllFilterList = useRecoilValue(renderAllFilterListSelector);
@@ -36,7 +35,6 @@ const ProductCards = () => {
         .slice(offset, offset + limit)
         .map((product, index) => {
           return (
-            // eslint-disable-next-line react/jsx-key
             <div key={`product-${index}`} style={{ marginBottom: '100px' }}>
               <ProductCard product={product} />
             </div>
@@ -46,34 +44,72 @@ const ProductCards = () => {
   );
 };
 
-const 뭐가있는지확인후랜더링해주는함수 = () => {
-  const renderAllFilterList = useRecoilValue(renderAllFilterListSelector);
-  const 뭐가있다 = renderAllFilterList.length > 0;
+export const ProductListBanner = () => {
+  return (
+    <Link to="/productList">
+      <img
+        alt="이번주의 신상 랭킹보러가기 이미지 배너"
+        className={styles.productListBanner}
+        src={banner}
+      />
+    </Link>
+  );
+};
 
-  if (뭐가있다) {
+const IsCheckedRenderAllfilter = () => {
+  const renderAllFilterList = useRecoilValue(renderAllFilterListSelector);
+  const hasRenderAllFilterList = renderAllFilterList.length > 0;
+
+  const onClick = useResetRenderAllFilter();
+
+  if (hasRenderAllFilterList) {
     return <ProductCards />;
   }
 
-  return <div>상품이없어용</div>;
+  return (
+    <div className={styles.hasNotFountPageContainer}>
+      <img
+        src={notFountIcon}
+        alt={'필터 조건에 맞는 상품이 없을때 나오는 아이콘'}
+      />
+      <span className={styles.hasNotFountPageText}>
+        선택하신 필터와 일치하는 상품이 없습니다.
+      </span>
+      <button className={styles.hasNotFountPageButton} onClick={onClick}>
+        <img src={resetIcon} alt={'초기화버튼 앞 되돌리기 아이콘'} />
+        <span className={styles.hasNotFountPageButtonText}>버튼초기화</span>
+      </button>
+    </div>
+  );
 };
 
 export const ProductList = () => {
+  const renderAllFilterListNum = useRecoilValue(renderAllFilterListSelector);
+
   return (
     <>
       <div className={styles.container}>
         <div className={styles.innerContainer}>
-          <div className={styles.productListTitle}>베스트</div>
+          <div>
+            <ProductListBanner />
+          </div>
+          <div className={styles.productListTitle}>신상품</div>
           <section className={styles.product}>
             <FilterList />
-            <div className={styles.productCardsWrapper}>
+            <div className={styles.girdContainer}>
               <div className={styles.sortButtonContainer}>
+                <div className={styles.totalRenderNum}>
+                  총 {renderAllFilterListNum.length}건
+                </div>
                 <DummyButtons text={'신상품순'} />
                 <DummyButtons text={'판매량순'} />
                 <DummyButtons text={'혜택순'} />
                 <SortLowerPriceButton />
                 <SortUpperPriceButton />
               </div>
-              <뭐가있는지확인후랜더링해주는함수 />
+              <div className={styles.productCardsWrapper}>
+                <IsCheckedRenderAllfilter />
+              </div>
             </div>
           </section>
           <Pagination />
@@ -84,80 +120,3 @@ export const ProductList = () => {
   );
 };
 export default ProductList;
-
-/* ----------------------- 만들다가 공용에게 밀린 나의 작고 소중한 컴포넌트들.. ----------------------- */
-
-// export const CategoryContainer = ({ index, title, productEx, count }) => {
-//   const [isActive, setIsActive] = useState(false);
-
-//   const handleBtn = (e) => {
-//     e.preventDefault;
-//     isActive ? setIsActive(false) : setIsActive(true);
-//   };
-
-//   return (
-//     <div className={styles.navMenuCategory}>
-//       <CategoryList controlId={index} handler={handleBtn} isActive={isActive}>
-//         <span>{title}</span>
-//       </CategoryList>
-//       <NavMenu
-//         controlId={index}
-//         productEx={productEx}
-//         isActive={isActive}
-//         count={count}
-//       />
-//     </div>
-//   );
-// };
-
-// export const CategoryList = ({ controlId, handler, isActive, children }) => {
-//   return (
-//     <button
-//       id={`${controlId}-handle`}
-//       className={styles.navMenuBtn}
-//       // isActive={isActive}
-//       onClick={handler}
-//     >
-//       {children}
-//       {isActive ? (
-//         <div alt="화살표" className={styles.arrowUp} />
-//       ) : (
-//         <div alt="화살표" className={styles.arrowDown} />
-//       )}
-//     </button>
-//   );
-// };
-
-// export const NavMenu = ({ controlId, productEx, isActive, count }) => {
-//   return (
-//     <ul
-//       aria-labelledby={`${controlId}-handle`}
-//       className={classNames(
-//         styles.navMenuUl,
-//         isActive ? styles.active : styles.inactive
-//       )}
-//     >
-//       <li className={styles.navMenuUlList}>
-//         <input
-//           type="checkbox"
-//           name="checkbox"
-//           id="check-box"
-//           value={productEx}
-//         />
-//         <label htmlFor="check-box">{productEx}</label>
-//         <span className={styles.ulListCount}>{count}</span>
-//       </li>
-//     </ul>
-//   );
-// };
-
-/* --------------------------------- test console --------------------------------- */
-// console.log(productList)
-//8
-// console.log(limit)
-//1
-// console.log(page)
-//0
-// console.log(offset)
-//  => 0~8번 array(배열) 리턴
-// console.log(productList.slice(0, 7)

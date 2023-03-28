@@ -4,6 +4,7 @@ import { useRecoilValue } from 'recoil';
 import { getPriceFormat } from '@/utils';
 import EarnPointsMark from '../../../components/CartModal/EarnPointsMark';
 
+
 function PriceInfo() {
   const [totalPrice, totalSalePrice, totalPaymentPrice] =
     useRecoilValue(cartPriceData);

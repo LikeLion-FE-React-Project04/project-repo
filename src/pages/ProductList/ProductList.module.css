@@ -18,15 +18,14 @@
   margin-top: 80px;
   margin-bottom: 44px;
   text-align: center;
-  font-size: var(--text-lg);
-  font-weight: 600;
+  font-size: var(--text-xxl);
+  font-weight: 500;
 }
 
 .product {
   position: relative;
   width: 1024px;
   display: flex;
-  gap: 30px;
   margin-top: 50px;
   margin-bottom: 60px;
 }
@@ -37,9 +36,49 @@
 
 .sortButtonContainer {
   display: flex;
-  position: absolute;
   align-items: center;
-  top: -30px;
-  right: 0;
   gap: 4px;
+  margin-bottom: 20px;
+}
+
+.totalRenderNum {
+  margin-right: auto;
+  background: transparent;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.productListBanner {
+  height: 400px;
+}
+
+.hasNotFountPageContainer {
+  display: flex;
+  flex-direction: column;
+  width: 900px;
+  align-items: center;
+  padding: 200px 0;
+}
+
+.hasNotFountPageText {
+  color: var(--gray-300);
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.hasNotFountPageButton {
+  width: 127px;
+  height: 40px;
+  display: flex;
+  gap: 8px;
+  background: var(--primary);
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 22px;
+  color: var(--white);
+}
+
+.hasNotFountPageButtonText {
+  font-size: var(--text-sm);
 }

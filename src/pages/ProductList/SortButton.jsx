@@ -3,10 +3,6 @@ import { useSetRecoilState } from 'recoil';
 import styles from './SortButton.module.css';
 import { sortByPriceDescAtom } from './@recoil/renderState';
 
-const onSubmit = (e) => {
-  e.preventDefault;
-};
-
 export const SortLowerPriceButton = () => {
   const setDesc = useSetRecoilState(sortByPriceDescAtom);
 

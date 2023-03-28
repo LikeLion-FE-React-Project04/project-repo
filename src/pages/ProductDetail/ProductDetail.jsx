@@ -19,14 +19,12 @@ function ProductDetail() {
   const { productId } = useParams();
   const product = useRecoilValue(productListFamily(productId));
 
-  const [productName, setProductName] = useRecoilState(productNameAtom)
+  const [productName, setProductName] = useRecoilState(productNameAtom);
 
   setProductName(product.name);
 
   return (
     <div className={styles.ProductDetailWrapper}>
-      <h2>ProductDetail {productId}</h2>
-      <Link to="/">Go to Home</Link>
       <ProductThumbnail product={product} />
       <ProductReview />
       <ProductInquiry />
