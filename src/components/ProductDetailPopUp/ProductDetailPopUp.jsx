@@ -15,6 +15,7 @@ import { PlaceholderInquiry } from './PlaceholderInquiry/PlaceholderInquiry';
 import { PlaceholderReview } from './PlaceholderReview/PlaceholderReview';
 import { Secret } from './Secret/Secret';
 
+import { Button } from '@/components/Button/Button.jsx';
 import { productDetailModalState } from '@/store/detailModalState.js';
 import { default as PageTitle } from '@/components/PageTitle/PageTitle.jsx'
 import productImg from "@/assets/product/tangtang/thumbnail.jpg";
@@ -183,8 +184,18 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
             {(uiType=='inquiry') ? <Secret isSecret={isSecret} setIsSecret={setIsSecret} /> : null}
           </div>
           <div className={styles.popUpBtnWrapper}>
-            <button className={styles.cancelBtn} onClick={handleCancelBtnClick}>취소</button>
-            <button className={styles.postBtn} id="postInquiry" type="submit" onClick={handleSubmit}>등록</button>
+            <Button 
+              uiType="seven" 
+              className={styles.cancelBtn} 
+              onClick={handleCancelBtnClick}
+            >취소</Button>
+            <Button 
+              uiType="sixth" 
+              className={styles.postBtn} 
+              id="postInquiry" 
+              type="submit" 
+              onClick={handleSubmit} 
+            >등록</Button>
           </div>
         </article>
       </>
