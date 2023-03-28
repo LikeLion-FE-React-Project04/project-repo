@@ -27,6 +27,8 @@ import { useAuthState } from '@/firebase/auth';
 import { useParams } from 'react-router-dom';
 import { productListFamily } from '@/store/productListState.js';
 
+import { productNameAtom } from '@/pages/ProductDetail/ProductReview/@recoil/renderState';
+
 function checkUiType(uiType) {
   switch (uiType) {
     case 'inquiry':
@@ -39,6 +41,30 @@ function checkUiType(uiType) {
 }
 
 export function ProductDetailPopUp({uiType='inquiry', writer}) {
+  const initialTextState = {
+    title: '',
+    textarea: '',
+  };
+  
+  // title과 textarea의 텍스트를 관리하기 위한 ref
+  const textStateRef = useRef(initialTextState); // textStateRef == { current : {title:'', textarea:''} }
+
+  // uiType검사
+  const { title, ph, handleType, collectionName } = checkUiType(uiType);  
+
+  const productName = useRecoilValue(productNameAtom);
+
+  // title을 참조하기 위한 ref
+  const titleInputRef = useRef();
+
+  console.log("제품명을띄워야해요", productName);
+
+  if(uiType == 'review') {
+    textStateRef.current.title = productName;
+    console.log("제품명 넣어주기~", textStateRef.current.title);
+    // titleInputRef.value = textStateRef.current.title;
+  }
+
   // product id
   const { productId } = useParams();
   const product = useRecoilValue(productListFamily(productId));
@@ -53,8 +79,6 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
     }
   }, [user]);
 
-  // uiType검사
-  const { title, ph, handleType, collectionName } = checkUiType(uiType);  
 
   // firestore 사용
   const { addDocument } = useDetailFireStore(collectionName); 
@@ -69,14 +93,7 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
 
   // textarea를 참조하기 위한 ref
   const area = useRef(); 
-
-  const initialTextState = {
-    title: '',
-    textarea: '',
-  };
-
-  // title과 textarea의 텍스트를 관리하기 위한 ref
-  const textStateRef = useRef(initialTextState); // textStateRef == { current : {title:'', textarea:''} }
+  
 
   // // textarea의 text를 관리하기 위한 ref
   // const textAreaText = useRef('');
@@ -90,6 +107,9 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
   
   // secret의 상태를 관리하는 state
   const [isSecret, setIsSecret] = useState(false);
+
+  // 등록버튼의 uiType을 관리하는 state
+  const [isReady, setIsReady] = useState(false);
 
   // div태그(.textAreaWrap)을 클릭하면, 발생하는 이벤트
   function handlePlaceholder() { 
@@ -111,12 +131,29 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
     // 그래서 랜더링을 시키기 위해서 state 사용
     setInputCount(textStateRef.current.textarea.length);
     console.log('textarea의 내용을 바꾸고 있습니다');
+
+    // 제목과 내용이 모두 비어있지 않다면? => 등록 버튼 색 변해야함 왜? 등록이 가능하깐
+    if(textStateRef.current.textarea != '' && textStateRef.current.title != '') {
+      setIsReady(true);
+    }
+    else {
+      setIsReady(false);
+    }
+
   };
   
   // 제목의 내용이 바뀔때마다 넣어줌
   const handleTitleData = (e) => {
     textStateRef.current.title = e.target.value;
     console.log('제목의 current값을 바꾸고 있습니다');
+
+    // 제목과 내용이 모두 비어있지 않다면? => 등록 버튼 색 변해야함 왜? 등록이 가능하깐
+    if(textStateRef.current.textarea != '' && textStateRef.current.title != '') {
+      setIsReady(true);
+    }
+    else {
+      setIsReady(false);
+    }
   }
 
   // 사용자가 '취소'또는 'X'버튼을 클릭했을 때 발생하는 이벤트
@@ -127,30 +164,38 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
 
   // 등록 버튼을 눌렀을 때 submit
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(textStateRef.current.title, textStateRef.current.textarea);
-    let deliverArr = {
-      title: textStateRef.current.title, 
-      textarea: textStateRef.current.textarea, 
-      writer: user.displayName,
-      date: Timestamp.fromDate(new Date()),
-      productId: product.id,
-    };
-
-    // secret 관련
-    if(uiType == 'inquiry') {
-      deliverArr = {
+    if(textStateRef.current.title == '') {
+      alert("제목을 입력해주세요.");
+    }
+    else if(textStateRef.current.textarea == '') {
+      alert("내용을 입력해주세요.");
+    }
+    else {
+      e.preventDefault();
+      console.log(textStateRef.current.title, textStateRef.current.textarea);
+      let deliverArr = {
         title: textStateRef.current.title, 
         textarea: textStateRef.current.textarea, 
-        writer: user.displayName, 
-        isSecret: isSecret,
+        writer: user.displayName,
         date: Timestamp.fromDate(new Date()),
         productId: product.id,
       };
+  
+      // secret 관련
+      if(uiType == 'inquiry') {
+        deliverArr = {
+          title: textStateRef.current.title, 
+          textarea: textStateRef.current.textarea, 
+          writer: user.displayName, 
+          isSecret: isSecret,
+          date: Timestamp.fromDate(new Date()),
+          productId: product.id,
+        };
+      }
+      addDocument(deliverArr);
+      setIsVisible(false); // 모달창을 띄우지 않는다
+      setDarkFilter(false); // 다크 필터를 끈다
     }
-    addDocument(deliverArr);
-    setIsVisible(false); // 모달창을 띄우지 않는다
-    setDarkFilter(false); // 다크 필터를 끈다
   }
 
   return (
@@ -168,7 +213,7 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
             <form onSubmit={handleSubmit}>
               <fieldset className={styles.inquiryTitleWrapper}>
               <label htmlFor='inquiryTitle'>제목</label>
-              <input required id="inquiryTitle" placeholder="제목을 입력해 주세요" type="text" onChange={handleTitleData} />
+              <input required id="inquiryTitle" placeholder="제목을 입력해 주세요" type="text" onChange={handleTitleData} ref={titleInputRef} />
               </fieldset>
               <fieldset className={styles.inquiryContentWrapper}>
               <label htmlFor='inquiryText'>내용</label>
@@ -189,6 +234,8 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
               className={styles.cancelBtn} 
               onClick={handleCancelBtnClick}
             >취소</Button>
+            {(isReady == false)
+            ?
             <Button 
               uiType="sixth" 
               className={styles.postBtn} 
@@ -196,6 +243,15 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
               type="submit" 
               onClick={handleSubmit} 
             >등록</Button>
+            :
+            <Button 
+              uiType="fifth" 
+              className={styles.postBtn} 
+              id="postInquiry" 
+              type="submit" 
+              onClick={handleSubmit} 
+            >등록</Button>
+            }
           </div>
         </article>
       </>
