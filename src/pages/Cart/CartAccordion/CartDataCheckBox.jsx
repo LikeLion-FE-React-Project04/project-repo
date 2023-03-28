@@ -13,7 +13,6 @@ function CartDataCheckBox({
   const [selectedAll, setSelectedAll] = useRecoilState(selectedAllState);
   let isChecked = select[name];
   let handleClickBtn = (e) => {
-    console.log('일반선택클릭');
     setSelect((prev) => {
       let tmp = { ...prev };
 
@@ -24,7 +23,6 @@ function CartDataCheckBox({
   };
 
   if (name === 'selectedAll') {
-    console.log('전체선택클릭');
     isChecked = selectedAll;
 
     handleClickBtn = (e) => {

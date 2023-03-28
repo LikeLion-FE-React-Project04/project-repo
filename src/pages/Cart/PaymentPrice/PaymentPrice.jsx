@@ -15,7 +15,8 @@ function PaymentPrice() {
   const cartProducts = useRecoilValue(cartProductsState);
   const count = useRecoilValue(countState);
   const movePage = useNavigate();
-  const [totalPaymentPrice] = useRecoilValue(cartPriceData);
+  const [totalPrice, totalSalePrice, totalPaymentPrice] =
+    useRecoilValue(cartPriceData);
 
   let cartsInfo = '';
 

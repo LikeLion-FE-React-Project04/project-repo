@@ -25,7 +25,7 @@ const ProductsCarousel = () => {
   const productCards = productList.map((product, index) => {
     return (
       // eslint-disable-next-line react/jsx-key
-      <SwiperSlide>
+      <SwiperSlide key={index}>
         <ProductCard product={product} />
       </SwiperSlide>
     );
@@ -39,6 +39,10 @@ const ProductsCarousel = () => {
       <button
         ref={navigationPrevRef}
         className={classnames(classes.swiperPrevBtn, classes.swiperButton)}
+      />
+      <button
+        ref={navigationNextRef}
+        className={classnames(classes.swiperNextBtn, classes.swiperButton)}
       />
 
       <Swiper
@@ -61,10 +65,6 @@ const ProductsCarousel = () => {
       >
         {productCards}
       </Swiper>
-      <button
-        ref={navigationNextRef}
-        className={classnames(classes.swiperNextBtn, classes.swiperButton)}
-      />
     </div>
   );
 };

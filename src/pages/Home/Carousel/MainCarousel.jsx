@@ -20,10 +20,10 @@ const banners = [
 
 SwiperCore.use([Autoplay, Pagination]);
 
-const swiperSlides = banners.map((banner) => {
+const swiperSlides = banners.map((banner, index) => {
   return (
     // eslint-disable-next-line react/jsx-key
-    <SwiperSlide>
+    <SwiperSlide key={index}>
       <div
         className={classes.swiperSlide}
         style={{
@@ -56,6 +56,10 @@ const MainCarousel = () => {
         ref={navigationPrevRef}
         className={classnames(classes.swiperPrevBtn, classes.swiperButton)}
       />
+      <button
+        ref={navigationNextRef}
+        className={classnames(classes.swiperNextBtn, classes.swiperButton)}
+      />
 
       <Swiper
         ref={swiperRef}
@@ -82,10 +86,7 @@ const MainCarousel = () => {
       >
         {swiperSlides}
       </Swiper>
-      <button
-        ref={navigationNextRef}
-        className={classnames(classes.swiperNextBtn, classes.swiperButton)}
-      />
+
       <div>
         <button
           className={classnames(classes.stop, classes.autoplayButton)}
