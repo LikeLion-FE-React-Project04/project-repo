@@ -210,7 +210,7 @@ export default function ReviewListContainer() {
           <div className={styles.accordionLine} />
         </AccordionItem>
 
-        {count ? <ProductReviewList data={dataState} /> : <Empty />}
+        {count ? <ProductReviewList data={dataState} /> : <Empty alt='따끈한 첫 후기를 기다리고 있어요.' />}
       </div>
 
       {/* 페이지네이션 하드코딩 */}

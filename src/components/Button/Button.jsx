@@ -37,6 +37,11 @@ function getUiStyle(uiType = 'primary') {
     case 'fifth':
       uiStyle = styles.fifth;
       break;
+    case 'sixth':
+      uiStyle = styles.sixth;
+      break;
+    case 'seven':
+      uiStyle = styles.seven;
   }
 
   return uiStyle;

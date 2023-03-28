@@ -5,7 +5,7 @@
   font-family: 'Pretendard';
 }
 .footerInformationWrap {
-  width: 1050px;
+  width: var(--container-width);
   margin: 0 auto;
   display: flex;
   flex-flow: row wrap;
@@ -13,7 +13,7 @@
   padding: 28px 0px 32px 0px;
 }
 .footerAllianceWrap {
-  width: 1050px;
+  width: var(--container-width);
   margin: 0 auto;
   font-weight: 400;
   font-size: 10px;
