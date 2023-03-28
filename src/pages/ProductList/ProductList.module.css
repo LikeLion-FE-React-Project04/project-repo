@@ -18,15 +18,15 @@
   margin-top: 80px;
   margin-bottom: 44px;
   text-align: center;
-  font-size: var(--text-lg);
-  font-weight: 600;
+  font-size: var(--text-xxl);
+  font-weight: 500;
 }
 
 .product {
   position: relative;
   width: 1024px;
   display: flex;
-  gap: 30px;
+  /* gap: 30px; */
   margin-top: 50px;
   margin-bottom: 60px;
 }
@@ -37,9 +37,23 @@
 
 .sortButtonContainer {
   display: flex;
-  position: absolute;
   align-items: center;
-  top: -30px;
-  right: 0;
   gap: 4px;
+  margin-bottom: 20px;
+}
+
+.totalRenderNum {
+  margin-right: auto;
+  background: transparent;
+  /* color: var(--gray-300); */
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.productListBanner {
+  display: block;
+  width: 100%;
+  height: 400px;
+  background: url('../../assets/product-list/product-list-banner.png') no-repeat;
 }

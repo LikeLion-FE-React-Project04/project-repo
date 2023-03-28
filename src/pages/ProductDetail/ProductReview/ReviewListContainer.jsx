@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useRecoilValue, useRecoilState } from 'recoil';
 
@@ -30,10 +30,19 @@ export default function ReviewListContainer() {
     console.log("[ProductReview] dataState> ", dataState);
   }, [dataState]);
 
+  // 상품 후기 리스트 총 개수 가져오려면 상태를 설정해야함(안하면 렌더링이 먼저돼서 불러오지 못함, 종속성 배열도 지정해야함)
+  const [count, setCount] = useState();
+
+  useEffect(() => {
+    if (dataState) {
+      setCount(dataState.length);
+    }
+  }, [dataState]);
+
   return (
     <div>
       <div className={styles.productReviewTotal}>
-        <span className={styles.productReviewCount}>총2개</span>
+        <span className={styles.productReviewCount}>총 {count}개</span>
         <div className={styles.productReviewOrder}>
           <button>추천순</button>
           <button>최근 등록순</button>
@@ -200,6 +209,7 @@ export default function ReviewListContainer() {
         </AccordionItem>
 
         {dataState ? <ProductReviewList data={dataState} /> : null}
+
       </div>
 
       {/* 페이지네이션 하드코딩 */}

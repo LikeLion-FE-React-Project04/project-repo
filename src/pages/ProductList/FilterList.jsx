@@ -15,6 +15,8 @@ import {
   checkedCategoryListAtom,
   checkedBrandListAtom,
   checkedKalryOnlyListAtom,
+  checkedPriceListAtom,
+  checkedBenefitsListAtom,
 } from '@/pages/ProductList/@recoil/renderState';
 
 import AccordionItem from '@/components/Accordion/AccordionItem';
@@ -32,52 +34,95 @@ export const FilterList = () => {
   const setCheckedCategory = useSetRecoilState(checkedCategoryListAtom);
   // const setCheckedCategory = useSetRecoilState(renderAllFilterListSelector);
 
-  const formRef = useRef();
+  const categoryForm = useRef();
   const categoryOnChange = (e) => {
     e.preventDefault;
-    const formData = new FormData(formRef.current);
+    const formData = new FormData(categoryForm.current);
 
     setCheckedCategory(formData.getAll('category') || []);
   };
 
   //brand form cotrolled
   const setCheckedBrand = useSetRecoilState(checkedBrandListAtom);
-  const formRef2 = useRef();
+  const brandListForm = useRef();
   const brandOnChange = (e) => {
     e.preventDefault;
-    const formData = new FormData(formRef2.current);
+    const formData = new FormData(brandListForm.current);
 
     setCheckedBrand(formData.getAll('brand') || []);
-    console.log(formRef2.current);
+
+    // console.log(brandListForm.current, '브랜드레프 커렌트값');
+    // console.log(CheckedKarlyOnly, '첵칼리');
   };
 
   //kalryOnly form cotrolled
   const [CheckedKarlyOnly, setCheckedKarlyOnly] = useRecoilState(
     checkedKalryOnlyListAtom
   );
-  const formRef3 = useRef();
+  const kalryOnlyListForm = useRef();
   const karlyOnlyOnChange = (e) => {
     e.preventDefault;
-    const formData3 = new FormData(formRef3.current);
+    const formData = new FormData(kalryOnlyListForm.current);
 
     // console.log(formData3.get('kalryOnly'));
 
     //왜 checkedKarlyOnly에 문자열이 들어갈까... 배열이아니라?
-    setCheckedKarlyOnly(formData3.getAll('kalryOnly'));
-    console.log(CheckedKarlyOnly);
+    setCheckedKarlyOnly(formData.getAll('kalryOnly'));
+    // console.log(CheckedKarlyOnly);
 
     // debugger;
-    // console.log(formRef3.current);
+  };
+
+  const [CheckedPrice, setCheckedPrice] = useRecoilState(checkedPriceListAtom);
+  const priceListForm = useRef();
+  const priceOnChange = (e) => {
+    e.preventDefault;
+    const formData = new FormData(priceListForm.current);
+
+    const priceList = formData
+      .getAll('price')
+      .map((price) => price.split(',').map((item) => parseInt(item)));
+
+    setCheckedPrice(priceList);
+
+    console.log(priceListForm.current, '가격레프 커렌트값');
+    console.log(CheckedPrice, '첵프라이스');
+    // debugger;
+  };
+
+  const [checkedbenefits, setCheckedbenefits] = useRecoilState(
+    checkedBenefitsListAtom
+  );
+  const benefitsListForm = useRef();
+
+  const benefitsOnChange = (e) => {
+    e.preventDefault;
+    const formData = new FormData(benefitsListForm.current);
+
+    // debugger;
+
+    console.log(formData.getAll('한정상품'), '한정상품한정상품한정상품');
+    const benefitsList = formData.getAll('benefits');
+
+    setCheckedbenefits(benefitsList);
+
+    console.log(benefitsListForm.current, '가격레프 커렌트값');
+    console.log(checkedbenefits, '첵프라이스');
+    // debugger;
   };
 
   // 초기화
   const setCategoryFilter = useSetRecoilState(checkedCategoryListAtom);
   const setBrandFilter = useSetRecoilState(checkedBrandListAtom);
   const setKalryOnlyFilter = useSetRecoilState(checkedKalryOnlyListAtom);
+  const setPriceFilter = useSetRecoilState(checkedPriceListAtom);
+  const setBenefitsList = useSetRecoilState(checkedBenefitsListAtom);
   const onClick = () => {
     setCategoryFilter([]);
     setBrandFilter([]);
     setKalryOnlyFilter([]);
+    setPriceFilter([]);
+    setBenefitsList([]);
   };
 
   return (
@@ -90,7 +135,7 @@ export const FilterList = () => {
             <form
               className={styles.formContainer}
               onChange={categoryOnChange}
-              ref={formRef}
+              ref={categoryForm}
             >
               <CategoryList filterName={'category'} />
             </form>
@@ -105,7 +150,7 @@ export const FilterList = () => {
             <form
               className={styles.formContainer}
               onChange={brandOnChange}
-              ref={formRef2}
+              ref={brandListForm}
             >
               <BrandList filterName={'brand'} />
             </form>
@@ -119,8 +164,8 @@ export const FilterList = () => {
           <NavMenuUl>
             <form
               className={styles.formContainer}
-              // onChange={brandOnChange}
-              // ref={formRef3}
+              onChange={priceOnChange}
+              ref={priceListForm}
             >
               <PriceList />
             </form>
@@ -134,8 +179,8 @@ export const FilterList = () => {
           <NavMenuUl>
             <form
               className={styles.formContainer}
-              // onChange={brandOnChange}
-              // ref={formRef2}
+              onChange={benefitsOnChange}
+              ref={benefitsListForm}
             >
               <BenefitsList />
             </form>
@@ -150,7 +195,7 @@ export const FilterList = () => {
             <form
               className={styles.formContainer}
               onChange={karlyOnlyOnChange}
-              ref={formRef3}
+              ref={kalryOnlyListForm}
             >
               <KalryOnlyList filterName={'kalryOnly'} />
             </form>

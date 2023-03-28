@@ -18,8 +18,6 @@ export const Pagination = () => {
   const [page, setPage] = useRecoilState(pageAtom);
   // total = 15개
 
-  console.log(renderAllFilterList, 'renderAllFilterList');
-
   const numPages = Math.ceil(renderAllFilterList.length / limit);
 
   return (

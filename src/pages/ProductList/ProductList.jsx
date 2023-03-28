@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { useRecoilValue, useRecoilState, useSetRecoilValue } from 'recoil';
+import { Link } from 'react-router-dom';
 
 import styles from './ProductList.module.css';
 
 import { FilterList } from './FilterList';
 import { Pagination } from './Pagination';
 
+import CartModalLayout from './../../components/CartModal/CartModalLayout';
 import ProductCard from '@/components/ProductCard/ProductCard';
+import { categoryListSelectorFamily } from '@/pages/ProductList/@recoil/checkState.js';
 
 import {
   renderAllFilterListSelector,
@@ -15,64 +18,79 @@ import {
   offsetSelector,
 } from '@/pages/ProductList/@recoil/renderState';
 
-import { categoryListSelectorFamily } from '@/pages/ProductList/@recoil/checkState.js';
-
 import {
   SortLowerPriceButton,
   SortUpperPriceButton,
   DummyButtons,
 } from './SortButton';
 
-export const ProductList = () => {
-  const productList = useRecoilValue(categoryListSelectorFamily('brand'));
+const ProductCards = () => {
   const renderAllFilterList = useRecoilValue(renderAllFilterListSelector);
-  const renderKarlyTest = useRecoilValue(renderKarlyOnlySelector);
   const limit = useRecoilValue(limitAtom);
   const offset = useRecoilValue(offsetSelector);
 
-  console.log(renderKarlyTest);
+  return (
+    <>
+      {renderAllFilterList
+        .slice(offset, offset + limit)
+        .map((product, index) => {
+          return (
+            // eslint-disable-next-line react/jsx-key
+            <div key={`product-${index}`} style={{ marginBottom: '100px' }}>
+              <ProductCard product={product} />
+            </div>
+          );
+        })}
+    </>
+  );
+};
 
-  //페이지네이션은 적용 o
-  const ProductCards = () => {
-    console.log('renderAllFilterList', renderAllFilterList);
+const 뭐가있는지확인후랜더링해주는함수 = () => {
+  const renderAllFilterList = useRecoilValue(renderAllFilterListSelector);
+  const 뭐가있다 = renderAllFilterList.length > 0;
 
-    return (
-      <>
-        {renderAllFilterList
-          .slice(offset, offset + limit)
-          .map((product, index) => {
-            return (
-              // eslint-disable-next-line react/jsx-key
-              <div key={`product-${index}`} style={{ marginBottom: '100px' }}>
-                <ProductCard product={product} />
-              </div>
-            );
-          })}
-      </>
-    );
-  };
+  if (뭐가있다) {
+    return <ProductCards />;
+  }
+
+  return <div>상품이없어용</div>;
+};
+
+export const ProductList = () => {
+  const test01 = useRecoilValue(renderAllFilterListSelector);
 
   return (
     <>
       <div className={styles.container}>
         <div className={styles.innerContainer}>
-          <div className={styles.productListTitle}>베스트</div>
+          <div>
+            <Link to="/productList">
+              <ficture alt="배너화면" className={styles.productListBanner} />
+            </Link>
+          </div>
+          <div className={styles.productListTitle}>신상품</div>
           <section className={styles.product}>
             <FilterList />
-            <div className={styles.productCardsWrapper}>
+            <div className={styles.girdContainer}>
               <div className={styles.sortButtonContainer}>
+                <div className={styles.totalRenderNum}>
+                  총 {test01.length}건
+                </div>
                 <DummyButtons text={'신상품순'} />
                 <DummyButtons text={'판매량순'} />
                 <DummyButtons text={'혜택순'} />
                 <SortLowerPriceButton />
                 <SortUpperPriceButton />
               </div>
-              <ProductCards />
+              <div className={styles.productCardsWrapper}>
+                <뭐가있는지확인후랜더링해주는함수 />
+              </div>
             </div>
           </section>
           <Pagination />
         </div>
       </div>
+      <CartModalLayout />
     </>
   );
 };

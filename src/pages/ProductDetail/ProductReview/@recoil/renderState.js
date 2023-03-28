@@ -1,5 +1,10 @@
 import { atom, selector } from 'recoil';
 
+export const productNameAtom = atom({
+  key: 'productNameAtom',
+  default: '',
+});
+
 export const reviewLimitAtom = atom({
   key: 'reviewLimitAtom',
   default: 3,

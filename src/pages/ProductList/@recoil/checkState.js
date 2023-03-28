@@ -177,73 +177,61 @@ export const benefitsListSelectorFamily = selectorFamily({
 
 /* ---------------------------------- price --------------------------------- */
 
-export const priceFilterListSelectorFamily = selectorFamily({
+export const priceFilterListSelectorFamily = selector({
   key: 'priceFilterListSelectorFamily',
-  get:
-    () =>
-    ({ get }) => {
-      const product = get(productListState);
+  get: ({ get }) => {
+    const product = get(productListState);
 
-      const NonFilterProduct = (element) => {
-        if (element.Price != 0) {
-          return true;
-        }
-      };
-      const lessThenFiveHundredFilter = (element) => {
-        if (
-          element.price > 1000 &&
-          element.salePrice < 10000 &&
-          element.price < 13000
-        ) {
-          return true;
-        }
-      };
-      const lessThenTenHundredFilter = (element) => {
-        if (
-          element.price > 10000 &&
-          element.salePrice < 20000 &&
-          element.price < 25000
-        ) {
-          return true;
-        }
-      };
-      const lessThenTwentyHundredFilter = (element) => {
-        if (element.price > 24000 && element.salePrice < 30000) {
-          return true;
-        }
-      };
+    const 최종가격 = (product) => {
+      if (product.saleRatio) {
+        return product.salePrice;
+      }
 
-      const totalProduct = product.filter(NonFilterProduct);
-      const totalProductList = { filter1: totalProduct };
+      return product.price;
+    };
 
-      const lessThenFiveHundredProduct = product.filter(
-        lessThenFiveHundredFilter
-      );
-      const lessThenFiveHundredProductList = {
-        filter2: lessThenFiveHundredProduct,
-      };
+    const lessThenFiveHundredFilter = (product) => {
+      if (최종가격(product) < 10000) {
+        return true;
+      }
+    };
 
-      const lessThenTenHundredProduct = product.filter(
-        lessThenTenHundredFilter
-      );
-      const lessThenTenHundredProductList = {
-        filter3: lessThenTenHundredProduct,
-      };
+    const lessThenTenHundredFilter = (product) => {
+      if (최종가격(product) > 10000 && 최종가격(product) < 20000) {
+        return true;
+      }
+    };
+    const lessThenTwentyHundredFilter = (product) => {
+      if (최종가격(product) > 20000) {
+        return true;
+      }
+    };
 
-      const lessThenTwentyHundredProduct = product.filter(
-        lessThenTwentyHundredFilter
-      );
-      const lessThenTwentyHundredProductList = {
-        filter4: lessThenTwentyHundredProduct,
-      };
+    const lessThenFiveHundredProduct = product.filter(
+      lessThenFiveHundredFilter
+    );
+    const lessThenFiveHundredProductList = {
+      '0,10000': lessThenFiveHundredProduct,
+    };
 
-      const priceFilterMergeList = {
-        ...totalProductList,
-        ...lessThenFiveHundredProductList,
-        ...lessThenTenHundredProductList,
-        ...lessThenTwentyHundredProductList,
-      };
+    const lessThenTenHundredProduct = product.filter(lessThenTenHundredFilter);
+    const lessThenTenHundredProductList = {
+      '10000,19990': lessThenTenHundredProduct,
+    };
 
-      return priceFilterMergeList;
-    },
+    const lessThenTwentyHundredProduct = product.filter(
+      lessThenTwentyHundredFilter
+    );
+    const lessThenTwentyHundredProductList = {
+      '20000,30000': lessThenTwentyHundredProduct,
+    };
+
+    const priceFilterMergeList = {
+      ...lessThenFiveHundredProductList,
+      ...lessThenTenHundredProductList,
+      ...lessThenTwentyHundredProductList,
+    };
+
+    return priceFilterMergeList;
+  },
 });

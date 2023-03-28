@@ -1,5 +1,6 @@
 import { productListState } from '@/store/productListState';
 import { atom, selector } from 'recoil';
+import { priceFilterListSelectorFamily } from './checkState';
 
 /* ----------------------------- renderCategory ----------------------------- */
 
@@ -83,6 +84,20 @@ export const renderKarlyOnlySelector = selector({
   },
 });
 
+/* ---------------------------- priceCheckRender ---------------------------- */
+
+export const checkedPriceListAtom = atom({
+  key: 'checkedPriceListAtom',
+  default: [],
+});
+
+/* ----------------------------- benefitsCheckRender ---------------------------- */
+
+export const checkedBenefitsListAtom = atom({
+  key: 'checkedBenefitsListAtom',
+  default: [],
+});
+
 /* -------------------------------- sort Atom ------------------------------- */
 
 export const sortByPriceDescAtom = atom({
@@ -120,6 +135,8 @@ export const renderAllFilterListSelector = selector({
     const checkedCategoryList = get(checkedCategoryListAtom); // 깔대기
     const checkedBrandList = get(checkedBrandListAtom);
     const checkedKalryOnlyList = get(checkedKalryOnlyListAtom);
+    const checkedPriceList = get(checkedPriceListAtom);
+    const checkedBenefitsList = get(checkedBenefitsListAtom);
     const sortByPriceDesc = get(sortByPriceDescAtom);
 
     const 카테고리_리스트_필터 = (product) => {
@@ -139,7 +156,6 @@ export const renderAllFilterListSelector = selector({
 
       return checkedBrandList.some((category) => category === product.brand);
     };
-
     const 마켓컬리_리스트_필터 = (product) => {
       if (checkedKalryOnlyList.length <= 0) {
         return true;
@@ -148,18 +164,51 @@ export const renderAllFilterListSelector = selector({
       return checkedKalryOnlyList.some(() => product.kalryOnly);
     };
 
+    const 최종가격 = (product) => {
+      if (product.saleRatio) {
+        return product.salePrice;
+      }
+
+      return product.price;
+    };
+
     const 가격_리스트_필터 = (product) => {
-      if (checkedKalryOnlyList.length <= 0) {
+      if (checkedPriceList.length <= 0) {
         return true;
       }
 
-      return checkedKalryOnlyList.some(() => product.kalryOnly);
+      return checkedPriceList.some(([최소값, 최대값]) => {
+        // console.log(최소값, '최소값');
+        // console.log(최대값, '최대값');
+
+        return 최종가격(product) > 최소값 && 최종가격(product) < 최대값;
+      });
+    };
+
+    const 혜택_리스트_필터 = (product) => {
+      if (checkedBenefitsList.length <= 0) {
+        return true;
+      }
+
+      return checkedBenefitsList.some((benefit) => {
+        if (benefit === 'saleRatio') {
+          const isSaleRatioFound = product.saleRatio !== 0;
+
+          return isSaleRatioFound;
+        }
+
+        const isStockCountFound = product.stock < 10;
+
+        return isStockCountFound;
+      });
     };
 
     return products
       .filter(카테고리_리스트_필터)
       .filter(브랜드_리스트_필터)
       .filter(마켓컬리_리스트_필터)
+      .filter(가격_리스트_필터)
+      .filter(혜택_리스트_필터)
       .sort((a, b) => {
         if (sortByPriceDesc) {
           return b.price - a.price;
