@@ -23,6 +23,8 @@ import { darkFilterState } from '@/store/darkFilterState.js';
 import { productLayoutState } from '../../store/detailLayoutState.js';
 
 import { useAuthState } from '@/firebase/auth';
+import { useParams } from 'react-router-dom';
+import { productListFamily } from '@/store/productListState.js';
 
 function checkUiType(uiType) {
   switch (uiType) {
@@ -36,6 +38,10 @@ function checkUiType(uiType) {
 }
 
 export function ProductDetailPopUp({uiType='inquiry', writer}) {
+  // product id
+  const { productId } = useParams();
+  const product = useRecoilValue(productListFamily(productId));
+
   // 현재 로그인된 사용자의 사용자명 불러오기
   const { user } = useAuthState();
 
@@ -127,6 +133,7 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
       textarea: textStateRef.current.textarea, 
       writer: user.displayName,
       date: Timestamp.fromDate(new Date()),
+      productId: product.id,
     };
 
     // secret 관련
@@ -137,6 +144,7 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
         writer: user.displayName, 
         isSecret: isSecret,
         date: Timestamp.fromDate(new Date()),
+        productId: product.id,
       };
     }
     addDocument(deliverArr);

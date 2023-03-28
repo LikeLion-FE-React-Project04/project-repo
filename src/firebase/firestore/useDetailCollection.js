@@ -1,18 +1,29 @@
-import { collection, getDocs, onSnapshot, orderBy, query } from "firebase/firestore";
+import { collection, getDocs, onSnapshot, orderBy, query, where } from "firebase/firestore";
 import { useEffect, useState, useRef } from "react";
 
 import { db } from "../app.js";
+import { productId, productIdAtom } from "../../pages/ProductDetail/ProductInquiry/@recoil/productId";
+import { useParams } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
+import { productListFamily } from '@/store/productListState.js';
 
 export const useDetailCollection = (collectionName) => {
   //const recentData = useRef(null);
-  const [dataState, setDataState] = useState();
   //let recentDataCurrent;
-
+  const [dataState, setDataState] = useState();
+  const { productId } = useParams();
+  const product = useRecoilValue(productListFamily(productId));
+  const [productIdState, setProductIdState] = useRecoilState(productIdAtom);
+  
+  
   // snapshot에는 컬렉션이 들어있다
   // snapshot은 문서(데이터)들을 배열로 저장한다 => [ {..}, {..}, {..} ]
   useEffect(() => {
     // 최신 날짜순 정렬
-    const sortCollectionRecentDate = query(collection(db, collectionName), orderBy("date", "desc"));
+    setProductIdState(product.id);
+    console.log("파이어스토어: ", productIdState);
+    const sortCollectionRecentDate = query(collection(db, collectionName), where("productId", "==", productIdState), orderBy("date", "desc"));
 
     onSnapshot(sortCollectionRecentDate, (snapshot) => {
       let dataArr = [];
