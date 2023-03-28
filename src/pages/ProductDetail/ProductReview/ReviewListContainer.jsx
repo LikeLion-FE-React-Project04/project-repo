@@ -13,6 +13,8 @@ import { reviewLimitAtom, reviewPageAtom } from './@recoil/renderState';
 import { Badge } from '@/components/Badge/Badge.jsx';
 import AccordionItem from '@/components/Accordion/AccordionItem';
 
+import { ReactComponent as Empty } from "@/assets/product-detail/empty-product-review-list.svg";
+
 export default function ReviewListContainer() {
   // 문서를 저장 할 컬렉션 이름 
   const collectionName = 'reviewData';
@@ -208,8 +210,7 @@ export default function ReviewListContainer() {
           <div className={styles.accordionLine} />
         </AccordionItem>
 
-        {dataState ? <ProductReviewList data={dataState} /> : null}
-
+        {count ? <ProductReviewList data={dataState} /> : <Empty />}
       </div>
 
       {/* 페이지네이션 하드코딩 */}
