@@ -111,9 +111,9 @@ export const initialProductList = [
     image: {
       thumbnail:
         'https://img-cf.kurly.com/cdn-cgi/image/quality=85,width=676/shop/data/goods/1608801577622l0.jpg',
-      view: 'bacon/detail-view.jpg',
-      banner: 'bacon/detail_banner.jpg',
-      info: 'bacon/detail_info.jpg',
+      view: 'https://img-cf.kurly.com/shop/data/goodsview/20201224/gv10000146606_1.jpg',
+      banner: 'https://img-cf.kurly.com/shop/data/goodsview/20201224/gv20000146480_1.jpg',
+      info: 'https://img-cf.kurly.com/shop/data/goodsview/20221222/gv00000459448_1.jpg',
       alt: '유명산지 설향딸기 500g',
     },
     stock: 13,
@@ -132,9 +132,9 @@ export const initialProductList = [
     image: {
       thumbnail:
         'https://img-cf.kurly.com/cdn-cgi/image/quality=85,width=676/shop/data/goods/165304027922l0.jpg',
-      view: 'bacon/detail-view.jpg',
-      banner: 'bacon/detail_banner.jpg',
-      info: 'bacon/detail_info.jpg',
+      view: 'https://img-cf.kurly.com/shop/data/goodsview/20210804/gv20000208743_1.jpg',
+      banner: 'https://img-cf.kurly.com/shop/data/goodsview/20210804/gv00000208742_1.jpg',
+      info: 'https://img-cf.kurly.com/shop/data/goodsview/20220217/gv40000281235_1.jpg',
       alt: '양념 소불고기 1kg (냉장)',
     },
     stock: 4,
@@ -152,10 +152,10 @@ export const initialProductList = [
     salePrice: 0,
     image: {
       thumbnail:
-        'https://img-cf.kurly.com/cdn-cgi/image/quality=85,width=676/shop/data/goods/1648206780555l0.jpeg',
-      view: 'bacon/detail-view.jpg',
-      banner: 'bacon/detail_banner.jpg',
-      info: 'bacon/detail_info.jpg',
+        'https://img-cf.kurly.com/shop/data/goods/1657518987370l0.jpg',
+      view: 'https://img-cf.kurly.com/shop/data/goodsview/20220711/gv10000336082_1.jpg',
+      banner: 'https://img-cf.kurly.com/shop/data/goodsview/20220711/gv00000336080_1.jpg',
+      info: 'https://img-cf.kurly.com/shop/data/goodsview/20220711/gv30000336081_1.jpg',
       alt: '짬뽕 2인분 (맵기선택)',
     },
     stock: 13,
@@ -174,9 +174,9 @@ export const initialProductList = [
     image: {
       thumbnail:
         'https://img-cf.kurly.com/cdn-cgi/image/quality=85,width=676/shop/data/goods/165303917855l0.jpeg',
-      view: 'bacon/detail-view.jpg',
-      banner: 'bacon/detail_banner.jpg',
-      info: 'bacon/detail_info.jpg',
+      view: 'https://img-cf.kurly.com/shop/data/goodsview/20210513/gv20000183220_1.jpg',
+      banner: 'https://img-cf.kurly.com/shop/data/goodsview/20200821/gv00000115282_1.jpg',
+      info: 'https://img-cf.kurly.com/shop/data/goodsview/20200821/gv20000115287_1.jpg',
       alt: '호주산 목초육 치마살',
     },
     stock: 4,
@@ -195,9 +195,9 @@ export const initialProductList = [
     image: {
       thumbnail:
         'https://img-cf.kurly.com/cdn-cgi/image/quality=85,width=676/shop/data/goods/1653034267999l0.jpg',
-      view: 'bacon/detail-view.jpg',
-      banner: 'bacon/detail_banner.jpg',
-      info: 'bacon/detail_info.jpg',
+      view: 'https://img-cf.kurly.com/shop/data/goodsview/20210218/gv10000159388_1.jpg',
+      banner: 'https://img-cf.kurly.com/shop/data/goodsview/20210218/gv30000159387_1.jpg',
+      info: 'https://img-cf.kurly.com/shop/data/goodsview/20210218/gv40000159400_1.jpg',
       alt: '크림치즈 8종',
     },
     stock: 13,
@@ -239,9 +239,9 @@ export const initialProductList = [
     image: {
       thumbnail:
         'https://img-cf.kurly.com/cdn-cgi/image/quality=85,width=676/shop/data/goods/1563948119225l0.jpg',
-      view: 'bacon/detail-view.jpg',
-      banner: 'bacon/detail_banner.jpg',
-      info: 'bacon/detail_info.jpg',
+      view: 'https://img-cf.kurly.com/shop/data/goodsview/20230119/gv40000479274_3.jpg',
+      banner: 'https://img-cf.kurly.com/shop/data/goodsview/20220401/gv30000298378_1.jpg',
+      info: 'https://img-cf.kurly.com/shop/data/goodsview/20220401/gv40000298379_1.jpg',
       alt: '네스프레소 호환 캡슐 11종',
     },
     stock: 6,
@@ -260,9 +260,9 @@ export const initialProductList = [
     image: {
       thumbnail:
         'https://img-cf.kurly.com/cdn-cgi/image/quality=85,width=676/shop/data/goods/1655468290167l0.jpeg',
-      view: 'bacon/detail-view.jpg',
-      banner: 'bacon/detail_banner.jpg',
-      info: 'bacon/detail_info.jpg',
+      view: 'https://img-cf.kurly.com/shop/data/goodsview/20201207/gv10000140807_1.jpg',
+      banner: 'https://img-cf.kurly.com/shop/data/goodsview/20201207/gv20000140805_1.jpg',
+      info: 'https://img-cf.kurly.com/shop/data/goodsview/20201207/gv20000140910_1.jpg',
       alt: '콤팩트 초극세모',
     },
     stock: 13,
@@ -281,9 +281,9 @@ export const initialProductList = [
     image: {
       thumbnail:
         'https://product-image.kurly.com/cdn-cgi/image/quality=85,width=676/product/image/b8c4673a-8e39-4dfc-9e3c-d2fd013e8cfa.jpg',
-      view: 'bacon/detail-view.jpg',
-      banner: 'bacon/detail_banner.jpg',
-      info: 'bacon/detail_info.jpg',
+      view: 'https://img-cf.kurly.com/shop/data/goodsview/20221103/gv10000445202_1.jpg',
+      banner: 'https://img-cf.kurly.com/shop/data/goodsview/20221103/gv40000435517_1.jpg',
+      info: 'https://img-cf.kurly.com/shop/data/goodsview/20221012/gv20000435519_1.jpg',
       alt: '온 가족이 즐기는 큼직한 바베큐 폭립',
     },
     stock: 13,
@@ -302,9 +302,9 @@ export const initialProductList = [
     image: {
       thumbnail:
         'https://img-cf.kurly.com/cdn-cgi/image/quality=85,width=676/shop/data/goods/1655775819130l0.jpg',
-      view: 'bacon/detail-view.jpg',
-      banner: 'bacon/detail_banner.jpg',
-      info: 'bacon/detail_info.jpg',
+      view: 'https://img-cf.kurly.com/shop/data/goodsview/20220620/gv10000328466_1.jpg',
+      banner: 'https://img-cf.kurly.com/shop/data/goodsview/20221222/gv40000469749_1.jpg',
+      info: 'https://img-cf.kurly.com/shop/data/goodsview/20210208/gv00000157620_1.jpg',
       alt: ' 오늘의 샐러드',
     },
     stock: 6,
