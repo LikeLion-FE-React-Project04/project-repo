@@ -8,6 +8,7 @@ export const SortLowerPriceButton = () => {
 
   return (
     <button
+      aria-labelledby={'상품들을 낮은 가격순으로 정렬 해주는 버튼'}
       className={styles.sortLowerPriceButton}
       type="button"
       onClick={() => setDesc(false)}
@@ -21,6 +22,7 @@ export const SortUpperPriceButton = () => {
 
   return (
     <button
+      aria-labelledby={'상품들을 높은 가격순으로 정렬 해주는 버튼'}
       className={styles.sortUpperPriceButton}
       type="button"
       onClick={() => setDesc(true)}
@@ -30,6 +32,10 @@ export const SortUpperPriceButton = () => {
   );
 };
 
-export const DummyButtons = ({ text }) => {
-  return <button className={styles.dummybutton}>{text}</button>;
+export const DummyButtons = ({ text, AlternativeText }) => {
+  return (
+    <button aria-labelledby={AlternativeText} className={styles.dummybutton}>
+      {text}
+    </button>
+  );
 };
