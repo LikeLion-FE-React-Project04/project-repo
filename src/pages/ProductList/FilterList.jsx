@@ -17,6 +17,7 @@ import {
   checkedKalryOnlyListAtom,
   checkedPriceListAtom,
   checkedBenefitsListAtom,
+  renderAllFilterListSelector,
 } from '@/pages/ProductList/@recoil/renderState';
 
 import AccordionItem from '@/components/Accordion/AccordionItem';
@@ -111,23 +112,9 @@ export const FilterList = () => {
     // debugger;
   };
 
-  // 초기화
-  const setCategoryFilter = useSetRecoilState(checkedCategoryListAtom);
-  const setBrandFilter = useSetRecoilState(checkedBrandListAtom);
-  const setKalryOnlyFilter = useSetRecoilState(checkedKalryOnlyListAtom);
-  const setPriceFilter = useSetRecoilState(checkedPriceListAtom);
-  const setBenefitsList = useSetRecoilState(checkedBenefitsListAtom);
-  const onClick = () => {
-    setCategoryFilter([]);
-    setBrandFilter([]);
-    setKalryOnlyFilter([]);
-    setPriceFilter([]);
-    setBenefitsList([]);
-  };
-
   return (
     <div className={styles.productListNav}>
-      <FilterContainer onClick={onClick} />
+      <FilterContainer />
       <AccordionItem index={0} width="220px" handelArrow>
         <div className={styles.Handle}>카테고리</div>
         <div className={styles.panel}>
