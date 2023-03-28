@@ -6,6 +6,7 @@ import { Button } from '@/components/Button/Button';
 
 import CartAccordion from './CartAccordion/CartAccordion';
 import PriceInfo from './PriceInfo/PriceInfo';
+import PaymentPrice from './PaymentPrice/PaymentPrice';
 
 function Cart() {
   return (
@@ -21,7 +22,7 @@ function Cart() {
         <div>
           <Address />
           <PriceInfo></PriceInfo>
-          <Button className={styles.orderBtn}>주문하기</Button>
+          <PaymentPrice></PaymentPrice>
         </div>
       </div>
     </div>
