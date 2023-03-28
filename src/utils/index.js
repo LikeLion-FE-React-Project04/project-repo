@@ -9,3 +9,5 @@ export * from './getNode';
 export * from './typeOf';
 export * from './typeError';
 export * from './getCookie';
+export * from './getPaymentPrice';
+export * from './saveCartData';

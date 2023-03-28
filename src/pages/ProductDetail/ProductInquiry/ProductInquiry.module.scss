@@ -2,6 +2,7 @@
 .productInquiryWrap {
   // width: var(--container-width);
   // margin: 0 auto 96px auto;
+  margin-top: 72px;
   margin-bottom: 96px;
   h2 {
     font-weight: 700;
@@ -107,4 +108,42 @@
   span {
     font-weight: 800;
   }
+}
+
+/* --------------------------------- 페이지네이션 --------------------------------- */
+.paginationContainer {
+  margin-top: 16px;
+  position: relative;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.paginationPrev {
+  border: none;
+  width: 34px;
+  height: 34px;
+  background: url('@/assets/product-list/ic-pagination-prev.svg');
+  margin-right: 16px;
+}
+
+.paginationNext {
+  border: none;
+  width: 34px;
+  height: 34px;
+  background: url('@/assets/product-list/ic-pagination-Next.svg');
+}
+
+.paginationNum {
+  /* background-color: pink; */
+  /* position: absolute; */
+  position: relative;
+  /* top: 0px; */
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--gray-100);
+  background-color: var(--white);
+  color: var(--content);
+  border-right: none;
 }

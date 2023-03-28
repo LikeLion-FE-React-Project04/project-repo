@@ -7,10 +7,11 @@ import { selectedproductId } from '@/store/productListState.js';
 import { productCartModalState } from '@/store/cartModalState.js';
 import { darkFilterState } from '@/store/darkFilterState.js';
 import { useSetRecoilState } from 'recoil';
+import Mark from './Mark';
 
 /* Component ---------------------------------------------------------------- */
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, isListCard = false }) {
   const setProductCartModalState = useSetRecoilState(productCartModalState);
   const setSelectedproductId = useSetRecoilState(selectedproductId);
   const setDarkFilterState = useSetRecoilState(darkFilterState);
@@ -29,7 +30,6 @@ export default function ProductCard({ product }) {
     }
 
     if (target.dataset.name === 'cartbutton') {
-      console.log('CartBtn 클릭되었습니다');
       setSelectedproductId(product.id);
       setProductCartModalState(true);
       setDarkFilterState(true);
@@ -61,7 +61,10 @@ export default function ProductCard({ product }) {
           <CartButton />
         </div>
         <p className={classes.productName}>{product.name}</p>
+        {isListCard && <p className={classes.description}>{product.description}</p>}
         <ProductCardPrice product={product} />
+
+        {isListCard && <Mark product={product} />}
       </div>
     );
   }
@@ -90,7 +93,7 @@ function ProductCardPrice({ product }) {
 function CartButton() {
   return (
     <button
-      aria-label={'임시'}
+      aria-label={'cartBtn'}
       className={classes.cartBtn}
       data-id={1}
       data-name="cartbutton"

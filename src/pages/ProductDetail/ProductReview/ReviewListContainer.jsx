@@ -1,6 +1,6 @@
-import { useEffect, useRef, React } from 'react';
+import { useEffect, useState } from 'react';
 
-import { ReactDOM } from 'react-dom';
+import { useRecoilValue, useRecoilState } from 'recoil';
 
 import styles from "./ReviewListContainer.module.scss";
 
@@ -8,9 +8,12 @@ import { useDetailCollection } from './../../../firebase/firestore/useDetailColl
 
 import ProductReviewList from "./ProductReviewList/ProductReviewList";
 
+import { reviewLimitAtom, reviewPageAtom } from './@recoil/renderState';
+
 import { Badge } from '@/components/Badge/Badge.jsx';
 import AccordionItem from '@/components/Accordion/AccordionItem';
 
+import { ReactComponent as Empty } from "@/assets/product-detail/empty-product-review-list.svg";
 
 export default function ReviewListContainer() {
   // 문서를 저장 할 컬렉션 이름 
@@ -18,14 +21,30 @@ export default function ReviewListContainer() {
   // 한번 실행시켜 => useEffect가 실행될임
   const { dataState } = useDetailCollection(collectionName);
 
+  // 페이지네이션 테스트
+  const limit = useRecoilValue(reviewLimitAtom);
+  const [page, setPage] = useRecoilState(reviewPageAtom);
+  // total = 15개
+
+  const numPages = Math.ceil(15 / limit);
+
   useEffect(() => {
     console.log("[ProductReview] dataState> ", dataState);
+  }, [dataState]);
+
+  // 상품 후기 리스트 총 개수 가져오려면 상태를 설정해야함(안하면 렌더링이 먼저돼서 불러오지 못함, 종속성 배열도 지정해야함)
+  const [count, setCount] = useState();
+
+  useEffect(() => {
+    if (dataState) {
+      setCount(dataState.length);
+    }
   }, [dataState]);
 
   return (
     <div>
       <div className={styles.productReviewTotal}>
-        <span className={styles.productReviewCount}>총2개</span>
+        <span className={styles.productReviewCount}>총 {count}개</span>
         <div className={styles.productReviewOrder}>
           <button>추천순</button>
           <button>최근 등록순</button>
@@ -191,8 +210,34 @@ export default function ReviewListContainer() {
           <div className={styles.accordionLine} />
         </AccordionItem>
 
-        {dataState ? <ProductReviewList data={dataState} /> : null}
+        {count ? <ProductReviewList data={dataState} /> : <Empty />}
       </div>
+
+      {/* 페이지네이션 하드코딩 */}
+      <nav className={styles.paginationContainer}>
+        <button
+          className={styles.paginationPrev}
+          disabled={page === 1}
+          onClick={() => setPage(page - 1)}
+        />
+        {/* {Array(numPages)
+          .fill()
+          .map((_, i) => (
+            <button
+              key={i + 1}
+              aria-current={page === i + 1 ? 'page' : null}
+              className={styles.paginationNum}
+              onClick={() => setPage(i + 1)}
+            >
+              {i + 1}
+            </button>
+          ))} */}
+        <button
+          className={styles.paginationNext}
+          disabled={page === numPages}
+          onClick={() => setPage(page + 1)}
+        />
+      </nav>
     </div>
   )
 }

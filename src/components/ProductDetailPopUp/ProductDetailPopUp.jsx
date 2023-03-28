@@ -138,6 +138,8 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
       };
     }
     addDocument(deliverArr);
+    setIsVisible(false); // 모달창을 띄우지 않는다
+    setDarkFilter(false); // 다크 필터를 끈다
   }
 
   return (
