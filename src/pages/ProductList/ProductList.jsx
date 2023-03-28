@@ -36,7 +36,7 @@ const ProductCards = () => {
         .map((product, index) => {
           return (
             <div key={`product-${index}`} style={{ marginBottom: '100px' }}>
-              <ProductCard product={product} />
+              <ProductCard product={product} isListCard />
             </div>
           );
         })}
