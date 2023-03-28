@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const createHtmlPlugin = (options = {}) => {
   const config = Object.assign(
     {
-      title: 'React 툴체인 매뉴얼 구성',
+      title: '멋쟁이사조처럼 - 컬리 ',
       template: resolve('public/index.html'),
       templateParameters: {
         lang: 'ko-KR',
