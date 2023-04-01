@@ -21,7 +21,10 @@ function ProductDetail() {
 
   const [productName, setProductName] = useRecoilState(productNameAtom);
 
-  setProductName(product.name);
+  // 페이지 전환 시, product.name 정보 얻어오기
+  useEffect(() => {
+    setProductName(product.name);
+  }, []);
 
   return (
     <div className={styles.ProductDetailWrapper}>
