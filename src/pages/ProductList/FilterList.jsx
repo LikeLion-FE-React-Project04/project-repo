@@ -1,6 +1,6 @@
 import styles from './FilterList.module.css';
 
-import { useSetRecoilState } from 'recoil';
+import { useSetRecoilState, useRecoilState, useRecoilValue } from 'recoil';
 import { useRef } from 'react';
 
 import { FilterContainer } from './FilterContainer';
@@ -18,7 +18,11 @@ import {
   checkedKalryOnlyListAtom,
   checkedPriceListAtom,
   checkedBenefitsListAtom,
+  moreSkipAtom,
+  moreLimitAtom,
 } from '@/pages/ProductList/@recoil/renderState';
+
+import { categoryListSelectorFamily } from '@/pages/ProductList/@recoil/checkState';
 
 import AccordionItem from '@/components/Accordion/AccordionItem';
 
@@ -57,6 +61,13 @@ export const CategoryListForm = () => {
 export const BrandListForm = () => {
   const setCheckedBrand = useSetRecoilState(checkedBrandListAtom);
   const brandListForm = useRef();
+  const [moreSkip, setMoreSkip] = useRecoilState(moreSkipAtom);
+  const [moreLimit, setMoreLimit] = useRecoilState(moreLimitAtom);
+  const categoryList = useRecoilValue(categoryListSelectorFamily('brand'));
+  const numPages = Math.ceil(categoryList.length / moreLimit);
+
+  // console.log(categoryList.length / , '얘의 정체는 무엇인가 두둥');
+
   const brandOnChange = (e) => {
     e.preventDefault;
     const formData = new FormData(brandListForm.current);
