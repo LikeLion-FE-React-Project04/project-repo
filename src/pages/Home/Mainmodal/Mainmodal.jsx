@@ -1,10 +1,18 @@
 import { Link } from 'react-router-dom';
 
 import styles from './Mainmodal.module.scss';
+import { productMainmodalState } from './@recoil/MainmodalState';
+import { useRecoilState } from 'recoil';
+import { transparentFilterState } from '../../../components/TransparentFilter/@recoil/transparentFilterState';
+import { useSetRecoilState } from 'recoil';
 
-export function Mainmodal({ setModalOpen }) {
+export default function Mainmodal() {
+  const [isVisible, setIsVisible] = useRecoilState(productMainmodalState);
+  const setTransparentFilter = useSetRecoilState(transparentFilterState);
+
   const closeModal = () => {
-    setModalOpen(false);
+    setIsVisible(false);
+    setTransparentFilter(false);
   };
 
   const closeModalDuringToday = () => {
