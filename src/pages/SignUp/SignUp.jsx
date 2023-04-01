@@ -6,11 +6,11 @@ import { Button } from '../../components/Button/Button';
 import RadioButton from '@/components/RadioButton/RadioButton';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import RightArrow from '@/assets/common/ic-right-arrow.svg';
-
+import { useEffect } from 'react';
 import { useSignUp, useAuthState } from '@/firebase/auth';
 import { useCreateAuthUser } from '../../firebase/firestore/useCreateAuthUser';
 import { useRef } from 'react';
-
+import { Link, useNavigate } from 'react-router-dom';
 const initialFormState = {
   name: '',
   email: '',
@@ -22,12 +22,25 @@ function SignUp() {
   const { signUp } = useSignUp();
   const { createAuthUser } = useCreateAuthUser();
   const { isLoading, error, user } = useAuthState();
+  const movePage = useNavigate();
 
   const formStateRef = useRef(initialFormState);
 
   // const handleReset = () => {
   //   console.log('reset');
   // };
+
+  useEffect(() => {
+    alert(
+      '이메일, 비밀번호, 이름만 입력해도 회원가입이 됩니다.\n아직 로직이 완성되지 않았습니다. 혹시 회원가입이 안되시면 다른 이메일로 다시 해보시길 바랍니다.'
+    );
+  }, []);
+
+  useEffect(() => {
+    if (user) {
+      movePage('/');
+    }
+  }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -77,12 +90,14 @@ function SignUp() {
       <div className={styles.SignUpPage}>
         <span className={styles.MustInputText}>필수입력사항</span>
         <form className={styles.FormField} onSubmit={handleSubmit}>
-          <Input text={'아이디'} must={true}>
+          <Input text={'아이디'}>
             <FormInput
               placeholder={'아이디를 입력해주세요'}
               className={styles.InputBox}
             />
-            <Button uiType={'third'}>중복 확인</Button>
+            <Button uiType={'third'} disabled>
+              중복 확인
+            </Button>
           </Input>
 
           <Input text={'비밀번호'} must={true}>
@@ -123,23 +138,28 @@ function SignUp() {
               name="email"
               onChange={handleChangeInput}
             />
-            <Button uiType={'third'}>중복 확인</Button>
+            <Button uiType={'third'} disabled>
+              중복 확인
+            </Button>
           </Input>
 
-          <Input text={'휴대폰'} must={true}>
+          <Input text={'휴대폰'}>
             <FormInput
               placeholder={'숫자만 입력해주세요.'}
               className={styles.InputBox}
             />
-            <Button uiType={'third'}>인증번호 받기</Button>
+            <Button uiType={'third'} disabled>
+              인증번호 받기
+            </Button>
           </Input>
 
-          <Input text={'주소'} must={true}>
+          <Input text={'주소'}>
             <div className={styles.DivBox}>
               <Button
                 name={'주소 검색'}
                 uiType={'third'}
                 className={styles.AddressSearchInput}
+                disabled
               >
                 주소 검색
               </Button>

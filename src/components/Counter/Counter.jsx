@@ -1,4 +1,4 @@
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { countState } from '@/store/CounterState.js';
 
 import styles from './Counter.module.scss';
@@ -14,13 +14,16 @@ function Counter({
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   plusBtnEvent = () => {},
 }) {
-  const setCount = useSetRecoilState(countState);
+  const [count, setCount] = useRecoilState(countState);
 
   return (
     <div className={styles.countLayout}>
       <CounterBtn
         type="minus"
         onClick={() => {
+          if (count[name] == 1) {
+            return;
+          }
           minusBtnEvent();
           setCount((count) => {
             let tmp = { ...count };

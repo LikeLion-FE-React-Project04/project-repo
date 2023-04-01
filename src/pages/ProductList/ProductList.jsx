@@ -36,7 +36,7 @@ const ProductCards = () => {
         .map((product, index) => {
           return (
             <div key={`product-${index}`} style={{ marginBottom: '100px' }}>
-              <ProductCard product={product} />
+              <ProductCard product={product} isListCard />
             </div>
           );
         })}
@@ -69,13 +69,17 @@ const IsCheckedRenderAllfilter = () => {
   return (
     <div className={styles.hasNotFountPageContainer}>
       <img
-        src={notFountIcon}
         alt={'필터 조건에 맞는 상품이 없을때 나오는 아이콘'}
+        src={notFountIcon}
       />
       <span className={styles.hasNotFountPageText}>
         선택하신 필터와 일치하는 상품이 없습니다.
       </span>
-      <button className={styles.hasNotFountPageButton} onClick={onClick}>
+      <button
+        aria-labelledby={'초기화 버튼'}
+        className={styles.hasNotFountPageButton}
+        onClick={onClick}
+      >
         <img src={resetIcon} alt={'초기화버튼 앞 되돌리기 아이콘'} />
         <span className={styles.hasNotFountPageButtonText}>버튼초기화</span>
       </button>
@@ -101,9 +105,18 @@ export const ProductList = () => {
                 <div className={styles.totalRenderNum}>
                   총 {renderAllFilterListNum.length}건
                 </div>
-                <DummyButtons text={'신상품순'} />
-                <DummyButtons text={'판매량순'} />
-                <DummyButtons text={'혜택순'} />
+                <DummyButtons
+                  AlternativeText={'상품들을 신상품 순으로 정렬 해주는 버튼'}
+                  text={'신상품순'}
+                />
+                <DummyButtons
+                  AlternativeText={'상품들을 판매량 순으로 정렬 해주는 버튼'}
+                  text={'판매량순'}
+                />
+                <DummyButtons
+                  AlternativeText={'상품들을 혜택 순으로 정렬 해주는 버튼'}
+                  text={'혜택순'}
+                />
                 <SortLowerPriceButton />
                 <SortUpperPriceButton />
               </div>
