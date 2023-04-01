@@ -1,4 +1,4 @@
-import { Mainmodal } from './Mainmodal/Mainmodal';
+// import { Mainmodal } from './Mainmodal/Mainmodal';
 import { useGetCookieEvent } from './Mainmodal/useGetCookieEvent';
 import { Linebanner } from './Linebanner/Linebanner';
 import { useSignOut } from '@/firebase/auth';
@@ -8,9 +8,16 @@ import styles from './Home.module.scss';
 import PageTitle from '../../components/PageTitle/PageTitle';
 import CartModal from '@/components/CartModal/CartModal';
 import CartModalLayout from '../../components/CartModal/CartModalLayout';
+import { useRecoilState } from 'recoil';
+import { productMainmodalState } from './Mainmodal/@recoil/MainmodalState';
+import MainmodalLayout from './Mainmodal/MainmodalLayout';
+import { transparentFilterState } from '../../components/TransparentFilter/@recoil/transparentFilterState';
+import { useSetRecoilState } from 'recoil';
 
 function Home() {
-  const { isModalOpen, setModalOpen } = useGetCookieEvent();
+  const {isVisible, setIsVisible} = useGetCookieEvent();
+  const setTransparentFilter = useSetRecoilState(transparentFilterState);
+
   const { signOut } = useSignOut();
   const handleSignOut = async () => {
     signOut();
@@ -28,7 +35,7 @@ function Home() {
       <div className={styles.productCarouselLayout}>
         <ProductsCarousel />
       </div>
-      {isModalOpen ? <Mainmodal setModalOpen={setModalOpen} /> : null}
+      {isVisible ? <MainmodalLayout /> : setTransparentFilter(false)}
       <CartModalLayout />
     </div>
   );
