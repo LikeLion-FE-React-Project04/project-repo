@@ -1,14 +1,9 @@
+import { useParams } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
-
-import { addDoc, collection, Timestamp } from 'firebase/firestore';
+import { Timestamp } from 'firebase/firestore';
 
 import { useDetailFireStore } from '../../firebase/firestore/useDetailFireStore.js';
-import { db } from '../../firebase/firestore';
-import { app } from '../../firebase/app';
-import { useDetailCollection } from '../../firebase/firestore/useDetailCollection';
 
 import styles from './ProductDetailPopUp.module.scss';
 import { PlaceholderInquiry } from './PlaceholderInquiry/PlaceholderInquiry';
@@ -18,29 +13,24 @@ import { Secret } from './Secret/Secret';
 import { Button } from '@/components/Button/Button.jsx';
 import { productDetailModalState } from '@/store/detailModalState.js';
 import { default as PageTitle } from '@/components/PageTitle/PageTitle.jsx'
-import productImg from "@/assets/product/tangtang/thumbnail.jpg";
-
 import { darkFilterState } from '@/store/darkFilterState.js';
-import { productLayoutState } from '../../store/detailLayoutState.js';
-
 import { useAuthState } from '@/firebase/auth';
-import { useParams } from 'react-router-dom';
 import { productListFamily } from '@/store/productListState.js';
-
 import { productNameAtom } from '@/pages/ProductDetail/ProductReview/@recoil/renderState';
 
 function checkUiType(uiType) {
   switch (uiType) {
     case 'inquiry':
-      return { title: '문의하기', ph: <PlaceholderInquiry />, handleType: 'miyoung', collectionName: 'inquiryData'};
+      return { title: '문의하기', ph: <PlaceholderInquiry />, collectionName: 'inquiryData'};
     case 'review':
-      return { title: '후기 작성', ph: <PlaceholderReview />, handleType: 'jinki', collectionName: 'reviewData'};
+      return { title: '후기 작성', ph: <PlaceholderReview />, collectionName: 'reviewData'};
     default:
       console.log(new Error('uiType이 올바르지 않습니다'));
   }
 }
 
-export function ProductDetailPopUp({uiType='inquiry', writer}) {
+export function ProductDetailPopUp({uiType='inquiry'}) {
+  // title과 textarea의 값을 저장
   const initialTextState = {
     title: '',
     textarea: '',
@@ -50,20 +40,10 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
   const textStateRef = useRef(initialTextState); // textStateRef == { current : {title:'', textarea:''} }
 
   // uiType검사
-  const { title, ph, handleType, collectionName } = checkUiType(uiType);  
+  const { title, ph, collectionName } = checkUiType(uiType);  
 
+  // 제품명과 관련된 recoil
   const productName = useRecoilValue(productNameAtom);
-
-  // title을 참조하기 위한 ref
-  // const titleInputRef = useRef();
-
-  // console.log("제품명을띄워야해요", productName);
-
-  // if(uiType == 'review') {
-  //   textStateRef.current.title = productName;
-  //   console.log("제품명 넣어주기~", textStateRef.current.title);
-  //   // titleInputRef.value = textStateRef.current.title;
-  // }
 
   // product id
   const { productId } = useParams();
@@ -72,21 +52,19 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
   // 현재 로그인된 사용자의 사용자명 불러오기
   const { user } = useAuthState();
 
+  // Test
   useEffect(() => {
     if (user) {
-      console.log('user', user);
-      console.log('user dpN', user.displayName);
-      // 이미지 잘 얻어와지나 확인
+      // 잘 받아와지나 테스트용
+      console.log('user 출력하기 => ', user);
+      console.log('user displayName 출력하기 => ', user.displayName);
       console.log('product image의 thumbnail 출력하기 => ', product.image.thumbnail);
       console.log('product image의 alt 출력하기 => ', product.image.alt);
     }
   }, [user]);
 
-
   // firestore 사용
   const { addDocument } = useDetailFireStore(collectionName); 
-  // 한번 실행시켜 => useEffect가 실행될임
-  const { recentData } = useDetailCollection(collectionName);
 
   // 다크필터
   const setDarkFilter = useSetRecoilState(darkFilterState);
@@ -97,20 +75,12 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
   // textarea를 참조하기 위한 ref
   const area = useRef(); 
   
-
-  // // textarea의 text를 관리하기 위한 ref
-  // const textAreaText = useRef('');
-  // // title의 text를 관리하기 위한 ref
-  // const titleText = useRef('');
-
   // placeholder가 띄워야할지 말지를 관리하는 state
   const [isActiveP, setIsActiveP] = useState(true); 
   // textarea의 글자수를 관리하는 state
   const [inputCount, setInputCount] = useState(0);
-  
   // secret의 상태를 관리하는 state
   const [isSecret, setIsSecret] = useState(false);
-
   // 등록버튼의 uiType을 관리하는 state
   const [isReady, setIsReady] = useState(false);
 
@@ -136,7 +106,7 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
     console.log('textarea의 내용을 바꾸고 있습니다');
 
     if(uiType=='inquiry') {
-      // 제목과 내용이 모두 비어있지 않다면? => 등록 버튼 색 변해야함 왜? 등록이 가능하깐
+      // 제목과 내용이 모두 비어있지 않다면? => 등록 버튼 색 변해야함 왜? 등록이 가능하니깐
       if(textStateRef.current.textarea != '' && textStateRef.current.title != '') {
         setIsReady(true);
       }
@@ -161,7 +131,7 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
     console.log('제목의 current값을 바꾸고 있습니다');
 
     if(uiType=='inquiry') {
-      // 제목과 내용이 모두 비어있지 않다면? => 등록 버튼 색 변해야함 왜? 등록이 가능하깐
+      // 제목과 내용이 모두 비어있지 않다면? => 등록 버튼 색 변해야함 왜? 등록이 가능하니깐
       if(textStateRef.current.textarea != '' && textStateRef.current.title != '') {
         setIsReady(true);
       }
