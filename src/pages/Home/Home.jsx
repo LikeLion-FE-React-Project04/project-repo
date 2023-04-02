@@ -35,7 +35,7 @@ function Home() {
       <div className={styles.productCarouselLayout}>
         <ProductsCarousel />
       </div>
-      {isVisible ? <MainmodalLayout /> : setTransparentFilter(false)}
+      {isVisible ? <MainmodalLayout /> : null}
       <CartModalLayout />
     </div>
   );
