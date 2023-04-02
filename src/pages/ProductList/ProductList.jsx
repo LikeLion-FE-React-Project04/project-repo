@@ -87,9 +87,33 @@ const IsCheckedRenderAllfilter = () => {
   );
 };
 
-export const ProductList = () => {
+export const SortButtonList = () => {
   const renderAllFilterListNum = useRecoilValue(renderAllFilterListSelector);
 
+  return (
+    <div className={styles.sortButtonContainer}>
+      <div className={styles.totalRenderNum}>
+        총 {renderAllFilterListNum.length}건
+      </div>
+      <DummyButtons
+        AlternativeText={'상품들을 신상품 순으로 정렬 해주는 버튼'}
+        text={'신상품순'}
+      />
+      <DummyButtons
+        AlternativeText={'상품들을 판매량 순으로 정렬 해주는 버튼'}
+        text={'판매량순'}
+      />
+      <DummyButtons
+        AlternativeText={'상품들을 혜택 순으로 정렬 해주는 버튼'}
+        text={'혜택순'}
+      />
+      <SortLowerPriceButton />
+      <SortUpperPriceButton />
+    </div>
+  );
+};
+
+export const ProductList = () => {
   return (
     <>
       <div className={styles.container}>
@@ -101,25 +125,7 @@ export const ProductList = () => {
           <section className={styles.product}>
             <FilterList />
             <div className={styles.girdContainer}>
-              <div className={styles.sortButtonContainer}>
-                <div className={styles.totalRenderNum}>
-                  총 {renderAllFilterListNum.length}건
-                </div>
-                <DummyButtons
-                  AlternativeText={'상품들을 신상품 순으로 정렬 해주는 버튼'}
-                  text={'신상품순'}
-                />
-                <DummyButtons
-                  AlternativeText={'상품들을 판매량 순으로 정렬 해주는 버튼'}
-                  text={'판매량순'}
-                />
-                <DummyButtons
-                  AlternativeText={'상품들을 혜택 순으로 정렬 해주는 버튼'}
-                  text={'혜택순'}
-                />
-                <SortLowerPriceButton />
-                <SortUpperPriceButton />
-              </div>
+              <SortButtonList />
               <div className={styles.productCardsWrapper}>
                 <IsCheckedRenderAllfilter />
               </div>

@@ -1,5 +1,43 @@
 import { atom, selector, selectorFamily } from 'recoil';
+
 import { productListState } from '../../../store/productListState';
+
+// TODO: getConsonant 함수 밖으로 분리 후, consonant 동적으로 리팩토링 해보기
+// consonant를 상태로만들어서 그것을 여기와 버튼 onclick의 셋팅자음(자음)에 연결시켜주면 동적으로 만들어줄 수 있지않을까? (대충개떡같이아무생각대잔치적어봄)
+
+function getConsonant(kor) {
+  const consonant = [
+    'ㄱ',
+    'ㄲ',
+    'ㄴ',
+    'ㄷ',
+    'ㄸ',
+    'ㄹ',
+    'ㅁ',
+    'ㅂ',
+    'ㅃ',
+    'ㅅ',
+    'ㅆ',
+    'ㅇ',
+    'ㅈ',
+    'ㅉ',
+    'ㅊ',
+    'ㅋ',
+    'ㅌ',
+    'ㅍ',
+    'ㅎ',
+    '[',
+  ];
+
+  const rk = 44032;
+  let uni = kor.charCodeAt(0);
+
+  uni = uni - rk;
+
+  let fn = parseInt(uni / 588);
+
+  return consonant[fn];
+}
 
 export const checkState = atom({
   key: 'checkState',
@@ -18,7 +56,7 @@ export const categoryListSelectorFamily = selectorFamily({
   get:
     (catagoryName) =>
     ({ get }) => {
-      //product = initialProductList 전체 15개의 정적Local Data
+      //product = initialProductList 전체 40개의 정적Local Data
       const product = get(productListState);
 
       //categoryList = category의 중복을 제거해줌
@@ -60,6 +98,41 @@ export const categoryLengthListSelectorFamily = selectorFamily({
     },
 });
 
+//ㄱㄴㄷ순 정렬 셀렉터
+export const sortBrandListSelectorFamily = selectorFamily({
+  key: 'sortBrandListSelectorFamily',
+  get:
+    (자음) =>
+    ({ get }) => {
+      const categoryList = get(categoryListSelectorFamily('brand'));
+
+      return categoryList.filter((item) => {
+        return getConsonant(item.brand) === 자음;
+      });
+    },
+});
+
+export const etcBrandListSelector = selector({
+  key: 'etcBrandListSelector',
+  get: ({ get }) => {
+    const product = get(productListState);
+
+    const categoryList = product.filter((arr, index, callback) => {
+      return (
+        index === callback.findIndex((product) => product.brand === arr.brand)
+      );
+    });
+
+    return categoryList.sort((a, b) => {
+      return a.brand.toLowerCase() < b.brand.toLowerCase()
+        ? -1
+        : a.brand.toLowerCase() == b.brand.toLowerCase()
+        ? 0
+        : 1;
+    });
+  },
+});
+
 //all 체크박스 ver.
 export const allCategoryNameListSelectorFamily = selectorFamily({
   key: 'allCategoryNameListSelectorFamily',
@@ -74,26 +147,6 @@ export const allCategoryNameListSelectorFamily = selectorFamily({
         return a.category;
       });
     },
-});
-
-//sort 테스트 = 실패
-export const sortCategorySelector = selector({
-  key: 'sortCategorySelector',
-  get: ({ get }) => {
-    const sortedCategory = get(renderCategorySelector);
-    const products = get(productListState);
-
-    if (sortedCategory.length <= 0) {
-      return products.sort((a, b) => a.price - b.price);
-    }
-
-    // console.log(sortedCategory.sort((a, b) => a.price - b.price));
-    const test01 = [...sortedCategory];
-
-    test01.sort((a, b) => a.price - b.price);
-
-    return test01;
-  },
 });
 
 /* -------------------------------- karlyOnly ------------------------------- */

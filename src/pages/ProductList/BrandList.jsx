@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
-
 import { string } from 'prop-types';
+
+import styles from './BrandList.module.css';
 
 import {
   RenderFilterNameLi,
@@ -10,12 +12,15 @@ import {
   RenderFilterPriceLi,
 } from './RenderFilterLi';
 
+import { BrandButtons } from './BrandButtons';
+
 import {
-  checkedPriceListAtom,
   categoryListSelectorFamily,
   karlyOnlyListSelectorFamily,
   benefitsListSelectorFamily,
   priceFilterListSelectorFamily,
+  sortBrandListSelectorFamily,
+  etcBrandListSelector,
 } from '@/pages/ProductList/@recoil/checkState';
 
 /* -------------------------------- category -------------------------------- */
@@ -46,21 +51,47 @@ CategoryList.propTypes = {
 /* ---------------------------------- brand --------------------------------- */
 
 export const BrandList = ({ filterName = '', children }) => {
-  const categoryList = useRecoilValue(categoryListSelectorFamily('brand'));
+  const [자음, 셋팅자음] = useState('ㄱ');
+  const categoryList = useRecoilValue(sortBrandListSelectorFamily(자음));
+  const etcBrandList = useRecoilValue(etcBrandListSelector);
+  const exp = /[ㄱ-ㅎ]/;
 
   return (
     <>
-      {categoryList.map((product, index) => {
-        const key = `${product.id} ${index}`;
+      <BrandButtons 셋팅자음={셋팅자음} 자음={자음} />
+      {exp.test(자음)
+        ? categoryList.map((product, index) => {
+            const key = `${product.id} ${index}`;
 
-        return (
-          <RenderBrandFilterNameLi
-            key={key}
-            name={filterName}
-            value={product.brand}
-          />
-        );
-      })}
+            return (
+              <RenderBrandFilterNameLi
+                key={key}
+                name={filterName}
+                value={product.brand}
+              />
+            );
+          })
+        : etcBrandList.slice(0, 3).map((product, index) => {
+            const key = `${product.id} ${index}`;
+
+            return (
+              <RenderBrandFilterNameLi
+                key={key}
+                name={filterName}
+                value={product.brand}
+              />
+            );
+          })}
+      <div className={styles.container}>
+        <button
+          aria-labelledby={'더보기 버튼'}
+          className={styles.navFilterButton}
+          type="button"
+          // onClick={onClick}
+        >
+          {'브랜드 더보기 > '}
+        </button>
+      </div>
     </>
   );
 };
@@ -81,8 +112,6 @@ export const KalryOnlyList = ({ filterName = '' }) => {
 export const BenefitsList = () => {
   const benefitsList = useRecoilValue(benefitsListSelectorFamily('saleRatio'));
 
-  console.log(benefitsList, '리스트뭐나오냐이거');
-
   return (
     <>
       <RenderFilterBenefitsLi
@@ -100,8 +129,6 @@ export const BenefitsList = () => {
 /* ---------------------------------- price --------------------------------- */
 export const PriceList = () => {
   const priceList = useRecoilValue(priceFilterListSelectorFamily);
-
-  console.log(priceList, '가격필터뭐가져오냐얜');
 
   // debugger;
 

@@ -98,7 +98,7 @@ export const checkedBenefitsListAtom = atom({
   default: [],
 });
 
-/* -------------------------------- sort Atom ------------------------------- */
+/* -------------------------------- sort/pagination Atom ------------------------------- */
 
 export const sortByPriceDescAtom = atom({
   key: 'sortByPriceDescAtom',
@@ -107,7 +107,7 @@ export const sortByPriceDescAtom = atom({
 
 export const limitAtom = atom({
   key: 'limitAtom',
-  default: 12,
+  default: 25,
 });
 
 export const pageAtom = atom({
@@ -124,6 +124,16 @@ export const offsetSelector = selector({
 
     return offset;
   },
+});
+
+export const moreSkipAtom = atom({
+  key: 'skipAtom',
+  default: 0,
+});
+
+export const moreLimitAtom = atom({
+  key: 'skipAtom',
+  default: 10,
 });
 
 /* --------------------------------- 합치기테스트 --------------------------------- */
@@ -211,10 +221,10 @@ export const renderAllFilterListSelector = selector({
       .filter(혜택_리스트_필터)
       .sort((a, b) => {
         if (sortByPriceDesc) {
-          return b.price - a.price;
+          return 최종가격(b) - 최종가격(a);
         }
 
-        return a.price - b.price;
+        return 최종가격(a) - 최종가격(b);
       });
   },
 });

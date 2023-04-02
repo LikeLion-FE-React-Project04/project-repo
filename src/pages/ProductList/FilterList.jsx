@@ -1,7 +1,7 @@
-import styles from './FilterList.module.css';
-
-import { useSetRecoilState } from 'recoil';
 import { useRef } from 'react';
+import { useSetRecoilState } from 'recoil';
+
+import styles from './FilterList.module.css';
 
 import { FilterContainer } from './FilterContainer';
 import {
@@ -30,7 +30,7 @@ export const NavMenuUl = ({ children }) => {
   );
 };
 
-//categoryList
+/* ------------------------------ categoryList ------------------------------ */
 export const CategoryListForm = () => {
   const setCheckedCategory = useSetRecoilState(checkedCategoryListAtom);
 
@@ -53,10 +53,11 @@ export const CategoryListForm = () => {
   );
 };
 
-//BrandList
+/* -------------------------------- BrandList ------------------------------- */
 export const BrandListForm = () => {
   const setCheckedBrand = useSetRecoilState(checkedBrandListAtom);
   const brandListForm = useRef();
+
   const brandOnChange = (e) => {
     e.preventDefault;
     const formData = new FormData(brandListForm.current);
@@ -75,7 +76,7 @@ export const BrandListForm = () => {
   );
 };
 
-//kalryOnlyList
+/* ------------------------------ kalryOnlyList ----------------------------- */
 export const KalryOnlyListForm = () => {
   const setCheckedKarlyOnly = useSetRecoilState(checkedKalryOnlyListAtom);
   const kalryOnlyListForm = useRef();
@@ -97,7 +98,7 @@ export const KalryOnlyListForm = () => {
   );
 };
 
-//benefitsList
+/* ------------------------------ benefitsList ------------------------------ */
 export const BenefitsListForm = () => {
   const setCheckedbenefits = useSetRecoilState(checkedBenefitsListAtom);
   const benefitsListForm = useRef();
@@ -122,7 +123,7 @@ export const BenefitsListForm = () => {
   );
 };
 
-//priceList
+/* -------------------------------- priceList ------------------------------- */
 export const PriceListForm = () => {
   const setCheckedPrice = useSetRecoilState(checkedPriceListAtom);
   const priceListForm = useRef();
@@ -148,55 +149,45 @@ export const PriceListForm = () => {
   );
 };
 
+export const AccordionItemContainer = ({ index, text, children }) => {
+  return (
+    <AccordionItem index={index} width="220px" handelArrow>
+      <div className={styles.Handle}>{text}</div>
+      <div className={styles.panel}>{children}</div>
+      <div className={styles.accordionLine} />
+    </AccordionItem>
+  );
+};
+
 export const FilterList = () => {
   return (
     <div className={styles.productListNav}>
       <FilterContainer />
-      <AccordionItem index={0} width="220px" handelArrow>
-        <div className={styles.Handle}>카테고리</div>
-        <div className={styles.panel}>
-          <NavMenuUl>
-            <CategoryListForm />
-          </NavMenuUl>
-        </div>
-        <div className={styles.accordionLine} />
-      </AccordionItem>
-      <AccordionItem index={1} width="220px" handelArrow>
-        <div className={styles.Handle}>브랜드</div>
-        <div className={styles.panel}>
-          <NavMenuUl>
-            <BrandListForm />
-          </NavMenuUl>
-        </div>
-        <div className={styles.accordionLine} />
-      </AccordionItem>
-      <AccordionItem index={2} width="220px" handelArrow>
-        <div className={styles.Handle}>가격</div>
-        <div className={styles.panel}>
-          <NavMenuUl>
-            <PriceListForm />
-          </NavMenuUl>
-        </div>
-        <div className={styles.accordionLine} />
-      </AccordionItem>
-      <AccordionItem index={3} width="220px" handelArrow>
-        <div className={styles.Handle}>혜택</div>
-        <div className={styles.panel}>
-          <NavMenuUl>
-            <BenefitsListForm />
-          </NavMenuUl>
-        </div>
-        <div className={styles.accordionLine} />
-      </AccordionItem>
-      <AccordionItem index={4} width="220px" handelArrow>
-        <div className={styles.Handle}>유형</div>
-        <div className={styles.panel}>
-          <NavMenuUl>
-            <KalryOnlyListForm />
-          </NavMenuUl>
-        </div>
-        <div className={styles.accordionLine} />
-      </AccordionItem>
+      <AccordionItemContainer index={'0'} text={'카테고리'}>
+        <NavMenuUl>
+          <CategoryListForm />
+        </NavMenuUl>
+      </AccordionItemContainer>
+      <AccordionItemContainer index={'1'} text={'브랜드'}>
+        <NavMenuUl>
+          <BrandListForm />
+        </NavMenuUl>
+      </AccordionItemContainer>
+      <AccordionItemContainer index={'2'} text={'가격'}>
+        <NavMenuUl>
+          <PriceListForm />
+        </NavMenuUl>
+      </AccordionItemContainer>
+      <AccordionItemContainer index={'3'} text={'혜택'}>
+        <NavMenuUl>
+          <BenefitsListForm />
+        </NavMenuUl>
+      </AccordionItemContainer>
+      <AccordionItemContainer index={'4'} text={'유형'}>
+        <NavMenuUl>
+          <KalryOnlyListForm />
+        </NavMenuUl>
+      </AccordionItemContainer>
     </div>
   );
 };
