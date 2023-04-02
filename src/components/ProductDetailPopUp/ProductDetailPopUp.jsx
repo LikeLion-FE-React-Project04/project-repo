@@ -55,20 +55,20 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
   const productName = useRecoilValue(productNameAtom);
 
   // title을 참조하기 위한 ref
-  const titleInputRef = useRef();
+  // const titleInputRef = useRef();
 
-  console.log("제품명을띄워야해요", productName);
+  // console.log("제품명을띄워야해요", productName);
 
-  if(uiType == 'review') {
-    textStateRef.current.title = productName;
-    console.log("제품명 넣어주기~", textStateRef.current.title);
-    // titleInputRef.value = textStateRef.current.title;
-  }
+  // if(uiType == 'review') {
+  //   textStateRef.current.title = productName;
+  //   console.log("제품명 넣어주기~", textStateRef.current.title);
+  //   // titleInputRef.value = textStateRef.current.title;
+  // }
 
   // product id
   const { productId } = useParams();
   const product = useRecoilValue(productListFamily(productId));
-
+  
   // 현재 로그인된 사용자의 사용자명 불러오기
   const { user } = useAuthState();
 
@@ -76,6 +76,9 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
     if (user) {
       console.log('user', user);
       console.log('user dpN', user.displayName);
+      // 이미지 잘 얻어와지나 확인
+      console.log('product image의 thumbnail 출력하기 => ', product.image.thumbnail);
+      console.log('product image의 alt 출력하기 => ', product.image.alt);
     }
   }, [user]);
 
@@ -132,14 +135,24 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
     setInputCount(textStateRef.current.textarea.length);
     console.log('textarea의 내용을 바꾸고 있습니다');
 
-    // 제목과 내용이 모두 비어있지 않다면? => 등록 버튼 색 변해야함 왜? 등록이 가능하깐
-    if(textStateRef.current.textarea != '' && textStateRef.current.title != '') {
-      setIsReady(true);
+    if(uiType=='inquiry') {
+      // 제목과 내용이 모두 비어있지 않다면? => 등록 버튼 색 변해야함 왜? 등록이 가능하깐
+      if(textStateRef.current.textarea != '' && textStateRef.current.title != '') {
+        setIsReady(true);
+      }
+      else {
+        setIsReady(false);
+      }
     }
-    else {
-      setIsReady(false);
+    else { // uiType이 review라면
+      // 내용만 채워지면 됨
+      if(textStateRef.current.textarea != '') {
+        setIsReady(true);
+      }
+      else {
+        setIsReady(false);
+      }
     }
-
   };
   
   // 제목의 내용이 바뀔때마다 넣어줌
@@ -147,12 +160,23 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
     textStateRef.current.title = e.target.value;
     console.log('제목의 current값을 바꾸고 있습니다');
 
-    // 제목과 내용이 모두 비어있지 않다면? => 등록 버튼 색 변해야함 왜? 등록이 가능하깐
-    if(textStateRef.current.textarea != '' && textStateRef.current.title != '') {
-      setIsReady(true);
+    if(uiType=='inquiry') {
+      // 제목과 내용이 모두 비어있지 않다면? => 등록 버튼 색 변해야함 왜? 등록이 가능하깐
+      if(textStateRef.current.textarea != '' && textStateRef.current.title != '') {
+        setIsReady(true);
+      }
+      else {
+        setIsReady(false);
+      }
     }
-    else {
-      setIsReady(false);
+    else { // uiType이 review라면
+      // 내용만 채워지면 됨
+      if(textStateRef.current.textarea != '') {
+        setIsReady(true);
+      }
+      else {
+        setIsReady(false);
+      }
     }
   }
 
@@ -164,7 +188,7 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
 
   // 등록 버튼을 눌렀을 때 submit
   const handleSubmit = (e) => {
-    if(textStateRef.current.title == '') {
+    if(textStateRef.current.title == '' && uiType=='inquiry') {
       alert("제목을 입력해주세요.");
     }
     else if(textStateRef.current.textarea == '') {
@@ -206,14 +230,17 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
             <button aria-label="창닫기" onClick={handleCancelBtnClick}></button>
           </div>
           <div className={styles.productInformation}>
-            <img alt="탱탱쫄면" src={productImg} />
-            <p>[풀무원] 탱탱쫄면 (4개입)</p>
+            <img alt={product.image.alt} src={product.image.thumbnail} />
+            <p>{productName}</p>
           </div>
           <div className={styles.inputField}>
             <form onSubmit={handleSubmit}>
               <fieldset className={styles.inquiryTitleWrapper}>
               <label htmlFor='inquiryTitle'>제목</label>
-              <input required id="inquiryTitle" placeholder="제목을 입력해 주세요" type="text" onChange={handleTitleData} ref={titleInputRef} />
+              {(uiType == 'review') ? 
+              <input required id="inquiryTitle" value={productName} type="text" onChange={handleTitleData} readOnly/> : null}
+              {(uiType == 'inquiry') ? 
+              <input required id="inquiryTitle" placeholder="제목을 입력해 주세요" type="text" onChange={handleTitleData} /> : null}
               </fieldset>
               <fieldset className={styles.inquiryContentWrapper}>
               <label htmlFor='inquiryText'>내용</label>
@@ -242,6 +269,7 @@ export function ProductDetailPopUp({uiType='inquiry', writer}) {
               id="postInquiry" 
               type="submit" 
               onClick={handleSubmit} 
+              disabled
             >등록</Button>
             :
             <Button 
