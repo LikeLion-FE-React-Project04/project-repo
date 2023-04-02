@@ -1,10 +1,8 @@
-import { useRecoilValue, useRecoilState } from 'recoil';
-
 import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { string } from 'prop-types';
 
 import styles from './BrandList.module.css';
-
-import { string } from 'prop-types';
 
 import {
   RenderFilterNameLi,
@@ -14,19 +12,16 @@ import {
   RenderFilterPriceLi,
 } from './RenderFilterLi';
 
+import { BrandButtons } from './BrandButtons';
+
 import {
   categoryListSelectorFamily,
   karlyOnlyListSelectorFamily,
   benefitsListSelectorFamily,
   priceFilterListSelectorFamily,
-  rBrandListSelector,
   sortBrandListSelectorFamily,
+  etcBrandListSelector,
 } from '@/pages/ProductList/@recoil/checkState';
-
-import {
-  moreSkipAtom,
-  moreLimitAtom,
-} from '@/pages/ProductList/@recoil/renderState';
 
 /* -------------------------------- category -------------------------------- */
 export const CategoryList = ({ filterName = '', children }) => {
@@ -58,125 +53,35 @@ CategoryList.propTypes = {
 export const BrandList = ({ filterName = '', children }) => {
   const [자음, 셋팅자음] = useState('ㄱ');
   const categoryList = useRecoilValue(sortBrandListSelectorFamily(자음));
-  const [moreSkip, setMoreSkip] = useRecoilState(moreSkipAtom);
-  const [moreLimit, setMoreLimit] = useRecoilState(moreLimitAtom);
-  const numPages = Math.ceil(categoryList.length / moreLimit);
-  const sliceCategoryList = categoryList.slice(0, 20);
+  const etcBrandList = useRecoilValue(etcBrandListSelector);
+  const exp = /[ㄱ-ㅎ]/;
 
   return (
     <>
-      <div className={styles.brandButtonContainer}>
-        <button
-          className={styles.brandSortButton}
-          type="button"
-          onClick={() => 셋팅자음('ㄱ')}
-        >
-          ㄱ
-        </button>
-        <button
-          className={styles.brandSortButton}
-          type="button"
-          onClick={() => 셋팅자음('ㄴ')}
-        >
-          ㄴ
-        </button>
-        <button
-          className={styles.brandSortButton}
-          type="button"
-          onClick={() => 셋팅자음('ㄷ')}
-        >
-          ㄷ
-        </button>
-        <button
-          className={styles.brandSortButton}
-          type="button"
-          onClick={() => 셋팅자음('ㄹ')}
-        >
-          ㄹ
-        </button>
-        <button
-          className={styles.brandSortButton}
-          type="button"
-          onClick={() => 셋팅자음('ㅁ')}
-        >
-          ㅁ
-        </button>
-        <button
-          className={styles.brandSortButton}
-          type="button"
-          onClick={() => 셋팅자음('ㅂ')}
-        >
-          ㅂ
-        </button>
-        <button
-          className={styles.brandSortButton}
-          type="button"
-          onClick={() => 셋팅자음('ㅅ')}
-        >
-          ㅅ
-        </button>
-        <button
-          className={styles.brandSortButton}
-          type="button"
-          onClick={() => 셋팅자음('ㅇ')}
-        >
-          ㅇ
-        </button>
-        <button
-          className={styles.brandSortButton}
-          type="button"
-          onClick={() => 셋팅자음('ㅈ')}
-        >
-          ㅈ
-        </button>
-        <button
-          className={styles.brandSortButton}
-          type="button"
-          onClick={() => 셋팅자음('ㅊ')}
-        >
-          ㅊ
-        </button>
-        <button
-          className={styles.brandSortButton}
-          type="button"
-          onClick={() => 셋팅자음('ㅋ')}
-        >
-          ㅋ
-        </button>
-        <button
-          className={styles.brandSortButton}
-          type="button"
-          onClick={() => 셋팅자음('ㅍ')}
-        >
-          ㅍ
-        </button>
+      <BrandButtons 셋팅자음={셋팅자음} 자음={자음} />
+      {exp.test(자음)
+        ? categoryList.map((product, index) => {
+            const key = `${product.id} ${index}`;
 
-        <button
-          className={styles.brandSortButton}
-          type="button"
-          onClick={() => 셋팅자음('ㅎ')}
-        >
-          ㅎ
-        </button>
-        <button
-          className={styles.brandETCButton}
-          type="button"
-          onClick={() => 셋팅자음('ㅎ')}
-        >
-          ETC
-        </button>
-      </div>
-      {categoryList.map((product, index) => {
-        const key = `${product.id} ${index}`;
+            return (
+              <RenderBrandFilterNameLi
+                key={key}
+                name={filterName}
+                value={product.brand}
+              />
+            );
+          })
+        : etcBrandList.slice(0, 3).map((product, index) => {
+            const key = `${product.id} ${index}`;
 
-        return (
-          <RenderBrandFilterNameLi
-            key={key}
-            name={filterName}
-            value={product.brand}
-          />
-        );
-      })}
+            return (
+              <RenderBrandFilterNameLi
+                key={key}
+                name={filterName}
+                value={product.brand}
+              />
+            );
+          })}
       <div className={styles.container}>
         <button
           aria-labelledby={'더보기 버튼'}
@@ -207,8 +112,6 @@ export const KalryOnlyList = ({ filterName = '' }) => {
 export const BenefitsList = () => {
   const benefitsList = useRecoilValue(benefitsListSelectorFamily('saleRatio'));
 
-  console.log(benefitsList, '리스트뭐나오냐이거');
-
   return (
     <>
       <RenderFilterBenefitsLi
@@ -226,8 +129,6 @@ export const BenefitsList = () => {
 /* ---------------------------------- price --------------------------------- */
 export const PriceList = () => {
   const priceList = useRecoilValue(priceFilterListSelectorFamily);
-
-  console.log(priceList, '가격필터뭐가져오냐얜');
 
   // debugger;
 

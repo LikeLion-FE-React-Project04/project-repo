@@ -1,7 +1,7 @@
-import styles from './FilterList.module.css';
-
-import { useSetRecoilState, useRecoilState, useRecoilValue } from 'recoil';
 import { useRef } from 'react';
+import { useSetRecoilState } from 'recoil';
+
+import styles from './FilterList.module.css';
 
 import { FilterContainer } from './FilterContainer';
 import {
@@ -18,11 +18,7 @@ import {
   checkedKalryOnlyListAtom,
   checkedPriceListAtom,
   checkedBenefitsListAtom,
-  moreSkipAtom,
-  moreLimitAtom,
 } from '@/pages/ProductList/@recoil/renderState';
-
-import { categoryListSelectorFamily } from '@/pages/ProductList/@recoil/checkState';
 
 import AccordionItem from '@/components/Accordion/AccordionItem';
 
@@ -34,7 +30,7 @@ export const NavMenuUl = ({ children }) => {
   );
 };
 
-//categoryList
+/* ------------------------------ categoryList ------------------------------ */
 export const CategoryListForm = () => {
   const setCheckedCategory = useSetRecoilState(checkedCategoryListAtom);
 
@@ -57,16 +53,10 @@ export const CategoryListForm = () => {
   );
 };
 
-//BrandList
+/* -------------------------------- BrandList ------------------------------- */
 export const BrandListForm = () => {
   const setCheckedBrand = useSetRecoilState(checkedBrandListAtom);
   const brandListForm = useRef();
-  const [moreSkip, setMoreSkip] = useRecoilState(moreSkipAtom);
-  const [moreLimit, setMoreLimit] = useRecoilState(moreLimitAtom);
-  const categoryList = useRecoilValue(categoryListSelectorFamily('brand'));
-  const numPages = Math.ceil(categoryList.length / moreLimit);
-
-  // console.log(categoryList.length / , '얘의 정체는 무엇인가 두둥');
 
   const brandOnChange = (e) => {
     e.preventDefault;
@@ -86,7 +76,7 @@ export const BrandListForm = () => {
   );
 };
 
-//kalryOnlyList
+/* ------------------------------ kalryOnlyList ----------------------------- */
 export const KalryOnlyListForm = () => {
   const setCheckedKarlyOnly = useSetRecoilState(checkedKalryOnlyListAtom);
   const kalryOnlyListForm = useRef();
@@ -108,7 +98,7 @@ export const KalryOnlyListForm = () => {
   );
 };
 
-//benefitsList
+/* ------------------------------ benefitsList ------------------------------ */
 export const BenefitsListForm = () => {
   const setCheckedbenefits = useSetRecoilState(checkedBenefitsListAtom);
   const benefitsListForm = useRef();
@@ -133,7 +123,7 @@ export const BenefitsListForm = () => {
   );
 };
 
-//priceList
+/* -------------------------------- priceList ------------------------------- */
 export const PriceListForm = () => {
   const setCheckedPrice = useSetRecoilState(checkedPriceListAtom);
   const priceListForm = useRef();

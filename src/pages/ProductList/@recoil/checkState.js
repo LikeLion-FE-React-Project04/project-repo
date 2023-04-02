@@ -104,7 +104,6 @@ export const sortBrandListSelectorFamily = selectorFamily({
   get:
     (자음) =>
     ({ get }) => {
-      // const product = get(productListState);
       const categoryList = get(categoryListSelectorFamily('brand'));
 
       return categoryList.filter((item) => {
@@ -113,16 +112,26 @@ export const sortBrandListSelectorFamily = selectorFamily({
     },
 });
 
-// export const rBrandListSelector = selector({
-//   key: 'rBrandListSelector',
-//   get: ({ get }) => {
-//     const sortCategoryList = get(sortBrandListSelector);
+export const etcBrandListSelector = selector({
+  key: 'etcBrandListSelector',
+  get: ({ get }) => {
+    const product = get(productListState);
 
-//     return sortCategoryList.filter((item) => {
-//       return getConsonant(item.brand) === 'ㄱ';
-//     });
-//   },
-// });
+    const categoryList = product.filter((arr, index, callback) => {
+      return (
+        index === callback.findIndex((product) => product.brand === arr.brand)
+      );
+    });
+
+    return categoryList.sort((a, b) => {
+      return a.brand.toLowerCase() < b.brand.toLowerCase()
+        ? -1
+        : a.brand.toLowerCase() == b.brand.toLowerCase()
+        ? 0
+        : 1;
+    });
+  },
+});
 
 //all 체크박스 ver.
 export const allCategoryNameListSelectorFamily = selectorFamily({
@@ -138,26 +147,6 @@ export const allCategoryNameListSelectorFamily = selectorFamily({
         return a.category;
       });
     },
-});
-
-//sort 테스트 = 실패
-export const sortCategorySelector = selector({
-  key: 'sortCategorySelector',
-  get: ({ get }) => {
-    const sortedCategory = get(renderCategorySelector);
-    const products = get(productListState);
-
-    if (sortedCategory.length <= 0) {
-      return products.sort((a, b) => a.price - b.price);
-    }
-
-    // console.log(sortedCategory.sort((a, b) => a.price - b.price));
-    const test01 = [...sortedCategory];
-
-    test01.sort((a, b) => a.price - b.price);
-
-    return test01;
-  },
 });
 
 /* -------------------------------- karlyOnly ------------------------------- */

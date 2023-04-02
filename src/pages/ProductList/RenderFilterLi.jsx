@@ -134,8 +134,6 @@ export const RenderFilterBenefitsLi = ({
     return 'stock';
   };
 
-  console.log(getValue(name), '이름뭐라고나오냐?');
-
   return (
     <>
       <label className={styles.inputContainer}>

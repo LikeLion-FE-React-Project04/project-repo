@@ -221,10 +221,10 @@ export const renderAllFilterListSelector = selector({
       .filter(혜택_리스트_필터)
       .sort((a, b) => {
         if (sortByPriceDesc) {
-          return b.price - a.price;
+          return 최종가격(b) - 최종가격(a);
         }
 
-        return a.price - b.price;
+        return 최종가격(a) - 최종가격(b);
       });
   },
 });
