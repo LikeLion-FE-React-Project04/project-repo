@@ -153,11 +153,7 @@ export const AccordionItemContainer = ({ index, text, children }) => {
   return (
     <AccordionItem index={index} width="220px" handelArrow>
       <div className={styles.Handle}>{text}</div>
-      <div className={styles.panel}>
-        <NavMenuUl>
-          <CategoryListForm />
-        </NavMenuUl>
-      </div>
+      <div className={styles.panel}>{children}</div>
       <div className={styles.accordionLine} />
     </AccordionItem>
   );
