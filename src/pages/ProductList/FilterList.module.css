@@ -20,9 +20,14 @@
   border-bottom: var(--gray-100);
   max-height: calc(100vh - 100px);
   transition: all 250ms;
-  overflow: hidden;
+  overflow: hidden scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
+.productListNav::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
 .Handle {
   width: 220px;
   height: 62px;
