@@ -1,5 +1,5 @@
 // Import Swiper React components
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Autoplay, Pagination } from 'swiper';
 import { useRef } from 'react';
 import classnames from 'classnames';
@@ -10,24 +10,23 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-// Import Swiper styles
 const banners = [
-  'assets/main/banner01.jpg',
-  'assets/main/banner02.jpg',
-  'assets/main/banner03.jpg',
-  'assets/main/banner04.jpg',
+  { url: 'assets/main/banner01.jpg', title: '이 주의 특가 한눈에 보기' },
+  { url: 'assets/main/banner02.jpg', title: '한눈에 보는 이달의 카드 혜택' },
+  { url: 'assets/main/banner03.jpg', title: '컬리 과일 가게' },
+  { url: 'assets/main/banner04.jpg', title: '컬리 퍼플 위크 혜택보기' },
 ];
 
 SwiperCore.use([Autoplay, Pagination]);
 
 const swiperSlides = banners.map((banner, index) => {
   return (
-    // eslint-disable-next-line react/jsx-key
     <SwiperSlide key={index}>
-      <div
+      <button
+        aria-label={banner.title}
         className={classes.swiperSlide}
         style={{
-          background: `url(${banner}) 50% 50%/ 100% no-repeat darkblue`,
+          background: `url(${banner.url}) 50% 50%/ 100% no-repeat darkblue`,
         }}
       />
     </SwiperSlide>
@@ -42,27 +41,37 @@ const MainCarousel = () => {
   const stop = (e) => {
     e.preventDefault();
     swiperRef.current.swiper.autoplay.stop();
-    console.log('스와이퍼의 재생이 멈췄어요😎');
   };
   const start = (e) => {
     e.preventDefault();
     swiperRef.current.swiper.autoplay.start();
-    console.log('스와이퍼의 재생이 시작됐어요😎');
   };
+
+  // 스와이퍼 페이지네이션 el속성에 접근하기 위한 방법...'swiper-pagination'를 제외한 다른 이름은 적용되지가 않음
+  const pagination = 'swiper-pagination';
 
   return (
     <div className={classes.mainSwiper}>
+      <h2></h2>
       <button
         ref={navigationPrevRef}
+        aria-label="이전 슬라이더"
         className={classnames(classes.swiperPrevBtn, classes.swiperButton)}
       />
       <button
         ref={navigationNextRef}
+        aria-label="다음 슬라이더"
         className={classnames(classes.swiperNextBtn, classes.swiperButton)}
       />
-
       <Swiper
         ref={swiperRef}
+        // 사용법 모르겠다.
+        a11y={{
+          containerMessage: '메인캐로셀',
+          prevSlideMessage: '이전 슬라이드',
+          nextSlideMessage: '다음 슬라이드',
+          slideLabelMessage: `총 {{slidesLength}}장의 슬라이드 중 {{index}}번 슬라이드 입니다.`,
+        }}
         allowTouchMove={false}
         autoplay={{ delay: 3500 }}
         className={classes.swiper}
@@ -71,31 +80,35 @@ const MainCarousel = () => {
           prevEl: navigationPrevRef.current,
           nextEl: navigationNextRef.current,
         }}
+        pagination={{
+          el: `.${pagination}`,
+          type: 'custom',
+          renderCustom: function (swiper, current, total) {
+            return current + ' / ' + total;
+          },
+        }}
+        slidesPerView={1}
+        spaceBetween={0}
         onBeforeInit={(swiper) => {
-          // 초기 설정
           swiper.params.navigation.prevEl = navigationPrevRef.current;
           swiper.params.navigation.nextEl = navigationNextRef.current;
           swiper.navigation.update();
         }}
-        onSlideChange={() => console.log('slide change')}
-        pagination={{
-          clickable: true,
-        }}
-        slidesPerView={1}
-        spaceBetween={0}
       >
         {swiperSlides}
       </Swiper>
-
-      <div>
+      <div className={classes.swiperPaginationLayout}>
         <button
+          aria-label="슬라이더 자동 재생 멈춤"
           className={classnames(classes.stop, classes.autoplayButton)}
           onClick={stop}
         />
         <button
+          aria-label="슬라이더 자동 재생"
           className={classnames(classes.start, classes.autoplayButton)}
           onClick={start}
         />
+        <div className={classnames(pagination, classes.swiperPagination)} />
       </div>
     </div>
   );
