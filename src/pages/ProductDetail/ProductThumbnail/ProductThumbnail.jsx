@@ -17,6 +17,7 @@ function ProductThumbnail({ product }) {
     setCount({
       [product.id]: 1,
     });
+    console.log("product 정보 출력 => ", product);
   }, []);
 
   const handleCartBtnClick = () => {
@@ -31,9 +32,9 @@ function ProductThumbnail({ product }) {
       <secttion className={styles.ProductBox}>
         <div className={styles.ProductInner1}>
           <img
+            alt={product.image.alt}
             className={styles.ProductThumb}
             src={product.image.thumbnail}
-            alt="탱탱 쫄면"
           />
         </div>
         <div className={styles.ProductInner2}>
@@ -165,19 +166,13 @@ function ProductThumbnail({ product }) {
         </ul>
         <div className={styles.ProductDetailInner}>
           <div className={styles.GoodsIntro}>
-            <img src={product.image.banner} alt="탱탱 쫄면" />
+            <img src={product.image.banner} alt={product.image.alt} />
             <p className={styles.GoodsTitle}>
               <span>{product.description}</span>
               {product.name}
             </p>
             <p className={styles.GoodsDescription}>
-              쫄면의 진가는 매콤새콤한 양념과 탱탱한 면발에서 찾을 수 있지요.
-              풀무원은 이 맛을 더 부담 없이 즐길 수 있도록 튀기지 않고 만든
-              탱탱쫄면을 선보입니다. 밀가루와 감자 전분을 적절히 배합해 탄력이
-              좋고, 입에 넣었을 때는 찰지게 씹히죠. 고추장을 넣어 숙성한
-              비빔장은 자연스럽고 깊은 맛을 냅니다. 간단하게 조리해 마지막 한
-              가닥까지 탱탱한 식감을 즐겨보세요. 취향에 따라 다양한 고명을 올려
-              드셔도 좋아요.
+              {product.explanation}
             </p>
           </div>
           <div className={styles.GoodsPoint}>
@@ -185,9 +180,9 @@ function ProductThumbnail({ product }) {
                 <span>Karly's Check Point</span>
 
               </h3> */}
-            <img src={product.image.view} alt="탱탱 쫄면" />
-            <img src={product.image.info} alt="탱탱 쫄면" />
-            <img src="/assets/product-detail/why-carly.png" alt="탱탱 쫄면" />
+            <img src={product.image.view} alt={product.image.alt} />
+            <img src={product.image.info} alt={product.image.alt} />
+            <img src="/assets/product-detail/why-carly.png" alt={product.image.alt} />
           </div>
         </div>
       </section>
