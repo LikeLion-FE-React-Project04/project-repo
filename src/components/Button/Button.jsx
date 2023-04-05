@@ -1,22 +1,24 @@
+import { forwardRef } from 'react';
 import styles from './Button.module.scss';
 // import PropTypes from 'prop-types';
 
-export function Button({
-  uiType = 'primary',
-  children = 'test',
-  className = '',
-  ...restProps
-}) {
-  const combinedClassNames = `${styles.button} ${getUiStyle(
-    uiType
-  )} ${className}`.trim();
+// eslint-disable-next-line react/display-name
+export const Button = forwardRef(
+  (
+    { uiType = 'primary', children = 'test', className = '', ...restProps },
+    ref
+  ) => {
+    const combinedClassNames = `${styles.button} ${getUiStyle(
+      uiType
+    )} ${className}`.trim();
 
-  return (
-    <button className={combinedClassNames} {...restProps}>
-      {children}
-    </button>
-  );
-}
+    return (
+      <button className={combinedClassNames} {...restProps} ref={ref}>
+        {children}
+      </button>
+    );
+  }
+);
 
 function getUiStyle(uiType = 'primary') {
   let uiStyle;
@@ -46,16 +48,3 @@ function getUiStyle(uiType = 'primary') {
 
   return uiStyle;
 }
-
-// Button.defaultProps = {
-//   uiType: 'primary',
-//   children: '테스트',
-//   className: '',
-// };
-
-// Button.propTypes = {
-//   /** 버튼 모양을 두번째(secondary)로 설정합니다. */
-//   uiType: PropTypes.string,
-//   children: PropTypes.string,
-//   className: PropTypes.string,
-// };
