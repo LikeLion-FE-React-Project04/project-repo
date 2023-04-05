@@ -1,13 +1,18 @@
 import { useNavigate } from 'react-router-dom';
 
+import { useSetRecoilState } from 'recoil';
+
 import { attr, getPriceFormat, getSalePercent } from '../../utils';
+
+import Mark from './Mark';
 
 import classes from '@/components/ProductCard/ProductCard.module.scss';
 import { selectedproductId } from '@/store/productListState.js';
 import { productCartModalState } from '@/store/cartModalState.js';
 import { darkFilterState } from '@/store/darkFilterState.js';
-import { useSetRecoilState } from 'recoil';
-import Mark from './Mark';
+import { modalBtnState } from '../../store/cartModalState';
+import { useRef } from 'react';
+import CartButton from './CartButton';
 
 /* Component ---------------------------------------------------------------- */
 
@@ -16,6 +21,8 @@ export default function ProductCard({ product, isListCard = false }) {
   const setSelectedproductId = useSetRecoilState(selectedproductId);
   const setDarkFilterState = useSetRecoilState(darkFilterState);
   const movePage = useNavigate();
+  const setModalBtnState = useSetRecoilState(modalBtnState);
+  const cartBtnRef = useRef();
 
   function productCardClickHandler(e) {
     let target = e.target;
@@ -33,6 +40,7 @@ export default function ProductCard({ product, isListCard = false }) {
       setSelectedproductId(product.id);
       setProductCartModalState(true);
       setDarkFilterState(true);
+      // setModalBtnState();
 
       return;
     }
@@ -46,26 +54,31 @@ export default function ProductCard({ product, isListCard = false }) {
 
   if (product) {
     return (
-      // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-      <div
-        className={classes.productCard}
+      // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+      <button
+        className={classes.productCardBtn}
         data-name="productCard"
+        type="button"
         onClick={productCardClickHandler}
       >
-        <div
-          className={classes.img}
-          style={{
-            background: `url(${product.image.thumbnail}) 50% 50%/ 100% no-repeat`,
-          }}
-        >
-          <CartButton />
-        </div>
-        <p className={classes.productName}>{product.name}</p>
-        {isListCard && <p className={classes.description}>{product.description}</p>}
-        <ProductCardPrice product={product} />
+        <div className={classes.productCard}>
+          <div
+            className={classes.img}
+            style={{
+              background: `url(${product.image.thumbnail}) 50% 50%/ 100% no-repeat`,
+            }}
+          >
+            <CartButton ref={cartBtnRef} />
+          </div>
+          <p className={classes.productName}>{product.name}</p>
+          {isListCard && (
+            <p className={classes.description}>{product.description}</p>
+          )}
+          <ProductCardPrice product={product} />
 
-        {isListCard && <Mark product={product} />}
-      </div>
+          {isListCard && <Mark product={product} />}
+        </div>
+      </button>
     );
   }
 }
@@ -88,18 +101,6 @@ function ProductCardPrice({ product }) {
       <p className={classes.productPrice}>{getPriceFormat(product.price)}원</p>
     );
   }
-}
-
-function CartButton() {
-  return (
-    <button
-      aria-label={'cartBtn'}
-      className={classes.cartBtn}
-      data-id={1}
-      data-name="cartbutton"
-      type="button"
-    />
-  );
 }
 
 /* Props -------------------------------------------------------------------- */
