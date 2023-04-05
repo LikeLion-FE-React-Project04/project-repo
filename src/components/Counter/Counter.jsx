@@ -1,10 +1,10 @@
 import { useRecoilState } from 'recoil';
-import { countState } from '@/store/CounterState.js';
 
-import styles from './Counter.module.scss';
 import CounterBtn from './CounterBtn';
 import Count from './Count';
-import { useEffect } from 'react';
+import styles from './Counter.module.scss';
+
+import { countState } from '@/store/CounterState.js';
 
 // 리팩토링 가능할듯 카운터 형태를 children으로,,,
 function Counter({
