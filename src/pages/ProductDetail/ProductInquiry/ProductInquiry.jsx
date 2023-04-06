@@ -110,7 +110,7 @@ export default function ProductInquiry() {
                 <span>판매(일시)중단 제품 안내 (22.11.10 업데이트)</span>
               </div>
               <div className={styles.writer}>칼리</div>
-              <div className={styles.reportingDate}>2017.02.01</div>
+              <div className={styles.reportingDate}>2017. 2. 1.</div>
               <div className={styles.answerStatus}>-</div>
             </div>
             {/* 패널 */}
