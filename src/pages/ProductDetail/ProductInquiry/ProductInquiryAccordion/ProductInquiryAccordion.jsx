@@ -98,11 +98,11 @@ export default function ProductInquiryHandle({ data,limit,page }) {
                 }}
               >
                 <div className={styles.writingTitle}>
-                  <span>비밀글입니다.</span>
+                  <span className={styles.secretText}>비밀글입니다.</span>
                   {/* <img src={Lock} alt="비밀글 자물쇠 아이콘" style={{marginLeft:'20px'}} /> */}
                   <Lock
                     alt="비밀글 자물쇠 아이콘"
-                    style={{ marginLeft: '20px' }}
+                    className={styles.secretIcon}
                   />
                 </div>
                 <div className={styles.writer}>{item.writer}</div>

@@ -21,5 +21,6 @@ li{
 }
 
 .li::before{
-  content: '•'
+  content: '•';
+  padding: 0 8px;
 }
