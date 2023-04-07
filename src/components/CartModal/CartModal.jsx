@@ -25,6 +25,8 @@ import {
   countMinusBtnRefState,
   countPlusBtnRefState,
 } from '@/store/CounterState.js';
+import { cartPopupInfoState, cartPopupState } from '../../store/Popup';
+
 
 function CartModal() {
   const productId = useRecoilValue(selectedproductId);
@@ -38,6 +40,9 @@ function CartModal() {
   const countPlusBtnRef = useRecoilValue(countPlusBtnRefState);
   const modalBtn = useRecoilValue(modalBtnState);
   const modalRef = useRef();
+  const setCartPopupInfo = useSetRecoilState(cartPopupInfoState);
+  const cartPopup = useSetRecoilState(cartPopupState);
+
 
   // Counter 초기화
   useEffect(() => {
@@ -64,6 +69,12 @@ function CartModal() {
     saveCartData(product.id, count[product.id], cartData, setCartData);
     setIsVisible(false);
     setDarkFilter(false);
+    setCartPopupInfo({
+      desc: `${product.name}이 담겼습니다`,
+      img: product.image.thumbnail,
+    });
+    cartPopup(true);
+
     modalBtn.focus();
   };
 
@@ -82,7 +93,6 @@ function CartModal() {
 
     console.log(e.key);
     if (!isTabPressed) {
-      console.log('탭이 아님');
       return;
     }
     if (isShiftPressed) {
@@ -101,7 +111,6 @@ function CartModal() {
   };
 
   return (
-    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
     <div
       ref={modalRef}
       aria-atomic="true"
@@ -110,7 +119,6 @@ function CartModal() {
       aria-modal="true"
       className={styles.cartModal}
       role="dialog"
-      tabIndex={-1}
       onKeyDown={handleModalKeyEvent}
     >
       <div className={styles.info}>

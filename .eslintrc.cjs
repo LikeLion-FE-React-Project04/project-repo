@@ -76,11 +76,22 @@ module.exports = {
         reservedFirst: true,
       },
     ],
-    "jsx-a11y/label-has-associated-control": [
+    'jsx-a11y/label-has-associated-control': [
       2,
       {
-        "labelAttributes": ["htmlFor"]
-      }
+        labelAttributes: ['htmlFor'],
+      },
+    ],
+    'jsx-a11y/no-noninteractive-element-interactions': [
+      `warn`,
+      {
+        body: [`onError`, `onLoad`],
+        iframe: [`onError`, `onLoad`],
+        img: [`onError`, `onLoad`],
+      },
+      {
+        ignoreRoles: ['dialog'],
+      },
     ],
   },
 };
