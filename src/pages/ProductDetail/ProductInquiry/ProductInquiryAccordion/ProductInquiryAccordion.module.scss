@@ -29,6 +29,9 @@
 .writingTitle {
   font-weight: 600;
   color: var(--content);
+  // 추가
+  display: flex;
+  align-items: center;
 }
 .writer,
 .reportingDate,
@@ -55,4 +58,12 @@
 }
 .answer {
   margin-top: 40px;
+}
+
+/* --------------------------------- 비밀글 -------------------------------- */
+.secretText {
+  color: var(--gray-400);
+}
+.secretIcon {
+  margin-left: 10px;
 }

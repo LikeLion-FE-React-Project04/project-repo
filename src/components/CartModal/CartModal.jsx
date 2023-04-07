@@ -27,6 +27,7 @@ import {
 } from '@/store/CounterState.js';
 import { cartPopupInfoState, cartPopupState } from '../../store/Popup';
 
+
 function CartModal() {
   const productId = useRecoilValue(selectedproductId);
   const product = useRecoilValue(productListFamily(productId));
@@ -41,6 +42,7 @@ function CartModal() {
   const modalRef = useRef();
   const setCartPopupInfo = useSetRecoilState(cartPopupInfoState);
   const cartPopup = useSetRecoilState(cartPopupState);
+
 
   // Counter 초기화
   useEffect(() => {
@@ -72,6 +74,7 @@ function CartModal() {
       img: product.image.thumbnail,
     });
     cartPopup(true);
+
     modalBtn.focus();
   };
 
@@ -90,8 +93,6 @@ function CartModal() {
 
     console.log(e.key);
     if (!isTabPressed) {
-      console.log('탭이 아님');
-
       return;
     }
     if (isShiftPressed) {

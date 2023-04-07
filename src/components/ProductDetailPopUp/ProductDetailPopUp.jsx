@@ -167,13 +167,17 @@ export function ProductDetailPopUp({uiType='inquiry'}) {
     else {
       e.preventDefault();
       console.log(textStateRef.current.title, textStateRef.current.textarea);
-      let deliverArr = {
-        title: textStateRef.current.title, 
-        textarea: textStateRef.current.textarea, 
-        writer: user.displayName,
-        date: Timestamp.fromDate(new Date()),
-        productId: product.id,
-      };
+      let deliverArr = {};
+
+      if(uiType == 'review') {
+        deliverArr = {
+          title: productName, 
+          textarea: textStateRef.current.textarea, 
+          writer: user.displayName,
+          date: Timestamp.fromDate(new Date()),
+          productId: product.id,
+        };
+      }
   
       // secret 관련
       if(uiType == 'inquiry') {
