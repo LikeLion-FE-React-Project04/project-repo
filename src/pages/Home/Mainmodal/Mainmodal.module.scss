@@ -39,11 +39,13 @@
 // Tab 접근성 고려한 focus 영역 스타일하기
 .popUpContainer {
   button:focus-visible {
-    outline: 4px solid var(--blue-500);
+    position: relative;
+    z-index: 100;
+    outline: 4px solid black;
     outline-offset: 5px;
   }
   a:focus-visible {
-    outline: 4px solid var(--blue-500);
+    outline: 4px solid black;
     outline-offset: 5px;
   }
 }
