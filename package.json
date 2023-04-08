@@ -98,6 +98,7 @@
     "react-router-dom": "^6.8.2",
     "recoil": "^0.7.7",
     "recoil-persist": "^4.2.0",
+    "serve": "^14.2.0",
     "swiper": "^9.1.0"
   }
 }
