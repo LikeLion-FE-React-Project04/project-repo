@@ -60,8 +60,12 @@ export default function ProductInquiry() {
    
     if (dataState) {
       console.log('dataState의 길이 출력 => ', dataState.length);
-      let calcNumPages = Math.ceil(dataState.length / limit);
-      setNumPages(calcNumPages);
+      // dataState안에 아무것도 없을때는 자동으로 default값인 1인 상태겠지?
+      if (dataState.length != 0) {
+        let calcNumPages = Math.ceil(dataState.length / limit);
+        setNumPages(calcNumPages);
+        console.log("페이지의 개수는? ", numPages);
+      }
       // console.log('numPages 출력 => ', numPages);
     }
   }, [dataState]);
@@ -81,25 +85,35 @@ export default function ProductInquiry() {
 
 
   useEffect(()=>{
-    if(page == 1) { // 1page라면 previous버튼 비활성화 svg로 바꿔야 함
+    if(numPages==1) { // 한페이지밖에 없는 경우
+      //console.log("한페이지밖에 없는 경우~");
       previousBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-prev-disabled.svg')";
-      nextBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-next-activated.svg')";
-      previousBtn.current.style.cursor = 'default';
-      nextBtn.current.style.cursor = 'pointer';
-    }
-    else if(page == numPages) { 
-      previousBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-prev-activated.svg')";
       nextBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-next-disabled.svg')";
-      previousBtn.current.style.cursor = 'previous';
+      previousBtn.current.style.cursor = 'default';
       nextBtn.current.style.cursor = 'default';
     }
-    else { 
-      previousBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-prev-activated.svg')";
-      nextBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-next-activated.svg')";
-      previousBtn.current.style.cursor = 'pointer';
-      nextBtn.current.style.cursor = 'pointer';
+    else { // 여러 페이지가 존재하는 경우
+      //console.log("여러 페이지가 존재하는 경우~");
+      if(page == 1) { // 1page라면 previous버튼 비활성화 svg로 바꿔야 함
+        previousBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-prev-disabled.svg')";
+        nextBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-next-activated.svg')";
+        previousBtn.current.style.cursor = 'default';
+        nextBtn.current.style.cursor = 'pointer';
+      }
+      else if(page == numPages) { 
+        previousBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-prev-activated.svg')";
+        nextBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-next-disabled.svg')";
+        previousBtn.current.style.cursor = 'previous';
+        nextBtn.current.style.cursor = 'default';
+      }
+      else { 
+        previousBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-prev-activated.svg')";
+        nextBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-next-activated.svg')";
+        previousBtn.current.style.cursor = 'pointer';
+        nextBtn.current.style.cursor = 'pointer';
+      }
     }
-  }, [page]);
+  }, [page, numPages]);
   
   return (
     <>
