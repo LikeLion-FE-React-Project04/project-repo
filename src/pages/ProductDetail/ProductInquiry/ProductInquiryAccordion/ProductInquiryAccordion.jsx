@@ -43,6 +43,7 @@ export default function ProductInquiryHandle({ data,limit,page }) {
           isNotSecret = true; // 공개글로 바꿔주기 위한거
         } else if (user) {
           if (user.displayName == item.writer) {
+            console.log("writer출력 => ", item.writer);
             isNotSecret = true;
           }
         }
@@ -60,7 +61,7 @@ export default function ProductInquiryHandle({ data,limit,page }) {
               {/* 핸들 */}
               <button className={styles.handleDivWrapper}>
                 <div className={styles.writingTitle}>{item.title}</div>
-                <div className={styles.writer}>{item.writer}</div>
+                <div className={styles.writer}>{item.starWriter}</div>
                 <div className={styles.reportingDate}>
                   {item.date.toDate().toLocaleDateString()}
                 </div>
@@ -105,7 +106,7 @@ export default function ProductInquiryHandle({ data,limit,page }) {
                     className={styles.secretIcon}
                   />
                 </div>
-                <div className={styles.writer}>{item.writer}</div>
+                <div className={styles.writer}>{item.starWriter}</div>
                 <div className={styles.reportingDate}>
                   {item.date.toDate().toLocaleDateString()}
                 </div>

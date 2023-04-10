@@ -25,7 +25,7 @@ export default function ProductReviewList({ data }) {
               <div className={styles.badgeNameWrapper}>
                 <Badge uiType='bestBadge'>베스트</Badge>
                 <Badge className={styles.purpleBadge} uiType='purpleBadge'>퍼플</Badge>
-                <span>{item.writer}</span>
+                <span>{item.starWriter}</span>
               </div>
 
               <article>
