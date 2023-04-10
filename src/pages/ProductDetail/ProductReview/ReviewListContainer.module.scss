@@ -58,39 +58,56 @@
   background: var(--gray-100);
 }
 
+
+/* --------------------------------- 페이지네이션 --------------------------------- */
 .paginationContainer {
-  // position: relative;
-  // margin-left: calc(100% - 700px);
+  margin-top: 16px;
+  position: relative;
+  align-items: center;
   display: flex;
   justify-content: center;
-  // align-items: center;
-  margin: 16px 0 72px 0;
+  align-items: center;
 }
 
 .paginationPrev {
   border: none;
-  width: 34px;
-  height: 34px;
-  background: url('@/assets/product-list/ic-pagination-prev.svg');
+  width: 44px;
+  height: 44px;
   margin-right: 16px;
+  border: 1px solid #E1E1E1;
+  border-radius: 4px;
 }
 
 .paginationNext {
   border: none;
-  width: 34px;
-  height: 34px;
-  background: url('@/assets/product-list/ic-pagination-Next.svg');
+  width: 44px;
+  height: 44px;
+  border: 1px solid #E1E1E1;
+  border-radius: 4px;
 }
 
-// .paginationNum {
-//   /* background-color: pink; */
-//   /* position: absolute; */
-//   position: relative;
-//   /* top: 0px; */
-//   width: 34px;
-//   height: 34px;
-//   border: 1px solid var(--gray-100);
-//   background-color: var(--white);
-//   color: var(--content);
-//   border-right: none;
-// }
+.paginationPrev:hover {
+  border-top: solid 1px black;
+  border-left: solid 1px black;
+  border-bottom: solid 1px black;
+}
+
+.paginationNext:hover {
+  border-top: solid 1px black;
+  border-right: solid 1px black;
+  border-bottom: solid 1px black;
+}
+
+.paginationNum {
+  /* background-color: pink; */
+  /* position: absolute; */
+  position: relative;
+  /* top: 0px; */
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--gray-100);
+  background-color: var(--white);
+  color: var(--content);
+  border-right: none;
+}
+
