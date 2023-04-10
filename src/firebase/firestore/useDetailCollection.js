@@ -32,14 +32,14 @@ export const useDetailCollection = (collectionName) => {
         let dataArr = [];
         
         // 이름에 *를 넣어주기 위한 확인
-        let starWriter = { writer: '' };
+        let starWriter = { starWriter: '' };
        
         // snapshot.docs는 배열이므로 forEach 사용 가능
         snapshot.docs.forEach((doc) => {
           let getDoc = {...doc.data()};
           let getWriter = getDoc.writer;
 
-          starWriter.writer = getStarName(getWriter); // 작성자 이름을 넘겨주면 별 이름으로 반환해주는 util함수
+          starWriter.starWriter = getStarName(getWriter); // 작성자 이름을 넘겨주면 별 이름으로 반환해주는 util함수
           dataArr.push({...doc.data(), ...starWriter});
         });
         console.log("현재 배열 상태(dataArr) 출력 => ", dataArr);
