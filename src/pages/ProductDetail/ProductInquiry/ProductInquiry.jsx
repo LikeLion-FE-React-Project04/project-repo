@@ -53,10 +53,17 @@ export default function ProductInquiry() {
   const [page, setPage] = useState(1);
   // total = 15개
 
-  const numPages = Math.ceil(15 / limit);
+  const [numPages, setNumPages] = useState(1);
+  // let numPages;
 
   useEffect(() => {
     console.log('[ProductInquiry] dataState: ', dataState);
+   
+    if (dataState) {
+      console.log('dataState의 길이 출력 => ', dataState.length);
+      let calcNumPages = Math.ceil(dataState.length / limit);
+      setNumPages(calcNumPages);
+    }
   }, [dataState]);
 
   function productModalClickHandler() {
@@ -70,6 +77,20 @@ export default function ProductInquiry() {
       // 추가
       setLayoutState('inquiry');
     }
+  }
+
+  function previousBtnHandler() {
+    if(page == 1) { // 첫페이지라면 작동x
+      return;
+    }
+    setPage(page-1);
+  }
+
+  function nextBtnHandler() {
+    if(page == numPages) { 
+      return;
+    }
+    setPage(page+1);
   }
 
   return (
@@ -136,12 +157,12 @@ export default function ProductInquiry() {
         <nav className={styles.paginationContainer}>
           <button
             className={styles.paginationPrev}
-            onClick={() => setPage(page - 1)}
+            onClick={previousBtnHandler}
             disabled={page === 1}
           />
           <button
             className={styles.paginationNext}
-            onClick={() => setPage(page + 1)}
+            onClick={nextBtnHandler}
             disabled={page === numPages}
           />
         </nav>
