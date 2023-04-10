@@ -14,6 +14,7 @@ import { Badge } from '@/components/Badge/Badge.jsx';
 import AccordionItem from '@/components/Accordion/AccordionItem';
 
 import { ReactComponent as Empty } from "@/assets/product-detail/empty-product-review-list.svg";
+import { useRef } from 'react';
 
 export default function ReviewListContainer() {
   // 문서를 저장 할 컬렉션 이름 
@@ -26,10 +27,22 @@ export default function ReviewListContainer() {
   const [page, setPage] = useRecoilState(reviewPageAtom);
   // total = 15개
 
-  const numPages = Math.ceil(15 / limit);
+  // numPages는 총 페이지 개수를 의미한다
+  const [numPages, setNumPages] = useState(1);
+
+  // 버튼 DOM참조
+  const previousBtn = useRef();
+  const nextBtn = useRef();
 
   useEffect(() => {
-    console.log("[ProductReview] dataState> ", dataState);
+    console.log("[ProductReview] dataState: ", dataState);
+
+    if(dataState) {
+      console.log('dataState의 길이 출력 => ', dataState.length);
+      let calcNumPages = Math.ceil(dataState.length / limit);
+      setNumPages(calcNumPages);
+      // console.log('numPages 출력 => ', numPages);
+    }
   }, [dataState]);
 
   // 상품 후기 리스트 총 개수 가져오려면 상태를 설정해야함(안하면 렌더링이 먼저돼서 불러오지 못함, 종속성 배열도 지정해야함)
@@ -40,6 +53,27 @@ export default function ReviewListContainer() {
       setCount(dataState.length);
     }
   }, [dataState]);
+
+  useEffect(()=>{
+    if(page == 1) { // 1page라면 previous버튼 비활성화 svg로 바꿔야 함
+      previousBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-prev-disabled.svg')";
+      nextBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-next-activated.svg')";
+      previousBtn.current.style.cursor = 'default';
+      nextBtn.current.style.cursor = 'pointer';
+    }
+    else if(page == numPages) { 
+      previousBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-prev-activated.svg')";
+      nextBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-next-disabled.svg')";
+      previousBtn.current.style.cursor = 'previous';
+      nextBtn.current.style.cursor = 'default';
+    }
+    else { 
+      previousBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-prev-activated.svg')";
+      nextBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-next-activated.svg')";
+      previousBtn.current.style.cursor = 'pointer';
+      nextBtn.current.style.cursor = 'pointer';
+    }
+  }, [page]);
 
   return (
     <div>
@@ -216,23 +250,13 @@ export default function ReviewListContainer() {
       {/* 페이지네이션 하드코딩 */}
       <nav className={styles.paginationContainer}>
         <button
+          ref={previousBtn}
           className={styles.paginationPrev}
           disabled={page === 1}
           onClick={() => setPage(page - 1)}
         />
-        {/* {Array(numPages)
-          .fill()
-          .map((_, i) => (
-            <button
-              key={i + 1}
-              aria-current={page === i + 1 ? 'page' : null}
-              className={styles.paginationNum}
-              onClick={() => setPage(i + 1)}
-            >
-              {i + 1}
-            </button>
-          ))} */}
         <button
+          ref={nextBtn}
           className={styles.paginationNext}
           disabled={page === numPages}
           onClick={() => setPage(page + 1)}
