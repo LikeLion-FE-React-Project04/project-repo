@@ -17,9 +17,13 @@ export default function Mainmodal() {
   const closeBtnRef = useRef();
   const closeForADayBtnRef = useRef();
   const moveToBeautyKarlyRef = useRef();
+  // 메인모달 전체를 참조하는 ref생성
+  const modalRef = useRef();
 
   useEffect(() => {
-    closeBtnRef.current.focus();
+    // closeBtnRef.current.focus();
+    // 닫기 버튼에 주는게 아니라, 모달창 자체에 focus를 줌
+    modalRef.current.focus();
   }, []);
 
   const closeModal = () => {
@@ -84,6 +88,8 @@ export default function Mainmodal() {
         role="dialog"
         aria-label="뷰티컬리에 대한 메인 모달창이 열렸습니다."
         onKeyDown={handleModalKeyEvent}
+        ref={modalRef}
+        tabIndex="-1"
       >
         <div className={styles.popUpContainer}>
           <div>

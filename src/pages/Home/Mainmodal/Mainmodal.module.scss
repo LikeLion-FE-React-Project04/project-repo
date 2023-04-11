@@ -1,6 +1,11 @@
 .mainModalWrap {
   //z-index: 99999;
 }
+
+.mainModalWrap:focus {
+  outline:none;
+}
+
 .popUpContainer {
   //position: fixed;
   //top: 50%;
