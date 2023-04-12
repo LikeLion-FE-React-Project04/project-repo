@@ -252,6 +252,9 @@ export function ProductDetailPopUp({uiType='inquiry'}) {
           ref={modalRef}
           tabIndex="-1"
           onKeyDown={handleModalKeyEvent}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${title} 모달창이 열렸습니다.`}
         >
           <div className={styles.popUpHeader}>
             <PageTitle uiType='productReviewAndInquiry'>{title}</PageTitle>
