@@ -1,22 +1,13 @@
-// import { useRecoilValue } from 'recoil';
-// import { alertModalConfirmBtn } from '../../@recoil/alertModalState';
-// import styles from './ConfirmAndCancel.module.scss';
-// import { useEffect } from 'react';
 
+import styles from './ConfirmAndCancel.module.scss';
 
-// export function ConfirmAndCancel({event}) {
-//   let addConfirmEvent;
-
-//   useEffect(()=>{
-//     addConfirmEvent = useRecoilValue(alertModalConfirmBtn);
-//   },[]);
-
-//   return (
-//     <>
-//       <div className={styles.btnWrapper}>
-//         <button className={styles.confirmBtn} onClick={()=>{event(); addConfirmEvent();}}>확인</button>
-//         <button className={styles.cancelBtn} onClick={event}>취소</button>
-//       </div>
-//     </>
-//   );
-// }
+export function ConfirmAndCancel({confirmEvent, cancelEvent}) {
+  return (
+    <>
+      <div className={styles.btnWrapper}>
+        <button className={styles.cancelBtn} onClick={cancelEvent}>취소</button>
+        <button className={styles.confirmBtn} onClick={confirmEvent}>확인</button>
+      </div>
+    </>
+  );
+}
