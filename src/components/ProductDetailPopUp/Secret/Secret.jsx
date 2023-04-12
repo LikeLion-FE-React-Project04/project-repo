@@ -15,7 +15,15 @@ export function Secret(props) {
   return (
     <>
       <div className={styles.secretCheckBox}>
-        <input ref={checkSecret} id="isSecret" name="checker" role="tab" tabIndex="0" type="checkbox" onChange={handleCheckBox}/>
+        <input 
+          ref={checkSecret} 
+          id="isSecret" 
+          name="checker" 
+          role="tab" 
+          type="checkbox" 
+          onChange={handleCheckBox}
+          tabIndex={0}
+        />
         <label htmlFor="isSecret">
           <span>비밀글로 문의하기</span>
         </label>
