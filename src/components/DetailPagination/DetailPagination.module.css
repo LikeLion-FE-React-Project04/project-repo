@@ -18,7 +18,7 @@
   border: none;
   width: 34px;
   height: 34px;
-  background: url('@/assets/product-list/ic-pagination-Next.svg');
+  background: url('@/assets/product-list/ic-pagination-next.svg');
 }
 
 .paginationNum {

@@ -8,6 +8,7 @@ import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 import { useEffect } from 'react';
 import { Button } from '../../../components/Button/Button';
 import { cartDataState } from '@/store/cartModalState.js';
+import ProductDetailMenu from '../ProductDetailMenu/ProductDetailMenu';
 
 function ProductThumbnail({ product }) {
   const [count, setCount] = useRecoilState(countState);
@@ -17,7 +18,7 @@ function ProductThumbnail({ product }) {
     setCount({
       [product.id]: 1,
     });
-    console.log("product 정보 출력 => ", product);
+    console.log('product 정보 출력 => ', product);
   }, []);
 
   const handleCartBtnClick = () => {
@@ -146,24 +147,7 @@ function ProductThumbnail({ product }) {
         </div>
       </secttion>
       <section className={styles.ProductDetail}>
-        <ul>
-          <li>
-            <button href="" className={styles.Active}>
-              상품설명
-            </button>
-          </li>
-          <li>
-            <button href="">상세정보</button>
-          </li>
-          <li>
-            <button href="">
-              후기 <span>(1,000)</span>
-            </button>
-          </li>
-          <li>
-            <button href="">문의</button>
-          </li>
-        </ul>
+        <ProductDetailMenu />
         <div className={styles.ProductDetailInner}>
           <div className={styles.GoodsIntro}>
             <img src={product.image.banner} alt={product.image.alt} />
@@ -171,9 +155,7 @@ function ProductThumbnail({ product }) {
               <span>{product.description}</span>
               {product.name}
             </p>
-            <p className={styles.GoodsDescription}>
-              {product.explanation}
-            </p>
+            <p className={styles.GoodsDescription}>{product.explanation}</p>
           </div>
           <div className={styles.GoodsPoint}>
             {/* <h3>
@@ -182,7 +164,10 @@ function ProductThumbnail({ product }) {
               </h3> */}
             <img src={product.image.view} alt={product.image.alt} />
             <img src={product.image.info} alt={product.image.alt} />
-            <img src="/assets/product-detail/why-carly.png" alt={product.image.alt} />
+            <img
+              src="/assets/product-detail/why-carly.png"
+              alt={product.image.alt}
+            />
           </div>
         </div>
       </section>
