@@ -1,7 +1,7 @@
 import { atom, /* selector */ } from 'recoil';
 
-export const productMainmodalState = atom({
-  key: 'productMainmodalState',
+export const productMainModalState = atom({
+  key: 'productMainModalState',
   default: true,
 });
 

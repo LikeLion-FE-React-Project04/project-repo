@@ -1,16 +1,16 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { Link } from 'react-router-dom';
 
-import styles from './Mainmodal.module.scss';
-import { productMainmodalState } from './@recoil/MainmodalState';
+import styles from './MainModal.module.scss';
+import { productMainModalState } from './@recoil/MainModalState';
 import { useRecoilState } from 'recoil';
 import { useSetRecoilState } from 'recoil';
 import { useRef } from 'react';
 import { useEffect } from 'react';
 import { transparentFilterFocusState, transparentFilterState } from '../../../components/TransparentFilter/@recoil/transparentFilterState';
 
-export default function Mainmodal() {
-  const [isVisible, setIsVisible] = useRecoilState(productMainmodalState);
+export default function MainModal() {
+  const [isVisible, setIsVisible] = useRecoilState(productMainModalState);
   const setTransparentFilter = useSetRecoilState(transparentFilterState);
   const setTransparentFilterFocusState = useSetRecoilState(transparentFilterFocusState);
 
