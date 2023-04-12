@@ -26,7 +26,7 @@ import {
   countPlusBtnRefState,
 } from '@/store/CounterState.js';
 import { cartPopupInfoState, cartPopupState } from '../../store/Popup';
-
+import { darkFilterFocusState } from '../../store/darkFilterState';
 
 function CartModal() {
   const productId = useRecoilValue(selectedproductId);
@@ -42,7 +42,7 @@ function CartModal() {
   const modalRef = useRef();
   const setCartPopupInfo = useSetRecoilState(cartPopupInfoState);
   const cartPopup = useSetRecoilState(cartPopupState);
-
+  const setDarkFilterFocus = useSetRecoilState(darkFilterFocusState);
 
   // Counter 초기화
   useEffect(() => {
@@ -50,10 +50,11 @@ function CartModal() {
     setCount({
       [product.id]: 1,
     });
-    modalRef.current.ariaHidden = false;
-    modalRef.current.ariaModal = true;
     closeBtnRef.current.focus();
+    // 클린업 함수 필요
+    setDarkFilterFocus(modalRef.current);
   }, []);
+
 
   const [count, setCount] = useRecoilState(countState);
 
@@ -112,6 +113,7 @@ function CartModal() {
 
   return (
     <div
+      tabIndex="-1"
       ref={modalRef}
       aria-atomic="true"
       aria-label={`${product.name}모달창이 열렸습니다.`}
