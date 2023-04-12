@@ -47,10 +47,10 @@
     position: relative;
     z-index: 100;
     outline: 4px solid black;
-    outline-offset: 5px;
+    //outline-offset: 2px;
   }
   a:focus-visible {
     outline: 4px solid black;
-    outline-offset: 5px;
+    outline-offset: 2px;
   }
 }
