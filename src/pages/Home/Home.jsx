@@ -1,5 +1,4 @@
-// import { Mainmodal } from './Mainmodal/Mainmodal';
-import { useGetCookieEvent } from './Mainmodal/useGetCookieEvent';
+import { useGetCookieEvent } from './MainModal/useGetCookieEvent';
 import { Linebanner } from './Linebanner/Linebanner';
 import { useSignOut } from '@/firebase/auth';
 import MainCarousel from './Carousel/MainCarousel';
@@ -9,8 +8,8 @@ import PageTitle from '../../components/PageTitle/PageTitle';
 import CartModal from '@/components/CartModal/CartModal';
 import CartModalLayout from '../../components/CartModal/CartModalLayout';
 import { useRecoilState } from 'recoil';
-import { productMainmodalState } from './Mainmodal/@recoil/MainmodalState';
-import MainmodalLayout from './Mainmodal/MainmodalLayout';
+import { productMainModalState } from './MainModal/@recoil/MainModalState';
+import MainModalLayout from './MainModal/MainModalLayout';
 import { transparentFilterState } from '../../components/TransparentFilter/@recoil/transparentFilterState';
 import { useSetRecoilState } from 'recoil';
 
@@ -35,7 +34,7 @@ function Home() {
       <div className={styles.productCarouselLayout}>
         <ProductsCarousel />
       </div>
-      {isVisible ? <MainmodalLayout /> : null}
+      {isVisible ? <MainModalLayout /> : null}
       <CartModalLayout />
     </div>
   );

@@ -2,14 +2,14 @@ import { useState, useLayoutEffect } from 'react';
 
 import { getCookie } from '../../../utils';
 import { useRecoilState } from 'recoil';
-import { productMainmodalState } from './@recoil/MainmodalState';
+import { productMainModalState } from './@recoil/MainModalState';
 import { useSetRecoilState } from 'recoil';
 import { transparentFilterState } from '../../../components/TransparentFilter/@recoil/transparentFilterState';
 
 export const useGetCookieEvent = () => {
   // const [isModalOpen, setModalOpen] = useState(true);
   // recoil로 바꾸기
-  const [isVisible, setIsVisible] = useRecoilState(productMainmodalState);
+  const [isVisible, setIsVisible] = useRecoilState(productMainModalState);
   const setTransparentFilter = useSetRecoilState(transparentFilterState);
 
   useLayoutEffect(() => {
