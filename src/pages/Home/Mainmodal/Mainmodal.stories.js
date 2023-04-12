@@ -1,10 +1,10 @@
-import Mainmodal from './Mainmodal.jsx';
+import MainModal from './MainModal.jsx';
 
 export default {
   title: 'components/Mainmodal',
-  component: Mainmodal,
+  component: MainModal,
   tags: ['autodocs'],
-  args: { ...Mainmodal.defaultProps },
+  args: { ...MainModal.defaultProps },
 };
 
 export const Primary = {};

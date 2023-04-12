@@ -1,20 +1,20 @@
-import Mainmodal from './Mainmodal';
-import styles from './MainmodalLayout.module.scss';
+import MainModal from './MainModal';
+import styles from './MainModalLayout.module.scss';
 import { useRecoilValue } from 'recoil';
 import ReactDOM from 'react-dom';
-import { productMainmodalState } from './@recoil/MainmodalState';
+import { productMainModalState } from './@recoil/MainModalState';
 
-function MainmodalLayout() {
-  const isVisible = useRecoilValue(productMainmodalState);
+function MainModalLayout() {
+  const isVisible = useRecoilValue(productMainModalState);
 
   if (isVisible) {
     return ReactDOM.createPortal(
-      <div className={styles.mainmodalLayout}>
-        <Mainmodal />
+      <div className={styles.mainModalLayout}>
+        <MainModal />
       </div>,
       document.getElementById('mainModalPortal')
     );
   }
 }
 
-export default MainmodalLayout;
+export default MainModalLayout;
