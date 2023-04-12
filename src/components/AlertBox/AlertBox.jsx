@@ -5,6 +5,9 @@ import { darkFilterState } from '@/store/darkFilterState.js';
 import { useNavigate } from 'react-router-dom';
 import { OnlyConfirm } from './BtnType/OnlyConfirm/OnlyConfirm';
 import { ConfirmAndCancel } from './BtnType/ConfirmAndCancel/ConfirmAndCancel';
+import { darkFilterFocusState } from '../../store/darkFilterState';
+import { useRef } from 'react';
+import { useEffect } from 'react';
 
 function checkBtnType(uiType) {
   const setDarkFilterState = useSetRecoilState(darkFilterState);
@@ -36,6 +39,16 @@ function checkBtnType(uiType) {
 }
 
 export function AlertBox() {
+  const setDarkFilterFocusState = useSetRecoilState(darkFilterFocusState);
+
+  // 경고창 전체를 참조하는 ref생성
+  const modalRef = useRef();
+
+  useEffect(() => {
+    modalRef.current.focus();
+    setDarkFilterFocusState(modalRef.current); // 모달창 DOM자체를 저장해줌
+  }, []);
+
   // 경고창의 텍스트를 가져옴
   const text = useRecoilValue(alertModalText);
   const uiType = useRecoilValue(alertModalUiType);
@@ -43,7 +56,14 @@ export function AlertBox() {
   const { btnComponent } = checkBtnType(uiType); 
 
   return (
-    <div className={styles.alertBoxWrapper}>
+    <div 
+      className={styles.alertBoxWrapper}
+      ref={modalRef}
+      tabIndex="-1"
+      role="dialog"
+      aria-modal="true"
+      aria-label="경고창이 열렸습니다."
+    >
       <div className={styles.alertText}>
         {text}
       </div>
