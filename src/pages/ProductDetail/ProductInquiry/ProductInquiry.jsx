@@ -21,6 +21,7 @@ import { productLayoutState } from '../../../store/detailLayoutState';
 import { useAuthState } from '@/firebase/auth';
 import { dataStateAtom } from './../../../firebase/firestore/useDetailCollection';
 import { inquiryLimitAtom, inquiryPageAtom } from './@recoil/renderState';
+import { alertModalMoveState, alertModalState, alertModalText, alertModalUiType } from '../../../components/AlertBox/@recoil/alertModalState';
 
 export default function ProductInquiry() {
   // user의 정보 받기
@@ -70,11 +71,24 @@ export default function ProductInquiry() {
     }
   }, [dataState]);
 
+  const setAlertModalState = useSetRecoilState(alertModalState);
+  const setAlertModalText = useSetRecoilState(alertModalText);
+  const setAlertModalMoveState = useSetRecoilState(alertModalMoveState);
+  const setAlertModalUiType = useSetRecoilState(alertModalUiType);
+
   function productModalClickHandler() {
     console.log('user출력:', user);
     if (user == null) {
       // 로그인이 안 된 상태라면? 팝업창을 띄우면 안됨
-      alert('로그인하셔야 본 서비스를 이용하실 수 있습니다.');
+      // alert('로그인하셔야 본 서비스를 이용하실 수 있습니다.');
+      setAlertModalState(true);
+      setDarkFilterState(true);
+      setAlertModalText('로그인하셔야 본 서비스를 이용하실 수 있습니다.');
+      setAlertModalMoveState({
+        needToMove: true,
+        moveUrl: '/SignIn',
+      });
+      setAlertModalUiType('onlyConfirm');
     } else {
       setProductDetailModalState(true);
       setDarkFilterState(true);
