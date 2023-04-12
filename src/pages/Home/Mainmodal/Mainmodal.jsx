@@ -4,15 +4,16 @@ import { Link } from 'react-router-dom';
 import styles from './Mainmodal.module.scss';
 import { productMainmodalState } from './@recoil/MainmodalState';
 import { useRecoilState } from 'recoil';
-import { transparentFilterState } from '../../../components/TransparentFilter/@recoil/transparentFilterState';
 import { useSetRecoilState } from 'recoil';
 import { useRef } from 'react';
 import { useEffect } from 'react';
+import { transparentFilterFocusState, transparentFilterState } from '../../../components/TransparentFilter/@recoil/transparentFilterState';
 
 export default function Mainmodal() {
   const [isVisible, setIsVisible] = useRecoilState(productMainmodalState);
   const setTransparentFilter = useSetRecoilState(transparentFilterState);
-  
+  const setTransparentFilterFocusState = useSetRecoilState(transparentFilterFocusState);
+
   // DOM요소 접근을 위한 ref생성
   const closeBtnRef = useRef();
   const closeForADayBtnRef = useRef();
@@ -24,6 +25,7 @@ export default function Mainmodal() {
     // closeBtnRef.current.focus();
     // 닫기 버튼에 주는게 아니라, 모달창 자체에 focus를 줌
     modalRef.current.focus();
+    setTransparentFilterFocusState(modalRef.current); // 모달창 DOM자체를 저장해줌
   }, []);
 
   const closeModal = () => {
