@@ -1,4 +1,4 @@
-import styles from '@/pages/SignUp/Input.module.scss';
+import styles from './Input.module.scss';
 
 function Input({text, children, must = false}) {
   return (
