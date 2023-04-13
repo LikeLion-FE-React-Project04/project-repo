@@ -1,6 +1,6 @@
 import { useSetRecoilState, useRecoilValue } from 'recoil';
 import styles from './AlertBox.module.scss';
-import { alertModalMoveState, alertModalState, alertModalText, alertModalUiType } from './@recoil/alertModalState';
+import { alertModalMoveState, alertModalState, alertModalText, alertModalUiType, caseOfRemoveProduct } from './@recoil/alertModalState';
 import { darkFilterState } from '@/store/darkFilterState.js';
 import { useNavigate } from 'react-router-dom';
 import { OnlyConfirm } from './BtnType/OnlyConfirm/OnlyConfirm';
@@ -8,6 +8,8 @@ import { ConfirmAndCancel } from './BtnType/ConfirmAndCancel/ConfirmAndCancel';
 import { darkFilterFocusState } from '../../store/darkFilterState';
 import { useRef } from 'react';
 import { useEffect } from 'react';
+import { cartDataState } from '../../store/cartModalState';
+import { useRecoilState } from 'recoil';
 
 function checkBtnType(uiType) {
   const setDarkFilterState = useSetRecoilState(darkFilterState);
@@ -15,11 +17,36 @@ function checkBtnType(uiType) {
   const { needToMove, moveUrl } = useRecoilValue(alertModalMoveState);
   const movePage = useNavigate();
 
-  function confirmBtnHandler() { // 확인 버튼
+  // cart 관련 
+  const setCaseOfRemoveProduct = useSetRecoilState(caseOfRemoveProduct);
+  const [cartData, setCartData] = useRecoilState(cartDataState);
+  const { needToRemove, product } = useRecoilValue(caseOfRemoveProduct);
+
+  
+  function confirmBtnHandler() { 
+    // 모든 확인 버튼에 적용되는 동작
     setDarkFilterState(false); // 다크필터 끄기
     setAlertModalState(false); // 경고창 모달 끄기
+
+    // 이동하려고 하는 경우만 동작
     if(needToMove == true) {
       movePage(moveUrl);
+    }
+
+    // 상품을 삭제하려고 하는 경우만 동작
+    if(needToRemove == true) {
+      setCartData((prev) => {
+        const cartArr = prev.filter((data) => {
+          return data.productId !== product.id;
+        });
+      
+        return cartArr;
+      });
+      // 다시 풀어주기
+      setCaseOfRemoveProduct({
+        needToRemove: false,
+        product: {},
+      });
     }
   }
 
