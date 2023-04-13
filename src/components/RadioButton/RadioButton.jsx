@@ -1,17 +1,22 @@
 import styles from '@/components/RadioButton/RadioButton.module.scss';
 
-function RadioButton({children, name = '', uiType = 'primary'}) {
-
+function RadioButton({ children, uiType = 'primary', id, ...rest }) {
   const combinedClassNames = `${styles.RadioButton} ${getUiStyle(uiType)}`;
 
   return (
-
-    <label className={styles.RadioButtonBox}>
-      <input type="radio" name={name} value="option1" className={combinedClassNames} />
+    <>
+      <label className={styles.RadioButtonBox} htmlFor={id}>
         {children}
-    </label>
-
-  )
+      </label>
+      <input
+        type="radio"
+        value="option1"
+        className={combinedClassNames}
+        id={id}
+        {...rest}
+      />
+    </>
+  );
 }
 
 function getUiStyle(uiType) {
@@ -23,11 +28,10 @@ function getUiStyle(uiType) {
       break;
     case 'secondary':
       uiStyle = styles.secondary;
-      break;      
+      break;
   }
 
   return uiStyle;
 }
 
-
-export default RadioButton
+export default RadioButton;

@@ -1,11 +1,12 @@
 import { atom } from 'recoil';
 
+// 영속성 부여?
 export const addressState = atom({
   key: 'addressState',
-  default: '서울 중량구 면목로 42길 11 (행운빌딩) 603호',
+  default: '',
 });
 
 export const addressNumberState = atom({
   key: 'addressNumberState',
-  default: '123',
+  default: '',
 });

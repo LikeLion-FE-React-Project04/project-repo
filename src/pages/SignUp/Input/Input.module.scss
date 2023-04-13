@@ -4,10 +4,13 @@
   display: flex;
   flex-wrap: nowrap;
   gap: 0 8px;  
-  align-items: center;
+  align-items: flex-start;
 
   .SubInfoBox{
-    width: 139px;
+    width: 148px;
+    height: 44px;
+    display: flex;
+    align-items: center;
   }
 
   .SubInfoBox p{
@@ -26,13 +29,6 @@
     right: -10px;
   }
   
-  input{
-    width: 333px;
-    height: 44px;
-  }
-
-
-
 
 }
 

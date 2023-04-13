@@ -1,79 +1,65 @@
 import styles from '@/pages/SignUp/SignUp.module.scss';
 import PageTitle from '@/components/PageTitle/PageTitle';
 import { FormInput } from '@/components/FormInput/FormInput';
-import Input from '@/pages/SignUp/Input';
+import Input from '@/pages/SignUp/Input/Input';
 import { Button } from '../../components/Button/Button';
-import RadioButton from '@/components/RadioButton/RadioButton';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import RightArrow from '@/assets/common/ic-right-arrow.svg';
-import { useEffect } from 'react';
-import { useSignUp, useAuthState } from '@/firebase/auth';
-import { useCreateAuthUser } from '../../firebase/firestore/useCreateAuthUser';
-import { useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-const initialFormState = {
-  name: '',
-  email: '',
-  password: '',
-  passwordConfirm: '',
-};
+import { useAuthState } from '@/firebase/auth';
+import { checkValidation } from '../../utils';
+import SignUpAddress from './SignUpAddress/SignUpAddress';
+import Agreement from './Agreement/Agreement';
+import BirthInput from './BirthInput/BirthInput';
+import {
+  signUpFormState,
+  formValidationState,
+  emailConfirmState,
+} from './@recoil/signUp';
+import { useRecoilState } from 'recoil';
+
+import { useSignUpValidation } from './@hook/useSignUpValidation';
+import { useSignUpSubmit } from './@hook/useSignUpSubmit';
+import { useConfirmEmail } from './@hook/useConfirmEmail';
+import GenderInput from './genderInput/genderInput';
 
 function SignUp() {
-  const { signUp } = useSignUp();
-  const { createAuthUser } = useCreateAuthUser();
   const { isLoading, error, user } = useAuthState();
-  const movePage = useNavigate();
-
-  const formStateRef = useRef(initialFormState);
-
-  // const handleReset = () => {
-  //   console.log('reset');
-  // };
-
-  useEffect(() => {
-    alert(
-      '이메일, 비밀번호, 이름만 입력해도 회원가입이 됩니다.\n아직 로직이 완성되지 않았습니다. 혹시 회원가입이 안되시면 다른 이메일로 다시 해보시길 바랍니다.'
-    );
-  }, []);
-
-  useEffect(() => {
-    if (user) {
-      movePage('/');
-    }
-  }, [user]);
+  const [formValidation, setFormValidation] =
+    useRecoilState(formValidationState);
+  const [signUpForm, setSignUpForm] = useRecoilState(signUpFormState);
+  const [emailConfirm, setEmailConfirm] = useRecoilState(emailConfirmState);
+  const { message, signUpValidation } = useSignUpValidation();
+  const { signUpSubmit } = useSignUpSubmit();
+  const { confirmEmail } = useConfirmEmail();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const { name, email, password, passwordConfirm } = formStateRef.current;
-
-    // 유효성 검사
-    if (!name || name.trim().length < 2) {
-      // console.error('이름은 2글자 이상 입력해야 해요');
-      window.alert('이름은 2글자 이상 입력해야 해요');
-
-      return;
-    }
-    if (!Object.is(password, passwordConfirm)) {
-      // console.error('입력한 패스워드를 다시 확인하세요.');
-      window.alert('입력한 패스워드를 다시 확인하세요.');
-
-      return;
-    }
-
-    const user = await signUp(email, password, name);
-
-    createAuthUser(user);
-
-    console.log('회원가입 및 users 콜렉션에 user 데이터 생성');
-    window.alert('회원가입 되었습니다.');
+    signUpSubmit();
   };
 
   const handleChangeInput = (e) => {
-    const { name, value } = e.target;
+    let { name, value } = e.target;
 
-    formStateRef.current[name] = value;
-    console.log(formStateRef);
+    if (name == 'passwordConfirm') {
+      value = [value, value == signUpForm.password];
+    }
+    const pragment = checkValidation(name, value);
+
+    // 폼데이터 저장
+    // formStateRef.current[name] = value;
+    setSignUpForm((prev) => {
+      const tmp = { ...prev };
+      tmp[name] = value;
+      return tmp;
+    });
+
+    setFormValidation((prev) => {
+      const tmp = { ...prev };
+      tmp[name] = pragment;
+      return tmp;
+    });
+
+    if (name == 'email') {
+      setEmailConfirm(false);
+    }
   };
 
   if (isLoading) {
@@ -90,203 +76,91 @@ function SignUp() {
       <div className={styles.SignUpPage}>
         <span className={styles.MustInputText}>필수입력사항</span>
         <form className={styles.FormField} onSubmit={handleSubmit}>
-          <Input text={'아이디'}>
-            <FormInput
-              placeholder={'아이디를 입력해주세요'}
-              className={styles.InputBox}
-            />
-            <Button uiType={'third'} disabled>
-              중복 확인
-            </Button>
-          </Input>
-
-          <Input text={'비밀번호'} must={true}>
-            <FormInput
-              placeholder={'비밀번호를 입력해주세요'}
-              className={styles.InputBox}
-              type="password"
-              name="password"
-              onChange={handleChangeInput}
-            />
-          </Input>
-
-          <Input text={'비밀번호 확인'} must={true}>
-            <FormInput
-              placeholder={'비밀번호를 한번 더 입력해주세요'}
-              className={styles.InputBox}
-              type="password"
-              name="passwordConfirm"
-              onChange={handleChangeInput}
-            />
-          </Input>
-
-          <Input text={'이름'} must={true}>
-            <FormInput
-              placeholder={'이름을 한번 더 입력해주세요'}
-              className={styles.InputBox}
-              name="name"
-              s
-              onChange={handleChangeInput}
-            />
-          </Input>
-
           <Input text={'이메일'} must={true}>
-            <FormInput
-              placeholder={'예) marketkarly@karly.com'}
-              className={styles.InputBox}
-              type="email"
-              name="email"
-              onChange={handleChangeInput}
-            />
-            <Button uiType={'third'} disabled>
+            <div className={styles.inputLayout}>
+              <FormInput
+                placeholder={'예) marketkarly@karly.com'}
+                type="text"
+                name="email"
+                onChange={handleChangeInput}
+              />
+              <span className={styles.validationPhrases}>
+                {formValidation.email}
+              </span>
+            </div>
+            <Button
+              type="button"
+              uiType={'third'}
+              disabled={emailConfirm}
+              onClick={async (e) => {
+                confirmEmail();
+              }}
+            >
               중복 확인
             </Button>
           </Input>
+          <Input text={'비밀번호'} must={true}>
+            <div className={styles.inputLayout}>
+              <FormInput
+                placeholder={'비밀번호를 입력해주세요'}
+                type="password"
+                name="password"
+                onChange={handleChangeInput}
+              />
+              <span className={styles.validationPhrases}>
+                {formValidation.password}
+              </span>
+            </div>
+          </Input>
+          <Input text={'비밀번호 확인'} must={true}>
+            <div className={styles.inputLayout}>
+              <FormInput
+                placeholder={'비밀번호를 한번 더 입력해주세요'}
+                type="password"
+                name="passwordConfirm"
+                onChange={handleChangeInput}
+              />
+              <span className={styles.validationPhrases}>
+                {formValidation.passwordConfirm}
+              </span>
+            </div>
+          </Input>
+          <Input text={'이름'} must={true}>
+            <div className={styles.inputLayout}>
+              <FormInput
+                placeholder={'이름을 한번 더 입력해주세요'}
+                name="name"
+                type="text"
+                onChange={handleChangeInput}
+              />
+              <span className={styles.validationPhrases}>
+                {formValidation.name}
+              </span>
+            </div>
+          </Input>
+          <Input text={'휴대폰'} must={true}>
+            <div className={styles.inputLayout}>
+              <FormInput
+                placeholder={'숫자만 입력해주세요.'}
 
-          <Input text={'휴대폰'}>
-            <FormInput
-              placeholder={'숫자만 입력해주세요.'}
-              className={styles.InputBox}
-            />
+                name="phoneNumber"
+                type="text"
+                onChange={handleChangeInput}
+                maxLength={'11'}
+              />
+              <span className={styles.validationPhrases}>
+                {formValidation.phoneNumber}
+              </span>
+            </div>
+            {/* 구현되지 않았습니다. */}
             <Button uiType={'third'} disabled>
               인증번호 받기
             </Button>
           </Input>
-
-          <Input text={'주소'}>
-            <div className={styles.DivBox}>
-              <Button
-                name={'주소 검색'}
-                uiType={'third'}
-                className={styles.AddressSearchInput}
-                disabled
-              >
-                주소 검색
-              </Button>
-              <p className={styles.AddressInfo}>
-                배송지에 따라 상품 정보가 달라질 수 있습니다.
-              </p>
-            </div>
-          </Input>
-
-          <Input text={'성별'}>
-            <div className={styles.RadioButtonBundle}>
-              <RadioButton name={'gender'}>
-                <span>남자</span>
-              </RadioButton>
-              <RadioButton name={'gender'}>
-                <span>여자</span>
-              </RadioButton>
-              <RadioButton name={'gender'}>
-                <span>선택안함</span>
-              </RadioButton>
-            </div>
-          </Input>
-
-          <Input text={'생년월일'}>
-            <div className={styles.BirthInput}>
-              <input type="text" placeholder={'YYYY'} maxLength={'4'} />
-              <span>/</span>
-              <input type="text" placeholder={'MM'} maxLength={'2'} />
-              <span>/</span>
-              <input type="text" placeholder={'DD'} maxLength={'2'} />
-            </div>
-          </Input>
-
-          <Input text={'추가입력 사항'}>
-            <div className={styles.RadioButtonBundle}>
-              <RadioButton name={'addInfo'}>
-                <span>친구초대 추천인 아이디</span>
-              </RadioButton>
-              <RadioButton name={'addInfo'}>
-                <span>참여 이벤트명</span>
-              </RadioButton>
-            </div>
-          </Input>
-          {/* </form> */}
-
-          <div className={styles.Agreement}>
-            <div className={styles.SubTitle}>
-              <p>이용약관동의</p>
-            </div>
-            <div className={styles.SubAgreeList}>
-              <ul>
-                <li>
-                  <div>
-                    <RadioButton
-                      className={styles.SelectRadio}
-                      name={'agreeInfo1'}
-                      uiType={'secondary'}
-                    >
-                      <span className={styles.AllAgreeTitle}>
-                        전체 동의합니다.
-                      </span>
-                    </RadioButton>
-                  </div>
-                  <div className={styles.AllAgreeSubText}>
-                    <span>
-                      선택항목에 동의하지 않은 경우도 회원가입 및 일반적인
-                      서비스를 이용할 수 있습니다.
-                    </span>
-                  </div>
-                </li>
-                <li className={styles.AgreeSelectList}>
-                  <RadioButton
-                    className={styles.SelectRadio}
-                    name={'agreeInfo2'}
-                    uiType={'secondary'}
-                  >
-                    <span>이용약관 동의 (필수)</span>
-                  </RadioButton>
-                  <div>
-                    <p>약관보기</p>
-                    <img src={RightArrow} alt={'약관보기 화살표'} />
-                  </div>
-                </li>
-                <li className={styles.AgreeSelectList}>
-                  <RadioButton
-                    className={styles.SelectRadio}
-                    name={'agreeInfo3'}
-                    uiType={'secondary'}
-                  >
-                    <span>개인정보 수집 · 이용 동의 (필수)</span>
-                  </RadioButton>
-                  <div>
-                    <p>약관보기</p>
-                    <img src={RightArrow} alt={'약관보기 화살표'} />
-                  </div>
-                </li>
-                <li className={styles.AgreeSelectList}>
-                  <RadioButton
-                    className={styles.SelectRadio}
-                    name={'agreeInfo4'}
-                    uiType={'secondary'}
-                  >
-                    <span>
-                      무료배송, 할인쿠폰 등 혜택/정보 수신 동의 (선택)
-                    </span>
-                  </RadioButton>
-                  <div>
-                    <p>약관보기</p>
-                    <img src={RightArrow} alt={'약관보기 화살표'} />
-                  </div>
-                </li>
-                <li className={styles.AgreeSelectList}>
-                  <RadioButton
-                    className={styles.SelectRadio}
-                    name={'agreeInfo5'}
-                    uiType={'secondary'}
-                  >
-                    <span>본인은 만 14세 이상입니다. (필수)</span>
-                  </RadioButton>
-                  <div>
-                    <p>약관보기</p>
-                    <img src={RightArrow} alt={'약관보기 화살표'} />
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
+          <SignUpAddress />
+          <GenderInput />
+          <BirthInput />
+          <Agreement />
           <div className={styles.Button}>
             <Button uiType={'primary'} type="submit">
               가입하기

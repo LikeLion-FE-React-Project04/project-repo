@@ -1,40 +1,28 @@
-.SignUp{
+.SignUp {
+  padding-bottom: 120px;
 
-  padding-bottom: 40px;
-
-  .AddressSearchInput{
-    width: 333px;
-  }
-
-  .AddressInfo{
-    font-size: var(--text-xs);
-    color: var(--black);
-    margin-top: 4px;
-  }
-
-  .MarginTopBottom{
+  .MarginTopBottom {
     margin-top: 80px;
     margin-bottom: 44px;
-  }  
-
-  .RadioButtonBundle{
-    display: flex;
-    justify-content: space-between;
-    width: 333px;
-
   }
+
+  // .RadioButtonBundle {
+  //   display: flex;
+  //   justify-content: space-between;
+  //   width: 330px;
+  //   height: 44px;
+  //   align-items: center;
+  // }
 }
 
-
-
-.SignUpPage{
+.SignUpPage {
   position: relative;
   width: 640px;
   border-top: 2px solid var(--content);
   margin: 0 auto;
 }
 
-.MustInputText{
+.MustInputText {
   position: absolute;
   right: 0;
   top: -26px;
@@ -43,7 +31,7 @@
   font-weight: 600;
 }
 
-.MustInputText::before{
+.MustInputText::before {
   content: '*';
   color: var(--info-error);
   position: absolute;
@@ -53,116 +41,22 @@
   left: -9px;
 }
 
-.FormField{
-  border-bottom: 1px solid #000;
-}
-
-.Agreement{
-  padding: 20px 0;
-  display: flex;
-  gap: 0 8px;
-  border-bottom: 1px solid var(--gray-400);
-
-  .SubTitle{
-    width: 139px;
-    text-align: left;
-    font-weight: 600;
-
-    p{
-      position: relative;      
-      display: inline-block;
-    }
-
-    p::before{
-      content: "*";
-      color: var(--info-error);
-      font-size: var(--text-base);
-      position: absolute;
-      top: -6px;
-      right: -10px;
-    }     
-
-  }
-
-  .SubAgreeList{
-    
-  }
-
-  .AllAgreeTitle{
-    font-size: var(--text-lg);
-    font-weight: 600;
-  }
-
-  .AllAgreeSubText{
-    padding-left: 24px; 
-    font-size: var(--text-xs);
-    color: var(--gray-400);
-    padding-top: 5px;
-  }
-
-  .AgreeSelectList{
+.FormField {
+  .inputLayout {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 0;
-    
-    span{
-      font-weight: 400;
-    }
+    flex-direction: column;
 
-    p{
-      font-size: var(--text-xs);
-      color: var(--primary);
-    }
-
-    div{
-      display: flex;
-      align-items: center;
-
-      img{
-        margin-left: 4px;
-      }
+    .validationPhrases {
+      font-weight: 500;
+      margin-top: 8px;
+      font-size: 14px;
+      color: var(--accent-yellow);
     }
   }
-
 }
 
-.Button{
+.Button {
   width: 100%;
   text-align: center;
-  padding: 40px 0;
-}
-
-.DivBox{
-  
-}
-
-.BirthInput{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 333px;
-  border: 1px solid var(--gray-300);
-
-  span{
-    padding: 0 4px;
-    color: var(--gray-400);
-  }
-
-  input{
-    text-align: center;
-    border: 0;
-  }
-
-  input:first-child{
-    width: 50px;
-  }  
-
-  input:nth-child(3){
-    width: 50px;
-  }    
-
-  input:nth-child(5){
-    width: 50px;
-  }    
+  padding-top: 28px;
 }
