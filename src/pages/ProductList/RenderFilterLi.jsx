@@ -1,4 +1,5 @@
 import { useRecoilValue } from 'recoil';
+import { useState, useEffect } from 'react';
 
 import styles from './RenderFilterLi.module.css';
 
@@ -10,10 +11,21 @@ import {
   checkedBenefitsListAtom,
 } from '@/pages/ProductList/@recoil/renderState';
 
-import { categoryLengthListSelectorFamily } from '@/pages/ProductList/@recoil/checkState';
+import {
+  categoryLengthListSelectorFamily,
+  categoryCountSelectorFamily,
+} from '@/pages/ProductList/@recoil/checkState';
 
-export const RenderFilterNameLi = ({ name = 'brand', value = '스타벅스' }) => {
-  const countMap = useRecoilValue(categoryLengthListSelectorFamily(name));
+import { useGetBrandListData, useReadData } from '@/firebase/firestore/useRead';
+
+import countBy from 'lodash-es/countBy';
+
+/* -------------------------------- category -------------------------------- */
+export const RenderFilterNameLi = ({
+  name = 'category',
+  value = '과일ㆍ견과ㆍ쌀',
+  children,
+}) => {
   const checkedCategoryList = useRecoilValue(checkedCategoryListAtom);
 
   return (
@@ -27,17 +39,23 @@ export const RenderFilterNameLi = ({ name = 'brand', value = '스타벅스' }) =
           value={value}
         />
         <div className={styles.productExText}>{value}</div>
-        <span className={styles.ulListCount}>{countMap[value]}</span>
+        <span className={styles.ulListCount}>{children}</span>
       </label>
     </>
   );
 };
+
+/* -------------------------------- brand -------------------------------- */
 export const RenderBrandFilterNameLi = ({
   name = 'brand',
   value = '스타벅스',
 }) => {
-  const countMap = useRecoilValue(categoryLengthListSelectorFamily(name));
   const checkedBrandList = useRecoilValue(checkedBrandListAtom);
+
+  const { isLoading, error, data, setData, readData, setIsLoading } =
+    useReadData('productlist');
+
+  const priceDataList = countBy(data, 'brand');
 
   return (
     <>
@@ -50,13 +68,14 @@ export const RenderBrandFilterNameLi = ({
           value={value}
         />
         <div className={styles.productExText}>{value}</div>
-        <span className={styles.ulListCount}>{countMap[value]}</span>
+        <span className={styles.ulListCount}>{priceDataList[value]}</span>
       </label>
     </>
   );
 };
 
-// 여기서 2개 체크되는거같음
+/* -------------------------------- karlyOnly -------------------------------- */
+
 export const RenderFilterKarlyOnlyLi = ({ name, value }) => {
   const checkedKarlyOnlyList = useRecoilValue(checkedKalryOnlyListAtom); // []
 
@@ -79,6 +98,7 @@ export const RenderFilterKarlyOnlyLi = ({ name, value }) => {
   );
 };
 
+/* -------------------------------- price -------------------------------- */
 export const RenderFilterPriceLi = ({ name, value }) => {
   const checkedPriceList = useRecoilValue(checkedPriceListAtom); // []
 
@@ -120,6 +140,9 @@ export const RenderFilterPriceLi = ({ name, value }) => {
     </>
   );
 };
+
+/* -------------------------------- benefits -------------------------------- */
+
 export const RenderFilterBenefitsLi = ({
   name = '희소가치 프로젝트',
   value = '0',
