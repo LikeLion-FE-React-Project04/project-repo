@@ -10,4 +10,5 @@ export * from './typeOf';
 export * from './typeError';
 export * from './getCookie';
 export * from './getPaymentPrice';
-export * from './saveCartData';
+export * from './checkValidation';
+export * from './saveCartData';;
