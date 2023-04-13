@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import { string } from 'prop-types';
 
@@ -23,13 +23,40 @@ import {
   etcBrandListSelector,
 } from '@/pages/ProductList/@recoil/checkState';
 
+import {
+  getCategoryCount,
+  useGetCountFromServer,
+  useReadData,
+} from '@/firebase/firestore/useRead';
+
+import { where, orderBy } from 'firebase/firestore';
+
+import countBy from 'lodash-es/countBy';
+import groupBy from 'lodash-es/groupBy';
+import { getPaymentPrice } from '../../utils/getPaymentPrice';
+
 /* -------------------------------- category -------------------------------- */
 export const CategoryList = ({ filterName = '', children }) => {
-  const categoryList = useRecoilValue(categoryListSelectorFamily('category'));
+  const [categoryListCount, setCategoryListCount] = useState([]);
+
+  useEffect(() => {
+    const categoryCount = getCategoryCount().then((categoryDataList) => {
+      const 카테고리카운터의키들을맵돌린친구 = Object.keys(
+        categoryDataList
+      ).map((key) => {
+        return {
+          category: key,
+          count: categoryDataList[key],
+        };
+      });
+
+      setCategoryListCount(카테고리카운터의키들을맵돌린친구);
+    });
+  }, []);
 
   return (
     <>
-      {categoryList.map((product, index) => {
+      {categoryListCount.map((product, index) => {
         const key = `${product.id} ${index}`;
 
         return (
@@ -37,7 +64,9 @@ export const CategoryList = ({ filterName = '', children }) => {
             key={key}
             name={filterName}
             value={product.category}
-          />
+          >
+            {product.count}
+          </RenderFilterNameLi>
         );
       })}
     </>
@@ -87,7 +116,6 @@ export const BrandList = ({ filterName = '', children }) => {
           aria-labelledby={'더보기 버튼'}
           className={styles.navFilterButton}
           type="button"
-          // onClick={onClick}
         >
           {'브랜드 더보기 > '}
         </button>
@@ -101,9 +129,20 @@ export const KalryOnlyList = ({ filterName = '' }) => {
   const karlyOnlyList = useRecoilValue(
     karlyOnlyListSelectorFamily('kalryOnly')
   );
+  const [karlyOnlyProductData, setkarlyOnlyProductData] = useState(0);
+  useEffect(() => {
+    async function filteredWithkarlyOnlyProductData() {
+      const filterdkarlyOnlyProductData = await useGetCountFromServer({
+        whereCriteria: where('kalryOnly', '==', true),
+        orderCriteria: orderBy('name'),
+      });
+      setkarlyOnlyProductData(filterdkarlyOnlyProductData);
+    }
+    filteredWithkarlyOnlyProductData();
+  }, []);
 
   return (
-    <RenderFilterKarlyOnlyLi name={filterName} value={karlyOnlyList.length} />
+    <RenderFilterKarlyOnlyLi name={filterName} value={karlyOnlyProductData} />
   );
 };
 
@@ -112,16 +151,36 @@ export const KalryOnlyList = ({ filterName = '' }) => {
 export const BenefitsList = () => {
   const benefitsList = useRecoilValue(benefitsListSelectorFamily('saleRatio'));
 
+  //한정상품
+  const [limitedProductData, setLimitedProductData] = useState(0);
+  useEffect(() => {
+    async function filteredWithLimitedProductData() {
+      const filterdLimitedProductData = await useGetCountFromServer({
+        whereCriteria: where('stock', '<', 10),
+        orderCriteria: orderBy('stock'),
+      });
+      setLimitedProductData(filterdLimitedProductData);
+    }
+    filteredWithLimitedProductData();
+  }, []);
+
+  //할인상품
+  const [saleProductData, setSaleProductData] = useState(0);
+  useEffect(() => {
+    async function filteredWithSaleProductData() {
+      const filterdSaleProductData = await useGetCountFromServer({
+        whereCriteria: where('saleRatio', '!=', 0),
+        orderCriteria: orderBy('saleRatio'),
+      });
+      setSaleProductData(filterdSaleProductData);
+    }
+    filteredWithSaleProductData();
+  }, []);
+
   return (
     <>
-      <RenderFilterBenefitsLi
-        name={'할인상품'}
-        value={benefitsList['할인상품'].length}
-      />
-      <RenderFilterBenefitsLi
-        name={'한정수량'}
-        value={benefitsList['한정수량'].length}
-      />
+      <RenderFilterBenefitsLi name={'할인상품'} value={saleProductData} />
+      <RenderFilterBenefitsLi name={'한정수량'} value={limitedProductData} />
     </>
   );
 };
@@ -130,22 +189,28 @@ export const BenefitsList = () => {
 export const PriceList = () => {
   const priceList = useRecoilValue(priceFilterListSelectorFamily);
 
-  // debugger;
+  const { isLoading, error, data, setData, readData, setIsLoading } =
+    useReadData('productlist');
+
+  const priceDataList = countBy(data, (data) => {
+    if (getPaymentPrice(data) > 0 && getPaymentPrice(data) < 10000) {
+      return '0원 ~ 10,000원';
+    }
+    if (getPaymentPrice(data) > 10000 && getPaymentPrice(data) < 20000) {
+      return '10,000원 ~ 19,990원';
+    }
+    return '20,000원 이상';
+  });
 
   return (
     <>
-      <RenderFilterPriceLi
-        name={'0원 ~ 10,000원'}
-        value={priceList['0,10000'].length}
-      />
-      <RenderFilterPriceLi
-        name={'10,000원 ~ 19,990원'}
-        value={priceList['10000,19990'].length}
-      />
-      <RenderFilterPriceLi
-        name={'20,000원 이상'}
-        value={priceList['20000,30000'].length}
-      />
+      {Object.keys(priceDataList)
+        .sort()
+        .map((name) => {
+          return (
+            <RenderFilterPriceLi name={name} value={priceDataList[name]} />
+          );
+        })}
     </>
   );
 };

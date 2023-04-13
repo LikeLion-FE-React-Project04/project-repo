@@ -1,5 +1,16 @@
 import { atom, selector, selectorFamily } from 'recoil';
 
+import {
+  collection,
+  getFirestore,
+  getDocs,
+  where,
+  query,
+  orderBy,
+} from 'firebase/firestore';
+
+import { app } from '@/firebase/app.js';
+
 import { productListState } from '../../../store/productListState';
 
 // TODO: getConsonant 함수 밖으로 분리 후, consonant 동적으로 리팩토링 해보기
@@ -111,6 +122,50 @@ export const sortBrandListSelectorFamily = selectorFamily({
       });
     },
 });
+
+//도전 파이어베이스 ㄱㄴㄷ순 정렬셀렉터
+export const sortBrandListByFirebaseSelectorFamily = selectorFamily({
+  key: 'sortBrandListByFirebaseSelectorFamily',
+  get: (자음) => async () => {
+    const db = getFirestore(app);
+    const ref = collection(db, 'productlist');
+    const qry = query(ref, where('brand', '==', brand), orderBy('brand'));
+    const snapshot = await getDocs(qry);
+
+    const dataList = snapshot.docs.map((doc) => {
+      return doc.data();
+    });
+
+    // return categoryList.filter((item) => {
+    //   return getConsonant(item.brand) === 자음;
+    // });
+    return dataList;
+  },
+});
+
+// firebase selector test
+
+// export const categoryCountSelectorFamily = selectorFamily({
+//   key: 'categoryCountSelectorFamily',
+//   get:
+//     (categories = []) =>
+//     async () => {
+//       const db = getFirestore(app);
+//       const ref = collection(db, 'productlist');
+//       const counts = {};
+
+//       console.count('useCategoryCount', '몇번호출됬어요?');
+
+//       for (const category of categories) {
+//         const qry = query(ref, where('category', '==', category));
+//         const snapshot = await getDocs(qry);
+//         const count = snapshot.size;
+//         counts[category] = count;
+//       }
+
+//       return counts;
+//     },
+// });
 
 export const etcBrandListSelector = selector({
   key: 'etcBrandListSelector',
@@ -287,4 +342,28 @@ export const priceFilterListSelectorFamily = selector({
 
     return priceFilterMergeList;
   },
+});
+
+// firebase selector test
+
+export const categoryCountSelectorFamily = selectorFamily({
+  key: 'categoryCountSelectorFamily',
+  get:
+    (categories = []) =>
+    async () => {
+      const db = getFirestore(app);
+      const ref = collection(db, 'productlist');
+      const counts = {};
+
+      console.count('useCategoryCount', '몇번호출됬어요?');
+
+      for (const category of categories) {
+        const qry = query(ref, where('category', '==', category));
+        const snapshot = await getDocs(qry);
+        const count = snapshot.size;
+        counts[category] = count;
+      }
+
+      return counts;
+    },
 });
