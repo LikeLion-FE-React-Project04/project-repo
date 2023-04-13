@@ -4,4 +4,3 @@ export const productMainModalState = atom({
   key: 'productMainModalState',
   default: true,
 });
-
