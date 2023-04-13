@@ -27,3 +27,11 @@ export const alertModalUiType = atom({
   default: 'onlyConfirm',
 });
 
+// 
+export const caseOfRemoveProduct = atom({
+  key: 'caseOfRemoveProduct',
+  default: {
+    needToRemove: false,
+    product: {},
+  },
+});
