@@ -5,7 +5,7 @@ import Logo from '@/assets/header/logo-kurly.svg';
 function HeaderLogo() {
   return (
     <Link to="/">
-      <img alt={'KallyLogo'} src={Logo} />
+      <img alt={'칼리로고'} src={Logo} />
     </Link>
   );
 }

@@ -7,7 +7,7 @@ function MemberList({ href, className, text, img, onClick }) {
         {text}
         {img === undefined ? null : (
           <img
-            alt=" "
+            alt="고객센터 목록"
             src={img}
             style={{
               paddingLeft: '10px',

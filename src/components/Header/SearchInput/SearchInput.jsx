@@ -13,17 +13,18 @@ function SearchInput() {
       <div className={styles.searchFormInner}>
         <div className={styles.formGroup}>
           <form action="/" method="get">
-            <label htmlFor="Search">
-              <input
-                className={styles.formGroupInput}
-                id="Search"
-                placeholder="검색어를 입력해주세요"
-                required={true}
-                type="text"
-                value={input}
-                onChange={setInputValue}
-              />
+            <label htmlFor="Search" className={styles.a11yHidden}>
+              검색어를 입력해주세요
             </label>
+            <input
+              className={styles.formGroupInput}
+              id="Search"
+              placeholder="검색어를 입력해주세요"
+              required={true}
+              type="text"
+              value={input}
+              onChange={setInputValue}
+            />
           </form>
         </div>
         <button
@@ -34,7 +35,7 @@ function SearchInput() {
           className={styles.formGroupButton}
           type="button"
         >
-          <img alt="검색하기" src={Search} />
+          <img alt="검색" src={Search} />
         </button>
       </div>
     </>

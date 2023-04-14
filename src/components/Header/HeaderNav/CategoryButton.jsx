@@ -33,7 +33,7 @@ const CategoryButton = () => {
           onBlur={() => setIsHover(false)}
         >
           <img
-            aria-label="메뉴 아이콘"
+            alt={'카테고리목록'}
             className={styles.headerNavHamburger}
             src={Hamburger}
           />

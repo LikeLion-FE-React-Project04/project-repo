@@ -15,17 +15,18 @@ const SearchForm = forwardRef((_, ref) => {
       <form action="/" className={styles.searchForm} method="get">
         <div className={styles.searchFormInner}>
           <div className={styles.formGroup}>
-            <label htmlFor="search" className={styles.formGroupLabel}>
-              <input
-                type="text"
-                id="search"
-                className={styles.formGroupInput}
-                placeholder="검색어를 입력해주세요"
-                required={true}
-                value={input}
-                onChange={setInputValue}
-              />
+            <label htmlFor="search" className={styles.a11yHidden}>
+              검색어를 입력해주세요
             </label>
+            <input
+              type="text"
+              id="search"
+              className={styles.formGroupInput}
+              placeholder="검색어를 입력해주세요"
+              required={true}
+              value={input}
+              onChange={setInputValue}
+            />
           </div>
           <button
             onClick={() => {
@@ -35,7 +36,7 @@ const SearchForm = forwardRef((_, ref) => {
             type="button"
             className={styles.formGroupButton}
           >
-            <img src={Search} alt="검색하기" />
+            <img src={Search} alt="검색" />
           </button>
         </div>
       </form>
