@@ -47,8 +47,11 @@ export function useSignUpSubmit() {
       gender,
       birth,
     } = signUpForm) => {
+      // 유효성 검사 실행
+      // 통과 시 '' 리턴
       const message = signUpValidation();
 
+      // 미통과 (경고 알람)
       if (message) {
         setAlertModalState(true);
         setDarkFilterState(true);
@@ -61,6 +64,7 @@ export function useSignUpSubmit() {
         return;
       }
 
+      // 유효성 검사 통과. but 필수 이용약관 동의 x
       if (!agreementEssential) {
         setAlertModalState(true);
         setDarkFilterState(true);
@@ -73,6 +77,7 @@ export function useSignUpSubmit() {
         return;
       }
 
+      // 전부 통과하면 계정 생성
       const user = await signUp(email, password, name, birth);
 
       createAuthUser(user, {

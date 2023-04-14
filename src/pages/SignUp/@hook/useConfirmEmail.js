@@ -12,6 +12,7 @@ import { db } from '@/firebase/app.js';
 import { signUpFormState, emailConfirmState } from '../@recoil/signUp';
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 
+// 이메일 중복 확인 로직
 export function useConfirmEmail() {
   const [emailConfirm, setEmailConfirm] = useRecoilState(emailConfirmState);
   const signUpForm = useRecoilValue(signUpFormState);
@@ -26,6 +27,7 @@ export function useConfirmEmail() {
   const confirmEmail = useCallback(
     async ({ email } = signUpForm) => {
       // 유효성 확인
+      // 통과시 '' 반환
       let alertPragment = checkValidation('email', email);
 
       // 이미 존재하는 이메일인지 확인

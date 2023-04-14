@@ -6,7 +6,13 @@ import CartDataCheckBox from './CartDataCheckBox';
 import { useRecoilState } from 'recoil';
 import { countState } from '@/store/CounterState';
 import { cartDataState } from '../../../store/cartModalState';
-import { alertModalMoveState, alertModalState, alertModalText, alertModalUiType, caseOfRemoveProduct } from '../../../components/AlertBox/@recoil/alertModalState';
+import {
+  alertModalMoveState,
+  alertModalState,
+  alertModalText,
+  alertModalUiType,
+  caseOfRemoveProduct,
+} from '../../../components/AlertBox/@recoil/alertModalState';
 import { useSetRecoilState } from 'recoil';
 import { darkFilterState } from '../../../store/darkFilterState';
 import { useRecoilValue } from 'recoil';
@@ -38,39 +44,32 @@ function CartAccordionPanelItem({
 
   // 경고창 컴포넌트와 연결하려고 추가한 부분
   const setDarkFilterState = useSetRecoilState(darkFilterState);
-  const setAlertModalState = useSetRecoilState(alertModalState); 
+  const setAlertModalState = useSetRecoilState(alertModalState);
   const setAlertModalText = useSetRecoilState(alertModalText);
   const setAlertModalMoveState = useSetRecoilState(alertModalMoveState);
   const setAlertModalUiType = useSetRecoilState(alertModalUiType);
   const setCaseOfRemoveProduct = useSetRecoilState(caseOfRemoveProduct);
 
   const makeAlert = () => {
-    setAlertModalState(true);   // 경고창을 띄운다
-    setDarkFilterState(true);  // 다크필터를 띄운다
-    setAlertModalText('삭제하시겠습니까?');  // 텍스트를 설정한다
-    setAlertModalMoveState({  // 이동 여부를 설정한다
+    setAlertModalState(true); // 경고창을 띄운다
+    setDarkFilterState(true); // 다크필터를 띄운다
+    setAlertModalText('삭제하시겠습니까?'); // 텍스트를 설정한다
+    setAlertModalMoveState({
+      // 이동 여부를 설정한다
       needToMove: false,
       moveUrl: '',
     });
     setAlertModalUiType('confirmAndCancel'); // 버튼 타입을 설정한다.
-    setCaseOfRemoveProduct({ // 제품을 지울 생각이 있는 걸 알린다
+    setCaseOfRemoveProduct({
+      // 제품을 지울 생각이 있는 걸 알린다
       needToRemove: true,
       product: product,
-    })
-  }
+    });
+  };
 
   const handleCloseBtn = () => {
     makeAlert();
-
-    // 원래 코드
-    // setCartData((prev) => {
-    //   const cartArr = prev.filter((data) => {
-    //     return data.productId !== product.id;
-    //   });
-    
-    //   return cartArr;
-    // });
-  }
+  };
 
   return (
     <div className={styles.CartAccordionPanelItem}>
@@ -84,7 +83,7 @@ function CartAccordionPanelItem({
       <span className={styles.panelTitle}>{product.name}</span>
       <Counter
         name={product.id}
-        // 카트데이터 변경
+        // 데이터 변경
         minusBtnEvent={() => {
           let cartItems = [...cartData];
           let cartItemIndex = cartItems.findIndex(

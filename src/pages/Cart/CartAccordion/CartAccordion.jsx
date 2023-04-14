@@ -28,10 +28,6 @@ export default function CartAccordion() {
   const totalItemCount = useRecoilValue(totalItemCountState);
   const totalActiveItemCount = useRecoilValue(totalActiveItemCountState);
 
-  // 스냅샷 데이터?
-  const [snapshotCount, setSnapshotCount] = useState({});
-  const [snapshotSelect, setSnapshotSelect] = useState({});
-
   // 초기화
   useEffect(() => {
     cartData.map((cartProduct) => {
@@ -50,42 +46,6 @@ export default function CartAccordion() {
     };
   }, [cartData]);
 
-  // useEffect(() => {
-  //   setSnapshotCount(count);
-  //   setSnapshotSelect(select);
-  //   console.log('실행되었어요!!!');
-  //   console.log('setSnapshotCount1: ', snapshotCount);
-  //   console.log('setSnapshotSelect1: ', snapshotSelect);
-  //   if (
-  //     Object.keys(snapshotCount).length != 0 &&
-  //     Object.keys(snapshotSelect).length != 0
-  //   ) {
-  //     cartData.map((cartProduct) => {
-  //       console.log('setSnapshotCount: ', snapshotCount);
-  //       console.log('setSnapshotSelect: ', snapshotSelect);
-  //       setCount((prev) => {
-  //         return { ...prev, [cartProduct.productId]: cartProduct.quantity };
-  //       });
-
-  //       setSelect((prev) => {
-  //         return { ...prev, [cartProduct.productId]: true };
-  //       });
-  //     });
-  //   }
-
-  //   return () => {
-  //     console.log('클린업 실행');
-  //     resetSelect();
-  //     resetCount();
-  //   };
-  // }, [cartData]);
-
-  // useEffect(() => {
-  //   console.log('zzz');
-  //   setSnapshotCount(count);
-  //   setSnapshotSelect(select);
-  // }, [cartData]);
-
   // 수정 필요
   useEffect(() => {
     if (Object.keys(select).length != 0) {
@@ -96,10 +56,8 @@ export default function CartAccordion() {
     }
   }, [selectAllState]);
 
-  function handleselectAll() {
-    setselectAll(!selectAllState);
-  }
 
+  // 선택 삭제
   async function handleDeleteAll() {
     let sel = { ...select };
 
@@ -121,7 +79,7 @@ export default function CartAccordion() {
   return (
     <>
       <div className={styles.cartAccordionSelectLayout}>
-        {/* 수정 필요 */}
+        {/* 전체 선택 체크박스 */}
         <CartDataCheckBox name="selectedAll" visibleLabel>
           <span className={styles.selectAll}>
             전체선택 ({totalActiveItemCount}/{totalItemCount})
@@ -132,12 +90,15 @@ export default function CartAccordion() {
           선택삭제
         </button>
       </div>
+
+      {/* 아코디언 영역 */}
       {cartProducts[0]['data'].length == 0 &&
       cartProducts[1]['data'].length == 0 &&
       cartProducts[2]['data'].length == 0 ? (
         <div className={styles.nothing}>장바구니에 담긴 상품이 없습니다</div>
       ) : (
         <>
+          {/* 냉장 보관 아코디언 */}
           {cartProducts[0]['data'].length != 0 && (
             <AccordionItem index={1} width="742px" handelArrow active>
               <CartAccordionHandle type="cold" />
@@ -146,6 +107,7 @@ export default function CartAccordion() {
               })}
             </AccordionItem>
           )}
+          {/* 냉동 보관 아코디언 */}
           {cartProducts[1]['data'].length != 0 && (
             <AccordionItem index={2} width="742px" handelArrow active>
               <CartAccordionHandle type="frozen" />
@@ -154,6 +116,7 @@ export default function CartAccordion() {
               })}
             </AccordionItem>
           )}
+          {/* 상온 보관 아코디언 */}
           {cartProducts[2]['data'].length != 0 && (
             <AccordionItem index={3} width="742px" handelArrow active>
               <CartAccordionHandle type="temperature" />

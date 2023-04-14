@@ -4,6 +4,8 @@ import { useRef } from 'react';
 import { useRecoilState } from 'recoil';
 import styles from './CartDataCheckBox.module.scss';
 
+// 체크박스
+// 체크박스 (회원가입 체크박스) 컴포넌트 통합 가능할 듯.
 function CartDataCheckBox({
   name = 'default',
   visibleLabel = false,
@@ -12,6 +14,7 @@ function CartDataCheckBox({
   const [select, setSelect] = useRecoilState(selectedState);
   const [selectedAll, setSelectedAll] = useRecoilState(selectedAllState);
   let isChecked = select[name];
+
   let handleClickBtn = (e) => {
     setSelect((prev) => {
       let tmp = { ...prev };
@@ -22,6 +25,7 @@ function CartDataCheckBox({
     });
   };
 
+  // 전체 선택
   if (name === 'selectedAll') {
     isChecked = selectedAll;
 

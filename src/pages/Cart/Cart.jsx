@@ -15,13 +15,21 @@ function Cart() {
         <PageTitle>장바구니</PageTitle>
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'row' }}>
-        <div style={{ marginRight: '24px' }}>
+      <div className={styles.layout}>
+        <div>
+
+          {/* 장바구니 아코디언 */}
           <CartAccordion />
         </div>
         <div>
+
+          {/* 주소 */}
           <Address />
+
+          {/* 가격 정보 */}
           <PriceInfo></PriceInfo>
+
+          {/* 주문하기 */}
           <PaymentPrice></PaymentPrice>
         </div>
       </div>
