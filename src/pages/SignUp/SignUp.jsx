@@ -32,9 +32,12 @@ function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // 회원가입 로직
     signUpSubmit();
   };
 
+  // 폼 요소 입력 이벤트
   const handleChangeInput = (e) => {
     let { name, value } = e.target;
 
@@ -44,13 +47,13 @@ function SignUp() {
     const pragment = checkValidation(name, value);
 
     // 폼데이터 저장
-    // formStateRef.current[name] = value;
     setSignUpForm((prev) => {
       const tmp = { ...prev };
       tmp[name] = value;
       return tmp;
     });
 
+    // 유효성 검사
     setFormValidation((prev) => {
       const tmp = { ...prev };
       tmp[name] = pragment;
@@ -93,6 +96,8 @@ function SignUp() {
               uiType={'third'}
               disabled={emailConfirm}
               onClick={async (e) => {
+
+                // 이메일 중복 확인 로직
                 confirmEmail();
               }}
             >
@@ -142,7 +147,6 @@ function SignUp() {
             <div className={styles.inputLayout}>
               <FormInput
                 placeholder={'숫자만 입력해주세요.'}
-
                 name="phoneNumber"
                 type="text"
                 onChange={handleChangeInput}
@@ -157,10 +161,19 @@ function SignUp() {
               인증번호 받기
             </Button>
           </Input>
+
+          {/* 주소 */}
           <SignUpAddress />
+
+          {/* 성별 */}
           <GenderInput />
+
+          {/* 생년월일 */}
           <BirthInput />
+
+          {/* 약관동의 */}
           <Agreement />
+
           <div className={styles.Button}>
             <Button uiType={'primary'} type="submit">
               가입하기

@@ -5,11 +5,14 @@ import { checkValidation } from '../../../utils';
 import { useRecoilState } from 'recoil';
 import { signUpFormState } from '../@recoil/signUp';
 
+// 생년월일 확인 폼
 function BirthInput() {
   const [signUpForm, setSignUpForm] = useRecoilState(signUpFormState);
   const [warnPragment, setWarnPragment] = useState('');
 
   const handleChange = (e) => {
+
+    // 숫자만 입력가능
     e.target.value = e.target.value
       .replace(/[^0-9.]/g, '')
       .replace(/(\..*)\./g, '$1');
@@ -18,6 +21,7 @@ function BirthInput() {
 
     let pragment;
 
+    // 폼 데이터 저장
     setSignUpForm((prev) => {
       const tmp = { ...prev };
       const birthTmp = { ...tmp.birth };

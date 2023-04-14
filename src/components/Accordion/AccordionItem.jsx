@@ -3,6 +3,8 @@ import styles from './AccordionItem.module.scss';
 import AccordionHandle from './AccordionHandle';
 import AccordionPanel from './AccordionPanel';
 
+// AccordionItem: 아코디언으로 만들어주는 컴포넌트 (열렸다 닫혔다)
+// index : 구별되는 값, width : 커스텀, handleArrow : 화살표 유무, active : 활성 상태, children : 아코디언 핸들, 패널
 export default function AccordionItem({
   index,
   children,
