@@ -100,7 +100,7 @@ export default function ProductInquiryHandle({ data,limit,page }) {
                 onClick={() => {
                   setAlertModalState(true);   // 경고창을 띄운다
                   setDarkFilterState(true);  // 다크필터를 띄운다
-                  setAlertModalText('비밀글 입니다!!!');  // 텍스트를 설정한다
+                  setAlertModalText('비밀글입니다.');  // 텍스트를 설정한다
                   setAlertModalMoveState({  // 이동 여부를 설정한다
                     needToMove: false,
                     moveUrl: '',
