@@ -7,9 +7,9 @@ import AccordionItem from '@/components/Accordion/AccordionItem.jsx';
 import { ReactComponent as Question } from '@/assets/product-detail/ic-question.svg';
 import { ReactComponent as Answer } from '@/assets/product-detail/ic-answer.svg';
 import { ReactComponent as Lock } from '@/assets/product-detail/ic-lock.svg';
-
-
-
+import { alertModalMoveState, alertModalState, alertModalText, alertModalUiType } from '../../../../components/AlertBox/@recoil/alertModalState.js';
+import { useSetRecoilState } from 'recoil';
+import { darkFilterState } from '../../../../store/darkFilterState';
 
 export default function ProductInquiryHandle({ data,limit,page }) {
   const { user } = useAuthState(); // 현재 로그인된 사용자의 정보를 가져오기 위해
@@ -17,11 +17,14 @@ export default function ProductInquiryHandle({ data,limit,page }) {
   // const limit = useRecoilValue(inquiryLimitAtom);
   // const offset = useRecoilValue(inquiryOffsetSelector);
 
+  // 경고창 관련
+  const setDarkFilterState = useSetRecoilState(darkFilterState);
+  const setAlertModalState = useSetRecoilState(alertModalState); 
+  const setAlertModalText = useSetRecoilState(alertModalText);
+  const setAlertModalMoveState = useSetRecoilState(alertModalMoveState);
+  const setAlertModalUiType = useSetRecoilState(alertModalUiType);
+
   const offset = (page - 1) * limit;
-
-
-  
-
 
   console.log('핸들안에 data출력: ', data);
 
@@ -95,7 +98,14 @@ export default function ProductInquiryHandle({ data,limit,page }) {
               <button
                 className={styles.handleDivWrapper}
                 onClick={() => {
-                  alert('비밀글입니다!!!');
+                  setAlertModalState(true);   // 경고창을 띄운다
+                  setDarkFilterState(true);  // 다크필터를 띄운다
+                  setAlertModalText('비밀글 입니다!!!');  // 텍스트를 설정한다
+                  setAlertModalMoveState({  // 이동 여부를 설정한다
+                    needToMove: false,
+                    moveUrl: '',
+                  });
+                  setAlertModalUiType('onlyConfirm'); // 버튼 타입을 설정한다.
                 }}
               >
                 <div className={styles.writingTitle}>
