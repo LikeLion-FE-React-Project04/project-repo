@@ -22,6 +22,7 @@ function Counter({
         type="minus"
         onClick={() => {
           if (count[name] == 1) {
+            
             return;
           }
           minusBtnEvent();
