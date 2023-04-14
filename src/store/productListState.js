@@ -1,5 +1,6 @@
 import { atom, atomFamily, selector, selectorFamily } from 'recoil';
 
+// 상품 데이터
 export const initialProductList = [
   {
     id: 'product-rksk',
@@ -985,11 +986,14 @@ export const initialProductList = [
   },
 ];
 
+// 상품 데이터 상태
 export const productListState = atom({
   key: 'productListState',
   default: initialProductList,
 });
 
+
+// id 에 맞는 상품
 export const productListFamily = atomFamily({
   key: 'productListFamily',
   default: (id) => {
@@ -1003,6 +1007,7 @@ export const productListFamily = atomFamily({
   },
 });
 
+// 상품 id 상태
 export const selectedproductId = atom({
   key: 'selectedproductId',
   default: 'product-rksk',

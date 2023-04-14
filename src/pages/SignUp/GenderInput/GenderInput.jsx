@@ -4,6 +4,7 @@ import RadioButton from '@/components/RadioButton/RadioButton';
 import { useRecoilState } from 'recoil';
 import { signUpFormState } from '../@recoil/signUp';
 
+// 성별 확인 폼
 function GenderInput() {
   const [signUpForm, setSignUpForm] = useRecoilState(signUpFormState);
 

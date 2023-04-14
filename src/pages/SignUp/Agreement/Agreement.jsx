@@ -5,16 +5,12 @@ import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { agreementState } from '../@recoil/signUp';
 
+// 약관 동의 폼
 function Agreement() {
-  const checkedList = {
-    ag1: false,
-    ag2: false,
-    ag3: false,
-    ag4: false,
-  };
   const [allChecked, setAllChecked] = useState(false);
   const [checkedState, setCheckedState] = useRecoilState(agreementState);
 
+  // 전체 동의
   const handleChangeAllChecked = () => {
     const currenChecked = allChecked;
     setAllChecked(!currenChecked);
@@ -27,6 +23,7 @@ function Agreement() {
     });
   };
 
+  // 개별 요소 동의
   const handleChangeChecked = (e) => {
     setCheckedState((prev) => {
       const newState = { ...prev };

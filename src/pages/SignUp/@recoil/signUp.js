@@ -52,6 +52,7 @@ export const agreementState = atom({
   },
 });
 
+// 필수요소 확인 여부
 export const agreementEssentialState = selector({
   key: 'agreementEssentialState',
   get: ({ get }) => {

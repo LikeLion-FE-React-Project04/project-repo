@@ -1,27 +1,27 @@
-/* eslint-disable no-const-assign */
-import { selector } from 'recoil';
-import { useRecoilValue } from 'recoil';
-import { atom, atomFamily /* selector */ } from 'recoil';
+import { atom /* selector */, selector } from 'recoil';
 import { recoilPersist } from 'recoil-persist';
-import { productListFamily, productListState } from './productListState';
+import { productListFamily } from './productListState';
 import { countState } from './CounterState';
-import { useSetRecoilState } from 'recoil';
 
+// 영속성 
 const { persistAtom } = recoilPersist({
   key: 'recoil-persist', // this key is using to store data in local storage
   storage: localStorage, // configurate which stroage will be used to store the data
 });
 
+// 장바구니 열기 닫기 상태
 export const productCartModalState = atom({
   key: 'productCartModal',
   default: false,
 });
 
+// 접근성 - 포커싱이 다시 돌아오도록 상품카드의 장바구니 버튼의 ref를 저장
 export const modalBtnState = atom({
   key: 'modalBtnState',
   default: null,
 });
 
+// 장바구니 데이터 저장 - 아이템과 개수를 배열 형태로 저장
 export const cartDataState = atom({
   key: 'cartDataState',
   default: [],

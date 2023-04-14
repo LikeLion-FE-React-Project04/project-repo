@@ -7,15 +7,18 @@ import { addressState, addressNumberState } from '@/store/addressState.js';
 import DaumPostcode from 'react-daum-postcode';
 import { FormInput } from '@/components/FormInput/FormInput';
 
+// 장바구니 주소 로직 통합 필요..
 function SignUpAddress() {
   const [openPostcode, setOpenPostcode] = useState(false);
   const [address, setAddress] = useRecoilState(addressState);
   const [addressNumber, setAddressNumber] = useRecoilState(addressNumberState);
   const handle = {
-    // // 버튼 클릭 이벤트
+
+    // 버튼 클릭 이벤트
     clickButton: () => {
       setOpenPostcode((current) => !current);
     },
+
     // 주소 선택 이벤트
     selectAddress: (data) => {
       setAddress(data.address);
@@ -25,6 +28,8 @@ function SignUpAddress() {
   };
   return (
     <div>
+      
+      {/* 주소 입력 여부에 따라 다른 랜더링 */}
       {!address ? (
         <Input text={'주소'} must={true}>
           <div className={styles.DivBox}>
