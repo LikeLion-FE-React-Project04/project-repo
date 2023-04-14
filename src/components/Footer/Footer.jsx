@@ -105,19 +105,19 @@ export function Footer() {
           </article>
           <article className={styles.footerCompanyInfo}>
             <nav className={styles.footerNavigation}>
-              <Link aria-label="칼리소개 보기" to="/">
+              <Link aria-label="칼리소개" to="/">
                 칼리소개
               </Link>
-              <Link aria-label="칼리소개 영상 보기" to="/">
+              <Link aria-label="칼리소개 영상" to="/">
                 칼리소개영상
               </Link>
-              <Link aria-label="인재채용 정보 확인하기" to="/">
+              <Link aria-label="인재채용 정보 확인" to="/">
                 인재채용
               </Link>
-              <Link aria-label="이용약관 확인하기" to="/">
+              <Link aria-label="이용약관 확인" to="/">
                 이용약관
               </Link>
-              <Link aria-label="개인정보처리방침 확인하기" to="/">
+              <Link aria-label="개인정보처리방침 확인" to="/">
                 개인정보처리방침
               </Link>
               <Link aria-label="이용안내" to="/">
@@ -126,12 +126,12 @@ export function Footer() {
             </nav>
             <div className={styles.footerCompanyIntroduce}>
               <p>
-                법인명 (상호) : 주식회사 컬리
+                법인명 (상호) : 주식회사 칼리
                 <span className={styles.footerBar}>|</span>
                 사업자등록번호 : 261-81-23567
                 <span className={styles.footerBar}>|</span>
                 <Link
-                  aria-label="사업자 정보 확인하러 가기"
+                  aria-label="사업자 정보 확인"
                   style={{ color: '#5F0080' }}
                   to="/"
                 >
@@ -150,11 +150,11 @@ export function Footer() {
               <p>
                 입점문의 :{' '}
                 <Link
-                  aria-label="입정문의하기"
+                  aria-label="입점 문의"
                   style={{ color: '#5F0080' }}
                   to="/"
                 >
-                  입정문의하기
+                  입점문의하기
                 </Link>
                 <span className={styles.footerBar}>|</span>
                 제휴문의 :{' '}
@@ -170,20 +170,20 @@ export function Footer() {
               <p>팩스 : 070 - 7500 - 6098</p>
             </div>
             <div className={styles.footerCompanySns}>
-              <Link label="컬리 네이버 블로그 바로가기" to={instagramUrl}>
-                <Blog alt="" />
+              <Link to={instagramUrl}>
+                <Blog alt="칼리 네이버 블로그" />
               </Link>
-              <Link label="컬리 페이스북 바로가기" to={facebookUrl}>
-                <Facebook alt="" />
+              <Link to={facebookUrl}>
+                <Facebook alt="칼리 페이스북" />
               </Link>
-              <Link label="컬리 인스타그램 바로가기" to={naverBlogUrl}>
-                <Instagram alt="" />
+              <Link to={naverBlogUrl}>
+                <Instagram alt="칼리 인스타그램" />
               </Link>
-              <Link label="컬리 네이버포스트 바로가기" to={naverPostUrl}>
-                <Naver alt="" />
+              <Link to={naverPostUrl}>
+                <Naver alt="칼리 네이버포스트" />
               </Link>
-              <Link label="컬리 유튜브 바로기" to={youtubeUrl}>
-                <Youtube alt="" />
+              <Link to={youtubeUrl}>
+                <Youtube alt="칼리 유튜브" />
               </Link>
             </div>
           </article>
@@ -238,15 +238,15 @@ export function Footer() {
         </section>
         <section className={styles.footerCopyrightWrap}>
           <p>
-            마켓컬리에서 판매되는 상품 중에는 마켓컬리에 입점한 개별 판매자가
+            마켓칼리에서 판매되는 상품 중에는 마켓칼리에 입점한 개별 판매자가
             판매하는 마켓플레이스(오픈마켓) 상품이 포함되어 있습니다.
             <br />
-            마켓플레이스(오픈마켓) 상품의 경우 컬리는 통신판매중개자로서
-            통신판매의 당사자가 아닙니다. 컬리는 해당 상품의 주문, 품질,
+            마켓플레이스(오픈마켓) 상품의 경우 칼리는 통신판매중개자로서
+            통신판매의 당사자가 아닙니다. 칼리는 해당 상품의 주문, 품질,
             교환/환불 등 의무와 책임을 부담하지 않습니다.
           </p>
           <p className={styles.copyrightEnglishText}>
-            © KURLY CORP. ALL RIGHTS RESERVED
+            © KARLY CORP. ALL RIGHTS RESERVED
           </p>
         </section>
       </footer>
