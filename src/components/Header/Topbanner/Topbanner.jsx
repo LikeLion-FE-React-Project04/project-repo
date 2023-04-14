@@ -19,7 +19,7 @@ function Topbanner() {
             type={'button'}
             className={styles.topBannerButton}
             img={close}
-            alt={'닫기버튼'}
+            alt={'닫기'}
             handler={bannerDisabled}
           />
         </div>

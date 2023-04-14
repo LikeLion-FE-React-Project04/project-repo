@@ -13,9 +13,9 @@ function IconsContainer({ children }) {
 const HeaderIcon = () => {
   return (
     <IconsContainer>
-      <MainIcon alt={'위치이미지'} href={'/'} img={Location} />
-      <MainIcon alt={'찜하기이미지'} href={'/'} img={Heart} />
-      <MainIcon alt={'장바구니이미지'} href={'/Cart'} img={Cart} />
+      <MainIcon alt={'위치'} href={'/'} img={Location} />
+      <MainIcon alt={'찜하기'} href={'/'} img={Heart} />
+      <MainIcon alt={'장바구니'} href={'/Cart'} img={Cart} />
     </IconsContainer>
   );
 };
