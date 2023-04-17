@@ -3,7 +3,6 @@ import { useSetRecoilState, useRecoilValue, useRecoilState } from 'recoil';
 import {useState} from 'react'
 import { useRef } from 'react';
 
-// import classes from '../../../styles/main.module.css';
 import { useDetailCollection } from '../../../firebase/firestore/useDetailCollection';
 
 import styles from './ProductInquiry.module.scss';
@@ -21,27 +20,25 @@ import { productLayoutState } from '../../../store/detailLayoutState';
 import { useAuthState } from '@/firebase/auth';
 import { dataStateAtom } from './../../../firebase/firestore/useDetailCollection';
 import { inquiryLimitAtom, inquiryPageAtom } from './@recoil/renderState';
-import { alertModalMoveState, alertModalState, alertModalText, alertModalUiType } from '../../../components/AlertBox/@recoil/alertModalState';
+import { useAlertBox } from '../../../components/AlertBox/customHooks/useAlertBox.js';
 
 export default function ProductInquiry() {
   // user의 정보 받기
   const { user } = useAuthState();
-
-  // const dataState = useRecoilValue(dataStateAtom);
-
+  
   const setProductDetailModalState = useSetRecoilState(productDetailModalState);
   const setDarkFilterState = useSetRecoilState(darkFilterState);
-
+  
   // (추가)uiType
   const setLayoutState = useSetRecoilState(productLayoutState);
-
+  
   // 문서를 저장 할 컬렉션 이름
   const collectionName = 'inquiryData';
   // 한번 실행시켜 => useEffect가 실행될임
-
+  
   const { dataState } = useDetailCollection(collectionName);
-
-
+  const { settingAlertBox } = useAlertBox();
+  
   // 페이지네이션
   // const limit = useRecoilValue(inquiryLimitAtom);
   const [limit,setState] = useState(6);
@@ -67,37 +64,30 @@ export default function ProductInquiry() {
         setNumPages(calcNumPages);
         console.log("페이지의 개수는? ", numPages);
       }
-      // console.log('numPages 출력 => ', numPages);
     }
   }, [dataState]);
 
-  const setAlertModalState = useSetRecoilState(alertModalState);
-  const setAlertModalText = useSetRecoilState(alertModalText);
-  const setAlertModalMoveState = useSetRecoilState(alertModalMoveState);
-  const setAlertModalUiType = useSetRecoilState(alertModalUiType);
+  // 어떤 경고창을 띄울 지 세팅하기
+  const showAlertBox = (getValue) => { 
+    settingAlertBox(getValue);   
+  };
 
   function productModalClickHandler() {
     console.log('user출력:', user);
     if (user == null) {
-      // 로그인이 안 된 상태라면? 팝업창을 띄우면 안됨
-      // alert('로그인하셔야 본 서비스를 이용하실 수 있습니다.');
-      setAlertModalState(true);
-      setDarkFilterState(true);
-      setAlertModalText('로그인하셔야 본 서비스를 이용하실 수 있습니다.');
-      setAlertModalMoveState({
+      showAlertBox({
+        btnUiType: "onlyConfirm",
+        alertText: "로그인하셔야 본 서비스를 이용하실 수 있습니다.",
         needToMove: true,
         moveUrl: '/SignIn',
-      });
-      setAlertModalUiType('onlyConfirm');
+      }); // 경고창 띄우기
     } else {
       setProductDetailModalState(true);
       setDarkFilterState(true);
-      // 추가
       setLayoutState('inquiry');
     }
   }
-
-
+  
   useEffect(()=>{
     if(numPages==1) { // 한페이지밖에 없는 경우
       //console.log("한페이지밖에 없는 경우~");

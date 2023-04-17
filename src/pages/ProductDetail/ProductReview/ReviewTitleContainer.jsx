@@ -12,34 +12,32 @@ import { Button, PageTitle } from '@/components';
 import { productDetailModalState } from '@/store/detailModalState.js';
 import { darkFilterState } from '@/store/darkFilterState.js';
 import { useAuthState } from '@/firebase/auth';
-import { alertModalMoveState, alertModalState, alertModalText, alertModalUiType } from '../../../components/AlertBox/@recoil/alertModalState';
+import { useAlertBox } from '../../../components/AlertBox/customHooks/useAlertBox.js';
 
 export default function ReviewTitleContainer() {
   // user의 정보 받기
   const { user } = useAuthState();
-
+  const { settingAlertBox } = useAlertBox();
+  
   const setProductDetailModalState = useSetRecoilState(productDetailModalState);
   const setDarkFilterState = useSetRecoilState(darkFilterState);
 
   // (추가)uiType
   const setLayoutState = useSetRecoilState(productLayoutState);
 
-  const setAlertModalState = useSetRecoilState(alertModalState);
-  const setAlertModalText = useSetRecoilState(alertModalText);
-  const setAlertModalMoveState = useSetRecoilState(alertModalMoveState);
-  const setAlertModalUiType = useSetRecoilState(alertModalUiType);
+  // 어떤 경고창을 띄울 지 세팅하기
+  const showAlertBox = (getValue) => { 
+    settingAlertBox(getValue);   
+  };
 
   function productModalClickHandler() {
     if (user == null) { // 로그인이 안 된 상태라면? 팝업창을 띄우면 안됨
-      // alert("로그인하셔야 본 서비스를 이용하실 수 있습니다.");
-      setAlertModalState(true);
-      setDarkFilterState(true);
-      setAlertModalText('로그인하셔야 본 서비스를 이용하실 수 있습니다.');
-      setAlertModalMoveState({
+      showAlertBox({
+        btnUiType: "onlyConfirm",
+        alertText: "로그인하셔야 본 서비스를 이용하실 수 있습니다.",
         needToMove: true,
         moveUrl: '/SignIn',
-      });
-      setAlertModalUiType('onlyConfirm');
+      }); // 경고창 띄우기
     } else {
       setProductDetailModalState(true);
       setDarkFilterState(true);
