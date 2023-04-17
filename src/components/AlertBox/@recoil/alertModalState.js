@@ -21,13 +21,13 @@ export const alertModalMoveState = atom({
   },
 });
 
-// // uiType 관리
+// uiType 관리
 export const alertModalUiType = atom({
   key: 'alertModalUiType',
   default: 'onlyConfirm',
 });
 
-// 
+// CART페이지에서 상품을 삭제하려고 하는지 여부를 관리
 export const caseOfRemoveProduct = atom({
   key: 'caseOfRemoveProduct',
   default: {

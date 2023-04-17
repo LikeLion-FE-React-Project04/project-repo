@@ -3,7 +3,6 @@ import { useSetRecoilState, useRecoilValue, useRecoilState } from 'recoil';
 import {useState} from 'react'
 import { useRef } from 'react';
 
-// import classes from '../../../styles/main.module.css';
 import { useDetailCollection } from '../../../firebase/firestore/useDetailCollection';
 
 import styles from './ProductInquiry.module.scss';
@@ -21,15 +20,11 @@ import { productLayoutState } from '../../../store/detailLayoutState';
 import { useAuthState } from '@/firebase/auth';
 import { dataStateAtom } from './../../../firebase/firestore/useDetailCollection';
 import { inquiryLimitAtom, inquiryPageAtom } from './@recoil/renderState';
-import { alertModalMoveState, alertModalState, alertModalText, alertModalUiType } from '../../../components/AlertBox/@recoil/alertModalState';
 import { useAlertBox } from '../../../components/AlertBox/customHooks/useAlertBox.js';
 
 export default function ProductInquiry() {
   // user의 정보 받기
   const { user } = useAuthState();
-
-  
-  // const dataState = useRecoilValue(dataStateAtom);
   
   const setProductDetailModalState = useSetRecoilState(productDetailModalState);
   const setDarkFilterState = useSetRecoilState(darkFilterState);
@@ -43,7 +38,6 @@ export default function ProductInquiry() {
   
   const { dataState } = useDetailCollection(collectionName);
   const { settingAlertBox } = useAlertBox();
-  
   
   // 페이지네이션
   // const limit = useRecoilValue(inquiryLimitAtom);
@@ -59,16 +53,6 @@ export default function ProductInquiry() {
   const previousBtn = useRef();
   const nextBtn = useRef();
 
-  // 어떤 경고창을 띄울 지 세팅하기
-  const showAlertBox = () => { 
-    settingAlertBox({
-      btnUiType: "onlyConfirm",
-      alertText: "로그인하셔야 본 서비스를 이용하실 수 있습니다.",
-      needToMove: true,
-      moveUrl: '/SignIn',
-    });   
-  };
-
   useEffect(() => {
     console.log('[ProductInquiry] dataState: ', dataState);
    
@@ -83,10 +67,20 @@ export default function ProductInquiry() {
     }
   }, [dataState]);
 
+  // 어떤 경고창을 띄울 지 세팅하기
+  const showAlertBox = (getValue) => { 
+    settingAlertBox(getValue);   
+  };
+
   function productModalClickHandler() {
     console.log('user출력:', user);
     if (user == null) {
-      showAlertBox(); // 경고창 띄우기
+      showAlertBox({
+        btnUiType: "onlyConfirm",
+        alertText: "로그인하셔야 본 서비스를 이용하실 수 있습니다.",
+        needToMove: true,
+        moveUrl: '/SignIn',
+      }); // 경고창 띄우기
     } else {
       setProductDetailModalState(true);
       setDarkFilterState(true);

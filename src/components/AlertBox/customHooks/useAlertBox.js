@@ -1,23 +1,26 @@
 import { useSetRecoilState } from "recoil";
 import { darkFilterState } from "../../../store/darkFilterState";
-import { alertModalMoveState, alertModalState, alertModalText, alertModalUiType } from "../@recoil/alertModalState";
+import { alertModalMoveState, alertModalState, alertModalText, alertModalUiType, caseOfRemoveProduct } from "../@recoil/alertModalState";
 
 // 초기값
 let initialValue = {
-  btnUiType: '',
-  alertText: '',
+  alertText: '', 
   needToMove: false,
   moveUrl: '',
+  btnUiType: '',
+  needToRemove: false,
+  product: {},
 };
 
 export const useAlertBox = () => {
   // 다크필터
   const setDarkFilterState = useSetRecoilState(darkFilterState);
-  // 경고창 관련
+  // 경고창 관련 atom들
   const setAlertModalState = useSetRecoilState(alertModalState); 
   const setAlertModalText = useSetRecoilState(alertModalText);
   const setAlertModalMoveState = useSetRecoilState(alertModalMoveState);
   const setAlertModalUiType = useSetRecoilState(alertModalUiType);
+  const setCaseOfRemoveProduct = useSetRecoilState(caseOfRemoveProduct);
 
   // 경고창을 세팅할 수 있는 함수
   const settingAlertBox = (getValue) => {
@@ -35,6 +38,10 @@ export const useAlertBox = () => {
       moveUrl: alertState.moveUrl,
     });
     setAlertModalUiType(alertState.btnUiType);
+    setCaseOfRemoveProduct({
+      needToRemove: alertState.needToRemove,
+      product: alertState.product,
+    });
   }
   
   return { settingAlertBox };
