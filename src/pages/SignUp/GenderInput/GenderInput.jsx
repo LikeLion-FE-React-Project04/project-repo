@@ -1,4 +1,4 @@
-import styles from './GenderInput.module.scss'
+import styles from './GenderInput.module.scss';
 import Input from '@/pages/SignUp/Input/Input';
 import RadioButton from '@/components/RadioButton/RadioButton';
 import { useRecoilState } from 'recoil';
@@ -42,7 +42,7 @@ function GenderInput() {
         </RadioButton>
         <RadioButton
           name={'gender'}
-          value={'gender'}
+          value={'non'}
           id={'non'}
           checked={signUpForm.gender == 'non'}
           onChange={handleChangeInput}

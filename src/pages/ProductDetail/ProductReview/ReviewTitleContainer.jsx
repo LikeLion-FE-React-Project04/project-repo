@@ -12,7 +12,7 @@ import { Button, PageTitle } from '@/components';
 import { productDetailModalState } from '@/store/detailModalState.js';
 import { darkFilterState } from '@/store/darkFilterState.js';
 import { useAuthState } from '@/firebase/auth';
-import { useAlertBox } from '../../../components/AlertBox/customHooks/useAlertBox.js';
+import { useAlertBox } from '../../../components/AlertBox/@hook/useAlertBox';
 
 export default function ReviewTitleContainer() {
   // user의 정보 받기
@@ -35,7 +35,6 @@ export default function ReviewTitleContainer() {
       showAlertBox({
         btnUiType: "onlyConfirm",
         alertText: "로그인하셔야 본 서비스를 이용하실 수 있습니다.",
-        needToMove: true,
         moveUrl: '/SignIn',
       }); // 경고창 띄우기
     } else {

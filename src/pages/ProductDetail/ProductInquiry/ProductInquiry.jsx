@@ -20,7 +20,7 @@ import { productLayoutState } from '../../../store/detailLayoutState';
 import { useAuthState } from '@/firebase/auth';
 import { dataStateAtom } from './../../../firebase/firestore/useDetailCollection';
 import { inquiryLimitAtom, inquiryPageAtom } from './@recoil/renderState';
-import { useAlertBox } from '../../../components/AlertBox/customHooks/useAlertBox.js';
+import { useAlertBox } from '../../../components/AlertBox/@hook/useAlertBox';
 
 export default function ProductInquiry() {
   // user의 정보 받기
@@ -78,7 +78,6 @@ export default function ProductInquiry() {
       showAlertBox({
         btnUiType: "onlyConfirm",
         alertText: "로그인하셔야 본 서비스를 이용하실 수 있습니다.",
-        needToMove: true,
         moveUrl: '/SignIn',
       }); // 경고창 띄우기
     } else {
