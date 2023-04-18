@@ -1,13 +1,14 @@
 import { useSetRecoilState } from "recoil";
 import { darkFilterState } from "../../../store/darkFilterState";
 import { alertModalMoveState, alertModalState, alertModalText, alertModalUiType, caseOfRemoveProduct } from "../@recoil/alertModalState";
+import { useMemo } from "react";
 
 // 초기값
 let initialValue = {
-  alertText: '', 
+  alertText: '',  
   needToMove: false,
-  moveUrl: '',
-  btnUiType: '',
+  moveUrl: '', 
+  btnUiType: '',  
   needToRemove: false,
   product: {},
 };
@@ -21,11 +22,27 @@ export const useAlertBox = () => {
   const setAlertModalMoveState = useSetRecoilState(alertModalMoveState);
   const setAlertModalUiType = useSetRecoilState(alertModalUiType);
   const setCaseOfRemoveProduct = useSetRecoilState(caseOfRemoveProduct);
+  
+  const initialValueOfMove = useMemo(() => ({
+    needToMove: true,
+  }), []);
+
+  const initialValueOfRemove = useMemo(() => ({
+    needToRemove: true,
+  }), []);
 
   // 경고창을 세팅할 수 있는 함수
   const settingAlertBox = (getValue) => {
     // 객체 합치기
-    const alertState = {...initialValue, ...getValue};
+    let alertState = {...initialValue, ...getValue};
+
+    if(alertState.moveUrl != '') { // 만약에 사용자가 url을 넘겨줬다면,
+      alertState = {...alertState, ...initialValueOfMove};
+    }
+
+    if(alertState.product != {}) { // 만약에 사용자가 product를 넘겨줬다면,
+      alertState = {...alertState, ...initialValueOfRemove};
+    }
 
     // 다크필터 세팅
     setDarkFilterState(true);
