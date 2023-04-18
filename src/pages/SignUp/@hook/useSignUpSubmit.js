@@ -1,20 +1,18 @@
-import {
-  alertModalState,
-  alertModalText,
-  alertModalMoveState,
-  alertModalUiType,
-} from '@/components/AlertBox/@recoil/alertModalState.js';
-import { darkFilterState } from '@/store/darkFilterState.js';
-import { useSignUp, useAuthState } from '@/firebase/auth';
-import { useCreateAuthUser } from '@/firebase/firestore/useCreateAuthUser';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
+import { useCallback, useMemo } from 'react';
+
 import {
   signUpFormState,
   emailConfirmState,
   agreementEssentialState,
 } from '../@recoil/signUp';
-import { useCallback, useMemo } from 'react';
+
 import { useSignUpValidation } from './useSignUpValidation';
+
+import { useAlertBox } from '@/components/AlertBox/@hook/useAlertBox.js';
+import { useSignUp } from '@/firebase/auth';
+import { useCreateAuthUser } from '@/firebase/firestore/useCreateAuthUser';
+
 import { addressState } from '@/store/addressState.js';
 
 export function useSignUpSubmit() {
@@ -22,19 +20,16 @@ export function useSignUpSubmit() {
   const { createAuthUser } = useCreateAuthUser();
 
   const signUpForm = useRecoilValue(signUpFormState);
-  const { message, signUpValidation } = useSignUpValidation();
+  const { signUpValidation } = useSignUpValidation();
   const emailConfirm = useRecoilValue(emailConfirmState);
   const address = useRecoilValue(addressState);
 
   // 약관 동의
   const agreementEssential = useRecoilValue(agreementEssentialState);
-
-  // 경고창
-  const setAlertModalState = useSetRecoilState(alertModalState);
-  const setAlertModalText = useSetRecoilState(alertModalText);
-  const setAlertModalMoveState = useSetRecoilState(alertModalMoveState);
-  const setAlertModalUiType = useSetRecoilState(alertModalUiType);
-  const setDarkFilterState = useSetRecoilState(darkFilterState);
+  const { settingAlertBox } = useAlertBox();
+  const showAlertBox = (getValue) => {
+    settingAlertBox(getValue); // 경고창 세팅
+  };
 
   // 팬딩 작업 어떻게 할까?
   // 어차피 계속 바뀌어야하는데 차라리 useCallback을 쓰지 말까?
@@ -53,27 +48,21 @@ export function useSignUpSubmit() {
 
       // 미통과 (경고 알람)
       if (message) {
-        setAlertModalState(true);
-        setDarkFilterState(true);
-        setAlertModalText(message);
-        setAlertModalMoveState({
-          needToMove: false,
-          moveUrl: '',
+        showAlertBox({
+          alertText: message,
+          btnUiType: 'onlyConfirm', // (필수) [버튼 형태 설정] 확인 버튼만 있는 'onlyConfirm' 또는, 확인/취소 버튼이 있는 'confirmAndCancel'을 넣어주기
         });
-        setAlertModalUiType('onlyConfirm');
+
         return;
       }
 
       // 유효성 검사 통과. but 필수 이용약관 동의 x
       if (!agreementEssential) {
-        setAlertModalState(true);
-        setDarkFilterState(true);
-        setAlertModalText('이용약관을 확인해주세요.');
-        setAlertModalMoveState({
-          needToMove: false,
-          moveUrl: '',
+        showAlertBox({
+          alertText: '이용약관을 확인해주세요.',
+          btnUiType: 'onlyConfirm',
         });
-        setAlertModalUiType('onlyConfirm');
+
         return;
       }
 
@@ -87,18 +76,17 @@ export function useSignUpSubmit() {
         birth,
       });
 
-      setAlertModalState(true);
-      setDarkFilterState(true);
-      setAlertModalText('회원가입이 완료되었습니다.');
-      setAlertModalMoveState({
-        needToMove: true,
+      showAlertBox({
+        alertText: '회원가입이 완료되었습니다.',
         moveUrl: '/',
+        btnUiType: 'onlyConfirm',
       });
-      setAlertModalUiType('onlyConfirm');
+
       return;
     },
     [signUpForm, emailConfirm, address, agreementEssential]
   );
+
   return useMemo(
     () => ({
       signUpSubmit,
