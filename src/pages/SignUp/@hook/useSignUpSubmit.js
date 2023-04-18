@@ -1,4 +1,4 @@
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { useCallback, useMemo } from 'react';
 
 import {
@@ -9,14 +9,7 @@ import {
 
 import { useSignUpValidation } from './useSignUpValidation';
 
-// import {
-//   alertModalState,
-//   alertModalText,
-//   alertModalMoveState,
-//   alertModalUiType,
-// } from '@/components/AlertBox/@recoil/alertModalState.js';
-import { useAlertBox } from '@/components/AlertBox/customHooks/useAlertBox.js';
-//import { darkFilterState } from '@/store/darkFilterState.js';
+import { useAlertBox } from '@/components/AlertBox/@hook/useAlertBox.js';
 import { useSignUp } from '@/firebase/auth';
 import { useCreateAuthUser } from '@/firebase/firestore/useCreateAuthUser';
 
@@ -33,14 +26,6 @@ export function useSignUpSubmit() {
 
   // 약관 동의
   const agreementEssential = useRecoilValue(agreementEssentialState);
-
-  // 경고창
-  // const setAlertModalState = useSetRecoilState(alertModalState);
-  // const setAlertModalText = useSetRecoilState(alertModalText);
-  // const setAlertModalMoveState = useSetRecoilState(alertModalMoveState);
-  // const setAlertModalUiType = useSetRecoilState(alertModalUiType);
-  // const setDarkFilterState = useSetRecoilState(darkFilterState);
-
   const { settingAlertBox } = useAlertBox();
   const showAlertBox = (getValue) => {
     settingAlertBox(getValue); // 경고창 세팅
@@ -63,21 +48,9 @@ export function useSignUpSubmit() {
 
       // 미통과 (경고 알람)
       if (message) {
-        // setAlertModalState(true);
-        // setDarkFilterState(true);
-        // setAlertModalText(message);
-        // setAlertModalMoveState({
-        //   needToMove: false,
-        //   moveUrl: '',
-        // });
-        // setAlertModalUiType('onlyConfirm');
         showAlertBox({
-          alertText: message, // (필수) [경고창 텍스트 설정]
-          needToMove: false, // (선택) [이동 여부 설정] 만약에 '확인'버튼을 눌렀을 때, 어디론가 페이지를 이동시키고 싶은 경우만 넣어주기
-          moveUrl: '', // (선택) [이동 할 url 설정] 만약에 '확인'버튼을 눌렀을 때, 어디론가 페이지를 이동시키고 싶은 경우만 넣어주기
+          alertText: message,
           btnUiType: 'onlyConfirm', // (필수) [버튼 형태 설정] 확인 버튼만 있는 'onlyConfirm' 또는, 확인/취소 버튼이 있는 'confirmAndCancel'을 넣어주기
-          needToRemove: false, // (선택) [장바구니에서 상품을 삭제할 여부 설정] 장바구니 페이지에서 상품을 삭제할 생각이 있다면 넣어주기
-          product: {}, // (선택) [어떤 상품을 삭제할 것인지 설정] 삭제할 상품 넣어주기
         });
 
         return;
@@ -85,21 +58,9 @@ export function useSignUpSubmit() {
 
       // 유효성 검사 통과. but 필수 이용약관 동의 x
       if (!agreementEssential) {
-        // setAlertModalState(true);
-        // setDarkFilterState(true);
-        // setAlertModalText('이용약관을 확인해주세요.');
-        // setAlertModalMoveState({
-        //   needToMove: false,
-        //   moveUrl: '',
-        // });
-        // setAlertModalUiType('onlyConfirm');
         showAlertBox({
-          alertText: '이용약관을 확인해주세요.', // (필수) [경고창 텍스트 설정]
-          needToMove: false, // (선택) [이동 여부 설정] 만약에 '확인'버튼을 눌렀을 때, 어디론가 페이지를 이동시키고 싶은 경우만 넣어주기
-          moveUrl: '', // (선택) [이동 할 url 설정] 만약에 '확인'버튼을 눌렀을 때, 어디론가 페이지를 이동시키고 싶은 경우만 넣어주기
-          btnUiType: 'onlyConfirm', // (필수) [버튼 형태 설정] 확인 버튼만 있는 'onlyConfirm' 또는, 확인/취소 버튼이 있는 'confirmAndCancel'을 넣어주기
-          needToRemove: false, // (선택) [장바구니에서 상품을 삭제할 여부 설정] 장바구니 페이지에서 상품을 삭제할 생각이 있다면 넣어주기
-          product: {}, // (선택) [어떤 상품을 삭제할 것인지 설정] 삭제할 상품 넣어주기
+          alertText: '이용약관을 확인해주세요.',
+          btnUiType: 'onlyConfirm',
         });
 
         return;
@@ -115,21 +76,10 @@ export function useSignUpSubmit() {
         birth,
       });
 
-      // setAlertModalState(true);
-      // setDarkFilterState(true);
-      // setAlertModalText('회원가입이 완료되었습니다.');
-      // setAlertModalMoveState({
-      //   needToMove: true,
-      //   moveUrl: '/',
-      // });
-      // setAlertModalUiType('onlyConfirm');
       showAlertBox({
-        alertText: '회원가입이 완료되었습니다.', // (필수) [경고창 텍스트 설정]
-        needToMove: true, // (선택) [이동 여부 설정] 만약에 '확인'버튼을 눌렀을 때, 어디론가 페이지를 이동시키고 싶은 경우만 넣어주기
-        moveUrl: '/', // (선택) [이동 할 url 설정] 만약에 '확인'버튼을 눌렀을 때, 어디론가 페이지를 이동시키고 싶은 경우만 넣어주기
-        btnUiType: 'onlyConfirm', // (필수) [버튼 형태 설정] 확인 버튼만 있는 'onlyConfirm' 또는, 확인/취소 버튼이 있는 'confirmAndCancel'을 넣어주기
-        needToRemove: false, // (선택) [장바구니에서 상품을 삭제할 여부 설정] 장바구니 페이지에서 상품을 삭제할 생각이 있다면 넣어주기
-        product: {}, // (선택) [어떤 상품을 삭제할 것인지 설정] 삭제할 상품 넣어주기
+        alertText: '회원가입이 완료되었습니다.',
+        moveUrl: '/',
+        btnUiType: 'onlyConfirm',
       });
 
       return;
