@@ -26,8 +26,8 @@ function SignUp() {
     useRecoilState(formValidationState);
   const [signUpForm, setSignUpForm] = useRecoilState(signUpFormState);
   const [emailConfirm, setEmailConfirm] = useRecoilState(emailConfirmState);
-  const { message, signUpValidation } = useSignUpValidation();
   const { signUpSubmit } = useSignUpSubmit();
+  const { handleChangeInput } = useSignUpValidation();
   const { confirmEmail } = useConfirmEmail();
 
   const handleSubmit = async (e) => {
@@ -35,34 +35,6 @@ function SignUp() {
 
     // 회원가입 로직
     signUpSubmit();
-  };
-
-  // 폼 요소 입력 이벤트
-  const handleChangeInput = (e) => {
-    let { name, value } = e.target;
-
-    if (name == 'passwordConfirm') {
-      value = [value, value == signUpForm.password];
-    }
-    const pragment = checkValidation(name, value);
-
-    // 폼데이터 저장
-    setSignUpForm((prev) => {
-      const tmp = { ...prev };
-      tmp[name] = value;
-      return tmp;
-    });
-
-    // 유효성 검사
-    setFormValidation((prev) => {
-      const tmp = { ...prev };
-      tmp[name] = pragment;
-      return tmp;
-    });
-
-    if (name == 'email') {
-      setEmailConfirm(false);
-    }
   };
 
   if (isLoading) {
@@ -96,7 +68,6 @@ function SignUp() {
               uiType={'third'}
               disabled={emailConfirm}
               onClick={async (e) => {
-
                 // 이메일 중복 확인 로직
                 confirmEmail();
               }}
