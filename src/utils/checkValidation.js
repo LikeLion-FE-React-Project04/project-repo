@@ -26,10 +26,10 @@ export function checkValidation(type, value) {
       }
     }
     case 'passwordConfirm': {
-      console.log(value);
+      // console.log(value);
       if (!value[0]) {
         return '비밀번호를 한번 더 입력해주세요.';
-      } else if (!value[1]) {
+      } else if (value[0] != value[1]) {
         return '동일한 비밀번호를 입력';
       } else {
         return '';

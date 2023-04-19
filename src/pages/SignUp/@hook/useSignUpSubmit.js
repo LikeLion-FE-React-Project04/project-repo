@@ -18,7 +18,6 @@ import { addressState } from '@/store/addressState.js';
 export function useSignUpSubmit() {
   const { signUp } = useSignUp();
   const { createAuthUser } = useCreateAuthUser();
-
   const signUpForm = useRecoilValue(signUpFormState);
   const { signUpValidation } = useSignUpValidation();
   const emailConfirm = useRecoilValue(emailConfirmState);
