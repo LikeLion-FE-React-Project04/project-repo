@@ -3,6 +3,7 @@ export function checkValidation(type, value) {
     case 'email': {
       const email_validation =
         /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+
       if (!value) {
         return '이메일을 입력해주세요';
       } else if (!email_validation.test(value)) {
@@ -14,7 +15,8 @@ export function checkValidation(type, value) {
     case 'password': {
       const password_validation_count = /^.{10,}$/;
       const password_validation_format =
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{10,}$/;
+        /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{10,}$/;
+
       if (!value || !password_validation_count.test(value)) {
         return '최소 10자리 이상 입력';
       } else if (!password_validation_format.test(value)) {
@@ -35,6 +37,7 @@ export function checkValidation(type, value) {
     }
     case 'name': {
       const name_validation = /^.{2,}$/;
+
       if (!value || !name_validation.test(value)) {
         return '2자리 이상 입력';
       } else {
@@ -43,6 +46,7 @@ export function checkValidation(type, value) {
     }
     case 'phoneNumber': {
       const phoneNumber_validation = /^([0-9]{11,11})$/;
+
       if (!phoneNumber_validation.test(value)) {
         return '휴대폰 번호를 입력해주세요.';
       } else {
@@ -53,6 +57,7 @@ export function checkValidation(type, value) {
       const yearValidation = /^(19[0-9][0-9]|20\d{2})$/;
       const monthValidation = /^(0?[0-9]|1[0-2])$/;
       const dayValidation = /^(0?[1-9]|[1-2][0-9]|3[0-1])$/;
+
       if (!value.year && !value.year && !value.year) {
         return '';
       } else if (!yearValidation.test(value.year)) {
