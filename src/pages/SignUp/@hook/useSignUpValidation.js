@@ -63,6 +63,7 @@ export function useSignUpValidation() {
     },
     [emailConfirm, signUpForm, address]
   );
+  
   return useMemo(
     () => ({
       isLoading,
