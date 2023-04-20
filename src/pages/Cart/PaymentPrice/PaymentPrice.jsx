@@ -1,12 +1,14 @@
-import { Button } from '@/components/Button/Button';
-import styles from './PaymentPrice.module.scss';
-import { useAuthState } from '@/firebase/auth';
-import { useNavigate } from 'react-router-dom';
-import { addressState } from '@/store/addressState.js';
 import { useRecoilValue } from 'recoil';
-import { cartProductsState } from '@/store/cartModalState.js';
-import { countState } from '../../../store/CounterState';
-import { cartPriceData } from '@/store/cartModalState.js';
+import { useNavigate } from 'react-router-dom';
+
+import styles from './PaymentPrice.module.scss';
+
+import { Button } from '@/components/Button/Button';
+import { useAuthState } from '@/firebase/auth';
+import { addressState } from '@/store/addressState.js';
+import { cartProductsState , cartPriceData } from '@/store/cartModalState.js';
+import { countState } from '@/components/Counter/@recoil/counterState.js';
+
 import { getPriceFormat } from '@/utils';
 
 function PaymentPrice() {

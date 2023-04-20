@@ -1,8 +1,9 @@
+import { useRecoilValue } from 'recoil';
+
 import styles from './TotalPrice.module.scss';
 
-import { useRecoilValue } from 'recoil';
-import { countState } from '@/store/CounterState.js';
-import { getPriceFormat } from '../../utils';
+import { countState } from '@/components/Counter/@recoil/counterState.js';
+import { getPriceFormat } from '@/utils';
 
 function TotalPrice({ price, name = 'default' }) {
   const count = useRecoilValue(countState);
