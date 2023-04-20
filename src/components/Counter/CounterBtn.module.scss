@@ -11,16 +11,20 @@
 .minus {
   //background: url('@/assets/modal/ic-minus-disabled.svg') 50% 50% / 100%;
   background: url('@/assets/modal/ic-minus-enabled.svg') 50% 50% / 100%;
+  cursor: pointer;
 }
 
 .plus {
   background: url('@/assets/modal/ic-plus-enabled.svg') 50% 50% / 100%;
+  cursor: pointer;
 }
 
 .minus:disabled {
   background: url('@/assets/modal/ic-minus-disabled.svg') 50% 50% / 100%;
+  cursor: default;
 }
 
 .plus:disabled {
   background: url('@/assets/modal/ic-plus-disabled.svg') 50% 50% / 100%;
+  cursor: default;
 }
