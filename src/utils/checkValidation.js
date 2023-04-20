@@ -18,7 +18,7 @@ export function checkValidation(type, value) {
         /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{10,}$/;
 
       if (!value || !password_validation_count.test(value)) {
-        return '최소 10자리 이상 입력';
+        return '이메일을 최소 10자리 이상 입력해주세요.';
       } else if (!password_validation_format.test(value)) {
         return '영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상 조합';
       } else {
@@ -30,7 +30,7 @@ export function checkValidation(type, value) {
       if (!value[0]) {
         return '비밀번호를 한번 더 입력해주세요.';
       } else if (value[0] != value[1]) {
-        return '동일한 비밀번호를 입력';
+        return '동일한 비밀번호를 입력해주세요.';
       } else {
         return '';
       }
@@ -39,7 +39,7 @@ export function checkValidation(type, value) {
       const name_validation = /^.{2,}$/;
 
       if (!value || !name_validation.test(value)) {
-        return '2자리 이상 입력';
+        return '이름을 2자리 이상 입력해주세요.';
       } else {
         return '';
       }
@@ -63,9 +63,9 @@ export function checkValidation(type, value) {
       } else if (!yearValidation.test(value.year)) {
         return '생년월일을 다시 확인해주세요.';
       } else if (!monthValidation.test(value.month)) {
-        return '태어난 월을 정확하게 입력해주세요';
+        return '태어난 월을 정확하게 입력해주세요.';
       } else if (!dayValidation.test(value.day)) {
-        return '태어난 일을 정확하게 입력해주세요';
+        return '태어난 일을 정확하게 입력해주세요.';
       } else {
         return '';
       }
