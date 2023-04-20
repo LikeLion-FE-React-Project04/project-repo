@@ -21,6 +21,15 @@ function CounterMiunsBtn({ name, additionEvent }) {
     setCountMinusBtnRef(btnRef.current);
   }, [btnRef]);
 
+  useEffect(() => {
+    if (count[name] == 1) {
+      // 마이너스 버튼 비활성화
+      btnRef.current.disabled = true;
+    } else {
+      btnRef.current.disabled = false;
+    }
+  }, [count]);
+
   const handleBtn = () => {
     if (count[name] == 1) {
       return;
@@ -34,15 +43,6 @@ function CounterMiunsBtn({ name, additionEvent }) {
       return tmp;
     });
   };
-
-  useEffect(() => {
-    if (count[name] == 1) {
-      // 마이너스 버튼 비활성화
-      btnRef.current.disabled = true;
-    } else {
-      btnRef.current.disabled = false;
-    }
-  }, [count]);
 
   return (
     <button
