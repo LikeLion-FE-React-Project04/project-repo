@@ -9,9 +9,18 @@
 }
 
 .minus {
-  background: url('@/assets/modal/ic-minus-disabled.svg') 50% 50% / 100%;
+  //background: url('@/assets/modal/ic-minus-disabled.svg') 50% 50% / 100%;
+  background: url('@/assets/modal/ic-minus-enabled.svg') 50% 50% / 100%;
 }
 
 .plus {
   background: url('@/assets/modal/ic-plus-enabled.svg') 50% 50% / 100%;
+}
+
+.minus:disabled {
+  background: url('@/assets/modal/ic-minus-disabled.svg') 50% 50% / 100%;
+}
+
+.plus:disabled {
+  background: url('@/assets/modal/ic-plus-disabled.svg') 50% 50% / 100%;
 }
