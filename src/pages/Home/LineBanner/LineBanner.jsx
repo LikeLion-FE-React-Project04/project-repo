@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
-import styles from './Linebanner.module.scss';
+import styles from './LineBanner.module.scss';
 
-export function Linebanner() {
+export function LineBanner() {
   return (
     <>
       <article className={styles.purpleWeekImg}>
@@ -12,4 +12,4 @@ export function Linebanner() {
   );
 }
 
-export default Linebanner;
+export default LineBanner;
