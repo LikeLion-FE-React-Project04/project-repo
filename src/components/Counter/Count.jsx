@@ -1,5 +1,6 @@
 import { useRecoilValue } from 'recoil';
-import { countState } from '@/store/CounterState.js';
+
+import { countState } from '@/components/Counter/@recoil/counterState.js';
 
 export default function Count({ name = 'default' }) {
   const count = useRecoilValue(countState);

@@ -1,17 +1,13 @@
 import { useRecoilState } from 'recoil';
 
-import { cartDataState } from '../../../store/cartModalState';
-
 import styles from './CartAccordionPanelItem.module.scss';
 import CartDataCheckBox from './CartDataCheckBox';
 
 import Counter from '@/components/Counter/Counter.jsx';
 import { getPriceFormat } from '@/utils';
-
-import { countState } from '@/store/CounterState';
-
-
+import { countState } from '@/components/Counter/@recoil/counterState.js';
 import { useAlertBox } from '@/components/AlertBox/@hook/useAlertBox.js';
+import { cartDataState } from '@/store/cartModalState';
 
 function CartAccordionPanelItem({ product = {} }) {
   const [cartData, setCartData] = useRecoilState(cartDataState);

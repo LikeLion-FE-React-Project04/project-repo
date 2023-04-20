@@ -1,7 +1,11 @@
+import { useResetRecoilState, useRecoilValue, useRecoilState } from 'recoil';
+import { useEffect, useState } from 'react';
+
 import styles from './CartAccordion.module.scss';
-import AccordionItem from '@/components/Accordion/AccordionItem';
+import CartDataCheckBox from './CartDataCheckBox';
 import CartAccordionHandle from './CartAccordionHandle';
 import CartAccordionPanelItem from './CartAccordionPanelItem';
+
 import {
   cartDataState,
   selectedState,
@@ -9,13 +13,8 @@ import {
   totalItemCountState,
   totalActiveItemCountState,
 } from '@/store/cartModalState.js';
-import { useRecoilState } from 'recoil';
-import { useRecoilValue } from 'recoil';
-
-import { countState } from '@/store/CounterState';
-import { useEffect, useState } from 'react';
-import CartDataCheckBox from './CartDataCheckBox';
-import { useResetRecoilState } from 'recoil';
+import AccordionItem from '@/components/Accordion/AccordionItem';
+import { countState } from '@/components/Counter/@recoil/counterState.js';
 
 export default function CartAccordion() {
   const [cartData, setCartData] = useRecoilState(cartDataState);
@@ -55,7 +54,6 @@ export default function CartAccordion() {
       setSelect(newSelect);
     }
   }, [selectAllState]);
-
 
   // 선택 삭제
   async function handleDeleteAll() {

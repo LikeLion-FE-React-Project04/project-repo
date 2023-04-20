@@ -1,14 +1,14 @@
+import { useRecoilState } from 'recoil';
+import { useEffect } from 'react';
+
+import ProductDetailMenu from '../ProductDetailMenu/ProductDetailMenu';
+
 import styles from '@/pages/ProductDetail/ProductThumbnail/ProductThumbnail.module.scss';
 import Counter from '@/components/Counter/Counter';
-import IconHeart from '@/assets/product-detail/ic-heart.svg';
-import { getPaymentPrice } from '@/utils';
-import { getPriceFormat, saveCartData } from '../../../utils';
-import { countState } from '@/store/CounterState.js';
-import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
-import { useEffect } from 'react';
-import { Button } from '../../../components/Button/Button';
+import { getPaymentPrice, getPriceFormat, saveCartData } from '@/utils';
+import { countState } from '@/components/Counter/@recoil/counterState.js';
+import { Button } from '@/components/Button/Button';
 import { cartDataState } from '@/store/cartModalState.js';
-import ProductDetailMenu from '../ProductDetailMenu/ProductDetailMenu';
 
 function ProductThumbnail({ product }) {
   const [count, setCount] = useRecoilState(countState);
