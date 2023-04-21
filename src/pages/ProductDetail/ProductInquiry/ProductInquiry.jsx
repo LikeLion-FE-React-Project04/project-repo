@@ -1,6 +1,6 @@
 import { useSetRecoilState, useRecoilValue, useRecoilState } from 'recoil';
 
-import {useState} from 'react'
+import { useState } from 'react';
 import { useRef } from 'react';
 
 import { useDetailCollection } from '../../../firebase/firestore/useDetailCollection';
@@ -25,27 +25,27 @@ import { useAlertBox } from '../../../components/AlertBox/@hook/useAlertBox';
 export default function ProductInquiry() {
   // user의 정보 받기
   const { user } = useAuthState();
-  
+
   const setProductDetailModalState = useSetRecoilState(productDetailModalState);
   const setDarkFilterState = useSetRecoilState(darkFilterState);
-  
+
   // (추가)uiType
   const setLayoutState = useSetRecoilState(productLayoutState);
-  
+
   // 문서를 저장 할 컬렉션 이름
   const collectionName = 'inquiryData';
   // 한번 실행시켜 => useEffect가 실행될임
-  
+
   const { dataState } = useDetailCollection(collectionName);
   const { settingAlertBox } = useAlertBox();
-  
+
   // 페이지네이션
   // const limit = useRecoilValue(inquiryLimitAtom);
-  const [limit,setState] = useState(6);
+  const [limit, setState] = useState(6);
 
   // const [page, setPage] = useRecoilState(inquiryPageAtom);
   const [page, setPage] = useState(1);
- 
+
   // numPages는 총 페이지 개수를 의미한다
   const [numPages, setNumPages] = useState(1);
 
@@ -55,29 +55,29 @@ export default function ProductInquiry() {
 
   useEffect(() => {
     console.log('[ProductInquiry] dataState: ', dataState);
-   
+
     if (dataState) {
       console.log('dataState의 길이 출력 => ', dataState.length);
       // dataState안에 아무것도 없을때는 자동으로 default값인 1인 상태겠지?
       if (dataState.length != 0) {
         let calcNumPages = Math.ceil(dataState.length / limit);
         setNumPages(calcNumPages);
-        console.log("페이지의 개수는? ", numPages);
+        console.log('페이지의 개수는? ', numPages);
       }
     }
   }, [dataState]);
 
   // 어떤 경고창을 띄울 지 세팅하기
-  const showAlertBox = (getValue) => { 
-    settingAlertBox(getValue);   
+  const showAlertBox = (getValue) => {
+    settingAlertBox(getValue);
   };
 
   function productModalClickHandler() {
     console.log('user출력:', user);
     if (user == null) {
       showAlertBox({
-        btnUiType: "onlyConfirm",
-        alertText: "로그인하셔야 본 서비스를 이용하실 수 있습니다.",
+        btnUiType: 'onlyConfirm',
+        alertText: '로그인하셔야 본 서비스를 이용하실 수 있습니다.',
         moveUrl: '/SignIn',
       }); // 경고창 띄우기
     } else {
@@ -86,38 +86,46 @@ export default function ProductInquiry() {
       setLayoutState('inquiry');
     }
   }
-  
-  useEffect(()=>{
-    if(numPages==1) { // 한페이지밖에 없는 경우
+
+  useEffect(() => {
+    if (numPages == 1) {
+      // 한페이지밖에 없는 경우
       //console.log("한페이지밖에 없는 경우~");
-      previousBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-prev-disabled.svg')";
-      nextBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-next-disabled.svg')";
+      previousBtn.current.style.background =
+        "url('https://res.kurly.com/kurly/ico/2021/paging-prev-disabled.svg')";
+      nextBtn.current.style.background =
+        "url('https://res.kurly.com/kurly/ico/2021/paging-next-disabled.svg')";
       previousBtn.current.style.cursor = 'default';
       nextBtn.current.style.cursor = 'default';
-    }
-    else { // 여러 페이지가 존재하는 경우
+    } else {
+      // 여러 페이지가 존재하는 경우
       //console.log("여러 페이지가 존재하는 경우~");
-      if(page == 1) { // 1page라면 previous버튼 비활성화 svg로 바꿔야 함
-        previousBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-prev-disabled.svg')";
-        nextBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-next-activated.svg')";
+      if (page == 1) {
+        // 1page라면 previous버튼 비활성화 svg로 바꿔야 함
+        previousBtn.current.style.background =
+          "url('https://res.kurly.com/kurly/ico/2021/paging-prev-disabled.svg')";
+        nextBtn.current.style.background =
+          "url('https://res.kurly.com/kurly/ico/2021/paging-next-activated.svg')";
         previousBtn.current.style.cursor = 'default';
         nextBtn.current.style.cursor = 'pointer';
-      }
-      else if(page == numPages) { 
-        previousBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-prev-activated.svg')";
-        nextBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-next-disabled.svg')";
+      } else if (page == numPages) {
+        previousBtn.current.style.background =
+          "url('https://res.kurly.com/kurly/ico/2021/paging-prev-activated.svg')";
+        nextBtn.current.style.background =
+          "url('https://res.kurly.com/kurly/ico/2021/paging-next-disabled.svg')";
         previousBtn.current.style.cursor = 'previous';
         nextBtn.current.style.cursor = 'default';
-      }
-      else { 
-        previousBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-prev-activated.svg')";
-        nextBtn.current.style.background = "url('https://res.kurly.com/kurly/ico/2021/paging-next-activated.svg')";
+      } else {
+        previousBtn.current.style.background =
+          "url('https://res.kurly.com/kurly/ico/2021/paging-prev-activated.svg')";
+        nextBtn.current.style.background =
+          "url('https://res.kurly.com/kurly/ico/2021/paging-next-activated.svg')";
         previousBtn.current.style.cursor = 'pointer';
         nextBtn.current.style.cursor = 'pointer';
       }
     }
   }, [page, numPages]);
-  
+
   return (
     <>
       <section className={styles.productInquiryWrap}>
@@ -173,10 +181,13 @@ export default function ProductInquiry() {
             </div>
           </AccordionItem>
           {/* 데이터 뿌려주기 */}
-          {dataState ? <ProductInquiryAccordion data={dataState}
-          limit={limit}
-          page={page}
-          /> : null}
+          {dataState ? (
+            <ProductInquiryAccordion
+              data={dataState}
+              limit={limit}
+              page={page}
+            />
+          ) : null}
         </article>
         {/* 페이지네이션 하드코딩 */}
         <nav className={styles.paginationContainer}>
@@ -184,17 +195,20 @@ export default function ProductInquiry() {
             ref={previousBtn}
             className={styles.paginationPrev}
             disabled={page === 1}
-            onClick={()=>{setPage(page-1)}}
+            onClick={() => {
+              setPage(page - 1);
+            }}
           />
           <button
             ref={nextBtn}
             className={styles.paginationNext}
             disabled={page === numPages}
-            onClick={()=>{setPage(page+1)}}
+            onClick={() => {
+              setPage(page + 1);
+            }}
           />
         </nav>
       </section>
     </>
   );
 }
-
