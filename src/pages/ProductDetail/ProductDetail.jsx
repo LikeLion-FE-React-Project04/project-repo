@@ -25,13 +25,20 @@ function ProductDetail() {
   const [productName, setProductName] = useRecoilState(productNameAtom);
 
   // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/from
-  const goodsTabs = {
-    0: useMoveScroll('상품 정보'),
-    1: useMoveScroll('상세 정보'),
-    2: useMoveScroll('리뷰'),
-    3: useMoveScroll('상품 문의'),
-    length: 4,
-  };
+  // const goodsTabs = {
+  //   0: useMoveScroll('상품 정보'),
+  //   1: useMoveScroll('상세 정보'),
+  //   2: useMoveScroll('리뷰'),
+  //   3: useMoveScroll('상품 문의'),
+  //   length: 4,
+  // };
+
+  const navigations = [
+    useMoveScroll('상품 정보'),
+    useMoveScroll('상세 정보'),
+    useMoveScroll('리뷰'),
+    useMoveScroll('상품 문의'),
+  ];
 
   // 페이지 전환 시, product.name 정보 얻어오기
   useEffect(() => {
@@ -47,7 +54,7 @@ function ProductDetail() {
 
   const navigationPartRefs = navigationParts.map((part, index) => (
     <div
-      ref={goodsTabs[index].element}
+      ref={navigations[index].element}
       key={index}
       className={styles.naviLayout}
     >
@@ -58,7 +65,7 @@ function ProductDetail() {
   return (
     <div className={styles.ProductDetailWrapper}>
       <ProductThumbnail product={product} />
-      <ProductDetailMenu tabs={goodsTabs} />
+      <ProductDetailMenu navigations={navigations} />
       {navigationPartRefs}
       <ProductDetailPopUpLayout />
     </div>

@@ -2,7 +2,7 @@ import { useRef } from 'react';
 
 import styles from './ProductDetailMenu.module.scss';
 
-function ProductDetailMenu({ tabs }) {
+function ProductDetailMenu({ navigations }) {
   // useEffect(() => {
   //   window.addEventListener('scroll', handleScroll, { capture: true }); // 스크롤 이벤트 등록
   //   return () => {
@@ -44,7 +44,7 @@ function ProductDetailMenu({ tabs }) {
     });
   }
 
-  const menuTabs = Array.from(tabs).map((tab, index) => {
+  const menuTabs = navigations.map((tab, index) => {
     return (
       // eslint-disable-next-line react/jsx-key
       <li>
