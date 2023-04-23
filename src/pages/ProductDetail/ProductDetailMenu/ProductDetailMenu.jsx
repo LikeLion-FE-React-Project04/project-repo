@@ -2,6 +2,7 @@ import { useRef } from 'react';
 
 import styles from './ProductDetailMenu.module.scss';
 
+
 function ProductDetailMenu({ navigations }) {
   // useEffect(() => {
   //   window.addEventListener('scroll', handleScroll, { capture: true }); // 스크롤 이벤트 등록
