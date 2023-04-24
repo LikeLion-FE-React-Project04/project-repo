@@ -1,14 +1,14 @@
+import { useRecoilState } from 'recoil';
+import { useEffect } from 'react';
+
+import ProductDetailMenu from '../ProductDetailMenu/ProductDetailMenu';
+
 import styles from '@/pages/ProductDetail/ProductThumbnail/ProductThumbnail.module.scss';
 import Counter from '@/components/Counter/Counter';
-import IconHeart from '@/assets/product-detail/ic-heart.svg';
-import { getPaymentPrice } from '@/utils';
-import { getPriceFormat, saveCartData } from '../../../utils';
-import { countState } from '@/store/CounterState.js';
-import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
-import { useEffect } from 'react';
-import { Button } from '../../../components/Button/Button';
+import { getPaymentPrice, getPriceFormat, saveCartData } from '@/utils';
+import { countState } from '@/components/Counter/@recoil/counterState.js';
+import { Button } from '@/components/Button/Button';
 import { cartDataState } from '@/store/cartModalState.js';
-import ProductDetailMenu from '../ProductDetailMenu/ProductDetailMenu';
 
 function ProductThumbnail({ product }) {
   const [count, setCount] = useRecoilState(countState);
@@ -146,31 +146,6 @@ function ProductThumbnail({ product }) {
           </div>
         </div>
       </secttion>
-      <section className={styles.ProductDetail}>
-        <ProductDetailMenu />
-        <div className={styles.ProductDetailInner}>
-          <div className={styles.GoodsIntro}>
-            <img src={product.image.banner} alt={product.image.alt} />
-            <p className={styles.GoodsTitle}>
-              <span>{product.description}</span>
-              {product.name}
-            </p>
-            <p className={styles.GoodsDescription}>{product.explanation}</p>
-          </div>
-          <div className={styles.GoodsPoint}>
-            {/* <h3>
-                <span>Karly's Check Point</span>
-
-              </h3> */}
-            <img src={product.image.view} alt={product.image.alt} />
-            <img src={product.image.info} alt={product.image.alt} />
-            <img
-              src="/assets/product-detail/why-carly.png"
-              alt={product.image.alt}
-            />
-          </div>
-        </div>
-      </section>
     </>
   );
 }

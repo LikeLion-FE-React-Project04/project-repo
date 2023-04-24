@@ -10,7 +10,6 @@ export const countMinusBtnRefState = atom({
   default: null,
 });
 
-
 export const countPlusBtnRefState = atom({
   key: 'countPlusBtnRefState',
   default: null,

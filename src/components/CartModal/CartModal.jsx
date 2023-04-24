@@ -24,9 +24,9 @@ import {
   countState,
   countMinusBtnRefState,
   countPlusBtnRefState,
-} from '@/store/CounterState.js';
-import { cartPopupInfoState, cartPopupState } from '../../store/Popup';
-import { darkFilterFocusState } from '../../store/darkFilterState';
+} from '@/components/Counter/@recoil/counterState.js';
+import { cartPopupInfoState, cartPopupState } from '@/store/Popup';
+import { darkFilterFocusState } from '@/store/darkFilterState';
 
 function CartModal() {
   const productId = useRecoilValue(selectedproductId);
@@ -54,7 +54,6 @@ function CartModal() {
     // 클린업 함수 필요
     setDarkFilterFocus(modalRef.current);
   }, []);
-
 
   const [count, setCount] = useRecoilState(countState);
 

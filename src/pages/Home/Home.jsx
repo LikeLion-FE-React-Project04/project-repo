@@ -1,5 +1,5 @@
 import { useGetCookieEvent } from './MainModal/useGetCookieEvent';
-import { Linebanner } from './Linebanner/Linebanner';
+import { LineBanner } from './LineBanner/LineBanner';
 import { useSignOut } from '@/firebase/auth';
 import MainCarousel from './Carousel/MainCarousel';
 import ProductsCarousel from './Carousel/ProductsCarousel';
@@ -29,7 +29,7 @@ function Home() {
       <div className={styles.productCarouselLayout}>
         <ProductsCarousel />
       </div>
-      <Linebanner />
+      <LineBanner />
       <PageTitle className={styles.subTitle}>놓치면 후회할 가격</PageTitle>
       <div className={styles.productCarouselLayout}>
         <ProductsCarousel />
