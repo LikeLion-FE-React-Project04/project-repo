@@ -5,9 +5,9 @@ export function checkValidation(type, value) {
         /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 
       if (!value) {
-        return '이메일을 입력해주세요';
+        return '이메일을 입력해주세요.';
       } else if (!email_validation.test(value)) {
-        return '이메일 형식으로 입력해주세요';
+        return '이메일 형식으로 입력해주세요.';
       } else {
         return '';
       }
@@ -18,7 +18,7 @@ export function checkValidation(type, value) {
         /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{10,}$/;
 
       if (!value || !password_validation_count.test(value)) {
-        return '이메일을 최소 10자리 이상 입력해주세요.';
+        return '비밀번호를 최소 10자리 이상 입력해주세요.';
       } else if (!password_validation_format.test(value)) {
         return '영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상 조합';
       } else {
