@@ -88,8 +88,6 @@ module.exports = {
         body: [`onError`, `onLoad`],
         iframe: [`onError`, `onLoad`],
         img: [`onError`, `onLoad`],
-      },
-      {
         ignoreRoles: ['dialog'],
       },
     ],
