@@ -1,5 +1,5 @@
 import { useLoaderData, useParams, Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilValue, useRecoilState } from 'recoil';
 
 import { ProductDetailPopUp } from '../../components/ProductDetailPopUp/ProductDetailPopUp';
@@ -17,6 +17,7 @@ import ProductInformation from './ProductInformation/ProductInformation';
 import ProductDetailMenu from './ProductDetailMenu/ProductDetailMenu';
 import DetailInformation from './DetailInformation/DetailInformation';
 import useMoveScroll from './@hook/useMoveScroll';
+import { useDetailCollection } from '../../firebase/firestore/useDetailCollection';
 
 function ProductDetail() {
   const { productId } = useParams();
@@ -24,13 +25,26 @@ function ProductDetail() {
 
   const [productName, setProductName] = useRecoilState(productNameAtom);
 
+  //후기 개수 navigation바에 업데이트 
+  const [count, setCount] = useState(0);
+  const { dataState } = useDetailCollection('reviewData');
+  const [countText, setCountText] = useState(''); 
+
+  useEffect(() => {
+    if (dataState) {
+      setCount(dataState.length);
+    }
+    let text = `후기(${count})`;
+    setCountText(text);
+  }, [dataState, count]);
+
   // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/from
 
   const goodsTabs = {
-    0: useMoveScroll('상품 정보'),
-    1: useMoveScroll('상세 정보'),
-    2: useMoveScroll('리뷰'),
-    3: useMoveScroll('상품 문의'),
+    0: useMoveScroll('상품정보'),
+    1: useMoveScroll('상세정보'),
+    2: useMoveScroll(countText),
+    3: useMoveScroll('문의'),
     length: 4,
   };
 
