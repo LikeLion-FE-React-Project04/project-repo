@@ -1,0 +1,19 @@
+.CartDataCheckBox {
+  appearance: none;
+  background: url('@/assets/cart/ic-checked-false.svg') 50% 50% / 100% no-repeat;
+  width: 24px;
+  height: 24px;
+}
+
+.CartDataCheckBox:checked {
+  appearance: none;
+  background: url('@/assets/cart/ic-checked-true.svg') 50% 50% / 100% no-repeat;
+  width: 24px;
+  height: 24px;
+}
+
+.label{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

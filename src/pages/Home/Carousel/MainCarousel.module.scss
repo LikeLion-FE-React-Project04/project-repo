@@ -1,0 +1,75 @@
+.mainSwiper {
+  position: relative;
+  width: 1920px;
+  height: 370px;
+
+  .swiper {
+    width: 100%;
+    height: 100%;
+
+    .swiperSlide {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  }
+  .swiperButton {
+    width: 50px;
+    height: 50px;
+    background: url('@/assets/main/ic-banner-button.svg') 50% 50% / 100%;
+    position: absolute;
+    top: 148px;
+    z-index: 2;
+    border: none;
+  }
+
+  .swiperPrevBtn {
+    left: 350px;
+  }
+
+  .swiperNextBtn {
+    transform: rotate(180deg);
+    right: 350px;
+  }
+  .autoplayButton {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    z-index: 2;
+    border: none;
+  }
+
+  .stop {
+    background: url('@/assets/main/ic-pause-button.svg') no-repeat center;
+    left: 10%;
+  }
+
+  .start {
+    background: url('@/assets/main/ic-play-button.svg') no-repeat center;
+    left: 30%;
+  }
+
+  .swiperPaginationLayout {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    width: 104px;
+    height: 32px;
+    border-radius: 12px;
+    position: absolute;
+    left: 72%;
+    bottom: 5%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiperPagination {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 20px;
+  }
+}

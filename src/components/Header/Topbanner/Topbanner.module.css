@@ -1,0 +1,26 @@
+.topBanner {
+  background: var(--primary);
+  color: var(--white);
+  padding: 14px;
+  transition: margin 0.4s linear 0s;
+  text-align: center;
+}
+
+.textContainer {
+  position: relative;
+  width: var(--container-width);
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.topBannerButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-30%, -30%);
+  width: 42px;
+  height: 42px;
+  background: transparent;
+  border: 0;
+}

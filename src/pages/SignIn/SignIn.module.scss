@@ -1,0 +1,36 @@
+.signIn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pageTitle {
+  margin: 80px 0 44px 0;
+}
+
+.form {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-flow: column;
+  align-items: center;
+}
+
+.button{
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-flow: column;
+  margin-bottom: 80px;
+}
+
+.loginFind{
+  font-weight: 400;
+  font-size: var(--text-xs);
+  line-height: 160%;
+  margin-left: 205px;
+}
+
+.loginFind :first-child::after{
+  content: '|';
+  margin: 0px 4px;
+}

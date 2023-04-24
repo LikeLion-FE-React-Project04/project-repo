@@ -8,7 +8,7 @@ const createDotEnvPlugin = (options = {}) => {
     },
     options
   );
-  console.log(new DotEnv(config));
+
   return new DotEnv(config);
 };
 

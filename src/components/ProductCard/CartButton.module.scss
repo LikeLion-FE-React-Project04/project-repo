@@ -1,0 +1,16 @@
+.cartBtn {
+  all: unset;
+  width: 45px;
+  height: 45px;
+  // background: url(../assets/main/ic-add-cart.svg) no-repeat;
+  background: url('@/assets/main/ic-add-cart.svg') no-repeat 50% 50% / 100%;
+  background-position: center;
+  position: absolute;
+  right: 15px;
+  bottom: 17px;
+  z-index: 3;
+}
+
+.cartBtn:focus {
+  border: 2px #000 solid;
+}
