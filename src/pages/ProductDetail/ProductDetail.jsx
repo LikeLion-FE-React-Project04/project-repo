@@ -40,13 +40,12 @@ function ProductDetail() {
 
   // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/from
 
-  const goodsTabs = {
-    0: useMoveScroll('상품정보'),
-    1: useMoveScroll('상세정보'),
-    2: useMoveScroll(countText),
-    3: useMoveScroll('문의'),
-    length: 4,
-  };
+  const navigations = [
+    useMoveScroll('상품 정보'),
+    useMoveScroll('상세 정보'),
+    useMoveScroll(countText),
+    useMoveScroll('상품 문의'),
+  ];
 
   // 페이지 전환 시, product.name 정보 얻어오기
   useEffect(() => {
