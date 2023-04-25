@@ -64,13 +64,13 @@ function ProductDetail() {
 
     const scrollY = window.scrollY; // 스크롤 양
 
-    if (scrollY > inquiry.offsetTop) {
+    if (scrollY > inquiry.offsetTop-10) {
       setPosition('inquiry');
-    } else if (scrollY > review.offsetTop) {
+    } else if (scrollY <= inquiry.offsetTop-10 && scrollY > review.offsetTop-10) {
       setPosition('review');
-    } else if (scrollY > detailInfo.offsetTop) {
+    } else if (scrollY <= review.offsetTop-10 && scrollY > detailInfo.offsetTop-10) {
       setPosition('detailInfo');
-    } else if (scrollY > productInfo.offsetTop) {
+    } else if (scrollY <= detailInfo.offsetTop-10 && scrollY > productInfo.offsetTop-10) {
       setPosition('productInfo');
     } else {
       setPosition(null);
