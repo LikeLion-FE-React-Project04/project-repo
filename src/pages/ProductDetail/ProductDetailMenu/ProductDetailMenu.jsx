@@ -8,8 +8,8 @@ function ProductDetailMenu({ navigations, position }) {
   const naviArr = ['productInfo', 'detailInfo', 'review', 'inquiry'];
 
   useEffect(() => {
+    InitFocusing();
     if (position) {
-      InitFocusing();
       naviRef.current[naviArr.indexOf(position)].classList.add(styles.Active);
     }
   }, [position]);
