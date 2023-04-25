@@ -25,10 +25,10 @@ function ProductDetail() {
 
   const [productName, setProductName] = useRecoilState(productNameAtom);
 
-  //후기 개수 navigation바에 업데이트 
+  //후기 개수 navigation바에 업데이트
   const [count, setCount] = useState(0);
   const { dataState } = useDetailCollection('reviewData');
-  const [countText, setCountText] = useState(''); 
+  const [countText, setCountText] = useState('');
 
   useEffect(() => {
     if (dataState) {
@@ -54,46 +54,34 @@ function ProductDetail() {
   }, []);
 
   // 스크롤 이벤트
-  const [position, setPosition] = useState({
-    productInfo:false,
-    detailInfo:false,
-    review:false,
-    inquiry:false,
-  });
+  const [position, setPosition] = useState();
 
-  const getElementPosition = () => {
+  const getElementPosition = (e) => {
     const productInfo = navigations[0].element.current;
     const detailInfo = navigations[1].element.current;
     const review = navigations[2].element.current;
     const inquiry = navigations[3].element.current;
 
-    //테스트
-    // console.log("productInfo 출력 => ", productInfo);
-    // console.log("detailInfo 출력 => ", detailInfo);
-    // console.log("review 출력 => ", review);
-    // console.log("inquiry 출력 => ", inquiry);
-
     const scrollY = window.scrollY; // 스크롤 양
-    
-    const productInfoPosition = Math.floor(scrollY + productInfo.getBoundingClientRect().top)-1; // 절대위치, Math.floor로 정수로 변환
-    const detailInfoPosition = Math.floor(scrollY + detailInfo.getBoundingClientRect().top)-1;
-    const reviewPosition = Math.floor(scrollY + review.getBoundingClientRect().top)-1;
-    const inquiryPosition = Math.floor(scrollY + inquiry.getBoundingClientRect().top)-1;
 
-    console.log("[ProductDetail.jsx] 출력 => ", productInfoPosition, detailInfoPosition, reviewPosition, inquiryPosition);
-    setPosition({
-      productInfo: scrollY >= productInfoPosition && scrollY < detailInfoPosition, 
-      detailInfo: scrollY >= detailInfoPosition && scrollY < reviewPosition, 
-      review: scrollY >= reviewPosition && scrollY < inquiryPosition,
-      inquiry: scrollY >= inquiryPosition,
-    });
-  }
+    if (scrollY > inquiry.offsetTop) {
+      setPosition('inquiry');
+    } else if (scrollY > review.offsetTop) {
+      setPosition('review');
+    } else if (scrollY > detailInfo.offsetTop) {
+      setPosition('detailInfo');
+    } else if (scrollY > productInfo.offsetTop) {
+      setPosition('productInfo');
+    } else {
+      setPosition(null);
+    }
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     window.addEventListener('scroll', getElementPosition); // 스크롤시 getBannerPosition 발생
-    
-    return () =>   window.removeEventListener('scroll', getElementPosition); // 클린업, 페이지를 나가면 이벤트 삭제
-  },[position]) // position 값이 변할 때마다 effect 실행
+
+    return () => window.removeEventListener('scroll', getElementPosition); // 클린업, 페이지를 나가면 이벤트 삭제
+  }, [position]); // position 값이 변할 때마다 effect 실행
 
   const navigationParts = [
     <ProductInformation key={0} product={product} />,
@@ -107,6 +95,9 @@ function ProductDetail() {
       ref={navigations[index].element}
       key={index}
       className={styles.naviLayout}
+      onScroll={(e) => {
+        console.log(`${index}번 스크롤: `, e.target.scrollTop);
+      }}
     >
       {part}
     </div>
@@ -115,7 +106,7 @@ function ProductDetail() {
   return (
     <div className={styles.ProductDetailWrapper}>
       <ProductThumbnail product={product} />
-      <ProductDetailMenu navigations={navigations} position={position}/>
+      <ProductDetailMenu navigations={navigations} position={position} />
       {navigationPartRefs}
       <ProductDetailPopUpLayout />
     </div>
