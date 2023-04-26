@@ -18,12 +18,15 @@ import ProductDetailMenu from './ProductDetailMenu/ProductDetailMenu';
 import DetailInformation from './DetailInformation/DetailInformation';
 import useMoveScroll from './@hook/useMoveScroll';
 import { useDetailCollection } from '../../firebase/firestore/useDetailCollection';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
 function ProductDetail() {
   const { productId } = useParams();
   const product = useRecoilValue(productListFamily(productId));
 
   const [productName, setProductName] = useRecoilState(productNameAtom);
+
+  useDocumentTitle(productName + ' - Karly');
 
   //후기 개수 navigation바에 업데이트
   const [count, setCount] = useState(0);

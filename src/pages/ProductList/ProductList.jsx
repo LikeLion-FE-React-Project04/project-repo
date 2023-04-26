@@ -24,6 +24,8 @@ import {
 } from '@/pages/ProductList/@recoil/renderState';
 import ProductCard from '@/components/ProductCard/ProductCard';
 
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
+
 const ProductCards = () => {
   const renderAllFilterList = useRecoilValue(renderAllFilterListSelector);
   const limit = useRecoilValue(limitAtom);
@@ -114,6 +116,8 @@ export const SortButtonList = () => {
 };
 
 export const ProductList = () => {
+  useDocumentTitle('상품 - Karly');
+
   return (
     <>
       <div className={styles.container}>

@@ -15,7 +15,7 @@ const initialFormState = {
 };
 
 function SignIn() {
-  useDocumentTitle('로그인');
+  useDocumentTitle('로그인 - Karly');
 
   const movePage = useNavigate();
   const formStateRef = useRef(initialFormState);

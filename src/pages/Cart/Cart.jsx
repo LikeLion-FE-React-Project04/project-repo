@@ -7,8 +7,11 @@ import { Button } from '@/components/Button/Button';
 import CartAccordion from './CartAccordion/CartAccordion';
 import PriceInfo from './PriceInfo/PriceInfo';
 import PaymentPrice from './PaymentPrice/PaymentPrice';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
 function Cart() {
+  useDocumentTitle('장바구니 - Karly');
+
   return (
     <div className={styles.cart}>
       <div className={styles.title}>

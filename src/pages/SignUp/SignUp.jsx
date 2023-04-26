@@ -19,8 +19,11 @@ import { useSignUpValidation } from './@hook/useSignUpValidation';
 import { useSignUpSubmit } from './@hook/useSignUpSubmit';
 import { useConfirmEmail } from './@hook/useConfirmEmail';
 import GenderInput from './genderInput/genderInput';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
 function SignUp() {
+  useDocumentTitle('회원가입 - Karly');
+
   const { isLoading, error, user } = useAuthState();
   const [formValidation, setFormValidation] =
     useRecoilState(formValidationState);
