@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const createHtmlPlugin = (options = {}) => {
   const config = Object.assign(
     {
-      title: '멋쟁이사조처럼 - 컬리 ',
+      title: '멋쟁이사조처럼 - Karly',
       template: resolve('public/index.html'),
       templateParameters: {
         lang: 'ko-KR',
