@@ -12,8 +12,11 @@ import { productMainModalState } from './MainModal/@recoil/MainModalState';
 import MainModalLayout from './MainModal/MainModalLayout';
 import { transparentFilterState } from '../../components/TransparentFilter/@recoil/transparentFilterState';
 import { useSetRecoilState } from 'recoil';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
 function Home() {
+  useDocumentTitle('Karly - 멋쟁이사조처럼');
+
   const {isVisible, setIsVisible} = useGetCookieEvent();
   const setTransparentFilter = useSetRecoilState(transparentFilterState);
 
