@@ -25,7 +25,7 @@ export const Primary = {
       },
       stock: 3,
       category: '샐러드ㆍ간편식',
-      kalryOnly: 'false',
+      karlyOnly: 'false',
       brand: '대구 반할만떡',
     },
   },

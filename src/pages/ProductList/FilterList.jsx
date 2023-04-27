@@ -7,7 +7,7 @@ import { FilterContainer } from './FilterContainer';
 import {
   CategoryList,
   BrandList,
-  KalryOnlyList,
+  KarlyOnlyList,
   BenefitsList,
   PriceList,
 } from './BrandList';
@@ -15,7 +15,7 @@ import {
 import {
   checkedCategoryListAtom,
   checkedBrandListAtom,
-  checkedKalryOnlyListAtom,
+  checkedKarlyOnlyListAtom,
   checkedPriceListAtom,
   checkedBenefitsListAtom,
 } from '@/pages/ProductList/@recoil/renderState';
@@ -76,24 +76,24 @@ export const BrandListForm = () => {
   );
 };
 
-/* ------------------------------ kalryOnlyList ----------------------------- */
-export const KalryOnlyListForm = () => {
-  const setCheckedKarlyOnly = useSetRecoilState(checkedKalryOnlyListAtom);
-  const kalryOnlyListForm = useRef();
+/* ------------------------------ karlyOnlyList ----------------------------- */
+export const KarlyOnlyListForm = () => {
+  const setCheckedKarlyOnly = useSetRecoilState(checkedKarlyOnlyListAtom);
+  const karlyOnlyListForm = useRef();
   const karlyOnlyOnChange = (e) => {
     e.preventDefault;
-    const formData = new FormData(kalryOnlyListForm.current);
+    const formData = new FormData(karlyOnlyListForm.current);
 
-    setCheckedKarlyOnly(formData.getAll('kalryOnly'));
+    setCheckedKarlyOnly(formData.getAll('karlyOnly'));
   };
 
   return (
     <form
-      ref={kalryOnlyListForm}
+      ref={karlyOnlyListForm}
       className={styles.formContainer}
       onChange={karlyOnlyOnChange}
     >
-      <KalryOnlyList filterName={'kalryOnly'} />
+      <KarlyOnlyList filterName={'karlyOnly'} />
     </form>
   );
 };
@@ -185,7 +185,7 @@ export const FilterList = () => {
       </AccordionItemContainer>
       <AccordionItemContainer index={'4'} text={'유형'}>
         <NavMenuUl>
-          <KalryOnlyListForm />
+          <KarlyOnlyListForm />
         </NavMenuUl>
       </AccordionItemContainer>
     </div>
