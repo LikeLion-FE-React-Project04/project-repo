@@ -6,12 +6,21 @@ import styles from './CartPopup.module.scss';
 import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 
-function CartPopup() {
+function CartPopup({ type }) {
   const [cartPopup, setCartPopup] = useRecoilState(cartPopupState);
   const cartPopupInfo = useRecoilValue(cartPopupInfoState);
 
   // 부드럽게 사라잘려면 opacity로 랜더링을 계속 해야하나?
   //const [opacity, setOpacity] = useState(100);
+
+  // 헤더랑 고정형 헤더를 따로 분리해서 만들어서 2가지 경우로 만들어야합니다..
+  let layoutStyle;
+  
+  if (type == 'originHeader') {
+    layoutStyle = 'cartPopup2'
+  } else {
+    layoutStyle = 'cartPopup';
+  }
 
   useEffect(() => {
     if (cartPopup) {
@@ -28,7 +37,7 @@ function CartPopup() {
 
   if (cartPopup) {
     return (
-      <div className={styles.cartPopup}>
+      <div className={styles[layoutStyle]}>
         <div className={styles.cartInfo}>
           <div
             className={styles.img}
