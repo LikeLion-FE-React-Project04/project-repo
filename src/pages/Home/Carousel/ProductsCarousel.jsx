@@ -18,7 +18,7 @@ import 'swiper/css/navigation';
 
 const ProductsCarousel = () => {
   const productList = useRecoilValue(productListState);
-  const productCards = productList.map((product, index) => {
+  const productCards = productList.slice(0, 12).map((product, index) => {
     return (
       <SwiperSlide key={index}>
         <ProductCard product={product} />
