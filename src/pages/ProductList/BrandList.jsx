@@ -124,16 +124,16 @@ export const BrandList = ({ filterName = '', children }) => {
   );
 };
 
-/* -------------------------------- kalryOnly ------------------------------- */
-export const KalryOnlyList = ({ filterName = '' }) => {
+/* -------------------------------- karlyOnly ------------------------------- */
+export const KarlyOnlyList = ({ filterName = '' }) => {
   const karlyOnlyList = useRecoilValue(
-    karlyOnlyListSelectorFamily('kalryOnly')
+    karlyOnlyListSelectorFamily('karlyOnly')
   );
   const [karlyOnlyProductData, setkarlyOnlyProductData] = useState(0);
   useEffect(() => {
     async function filteredWithkarlyOnlyProductData() {
       const filterdkarlyOnlyProductData = await useGetCountFromServer({
-        whereCriteria: where('kalryOnly', '==', true),
+        whereCriteria: where('karlyOnly', '==', true),
         orderCriteria: orderBy('name'),
       });
       setkarlyOnlyProductData(filterdkarlyOnlyProductData);

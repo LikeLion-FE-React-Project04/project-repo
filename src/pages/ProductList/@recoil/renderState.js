@@ -53,9 +53,9 @@ export const renderBrandSelector = selector({
   },
 });
 
-/* ---------------------------- kalryOnlycheckRender ---------------------------- */
-export const checkedKalryOnlyListAtom = atom({
-  key: 'checkedKalryOnlyListAtom',
+/* ---------------------------- karlyOnlycheckRender ---------------------------- */
+export const checkedKarlyOnlyListAtom = atom({
+  key: 'checkedKarlyOnlyListAtom',
   default: [],
 });
 
@@ -64,21 +64,21 @@ export const renderKarlyOnlySelector = selector({
   get: ({ get }) => {
     //product = initialProductList 전체 15개의 정적Local Data
     const products = get(productListState);
-    const checkedKarlyOnlyList = get(checkedKalryOnlyListAtom);
+    const checkedKarlyOnlyList = get(checkedKarlyOnlyListAtom);
 
-    const hasKalryOnly = (product) => {
-      const kalryOnlyFound = checkedKarlyOnlyList.some(
-        (item) => item === 'kalryOnly'
+    const hasKarlyOnly = (product) => {
+      const karlyOnlyFound = checkedKarlyOnlyList.some(
+        (item) => item === 'karlyOnly'
       );
 
-      if (kalryOnlyFound) {
-        return product.kalryOnly;
+      if (karlyOnlyFound) {
+        return product.karlyOnly;
       }
 
       return true;
     };
 
-    const karlyOnlyList = products.filter(hasKalryOnly);
+    const karlyOnlyList = products.filter(hasKarlyOnly);
 
     return karlyOnlyList;
   },
@@ -144,7 +144,7 @@ export const renderAllFilterListSelector = selector({
     const products = get(productListState); // 상품목록
     const checkedCategoryList = get(checkedCategoryListAtom); // 깔대기
     const checkedBrandList = get(checkedBrandListAtom);
-    const checkedKalryOnlyList = get(checkedKalryOnlyListAtom);
+    const checkedKarlyOnlyList = get(checkedKarlyOnlyListAtom);
     const checkedPriceList = get(checkedPriceListAtom);
     const checkedBenefitsList = get(checkedBenefitsListAtom);
     const sortByPriceDesc = get(sortByPriceDescAtom);
@@ -167,11 +167,11 @@ export const renderAllFilterListSelector = selector({
       return checkedBrandList.some((category) => category === product.brand);
     };
     const 마켓칼리_리스트_필터 = (product) => {
-      if (checkedKalryOnlyList.length <= 0) {
+      if (checkedKarlyOnlyList.length <= 0) {
         return true;
       }
 
-      return checkedKalryOnlyList.some(() => product.kalryOnly);
+      return checkedKarlyOnlyList.some(() => product.karlyOnly);
     };
 
     const 최종가격 = (product) => {

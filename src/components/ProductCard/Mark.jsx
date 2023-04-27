@@ -4,9 +4,9 @@ import styles from './Mark.module.scss';
 function Mark({ product }) {
   return (
     <div className={styles.markLayout}>
-      {product.kalryOnly && (
+      {product.karlyOnly && (
         <span className={classNames(styles.mark, styles.karlyOnly)}>
-          Kalry Only
+          Karly Only
         </span>
       )}
       {product.stock < 10 && <span className={styles.mark}>한정수량</span>}

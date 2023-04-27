@@ -6,7 +6,7 @@ import styles from './RenderFilterLi.module.css';
 import {
   checkedCategoryListAtom,
   checkedBrandListAtom,
-  checkedKalryOnlyListAtom,
+  checkedKarlyOnlyListAtom,
   checkedPriceListAtom,
   checkedBenefitsListAtom,
 } from '@/pages/ProductList/@recoil/renderState';
@@ -77,7 +77,7 @@ export const RenderBrandFilterNameLi = ({
 /* -------------------------------- karlyOnly -------------------------------- */
 
 export const RenderFilterKarlyOnlyLi = ({ name, value }) => {
-  const checkedKarlyOnlyList = useRecoilValue(checkedKalryOnlyListAtom); // []
+  const checkedKarlyOnlyList = useRecoilValue(checkedKarlyOnlyListAtom); // []
 
   return (
     <>
