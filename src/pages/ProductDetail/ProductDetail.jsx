@@ -26,6 +26,8 @@ function ProductDetail() {
 
   const [productName, setProductName] = useRecoilState(productNameAtom);
 
+  const detailsRef = useRef();
+
   useDocumentTitle(productName + ' - Karly');
 
   //후기 개수 navigation바에 업데이트
@@ -67,24 +69,36 @@ function ProductDetail() {
 
     const scrollY = window.scrollY; // 스크롤 양
 
-    if (scrollY > inquiry.offsetTop-10) {
+    if (scrollY > inquiry.offsetTop - 10) {
       setPosition('inquiry');
-    } else if (scrollY <= inquiry.offsetTop-10 && scrollY > review.offsetTop-10) {
+    } else if (
+      scrollY <= inquiry.offsetTop - 10 &&
+      scrollY > review.offsetTop - 10
+    ) {
       setPosition('review');
-    } else if (scrollY <= review.offsetTop-10 && scrollY > detailInfo.offsetTop-10) {
+    } else if (
+      scrollY <= review.offsetTop - 10 &&
+      scrollY > detailInfo.offsetTop - 10
+    ) {
       setPosition('detailInfo');
-    } else if (scrollY <= detailInfo.offsetTop-10 && scrollY > productInfo.offsetTop-10) {
+    } else if (
+      scrollY <= detailInfo.offsetTop - 10 &&
+      scrollY > productInfo.offsetTop - 10
+    ) {
       setPosition('productInfo');
     } else {
       setPosition(null);
     }
   };
 
+  // 클린업을 넣어야 하는가요? 넣으면 Cannot read properties of null (reading 'removeEventListener') 에라 발생합니다
   useEffect(() => {
-    window.addEventListener('scroll', getElementPosition); // 스크롤시 getBannerPosition 발생
+    detailsRef.current.addEventListener('scroll', getElementPosition); // 스크롤시 getBannerPosition 발생
 
-    return () => window.removeEventListener('scroll', getElementPosition); // 클린업, 페이지를 나가면 이벤트 삭제
-  }, []);
+    // return () =>
+    //   detailsRef.current.removeEventListener('scroll', getElementPosition); // 클린업, 페이지를 나가면 이벤트 삭제
+  }, [detailsRef]);
+
 
   const navigationParts = [
     <ProductInformation key={0} product={product} />,
@@ -107,7 +121,7 @@ function ProductDetail() {
   ));
 
   return (
-    <div className={styles.ProductDetailWrapper}>
+    <div className={styles.ProductDetailWrapper} ref={detailsRef}>
       <ProductThumbnail product={product} />
       <ProductDetailMenu navigations={navigations} position={position} />
       {navigationPartRefs}
