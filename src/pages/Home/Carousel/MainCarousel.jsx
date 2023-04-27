@@ -13,8 +13,8 @@ import 'swiper/css/pagination';
 const banners = [
   { url: 'assets/main/banner01.jpg', title: '이 주의 특가 한눈에 보기' },
   { url: 'assets/main/banner02.jpg', title: '한눈에 보는 이달의 카드 혜택' },
-  { url: 'assets/main/banner03.jpg', title: '컬리 과일 가게' },
-  { url: 'assets/main/banner04.jpg', title: '컬리 퍼플 위크 혜택보기' },
+  { url: 'assets/main/banner03.jpg', title: '칼리 과일 가게' },
+  { url: 'assets/main/banner04.jpg', title: '칼리 퍼플 위크 혜택보기' },
 ];
 
 SwiperCore.use([Autoplay, Pagination]);

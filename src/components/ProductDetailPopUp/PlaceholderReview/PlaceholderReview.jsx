@@ -6,7 +6,7 @@ export function PlaceholderReview() {
       <div className={styles.placeHolder}>
         <div>
           <div className={styles.placeHolderIntro}>
-              컬리는 믿을 수 있는 후기문화를 함께 만들어가고자 합니다. 
+              칼리는 믿을 수 있는 후기문화를 함께 만들어가고자 합니다. 
               식품 등의 표시광고에 대한 법률을 준수하고자 다음과 같은 부당한 상품평에 대해서는 별도 고지 없이 임시 대처, 
               비공개 전환, 삭제, 적립금 회수 등의 필요한 조치가 취해 질 수 있습니다.
           </div>
