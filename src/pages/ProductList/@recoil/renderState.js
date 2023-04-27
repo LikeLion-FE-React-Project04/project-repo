@@ -166,7 +166,7 @@ export const renderAllFilterListSelector = selector({
 
       return checkedBrandList.some((category) => category === product.brand);
     };
-    const 마켓컬리_리스트_필터 = (product) => {
+    const 마켓칼리_리스트_필터 = (product) => {
       if (checkedKalryOnlyList.length <= 0) {
         return true;
       }
@@ -216,7 +216,7 @@ export const renderAllFilterListSelector = selector({
     return products
       .filter(카테고리_리스트_필터)
       .filter(브랜드_리스트_필터)
-      .filter(마켓컬리_리스트_필터)
+      .filter(마켓칼리_리스트_필터)
       .filter(가격_리스트_필터)
       .filter(혜택_리스트_필터)
       .sort((a, b) => {

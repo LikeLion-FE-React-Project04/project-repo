@@ -267,16 +267,16 @@ export function ProductDetailPopUp({uiType='inquiry'}) {
           <div className={styles.inputField}>
             <form onSubmit={handleSubmit}>
               <fieldset className={styles.inquiryTitleWrapper}>
-              <label htmlFor='inquiryTitle'>제목</label>
+              <label htmlFor='popUpTitle'>제목</label>
               {(uiType == 'review') ? 
-              <input required id="inquiryTitle" value={productName} type="text" onChange={handleTitleData} disabled/> : null}
+              <input required id="popUpTitle" value={productName} type="text" onChange={handleTitleData} disabled/> : null}
               {(uiType == 'inquiry') ? 
-              <input required id="inquiryTitle" placeholder="제목을 입력해 주세요" type="text" onChange={handleTitleData} /> : null}
+              <input required id="popUpTitle" placeholder="제목을 입력해 주세요" type="text" onChange={handleTitleData} /> : null}
               </fieldset>
               <fieldset className={styles.inquiryContentWrapper}>
-              <label htmlFor='inquiryText'>내용</label>
+              <label htmlFor='popUpText'>내용</label>
               <div className={styles.textAreaWrap} onClick={handlePlaceholder} aria-hidden="true">
-                <textarea onChange={textareaInputHandler} id="inquiryText" inputMode='text' name="content" ref={area} required maxLength="5000" onBlur={handlePlaceholderT} onFocus={handlePlaceholder}></textarea>
+                <textarea onChange={textareaInputHandler} id="popUpText" inputMode='text' name="content" ref={area} required maxLength="5000" onBlur={handlePlaceholderT} onFocus={handlePlaceholder}></textarea>
                 {isActiveP ? ph : null}
                 <p className={styles.inquiryCount} id="inquiryCount">{inputCount}/5000</p>
               </div>

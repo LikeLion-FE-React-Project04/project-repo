@@ -57,6 +57,8 @@ function SignUp() {
           <Input text={'이메일'} must={true}>
             <div className={styles.inputLayout}>
               <FormInput
+                id="email"
+                label="이메일"
                 placeholder={'예) marketkarly@karly.com'}
                 type="text"
                 name="email"
@@ -81,6 +83,8 @@ function SignUp() {
           <Input text={'비밀번호'} must={true}>
             <div className={styles.inputLayout}>
               <FormInput
+                id="password"
+                label="비밀번호"
                 placeholder={'비밀번호를 입력해주세요'}
                 type="password"
                 name="password"
@@ -94,6 +98,8 @@ function SignUp() {
           <Input text={'비밀번호 확인'} must={true}>
             <div className={styles.inputLayout}>
               <FormInput
+                id="passwordConfirm"
+                label="비밀번호 확인"
                 placeholder={'비밀번호를 한번 더 입력해주세요'}
                 type="password"
                 name="passwordConfirm"
@@ -107,6 +113,8 @@ function SignUp() {
           <Input text={'이름'} must={true}>
             <div className={styles.inputLayout}>
               <FormInput
+                id="name"
+                label="이름"
                 placeholder={'이름을 한번 더 입력해주세요'}
                 name="name"
                 type="text"
@@ -120,6 +128,8 @@ function SignUp() {
           <Input text={'휴대폰'} must={true}>
             <div className={styles.inputLayout}>
               <FormInput
+                id="phoneNumber"
+                label="휴대폰"
                 placeholder={'숫자만 입력해주세요.'}
                 name="phoneNumber"
                 type="text"
