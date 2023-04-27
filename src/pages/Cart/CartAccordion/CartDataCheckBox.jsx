@@ -44,7 +44,7 @@ function CartDataCheckBox({
   }
 
   return (
-    <label htmlFor={name} className={styles.label}>
+    <>
       <input
         type="checkbox"
         className={styles.CartDataCheckBox}
@@ -52,8 +52,10 @@ function CartDataCheckBox({
         checked={isChecked}
         onClick={handleClickBtn}
       />
-      {visibleLabel && children}
-    </label>
+      <label htmlFor={name} className={styles.label}>
+        {visibleLabel && children}
+      </label>
+    </>
   );
 }
 
