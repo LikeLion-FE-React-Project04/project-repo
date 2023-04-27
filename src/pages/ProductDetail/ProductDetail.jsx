@@ -84,7 +84,7 @@ function ProductDetail() {
     window.addEventListener('scroll', getElementPosition); // 스크롤시 getBannerPosition 발생
 
     return () => window.removeEventListener('scroll', getElementPosition); // 클린업, 페이지를 나가면 이벤트 삭제
-  }, [position]); // position 값이 변할 때마다 effect 실행
+  }, []);
 
   const navigationParts = [
     <ProductInformation key={0} product={product} />,
