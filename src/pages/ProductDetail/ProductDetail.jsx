@@ -99,6 +99,7 @@ function ProductDetail() {
     //   detailsRef.current.removeEventListener('scroll', getElementPosition); // 클린업, 페이지를 나가면 이벤트 삭제
   }, [detailsRef]);
 
+
   const navigationParts = [
     <ProductInformation key={0} product={product} />,
     <DetailInformation key={1} product={product} />,
