@@ -145,6 +145,7 @@
     - 초기화 컴포넌트 
     - 신상품 배너 컴포넌트
 #### :white_check_mark: 문진기
+  - 문서 제목 변경 리액트 커스텀훅 제작(useDocumentTitle.js)
   - 폼 인풋 컴포넌트(FormInput) 
   - 버튼 컴포넌트(Button)
   - ```SignIn```
@@ -961,10 +962,271 @@ STORAGE_BUCKET = ""
 MESSAGING_SENDER_ID = ""
 APP_ID = ""
 ```
+#### :loudspeaker: 파이어베이스
+<details>
+  <summary>✅파이어베이스 연동하기</summary>
+  <table>
+    <tr>
+      <td width="200">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) 파이어베이스 홈페이지에 들어갑니다.</p>
+        <p>2) 시작하기 버튼을 누릅니다.</p>
+      </td>
+      <td width="800">
+        <img src="https://user-images.githubusercontent.com/73629761/234783630-57bde989-2f72-4ed9-b65b-fe7ca5a1b271.PNG"/>          
+      </td>
+    </tr>
+    <tr>
+      <td width="200">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) 프로젝트 만들기 버튼을 클릭합니다.</p>
+      </td>
+      <td width="800">
+    <img src="https://user-images.githubusercontent.com/73629761/234783753-56622e88-234c-441f-89a3-edcc4ebff3f9.PNG"/>
+    </td>
+    </tr>
+    <tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) 프로젝트의 이름을 지정합니다.</p>
+        <p>2) 체크박스 표시 후 계속 버튼을 클릭합니다.</p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234783813-a9f75e51-490d-42e4-9ce5-9edbdb8e4d39.PNG"/>
+  </td>
+    </tr>
+  <tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) 계속 버튼을 클릭합니다.</p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234783902-178da913-b48a-402b-a544-0790ceb90b41.PNG"/>
+  </td>
+    </tr>
+  <tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) 애널리틱스를 다음과 같이 설정합니다.</p>
+        <p>2) 프로젝트 만들기 버튼을 클릭합니다.</p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234783981-a400776e-eb93-4b7f-bc5c-707289d9dfcf.PNG"/>
+  </td>
+    </tr>
+  <tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) 프로젝트 만들기에 성공하면 다음과 같은 화면이 나옵니다.</p>
+        <p>2) 계속 버튼을 클릭합니다.</p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234784041-44490d2d-5a0d-46df-a363-b21a50db11a8.PNG"/>
+  </td>
+    </tr>
+  <tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) 하단에 Authentication 버튼을 누릅니다.</p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234784106-b79a3aa0-9b75-440e-a8de-04c0d15549fe.PNG"/>
+  </td>
+    </tr>
+  <tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) 시작하기 버튼을 누릅니다.</p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234784163-dc896fbe-eb21-47e4-86d4-dd65298052c0.PNG"/>
+  </td>
+    </tr>
+  <tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) 이메일/비밀번호 버튼을 누릅니다.</p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234784220-006ac690-db01-4cab-885f-89e19d19a68c.PNG"/>
+  </td>
+    </tr>
+  <tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) 그림과 같이 설정 후 저장 버튼을 누릅니다.</p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234788604-f0f2b617-a473-4167-bdee-4f493054a64c.PNG"/>
+  </td>
+    </tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) &lt;/&gt; (웹 앱 추가) 버튼을 클릭합니다.</p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234788755-b196535c-6f7a-4bc3-a04d-00a7f928bc37.PNG"/>
+  </td>
+    </tr>
+  <tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) 앱을 등록합니다.</p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234788801-e9f72869-1e33-4317-abf4-fbe9ab4a7f2b.PNG"/>
+  </td>
+    </tr>
+  <tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) SDK의 값을 .env에 등록합니다. <a href="#loudspeaker-env">.env 등록하기를 참고하세요</a></p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234788871-9db1f9d8-a5ef-4266-8694-921dab148ebd.PNG"/>
+  </td>
+    </tr>
+  <tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) Cloud Firestore 버튼을 클릭합니다.</p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234788929-b75d2498-4dcb-4b82-93e4-c3601a5938dd.PNG"/>
+  </td>
+    </tr>
+  <tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) 데이터베이스 만들기 버튼을 클릭합니다.</p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234789564-40c2b490-1b84-4bc7-8dcc-1833d950495b.PNG"/>
+  </td>
+    </tr>
+  <tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) 다음 버튼을 클릭합니다.</p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234789662-73292a39-8513-4758-a2f1-03f4b7d7a37a.PNG"/>
+  </td>
+    </tr>
+  <tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) Cloud Firestore 위치를 다음과 같이 설정합니다.</p>
+        <p>2) 사용 설정 버튼을 클릭합니다.</p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234789793-15c11e1f-96aa-421c-9817-08a9c03a8cb2.PNG"/>
+  </td>
+    </tr>
+  <tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) 생성된 Cloud Firestore의 규칙을 다음과 같이 바꿔줍니다. (false -> true)</p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234792745-1691fc9f-bf4c-4ce1-952a-8005f3ac3885.PNG"/>
+  </td>
+    </tr>
+    </table>
+    </details>
+    <details>
+    <summary>✅ 파이어베이스에 데이터 추가하기</summary>
+    <table>
+  <tr>
+      <td width="200">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) "src\components\Header\Header.jsx" 코드의 21~23 번째 줄의 주석을 풉니다.</p>
+      </td>
+      <td width="800">
+  <img src="https://user-images.githubusercontent.com/73629761/234828118-22f2d5d9-385a-4089-a055-f4b8f1e2bd9f.PNG"/>
+  </td>
+    </tr>
+  <tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) 주석을 풀면 헤더 상단에 일괄 데이터 쓰기 버튼이 나타납니다.</p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234792865-bf336264-1412-4933-8456-42ed08e2b876.PNG"/>
+  </td>
+    </tr>
+  <tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) 일괄 데이터 쓰기 버튼을 클릭합니다</p>
+        <p>2) 데이터가 정상적으로 추가되었다고 콘솔에 표시됩니다.</p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234792955-cc242bc7-e0b0-4c48-b55c-1a252c37a6d0.PNG"/>
+  </td>
+    </tr>
+    <tr>
+      <td width="200">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) 데이터가 정상적으로 추가되었으면 주석을 다시 닫아줍니다.</p>
+      </td>
+      <td width="800">
+  <img src="https://user-images.githubusercontent.com/73629761/234828118-22f2d5d9-385a-4089-a055-f4b8f1e2bd9f.PNG"/>
+  </td>
+    </tr>
+  <tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) 상품리스트 페이지(localhost:3000/productList)에 들어가면 다음과 같은 화면이 나타납니다.</p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234793082-243f8981-501e-4b55-ae93-28c09e88fab6.PNG"/>
+  </td>
+    </tr>
+  <tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) 해당 위치의 주소를 복사해서 검색창에 입력합니다.</p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234793163-090aab85-b03f-460c-a446-85a5da685aea.PNG"/>
+  </td>
+    </tr>
+  <tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) 색인을 입력하는 페이지가 나타납니다.</p>
+        <p>2) 색인 만들기 버튼을 클릭합니다.</p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234793261-2158b35b-fb45-4623-a521-0bd92a4265dc.PNG"/>
+  </td>
+    </tr>
+  <tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) 그림과 같이 색인을 입력하고 색인 만들기 버튼을 클릭합니다.</p>
+        <p>2) 주의) 세번째 색인은 __name__ 입니다.</p>
+        <p>3) 색인이 만들어지는데는 몇 분의 시간이 소요됩니다.</p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234793312-476310b3-ddcf-4919-a0ff-84ab4e3f5d3d.PNG"/>
+  </td>
+    </tr>
+  <tr>
+      <td width="300">
+        <h4>:round_pushpin:설명</h4>
+        <p>1) 색인이 정상적으로 만들어지면 다음과 같이 데이터가 보입니다.</p>
+      </td>
+      <td width="700">
+  <img src="https://user-images.githubusercontent.com/73629761/234903662-82d85a88-b438-47c2-a0be-fcdf1ba131d6.PNG"/>
+  </td>
+    </tr>
+    </table>
+</details>
+
 
 ## 11. 배포 링크 :tada: 
 
 
 ![footer](https://capsule-render.vercel.app/api?section=footer&type=waving&color=0:FFFFFF,100:5F0080)
-
-
