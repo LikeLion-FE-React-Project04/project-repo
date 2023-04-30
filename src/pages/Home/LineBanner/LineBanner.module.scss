@@ -1,0 +1,12 @@
+.purpleWeekImg {
+  margin: 40px auto;
+  width: 1050px;
+  height: 139px;
+  background: url('@/assets/main/line-banner.png');
+  a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+}

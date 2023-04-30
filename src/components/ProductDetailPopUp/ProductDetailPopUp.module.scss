@@ -1,0 +1,138 @@
+.detailPopUpWrap:focus {
+  outline:none;
+}
+
+.detailPopUpWrap { 
+  background-color: var(--white);
+  height: 650px;
+  h2 {
+    font-weight: 700;
+    font-size: 28.43px;
+    line-height: 140%;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  .popUpHeader {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    button {
+      width: 30px;
+      height: 30px;
+      background: transparent url(../../assets/product-detail/ic-cancel.svg) center / 30px no-repeat ;
+      padding: 0px;
+      border: 0;
+    }
+  }
+  padding: 32px 32px 0px 32px;
+  width: 793px;
+  border-radius: 16px;
+}
+
+.productInformation {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 0px;
+  border-bottom: 1px solid var(--gray-100);
+  border-top: 1px solid var(--gray-100);
+  img {
+    width: 72px;
+    height: 72px;
+  }
+  p {
+    color: var(--black);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+  }
+}
+
+.inquiryTitleWrapper {
+  input {
+    width: 645px;
+    display: inline-block;
+    color: var(--gray-400);
+    padding: 9px 20px;
+    
+  }
+}
+
+.inquiryContentWrapper {
+  display: flex;
+  margin-top: 12px;
+  .inquiryCount {
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+    width: 100%;
+    text-align: right;
+  }
+}
+
+.inputField {
+  padding-top: 16px;
+  label {
+    padding: 8px;
+    display: inline-block;
+    width: 100px;
+    height: 42px;
+    line-height: 150%;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--content);
+  }
+  input {
+    width: 629px;
+    height: 44px;
+  }
+  textarea {
+    width: 629px;
+    height: 200px;
+    color: var(--gray-300);
+    display: block;
+    border: 0px;
+    padding: 16px;
+    resize: none;
+  }
+  .textAreaWrap {
+    border: 1px solid var(--gray-300);
+    border-radius: 4px;
+    position: relative;
+  }
+  .putCounter {
+    height: 20px;
+  }
+}
+
+/* ----------------------------------- 비밀글 ---------------------------------- */
+.isSecret {
+  height: 58px;
+}
+
+
+/* ------------------------------- 팝업 취소/등록 버튼 ------------------------------ */
+.popUpBtnWrapper {
+  border-top: 1px solid var(--gray-100);
+  padding: 20px 0px 32px 0px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  button {
+    //border: 0px;
+    //border: 1px solid var(--gray-200);
+    //border-radius: 4px;
+    box-sizing: border-box;
+    width: 186px;
+    height: 54px;
+  }
+  .cancelBtn {
+    //background-color: var(--white);
+  }
+  .postBtn {
+    //background-color: var(--gray-100);
+    //color: var(--white);
+    //border: 0px;
+  }
+}

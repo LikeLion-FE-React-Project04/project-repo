@@ -1,0 +1,27 @@
+.header {
+  position: relative;
+  width: 1050px;
+  margin: 0px auto;
+  letter-spacing: -0.3px;
+}
+
+.headerBorder {
+  box-shadow: 0rem 0.25rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+.headerInner {
+  width: var(--container-width);
+  margin: auto;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.headerMain {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  /* gap: 5.9375rem; */
+  gap: 3.68rem;
+}
