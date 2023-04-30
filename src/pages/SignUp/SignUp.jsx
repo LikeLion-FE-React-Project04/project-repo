@@ -18,7 +18,7 @@ import { useRecoilState } from 'recoil';
 import { useSignUpValidation } from './@hook/useSignUpValidation';
 import { useSignUpSubmit } from './@hook/useSignUpSubmit';
 import { useConfirmEmail } from './@hook/useConfirmEmail';
-import GenderInput from './genderInput/genderInput';
+import GenderInput from './GenderInput/GenderInput';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
 function SignUp() {
