@@ -170,20 +170,20 @@ export function Footer() {
               <p>팩스 : 070 - 7500 - 6098</p>
             </div>
             <div className={styles.footerCompanySns}>
-              <Link to={instagramUrl}>
-                <Blog alt="칼리 네이버 블로그" />
+              <Link to={naverBlogUrl}>
+                <Blog />
               </Link>
               <Link to={facebookUrl}>
-                <Facebook alt="칼리 페이스북" />
+                <Facebook />
               </Link>
-              <Link to={naverBlogUrl}>
-                <Instagram alt="칼리 인스타그램" />
+              <Link to={instagramUrl}>
+                <Instagram />
               </Link>
               <Link to={naverPostUrl}>
-                <Naver alt="칼리 네이버포스트" />
+                <Naver />
               </Link>
               <Link to={youtubeUrl}>
-                <Youtube alt="칼리 유튜브" />
+                <Youtube />
               </Link>
             </div>
           </article>
