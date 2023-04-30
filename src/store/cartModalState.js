@@ -30,6 +30,8 @@ export const cartDataState = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
+
+// 장바구니 데이터(cartDataState)에서 관리되는 상품들의 정보를 배열로 상태관리 
 export const cartProductsState = selector({
   key: 'cartProductsState',
   get: ({ get }) => {
@@ -43,6 +45,7 @@ export const cartProductsState = selector({
   },
 });
 
+// 보관방법에 따라 나눠지는 장바구니 상품분류 상태관리
 export const cartProductTypeState = selector({
   key: 'cartProductTypeState',
   get: ({ get }) => {
@@ -69,16 +72,19 @@ export const cartProductTypeState = selector({
   },
 });
 
+// 선택된 상품 상태
 export const selectedState = atom({
   key: 'selectedState',
   default: {},
 });
 
+// 전체 선택 상태
 export const selectedAllState = atom({
   key: 'selectedAllState',
   default: true,
 });
 
+// 장바구니 상품 개수 상태
 export const totalItemCountState = selector({
   key: 'totalItemCountState',
   get: ({ get }) => {
@@ -99,6 +105,7 @@ export const totalActiveItemCountState = selector({
   },
 });
 
+// 상품 가격 상태
 export const cartPriceData = selector({
   key: 'cartPriceData',
   get: ({ get }) => {

@@ -5,7 +5,6 @@ import Footer from '../../components/Footer/Footer';
 import DarkFilter from '@/components/DarkFilter/DarkFilter';
 import ScrollToTop from '../../components/ScrollToTop/ScrollToTop';
 import TransparentFilter from '../../components/TransparentFilter/TransparentFilter';
-import CartPopup from '../../components/CartPopup/CartPopup';
 import AlertBoxLayout from '../../components/AlertBox/AlertBoxLayout.jsx'
 
 export default function Layout({ children }) {
@@ -13,7 +12,6 @@ export default function Layout({ children }) {
     <>
       <ScrollToTop />
       <AlertBoxLayout />
-      <CartPopup />
       <TransparentFilter />
       <DarkFilter />
       <Header />

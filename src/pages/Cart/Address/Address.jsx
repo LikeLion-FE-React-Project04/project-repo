@@ -17,9 +17,10 @@ function Address() {
         <img src={location} alt="배송지" width={24} height={24} />
         배송지
       </div>
-      <div className={styles.info}>{address}</div>
+      <div className={styles.info}>
+        {address ? address : '배송지를 입력해주세요.'}
+      </div>
       <div className={styles.mark}>샛별배송</div>
-
       <Button
         className={styles.addressButton}
         uiType="third"

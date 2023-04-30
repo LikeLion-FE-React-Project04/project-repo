@@ -85,7 +85,14 @@ function CartModal() {
       closeBtnRef.current,
       containBtnRef.current,
     ];
-    const firstFocusableElement = focusableElements[0];
+
+    let firstFocusableElement;
+
+    if (countMinusBtnRef.disabled == false) {
+      firstFocusableElement = countMinusBtnRef;
+    } else {
+      firstFocusableElement = countPlusBtnRef;
+    }
     const lastFocusableElement =
       focusableElements[focusableElements.length - 1];
     const isTabPressed = e.key === 'Tab';

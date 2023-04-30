@@ -25,19 +25,24 @@ function BirthInput() {
     setSignUpForm((prev) => {
       const tmp = { ...prev };
       const birthTmp = { ...tmp.birth };
+
       birthTmp[name] = e.target.value;
       pragment = checkValidation('birth', birthTmp);
       tmp.birth = birthTmp;
+
       return tmp;
     });
 
     setWarnPragment(pragment);
   };
+
   return (
     <Input text={'생년월일'}>
       <div className={styles.inputLayout}>
         <div className={styles.BirthInput}>
+          <label className="a11yHidden" htmlFor="year">년도</label>
           <input
+            id="year"
             type="text"
             name="year"
             placeholder={'YYYY'}
@@ -45,7 +50,9 @@ function BirthInput() {
             onChange={handleChange}
           />
           <span>/</span>
+          <label className="a11yHidden" htmlFor="month">월</label>
           <input
+            id="month"
             name="month"
             type="text"
             placeholder={'MM'}
@@ -53,7 +60,9 @@ function BirthInput() {
             onChange={handleChange}
           />
           <span>/</span>
+          <label className="a11yHidden" htmlFor="day">일</label>
           <input
+            id="day"
             name="day"
             type="text"
             placeholder={'DD'}

@@ -9,7 +9,7 @@ function HeaderContainer({ children }) {
 function HeaderLogoContainer() {
   return (
     <>
-      <h1 className={styles.a11yHidden}>마켓컬리</h1>
+      <h1 className={styles.a11yHidden}>마켓칼리</h1>
       <HeaderContainer>
         <HeaderLogo />
         <HeaderContainerList className={styles.market} text={'마켓칼리'} />

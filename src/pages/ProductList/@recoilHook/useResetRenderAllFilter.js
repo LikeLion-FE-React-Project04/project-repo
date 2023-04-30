@@ -3,7 +3,7 @@ import { useSetRecoilState } from 'recoil';
 import {
   checkedCategoryListAtom,
   checkedBrandListAtom,
-  checkedKalryOnlyListAtom,
+  checkedKarlyOnlyListAtom,
   checkedPriceListAtom,
   checkedBenefitsListAtom,
 } from './../@recoil/renderState';
@@ -11,14 +11,14 @@ import {
 export const useResetRenderAllFilter = () => {
   const setCategoryFilter = useSetRecoilState(checkedCategoryListAtom);
   const setBrandFilter = useSetRecoilState(checkedBrandListAtom);
-  const setKalryOnlyFilter = useSetRecoilState(checkedKalryOnlyListAtom);
+  const setKarlyOnlyFilter = useSetRecoilState(checkedKarlyOnlyListAtom);
   const setPriceFilter = useSetRecoilState(checkedPriceListAtom);
   const setBenefitsList = useSetRecoilState(checkedBenefitsListAtom);
 
   return () => {
     setCategoryFilter([]);
     setBrandFilter([]);
-    setKalryOnlyFilter([]);
+    setKarlyOnlyFilter([]);
     setPriceFilter([]);
     setBenefitsList([]);
   };

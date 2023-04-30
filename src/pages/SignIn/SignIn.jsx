@@ -15,7 +15,7 @@ const initialFormState = {
 };
 
 function SignIn() {
-  useDocumentTitle('로그인');
+  useDocumentTitle('로그인 - Karly');
 
   const movePage = useNavigate();
   const formStateRef = useRef(initialFormState);
@@ -63,6 +63,7 @@ function SignIn() {
       <form className={styles.form} onSubmit={handleSignIn}>
         <FormInput
           label="이메일"
+          id="email"
           name="email"
           placeholder="아이디를 입력해주세요"
           type="email"
@@ -70,7 +71,8 @@ function SignIn() {
         />
 
         <FormInput
-          label="패스워드"
+          label="비밀번호"
+          id="password"
           name="password"
           placeholder="비밀번호를 입력해주세요"
           type="password"
