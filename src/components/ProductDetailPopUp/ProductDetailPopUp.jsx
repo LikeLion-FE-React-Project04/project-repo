@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useState, useRef, useEffect } from 'react';
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 import { Timestamp } from 'firebase/firestore';
@@ -214,6 +215,7 @@ export function ProductDetailPopUp({uiType='inquiry'}) {
   const handleModalKeyEvent = (e) => {
     const firstFocusableElement = smallCloseBtnRef.current; 
     let lastFocusableElement;
+
     if(registrationBtnRef.current.disabled == true) { // 등록버튼이 disabled라면,
       lastFocusableElement = cancelBtnRef.current;
     }
@@ -261,7 +263,7 @@ export function ProductDetailPopUp({uiType='inquiry'}) {
             <button aria-label="창닫기" onClick={handleCancelBtnClick} ref={smallCloseBtnRef}></button>
           </div>
           <div className={styles.productInformation}>
-            <img alt={product.image.alt} src={product.image.thumbnail} />
+            <LazyLoadImage alt={product.image.alt} src={product.image.thumbnail} />
             <p>{productName}</p>
           </div>
           <div className={styles.inputField}>

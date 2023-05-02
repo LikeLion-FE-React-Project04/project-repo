@@ -1,4 +1,5 @@
 import { useRecoilValue } from 'recoil';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import styles from './Address.module.scss';
 
@@ -14,7 +15,7 @@ function Address() {
   return (
     <div className={styles.address}>
       <div className={styles.title}>
-        <img src={location} alt="배송지" width={24} height={24} />
+        <LazyLoadImage src={location} alt="배송지" width={24} height={24} />
         배송지
       </div>
       <div className={styles.info}>
