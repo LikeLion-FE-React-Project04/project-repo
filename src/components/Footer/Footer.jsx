@@ -111,13 +111,13 @@ export function Footer() {
               <Link aria-label="칼리소개 영상" to="/">
                 칼리소개영상
               </Link>
-              <Link aria-label="인재채용 정보 확인" to="/">
+              <Link aria-label="인재채용 정보" to="/">
                 인재채용
               </Link>
-              <Link aria-label="이용약관 확인" to="/">
+              <Link aria-label="이용약관" to="/">
                 이용약관
               </Link>
-              <Link aria-label="개인정보처리방침 확인" to="/">
+              <Link aria-label="개인정보처리방침" to="/">
                 개인정보처리방침
               </Link>
               <Link aria-label="이용안내" to="/">
