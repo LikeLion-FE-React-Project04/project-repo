@@ -1,16 +1,20 @@
 .mainSwiper {
   position: relative;
-  width: 1920px;
+  width: 100%;
+  max-width: 1920px;
   height: 370px;
 
   .swiper {
-    width: 100%;
-    height: 100%;
+    background: floralwhite;
 
     .swiperSlide {
       width: 100%;
-      height: 100%;
+      height: 370px;
       border: none;
+    }
+
+    button:focus {
+      outline-offset: -2px;
     }
   }
   .swiperButton {
@@ -21,15 +25,15 @@
     top: 148px;
     z-index: 2;
     border: none;
+    right: 50%;
   }
 
   .swiperPrevBtn {
-    left: 350px;
+    transform: translateX(50%) translateX(-475px);
   }
 
   .swiperNextBtn {
-    transform: rotate(180deg);
-    right: 350px;
+    transform: translateX(50%) translateX(475px) rotate(180deg);
   }
   .autoplayButton {
     width: 18px;

@@ -6,7 +6,7 @@ import { ProductDetailPopUp } from '../../components/ProductDetailPopUp/ProductD
 import ProductDetailPopUpLayout from '../../components/ProductDetailPopUp/ProductDetailPopUpLayout';
 
 import styles from './ProductDetail.module.scss';
-import ProductInquiry from './Productinquiry/Productinquiry';
+import ProductInquiry from './ProductInquiry/ProductInquiry';
 import ProductReview from './ProductReview/ProductReview';
 import ProductThumbnail from './ProductThumbnail/ProductThumbnail';
 import { productNameAtom } from './ProductReview/@recoil/renderState';

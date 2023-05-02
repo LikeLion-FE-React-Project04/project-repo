@@ -5,7 +5,7 @@ import { modalBtnState } from '../../store/cartModalState';
 
 import classes from './CartButton.module.scss';
 
-export default function CartButton() {
+export default function CartButton({ isActive }) {
   const setModalBtnState = useSetRecoilState(modalBtnState);
   const cartBtnRef = useRef();
   const handleCartBtnOnClick = () => {
@@ -15,12 +15,14 @@ export default function CartButton() {
   return (
     <button
       ref={cartBtnRef}
-      aria-label={'cartBtn'}
+      aria-label={'장바구니 담기'}
       className={classes.cartBtn}
       data-id={1}
       data-name="cartbutton"
       type="button"
       onClick={handleCartBtnOnClick}
+      tabIndex={isActive ? 'none' : -1}
+      aria-hidden={isActive ? false : true}
     />
   );
 }
