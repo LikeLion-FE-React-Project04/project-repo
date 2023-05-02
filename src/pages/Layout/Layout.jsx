@@ -5,11 +5,12 @@ import Footer from '../../components/Footer/Footer';
 import DarkFilter from '@/components/DarkFilter/DarkFilter';
 import ScrollToTop from '../../components/ScrollToTop/ScrollToTop';
 import TransparentFilter from '../../components/TransparentFilter/TransparentFilter';
-import AlertBoxLayout from '../../components/AlertBox/AlertBoxLayout.jsx'
+import AlertBoxLayout from '../../components/AlertBox/AlertBoxLayout.jsx';
+import styles from './Layout.module.scss';
 
-export default function Layout({ children }) {
+export default function Layout() {
   return (
-    <>
+    <div className={styles.layout}>
       <ScrollToTop />
       <AlertBoxLayout />
       <TransparentFilter />
@@ -19,6 +20,6 @@ export default function Layout({ children }) {
         <Outlet />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
