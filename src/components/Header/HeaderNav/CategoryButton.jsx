@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 import styles from './CategoryButton.module.css';
 
 import { categoryData } from './categoryDate';
@@ -10,7 +12,7 @@ const CategoryData = ({ href, title, img, alt }) => {
   return (
     <li className={styles.test01}>
       <Link to={href}>
-        <img src={img} alt={alt} />
+        <LazyLoadImage src={img} alt={alt} />
         {title}
       </Link>
     </li>
@@ -32,7 +34,7 @@ const CategoryButton = () => {
           onFocus={() => setIsHover(true)}
           onBlur={() => setIsHover(false)}
         >
-          <img
+          <LazyLoadImage
             alt={'카테고리목록'}
             className={styles.headerNavHamburger}
             src={Hamburger}

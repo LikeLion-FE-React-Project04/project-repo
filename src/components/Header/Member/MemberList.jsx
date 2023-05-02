@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 function MemberList({ href, className, text, img, onClick }) {
   return (
@@ -6,7 +7,7 @@ function MemberList({ href, className, text, img, onClick }) {
       <Link to={href} className={className} onClick={onClick}>
         {text}
         {img === undefined ? null : (
-          <img
+          <LazyLoadImage
             alt="고객센터 목록"
             src={img}
             style={{

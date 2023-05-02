@@ -1,3 +1,5 @@
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 import { inputHook } from '../@recoilhooks/inputHook';
 
 import styles from './SearchInput.module.css';
@@ -35,7 +37,7 @@ function SearchInput() {
           className={styles.formGroupButton}
           type="button"
         >
-          <img alt="검색" src={Search} />
+          <LazyLoadImage alt="검색" src={Search} />
         </button>
       </div>
     </>

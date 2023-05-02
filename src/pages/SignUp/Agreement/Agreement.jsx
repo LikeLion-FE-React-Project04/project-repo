@@ -1,3 +1,5 @@
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 import styles from './Agreement.module.scss';
 import RightArrow from '@/assets/common/ic-right-arrow.svg';
 import CheckBox from '../CheckBox/CheckBox';
@@ -68,7 +70,7 @@ function Agreement() {
             </CheckBox>
             <div>
               <p>약관보기</p>
-              <img src={RightArrow} alt={'약관보기 화살표'} />
+              <LazyLoadImage src={RightArrow} alt={'약관보기 화살표'} />
             </div>
           </li>
           <li className={styles.AgreeSelectList}>
@@ -82,7 +84,7 @@ function Agreement() {
             </CheckBox>
             <div>
               <p>약관보기</p>
-              <img src={RightArrow} alt={'약관보기 화살표'} />
+              <LazyLoadImage src={RightArrow} alt={'약관보기 화살표'} />
             </div>
           </li>
           <li className={styles.AgreeSelectList}>
@@ -96,7 +98,7 @@ function Agreement() {
             </CheckBox>
             <div>
               <p>약관보기</p>
-              <img src={RightArrow} alt={'약관보기 화살표'} />
+              <LazyLoadImage src={RightArrow} alt={'약관보기 화살표'} />
             </div>
           </li>
           <li className={styles.AgreeSelectList}>
@@ -110,7 +112,7 @@ function Agreement() {
             </CheckBox>
             <div>
               <p>약관보기</p>
-              <img src={RightArrow} alt={'약관보기 화살표'} />
+              <LazyLoadImage src={RightArrow} alt={'약관보기 화살표'} />
             </div>
           </li>
         </ul>
