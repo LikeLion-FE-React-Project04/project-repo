@@ -1,7 +1,7 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
-import { useRef } from 'react';
+import { Navigation, A11y } from 'swiper';
+import { useRef, useEffect } from 'react';
 import classnames from 'classnames';
 import { useRecoilValue } from 'recoil';
 
@@ -13,33 +13,48 @@ import { productListState } from '@/store/productListState.js';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-
+import { useState } from 'react';
 // Import Swiper styles
 
 const ProductsCarousel = () => {
   const productList = useRecoilValue(productListState);
-  const productCards = productList.slice(0, 12).map((product, index) => {
-    return (
-      <SwiperSlide key={index}>
-        <ProductCard product={product} />
-      </SwiperSlide>
-    );
-  });
-
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
+  const swiperRef = useRef();
+
+  const [focusableIndex, setFocusableIndex] = useState(0);
+
+  const productCards = productList.slice(0, 12).map((product, index) => (
+    <SwiperSlide key={index}>
+      <ProductCard
+        product={product}
+        isActive={focusableIndex <= index && index < focusableIndex + 4}
+      />
+    </SwiperSlide>
+  ));
 
   return (
-    <div className={classes.productsSwiper}>
+    <div
+      aria-label="상품 캐로셀"
+      aria-roledescription="carousel"
+      className={classes.productsSwiper}
+      role="region"
+    >
       <button
         ref={navigationPrevRef}
-        aria-label="이전 슬라이더"
+        aria-label="이전 항목 보기"
         className={classnames(classes.swiperPrevBtn, classes.swiperButton)}
+        onClick={() => {
+          setFocusableIndex((prev) => prev - 4);
+        }}
       />
       <button
         ref={navigationNextRef}
-        aria-label="다음 슬라이더"
+        aria-label="다음 항목 보기"
         className={classnames(classes.swiperNextBtn, classes.swiperButton)}
+        onClick={() => {
+          setFocusableIndex((prev) => prev + 4);
+        }}
       />
 
       <Swiper
@@ -56,6 +71,9 @@ const ProductsCarousel = () => {
           swiper.params.navigation.prevEl = navigationPrevRef.current;
           swiper.params.navigation.nextEl = navigationNextRef.current;
           swiper.navigation.update();
+        }}
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
         }}
       >
         {productCards}
