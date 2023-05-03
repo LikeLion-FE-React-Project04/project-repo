@@ -14,7 +14,6 @@ import {
   DummyButtons,
 } from './SortButton';
 
-import banner from '@/assets/product-list/product-list-banner.png';
 import notFountIcon from '@/assets/product-list/ic-notFound.svg';
 import resetIcon from '@/assets/product-list/ic-return.svg';
 
@@ -53,7 +52,7 @@ export const ProductListBanner = () => {
       <LazyLoadImage
         alt="이번주의 신상 랭킹보러가기 이미지 배너"
         className={styles.productListBanner}
-        src={banner}
+        src='assets/product-list/product-list-banner.avif'
       />
     </Link>
   );

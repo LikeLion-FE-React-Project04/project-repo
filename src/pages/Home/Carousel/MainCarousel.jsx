@@ -14,22 +14,22 @@ import { useEffect } from 'react';
 
 const banners = [
   {
-    url: 'assets/main/banner01.jpg',
+    url: 'assets/main/banner01.avif',
     title:
       '컬리 장보기의 특권 이주의 특가 한 눈에 보기 우측 상단 특가/혜택 에서 확인하세요.',
   },
   {
-    url: 'assets/main/banner02.jpg',
+    url: 'assets/main/banner02.avif',
     title:
       '한눈에 보는 이달의 카드 혜텍 최대 10% 카드 쿠폰 받기 기간 시월 일일부터 시월 삽십일일까지',
   },
   {
-    url: 'assets/main/banner03.jpg',
+    url: 'assets/main/banner03.avif',
     title:
       '부드러운 달콤함 컬리 과일 가게 앵콜 특가 멜론 구천구백원 기간 시월 이십일부터 시월 이십칠일까지 ',
   },
   {
-    url: 'assets/main/banner04.jpg',
+    url: 'assets/main/banner04.avif',
     title:
       '컬리 퍼플 위크 높은 적립률과 3종 쿠폰팩 더 풍성해진 혜택 기간 시월 이십사일부터 시월 이십팔일까지',
   },
