@@ -1,4 +1,3 @@
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useRecoilState } from 'recoil';
 import { useEffect } from 'react';
 
@@ -33,7 +32,7 @@ function ProductThumbnail({ product }) {
     <>
       <secttion className={styles.ProductBox}>
         <div className={styles.ProductInner1}>
-          <LazyLoadImage
+          <img
             alt={product.image.alt}
             className={styles.ProductThumb}
             src={product.image.thumbnail}
@@ -130,13 +129,13 @@ function ProductThumbnail({ product }) {
           <div className={styles.ButtonGroup}>
             <a href="?" className={styles.ButtonLike}>
               {/* <img src={IconHeart} alt="동네가게 바로가기 배너" /> */}
-              <LazyLoadImage
+              <img
                 src="/assets/product-detail/ic-heart.svg"
                 alt="찜하기 버튼"
               />
             </a>
             <a href="?" className={styles.ButtonNotice}>
-              <LazyLoadImage
+              <img
                 src="/assets/product-detail/ic-disabled-alarm.svg"
                 alt="재입고 알림 버튼"
               />
