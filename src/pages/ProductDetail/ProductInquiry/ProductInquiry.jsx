@@ -1,7 +1,6 @@
 import { useSetRecoilState, useRecoilValue, useRecoilState } from 'recoil';
 
-import { useState } from 'react';
-import { useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import { useDetailCollection } from '../../../firebase/firestore/useDetailCollection';
 
@@ -15,7 +14,6 @@ import { default as PageTitle } from '@/components/PageTitle/PageTitle.jsx';
 import { productDetailModalState } from '@/store/detailModalState.js';
 import { darkFilterState } from '@/store/darkFilterState.js';
 import ProductInquiryAccordion from './ProductInquiryAccordion/ProductInquiryAccordion';
-import { useEffect } from 'react';
 import { productLayoutState } from '../../../store/detailLayoutState';
 import { useAuthState } from '@/firebase/auth';
 import { dataStateAtom } from './../../../firebase/firestore/useDetailCollection';
@@ -29,23 +27,17 @@ export default function ProductInquiry() {
   const setProductDetailModalState = useSetRecoilState(productDetailModalState);
   const setDarkFilterState = useSetRecoilState(darkFilterState);
 
-  // (추가)uiType
+  // uiType
   const setLayoutState = useSetRecoilState(productLayoutState);
 
   // 문서를 저장 할 컬렉션 이름
   const collectionName = 'inquiryData';
-  // 한번 실행시켜 => useEffect가 실행될임
 
   const { dataState } = useDetailCollection(collectionName);
   const { settingAlertBox } = useAlertBox();
 
-  // 페이지네이션
-  // const limit = useRecoilValue(inquiryLimitAtom);
   const [limit, setState] = useState(6);
-
-  // const [page, setPage] = useRecoilState(inquiryPageAtom);
   const [page, setPage] = useState(1);
-
   // numPages는 총 페이지 개수를 의미한다
   const [numPages, setNumPages] = useState(1);
 
@@ -57,12 +49,13 @@ export default function ProductInquiry() {
     console.log('[ProductInquiry] dataState: ', dataState);
 
     if (dataState) {
-      console.log('dataState의 길이 출력 => ', dataState.length);
-      // dataState안에 아무것도 없을때는 자동으로 default값인 1인 상태겠지?
+      // console.log('dataState의 길이 출력 => ', dataState.length);
+      // dataState안에 아무것도 없을때는 자동으로 default값인 1인 상태이다
       if (dataState.length != 0) {
         let calcNumPages = Math.ceil(dataState.length / limit);
+
         setNumPages(calcNumPages);
-        console.log('페이지의 개수는? ', numPages);
+        // console.log('페이지의 개수는? ', numPages);
       }
     }
   }, [dataState]);
@@ -73,7 +66,7 @@ export default function ProductInquiry() {
   };
 
   function productModalClickHandler() {
-    console.log('user출력:', user);
+    // console.log('user출력:', user);
     if (user == null) {
       showAlertBox({
         btnUiType: 'onlyConfirm',
@@ -90,7 +83,6 @@ export default function ProductInquiry() {
   useEffect(() => {
     if (numPages == 1) {
       // 한페이지밖에 없는 경우
-      //console.log("한페이지밖에 없는 경우~");
       previousBtn.current.style.background =
         "url('https://res.kurly.com/kurly/ico/2021/paging-prev-disabled.svg')";
       nextBtn.current.style.background =
@@ -99,7 +91,6 @@ export default function ProductInquiry() {
       nextBtn.current.style.cursor = 'default';
     } else {
       // 여러 페이지가 존재하는 경우
-      //console.log("여러 페이지가 존재하는 경우~");
       if (page == 1) {
         // 1page라면 previous버튼 비활성화 svg로 바꿔야 함
         previousBtn.current.style.background =

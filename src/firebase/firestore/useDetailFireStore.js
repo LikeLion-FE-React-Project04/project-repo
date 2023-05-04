@@ -13,7 +13,6 @@ const initialState = {
 }
 
 export const useDetailFireStore = (collectionName) => {
-  //const [iniState, setIniState] = useState(initialState);
 
   /* --------------------------------- 문서(데이터) 추가하기 -------------------------------- */
   const addDocument = async (dataObject) => {

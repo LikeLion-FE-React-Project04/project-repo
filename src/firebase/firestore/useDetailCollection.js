@@ -41,9 +41,7 @@ export const useDetailCollection = (collectionName) => {
 
           starWriter.starWriter = getStarName(getWriter); // 작성자 이름을 넘겨주면 별 이름으로 반환해주는 util함수
           dataArr.push({...doc.data(), ...starWriter});
-        });
-        console.log("현재 배열 상태(dataArr) 출력 => ", dataArr);
-    
+        });    
         // Index를 사용 못하는 대체방안 => 현재 orderBy를 못했으니, 그걸 Front-end 개발 단에서 내림차순으로 정렬 처리해야 함
         dataArr.sort(({date: aDate}, {date:bDate}) => {
           // if) 오름차순 정렬 => return aDate.toDate() - bDate.toDate();
@@ -51,7 +49,6 @@ export const useDetailCollection = (collectionName) => {
           return bDate.toDate() - aDate.toDate();
         });
         setDataState(dataArr);
-        console.log("현재 배열 상태(dataState) 출력 => ", dataState);
       });
 
       return unsubscribe; // 구독 취소, 스냅샷이 계속 작동되는걸 막음
