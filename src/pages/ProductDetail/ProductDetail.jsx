@@ -1,39 +1,85 @@
-import { useLoaderData, useParams, Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+/* eslint-disable import/order */
+import { useParams } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
 import { useRecoilValue, useRecoilState } from 'recoil';
 
-import { ProductDetailPopUp } from '../../components/ProductDetailPopUp/ProductDetailPopUp';
-import ProductDetailPopUpLayout from '../../components/ProductDetailPopUp/ProductDetailPopUpLayout';
+import { productListFamily } from '@/store/productListState.js';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
+import ProductDetailPopUpLayout from '../../components/ProductDetailPopUp/ProductDetailPopUpLayout';
+import { useDetailCollection } from '../../firebase/firestore/useDetailCollection';
+import DetailInformation from './DetailInformation/DetailInformation';
 import styles from './ProductDetail.module.scss';
+import ProductDetailMenu from './ProductDetailMenu/ProductDetailMenu';
 import ProductInquiry from './ProductInquiry/ProductInquiry';
 import ProductReview from './ProductReview/ProductReview';
+import ProductInformation from './ProductInformation/ProductInformation';
 import ProductThumbnail from './ProductThumbnail/ProductThumbnail';
 import { productNameAtom } from './ProductReview/@recoil/renderState';
-
-import { productListFamily } from '@/store/productListState.js';
-import { useRef } from 'react';
-import ProductInformation from './ProductInformation/ProductInformation';
-import ProductDetailMenu from './ProductDetailMenu/ProductDetailMenu';
-import DetailInformation from './DetailInformation/DetailInformation';
 import useMoveScroll from './@hook/useMoveScroll';
-import { useDetailCollection } from '../../firebase/firestore/useDetailCollection';
-import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
 function ProductDetail() {
   const { productId } = useParams();
   const product = useRecoilValue(productListFamily(productId));
-
   const [productName, setProductName] = useRecoilState(productNameAtom);
-
   const detailsRef = useRef();
-
-  useDocumentTitle(productName + ' - Karly');
 
   //후기 개수 navigation바에 업데이트
   const [count, setCount] = useState(0);
   const { dataState } = useDetailCollection('reviewData');
   const [countText, setCountText] = useState('');
+
+  const [navigationPartRefs, setNavigationPartRefs] = useState(null);
+  const [productInformationOffsetTop, setProductInformationOffsetTop] =
+    useState(null);
+  const [detailInformationOffsetTop, setDetailInformationOffsetTop] =
+    useState(null);
+  const [productReviewOffsetTop, setProductReviewOffsetTop] = useState(null);
+  const [productInquiryOffsetTop, setProductInquiryOffsetTop] = useState(null);
+
+  const navigations = [
+    useMoveScroll('상품정보'),
+    useMoveScroll('상세정보'),
+    useMoveScroll(countText),
+    useMoveScroll('문의'),
+  ];
+
+  const navigationParts = [
+    <ProductInformation key={0} product={product} />,
+    <DetailInformation key={1} product={product} />,
+    <ProductReview key={2} />,
+    <ProductInquiry key={3} />,
+  ];
+
+  useEffect(() => {
+    const navigationPart = navigationParts.map((part, index) => (
+      <div
+        ref={navigations[index].element}
+        key={index}
+        className={styles.naviLayout}
+      >
+        {part}
+      </div>
+    ));
+
+    setNavigationPartRefs(navigationPart);
+  }, []);
+
+  useEffect(() => {
+    if (navigationPartRefs) {
+      setProductInformationOffsetTop(navigations[0].element.current.offsetTop);
+      setDetailInformationOffsetTop(navigations[1].element.current.offsetTop);
+      setProductReviewOffsetTop(navigations[2].element.current.offsetTop);
+      setProductInquiryOffsetTop(navigations[3].element.current.offsetTop);
+    }
+  }, [navigationPartRefs]);
+
+  useDocumentTitle(productName + ' - Karly');
+
+  // 페이지 전환 시, product.name 정보 얻어오기
+  useEffect(() => {
+    setProductName(product.name);
+  }, []);
 
   useEffect(() => {
     if (dataState) {
@@ -44,81 +90,54 @@ function ProductDetail() {
     setCountText(text);
   }, [dataState, count]);
 
-  // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/from
-
-  const navigations = [
-    useMoveScroll('상품정보'),
-    useMoveScroll('상세정보'),
-    useMoveScroll(countText),
-    useMoveScroll('문의'),
-  ];
-
-  // 페이지 전환 시, product.name 정보 얻어오기
-  useEffect(() => {
-    setProductName(product.name);
-  }, []);
-
   // 스크롤 이벤트
   const [position, setPosition] = useState();
 
-  const getElementPosition = (e) => {
-    const productInfo = navigations[0].element.current;
-    const detailInfo = navigations[1].element.current;
-    const review = navigations[2].element.current;
-    const inquiry = navigations[3].element.current;
-
-    const scrollY = window.scrollY; // 스크롤 양
-
-    if (scrollY > inquiry.offsetTop - 10) {
-      setPosition('inquiry');
-    } else if (
-      scrollY <= inquiry.offsetTop - 10 &&
-      scrollY > review.offsetTop - 10
-    ) {
-      setPosition('review');
-    } else if (
-      scrollY <= review.offsetTop - 10 &&
-      scrollY > detailInfo.offsetTop - 10
-    ) {
-      setPosition('detailInfo');
-    } else if (
-      scrollY <= detailInfo.offsetTop - 10 &&
-      scrollY > productInfo.offsetTop - 10
-    ) {
-      setPosition('productInfo');
-    } else {
-      setPosition(null);
-    }
-  };
-
-  // 클린업을 넣어야 하는가요? 넣으면 Cannot read properties of null (reading 'removeEventListener') 에라 발생합니다
   useEffect(() => {
-    detailsRef.current.addEventListener('scroll', getElementPosition); // 스크롤시 getBannerPosition 발생
+    const { current: detailsElement } = detailsRef;
 
-    // return () =>
-    //   detailsRef.current.removeEventListener('scroll', getElementPosition); // 클린업, 페이지를 나가면 이벤트 삭제
-  }, [detailsRef]);
+    if (detailsElement) {
+      const getElementPosition = (e) => {
+        const scrollY = window.scrollY; // 스크롤 양
 
+        if (scrollY > productInquiryOffsetTop - 10) {
+          setPosition('inquiry');
+          console.log('inquiry');
+        } else if (
+          scrollY <= productInquiryOffsetTop - 10 &&
+          scrollY > productReviewOffsetTop - 10
+        ) {
+          setPosition('review');
+          console.log('review');
+        } else if (
+          scrollY <= productReviewOffsetTop - 10 &&
+          scrollY > detailInformationOffsetTop - 10
+        ) {
+          setPosition('detailInfo');
+          console.log('detailInfo');
+        } else if (
+          scrollY <= detailInformationOffsetTop - 10 &&
+          scrollY > productInformationOffsetTop - 10
+        ) {
+          setPosition('productInfo');
+          console.log('productInfo1');
+        } else {
+          setPosition(null);
+        }
+      };
 
-  const navigationParts = [
-    <ProductInformation key={0} product={product} />,
-    <DetailInformation key={1} product={product} />,
-    <ProductReview key={2} />,
-    <ProductInquiry key={3} />,
-  ];
+      globalThis.addEventListener('scroll', getElementPosition);
 
-  const navigationPartRefs = navigationParts.map((part, index) => (
-    <div
-      ref={navigations[index].element}
-      key={index}
-      className={styles.naviLayout}
-      onScroll={(e) => {
-        console.log(`${index}번 스크롤: `, e.target.scrollTop);
-      }}
-    >
-      {part}
-    </div>
-  ));
+      return () => {
+        globalThis.removeEventListener('scroll', getElementPosition);
+      };
+    }
+  }, [
+    productInformationOffsetTop,
+    detailInformationOffsetTop,
+    productReviewOffsetTop,
+    productInquiryOffsetTop,
+  ]);
 
   return (
     <div className={styles.ProductDetailWrapper} ref={detailsRef}>
@@ -131,15 +150,3 @@ function ProductDetail() {
 }
 
 export default ProductDetail;
-
-// GET (READ)
-// export async function loader({ params }) {
-//   console.log('zzz');
-//   console.log(params.productId);
-//   console.log(typeof params.productId);
-//   const product = await useRecoilValue(productListFamily(params.productId));
-
-//   console.log(product);
-
-//   return product;
-// }

@@ -14,6 +14,7 @@ import { useSignUp } from '@/firebase/auth';
 import { useCreateAuthUser } from '@/firebase/firestore/useCreateAuthUser';
 
 import { addressState } from '@/store/addressState.js';
+import { useState } from 'react';
 
 export function useSignUpSubmit() {
   const { signUp } = useSignUp();
@@ -30,6 +31,7 @@ export function useSignUpSubmit() {
     settingAlertBox(getValue); // 경고창 세팅
   };
 
+  const [isLoading, setIsLoading] = useState(false);
   // 팬딩 작업 어떻게 할까?
   // 어차피 계속 바뀌어야하는데 차라리 useCallback을 쓰지 말까?
   const signUpSubmit = useCallback(
@@ -65,21 +67,33 @@ export function useSignUpSubmit() {
         return;
       }
 
+      setIsLoading(true);
+
       // 전부 통과하면 계정 생성
-      const user = await signUp(email, password, name, birth);
+      try {
+        const user = await signUp(email, password, name, birth);
 
-      createAuthUser(user, {
-        phoneNumber,
-        address,
-        gender,
-        birth,
-      });
+        createAuthUser(user, {
+          phoneNumber,
+          address,
+          gender,
+          birth,
+        });
 
-      showAlertBox({
-        alertText: '회원가입이 완료되었습니다.',
-        moveUrl: '/',
-        btnUiType: 'onlyConfirm',
-      });
+        showAlertBox({
+          alertText: '회원가입이 완료되었습니다.',
+          moveUrl: '/',
+          btnUiType: 'onlyConfirm',
+        });
+      } catch (error) {
+        showAlertBox({
+          alertText: '회원가입 도중에 오류가 발생했습니다.',
+          moveUrl: '/',
+          btnUiType: 'onlyConfirm',
+        });
+      } finally {
+        setIsLoading(false);
+      }
 
       return;
     },
@@ -89,7 +103,8 @@ export function useSignUpSubmit() {
   return useMemo(
     () => ({
       signUpSubmit,
+      isLoading,
     }),
-    [signUpSubmit]
+    [signUpSubmit, isLoading]
   );
 }
