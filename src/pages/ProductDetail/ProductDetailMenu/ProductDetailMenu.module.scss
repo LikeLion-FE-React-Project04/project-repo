@@ -40,6 +40,11 @@
           line-height: 16px;
         }
       }
+      button:focus-visible {
+        position: relative;
+        z-index: 50;
+        outline-offset: -2px;
+      }
       .Active {
         background-color: var(--white);
         color: var(--primary);
