@@ -39,7 +39,7 @@ export function ProductDetailPopUp({uiType='inquiry'}) {
   };
   
   // title과 textarea의 텍스트를 관리하기 위한 ref
-  const textStateRef = useRef(initialTextState); // textStateRef == { current : {title:'', textarea:''} }
+  const textStateRef = useRef(initialTextState); 
 
   // uiType검사
   const { title, ph, collectionName } = checkUiType(uiType);  
@@ -53,17 +53,6 @@ export function ProductDetailPopUp({uiType='inquiry'}) {
   
   // 현재 로그인된 사용자의 사용자명 불러오기
   const { user } = useAuthState();
-
-  // Test
-  useEffect(() => {
-    if (user) {
-      // 잘 받아와지나 테스트용
-      console.log('user 출력하기 => ', user);
-      console.log('user displayName 출력하기 => ', user.displayName);
-      console.log('product image의 thumbnail 출력하기 => ', product.image.thumbnail);
-      console.log('product image의 alt 출력하기 => ', product.image.alt);
-    }
-  }, [user]);
   
   const modalRef = useRef(); // 모달 전체를 참조
   const setDarkFilterFocus = useSetRecoilState(darkFilterFocusState);
@@ -119,7 +108,6 @@ export function ProductDetailPopUp({uiType='inquiry'}) {
     textStateRef.current.textarea = e.target.value;
     // 그래서 랜더링을 시키기 위해서 state 사용
     setInputCount(textStateRef.current.textarea.length);
-    console.log('textarea의 내용을 바꾸고 있습니다');
 
     if(uiType=='inquiry') {
       // 제목과 내용이 모두 비어있지 않다면? => 등록 버튼 색 변해야함 왜? 등록이 가능하니깐
@@ -144,7 +132,6 @@ export function ProductDetailPopUp({uiType='inquiry'}) {
   // 제목의 내용이 바뀔때마다 넣어줌
   const handleTitleData = (e) => {
     textStateRef.current.title = e.target.value;
-    console.log('제목의 current값을 바꾸고 있습니다');
 
     if(uiType=='inquiry') {
       // 제목과 내용이 모두 비어있지 않다면? => 등록 버튼 색 변해야함 왜? 등록이 가능하니깐
