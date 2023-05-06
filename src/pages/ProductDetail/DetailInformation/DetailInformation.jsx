@@ -1,3 +1,4 @@
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 function DetailInformation({ product }) {
   return (
     <div>

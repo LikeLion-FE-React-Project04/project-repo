@@ -2,26 +2,38 @@ import { useNavigate } from 'react-router-dom';
 
 import { useSetRecoilState } from 'recoil';
 
-import { attr, getPriceFormat, getSalePercent } from '../../utils';
+import { useRef, forwardRef } from 'react';
+
+import {
+  attr,
+  getPaymentPrice,
+  getPriceFormat,
+  getSalePercent,
+} from '../../utils';
+
+import { modalBtnState } from '../../store/cartModalState';
 
 import Mark from './Mark';
+
+import CartButton from './CartButton';
 
 import classes from '@/components/ProductCard/ProductCard.module.scss';
 import { selectedproductId } from '@/store/productListState.js';
 import { productCartModalState } from '@/store/cartModalState.js';
 import { darkFilterState } from '@/store/darkFilterState.js';
-import { modalBtnState } from '../../store/cartModalState';
-import { useRef } from 'react';
-import CartButton from './CartButton';
+import { useEffect } from 'react';
 
 /* Component ---------------------------------------------------------------- */
 
-export default function ProductCard({ product, isListCard = false }) {
+export default function ProductCard({
+  product,
+  isListCard = false,
+  isActive = true,
+}) {
   const setProductCartModalState = useSetRecoilState(productCartModalState);
   const setSelectedproductId = useSetRecoilState(selectedproductId);
   const setDarkFilterState = useSetRecoilState(darkFilterState);
   const movePage = useNavigate();
-  const setModalBtnState = useSetRecoilState(modalBtnState);
   const cartBtnRef = useRef();
 
   function productCardClickHandler(e) {
@@ -40,7 +52,6 @@ export default function ProductCard({ product, isListCard = false }) {
       setSelectedproductId(product.id);
       setProductCartModalState(true);
       setDarkFilterState(true);
-      // setModalBtnState();
 
       return;
     }
@@ -54,21 +65,21 @@ export default function ProductCard({ product, isListCard = false }) {
 
   if (product) {
     return (
-      // eslint-disable-next-line jsx-a11y/click-events-have-key-events
       <button
+        aria-hidden={isActive ? false : true}
+        aria-label={`${product.name} ${getPaymentPrice(product)}원`}
         className={classes.productCardBtn}
         data-name="productCard"
+        style={{
+          background: `url(${product.image.thumbnail}) 0 0/ 100% no-repeat`,
+        }}
+        tabIndex={isActive ? 'none' : -1}
         type="button"
         onClick={productCardClickHandler}
       >
         <div className={classes.productCard}>
-          <div
-            className={classes.img}
-            style={{
-              background: `url(${product.image.thumbnail}) 50% 50%/ 100% no-repeat`,
-            }}
-          >
-            <CartButton ref={cartBtnRef} />
+          <div className={classes.img}>
+            <CartButton ref={cartBtnRef} isActive={isActive} />
           </div>
           <p className={classes.productName}>{product.name}</p>
           {isListCard && (

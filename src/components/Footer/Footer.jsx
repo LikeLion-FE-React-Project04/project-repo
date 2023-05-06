@@ -111,13 +111,13 @@ export function Footer() {
               <Link aria-label="칼리소개 영상" to="/">
                 칼리소개영상
               </Link>
-              <Link aria-label="인재채용 정보 확인" to="/">
+              <Link aria-label="인재채용 정보" to="/">
                 인재채용
               </Link>
-              <Link aria-label="이용약관 확인" to="/">
+              <Link aria-label="이용약관" to="/">
                 이용약관
               </Link>
-              <Link aria-label="개인정보처리방침 확인" to="/">
+              <Link aria-label="개인정보처리방침" to="/">
                 개인정보처리방침
               </Link>
               <Link aria-label="이용안내" to="/">
@@ -170,20 +170,20 @@ export function Footer() {
               <p>팩스 : 070 - 7500 - 6098</p>
             </div>
             <div className={styles.footerCompanySns}>
-              <Link to={instagramUrl}>
-                <Blog alt="칼리 네이버 블로그" />
+              <Link to={naverBlogUrl}>
+                <Blog />
               </Link>
               <Link to={facebookUrl}>
-                <Facebook alt="칼리 페이스북" />
+                <Facebook />
               </Link>
-              <Link to={naverBlogUrl}>
-                <Instagram alt="칼리 인스타그램" />
+              <Link to={instagramUrl}>
+                <Instagram />
               </Link>
               <Link to={naverPostUrl}>
-                <Naver alt="칼리 네이버포스트" />
+                <Naver />
               </Link>
               <Link to={youtubeUrl}>
-                <Youtube alt="칼리 유튜브" />
+                <Youtube />
               </Link>
             </div>
           </article>

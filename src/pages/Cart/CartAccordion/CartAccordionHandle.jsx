@@ -1,3 +1,5 @@
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 import styles from './CartAccordionHandle.module.scss';
 
 function CartAccordionHandle({ type = 'cold' }) {
@@ -17,15 +19,15 @@ function getUItype(type) {
 
   switch (type) {
     case 'cold':
-      imgTag = <img src="/assets/cart/ic-cold.svg" alt="냉장 식품" />;
+      imgTag = <LazyLoadImage src="/assets/cart/ic-cold.svg" alt="냉장 식품" />;
       title = '냉장 식품';
       break;
     case 'frozen':
-      imgTag = <img src="assets/cart/ic-frozen.svg" alt="냉동 식품" />;
+      imgTag = <LazyLoadImage src="assets/cart/ic-frozen.svg" alt="냉동 식품" />;
       title = '냉동 식품';
       break;
     case 'temperature':
-      imgTag = <img src="assets/cart/ic-temperature.svg" alt="상온 식품" />;
+      imgTag = <LazyLoadImage src="assets/cart/ic-temperature.svg" alt="상온 식품" />;
       title = '상온 식품';
       break;
     default:

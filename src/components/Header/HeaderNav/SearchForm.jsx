@@ -1,3 +1,4 @@
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { forwardRef } from 'react';
 
 import { inputHook } from '../@recoilhooks/inputHook';
@@ -36,7 +37,7 @@ const SearchForm = forwardRef((_, ref) => {
             type="button"
             className={styles.formGroupButton}
           >
-            <img src={Search} alt="검색" />
+            <LazyLoadImage src={Search} alt="검색" />
           </button>
         </div>
       </form>

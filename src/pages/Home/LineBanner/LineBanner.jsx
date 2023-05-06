@@ -6,7 +6,9 @@ export function LineBanner() {
   return (
     <>
       <article className={styles.purpleWeekImg}>
-        <Link to="/" aria-label="더 풍성해진 10월의 퍼플위크 (적립률UP+3종 쿠폰팩)"></Link>
+        <Link to="/">
+          <span className="a11yHidden">더 풍성해진 10월의 퍼플위크 (적립률UP+3종 쿠폰팩)</span>
+        </Link>
       </article>
     </>
   );

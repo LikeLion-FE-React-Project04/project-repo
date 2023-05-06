@@ -1,5 +1,6 @@
 import { useRecoilValue } from 'recoil';
 import { Link } from 'react-router-dom';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import styles from './ProductList.module.css';
 import { FilterList } from './FilterList';
@@ -13,7 +14,6 @@ import {
   DummyButtons,
 } from './SortButton';
 
-import banner from '@/assets/product-list/product-list-banner.png';
 import notFountIcon from '@/assets/product-list/ic-notFound.svg';
 import resetIcon from '@/assets/product-list/ic-return.svg';
 
@@ -49,10 +49,10 @@ const ProductCards = () => {
 export const ProductListBanner = () => {
   return (
     <Link to="/productList">
-      <img
+      <LazyLoadImage
         alt="이번주의 신상 랭킹보러가기 이미지 배너"
         className={styles.productListBanner}
-        src={banner}
+        src='assets/product-list/product-list-banner.avif'
       />
     </Link>
   );
@@ -70,7 +70,7 @@ const IsCheckedRenderAllfilter = () => {
 
   return (
     <div className={styles.hasNotFountPageContainer}>
-      <img
+      <LazyLoadImage
         alt={'필터 조건에 맞는 상품이 없을때 나오는 아이콘'}
         src={notFountIcon}
       />
@@ -82,7 +82,7 @@ const IsCheckedRenderAllfilter = () => {
         className={styles.hasNotFountPageButton}
         onClick={onClick}
       >
-        <img src={resetIcon} alt={'초기화버튼 앞 되돌리기 아이콘'} />
+        <LazyLoadImage src={resetIcon} alt={'초기화버튼 앞 되돌리기 아이콘'} />
         <span className={styles.hasNotFountPageButtonText}>버튼초기화</span>
       </button>
     </div>
