@@ -65,8 +65,10 @@
   <div><a href="#7-디렉터리-구조-open_file_folder">7. 디렉터리 구조 :open_file_folder:</a></div>
   <div><a href="#8-페이지별-기능-소개-sparkles">8. 페이지별 기능 소개 :sparkles:</a></div>
   <div><a href="#9-웹-접근성을-높이기-위한-노력-clap">9. 웹 접근성을 높이기 위한 노력 :clap:</a></div>
-  <div><a href="#10-프로젝트-사용법-question">10. 프로젝트 사용법 :question:</a></div>
-  <div><a href="#11-배포-링크-tada">11. 배포 링크 :tada:</a></div>
+  <div><a href="#10-검색엔진-최적화Search-Engine-Optimization-SEO-keyboard">10. 검색엔진 최적화(Search Engine Optimization, SEO) :keyboard:</a></div>
+  <div><a href="#11-애플리케이션-성능-향상-up">11. 애플리케이션 성능 향상 :up:</a></div>
+  <div><a href="#12-프로젝트-사용법-question">12. 프로젝트 사용법 :question:</a></div>
+  <div><a href="#13-배포-링크-tada">13. 배포 링크 :tada:</a></div>
 </div>
 
 ## 1. 역할 분담 :speaking_head: 
@@ -935,7 +937,9 @@ feat/#이슈번호
 - ```경고창 웹접근성``` : https://github.com/LikeLion-FE-React-Project04/project-repo/issues/220
 
 #### :white_check_mark: 슬라이더(swiper) 웹접근성
-- ```캐로셀 웹접근성``` : https://github.com/LikeLion-FE-React-Project04/project-repo/issues/202
+- ```캐로셀 웹접근성``` 
+  - https://github.com/LikeLion-FE-React-Project04/project-repo/issues/202
+  - https://github.com/LikeLion-FE-React-Project04/project-repo/issues/292
 
 #### :white_check_mark: Header 웹접근성
 - https://github.com/LikeLion-FE-React-Project04/project-repo/issues/236
@@ -943,7 +947,16 @@ feat/#이슈번호
 #### :white_check_mark: Footer 웹접근성
 - https://github.com/LikeLion-FE-React-Project04/project-repo/issues/238
 
-## 10. 프로젝트 사용법 :question: 
+#### :white_check_mark: LineBanner 웹접근성
+- https://github.com/LikeLion-FE-React-Project04/project-repo/issues/290
+
+## 10. 검색엔진 최적화(Search Engine Optimization, SEO) :keyboard: 
+- https://github.com/LikeLion-FE-React-Project04/project-repo/issues/275
+
+## 11. 애플리케이션 성능 향상 :up: 
+- https://github.com/LikeLion-FE-React-Project04/project-repo/issues/293
+
+## 12. 프로젝트 사용법 :question: 
 다음 순서대로 명령어를 입력해주세요.
 ```
 npm install -g pnpm
@@ -1226,7 +1239,7 @@ APP_ID = ""
 </details>
 
 
-## 11. 배포 링크 :tada: 
+## 13. 배포 링크 :tada: 
 
 
 ![footer](https://capsule-render.vercel.app/api?section=footer&type=waving&color=0:FFFFFF,100:5F0080)
