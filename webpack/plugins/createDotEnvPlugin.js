@@ -9,7 +9,7 @@ const createDotEnvPlugin = (options = {}) => {
     options
   );
 
-  return new DotEnv({ ...config, systemvars: true });
+  return new DotEnv({ config });
 };
 
 module.exports = createDotEnvPlugin;

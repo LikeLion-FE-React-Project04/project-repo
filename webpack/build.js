@@ -5,7 +5,7 @@ const createCopyPlugin = require('./plugins/createCopyPlugin');
 const { createCssExtractPlugin } = require('./plugins/createCssExtractPlugin');
 const createCssMinimizerPlugin = require('./plugins/createCssMinimizerPlugin');
 const createTerserPlugin = require('./plugins/createTerserPlugin');
-const ImageMinimizerPlugin = require('./plugins/createImageMinPlugin');
+const createImageMinPlugin = require('./plugins/createImageMinPlugin');
 const createCleanPlugin = require('./plugins/createCleanPlugin');
 const createBundleAnalyzerPlugin = require('./plugins/createBundleAnalyzerPlugin');
 const createESBuildMinifyPlugin = require('./plugins/createESBuildMinifyPlugin');
@@ -17,14 +17,16 @@ const buildConfig = merge(commonConfig, {
     ...commonConfig.plugins,
     createCopyPlugin(),
     createCssExtractPlugin(),
-    createBundleAnalyzerPlugin(),
+    // createBundleAnalyzerPlugin({
+    //   openAnalyzer: false,
+    // }),
   ].filter(Boolean),
   optimization: {
     minimize: true,
     minimizer: [
       createCssMinimizerPlugin(),
       createTerserPlugin(),
-      ImageMinimizerPlugin(),
+      createImageMinPlugin(),
       createCleanPlugin(),
       createESBuildMinifyPlugin(),
     ],
