@@ -40,3 +40,6 @@ video {
 body *:focus {
   outline: 2px solid var(--primary);
 }
+body *:focus:not(:focus-visible) {
+  outline: none;
+}
