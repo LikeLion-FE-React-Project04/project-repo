@@ -63,7 +63,7 @@ function ProductDetail() {
     ));
 
     setNavigationPartRefs(navigationPart);
-  }, []);
+  }, [navigationParts]);
 
   useEffect(() => {
     if (navigationPartRefs) {
@@ -102,25 +102,21 @@ function ProductDetail() {
 
         if (scrollY > productInquiryOffsetTop - 10) {
           setPosition('inquiry');
-          console.log('inquiry');
         } else if (
           scrollY <= productInquiryOffsetTop - 10 &&
           scrollY > productReviewOffsetTop - 10
         ) {
           setPosition('review');
-          console.log('review');
         } else if (
           scrollY <= productReviewOffsetTop - 10 &&
           scrollY > detailInformationOffsetTop - 10
         ) {
           setPosition('detailInfo');
-          console.log('detailInfo');
         } else if (
           scrollY <= detailInformationOffsetTop - 10 &&
           scrollY > productInformationOffsetTop - 10
         ) {
           setPosition('productInfo');
-          console.log('productInfo1');
         } else {
           setPosition(null);
         }
