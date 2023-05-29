@@ -41,11 +41,16 @@ export default function ReviewListContainer() {
       console.log('dataState의 길이 출력 => ', dataState.length);
       if(dataState.length != 0) {
         let calcNumPages = Math.ceil(dataState.length / limit);
+        
         setNumPages(calcNumPages);
       }
       // console.log('numPages 출력 => ', numPages);
     }
   }, [dataState]);
+
+  useEffect(() => {
+    setPage(1);
+  }, []);
 
   // 상품 후기 리스트 총 개수 가져오려면 상태를 설정해야함(안하면 렌더링이 먼저돼서 불러오지 못함, 종속성 배열도 지정해야함)
   const [count, setCount] = useState();
