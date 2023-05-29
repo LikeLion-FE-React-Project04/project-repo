@@ -1240,6 +1240,7 @@ APP_ID = ""
 
 
 ## 13. 배포 링크 :tada: 
+https://exquisite-beijinho-97fbd2.netlify.app/
 
 
 ![footer](https://capsule-render.vercel.app/api?section=footer&type=waving&color=0:FFFFFF,100:5F0080)
