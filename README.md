@@ -288,6 +288,10 @@
   - 이름의 맨 앞이나 맨 뒤에 언더바(_)를 사용하지 않는다.<br />
   <table>
     <tr>
+      <td align="center">컴포넌트</td>
+      <td>Pascal Case(파스칼 케이스)</td>
+    </tr>
+    <tr>
       <td align="center">image, svg</td>
       <td>단어 사이 -를 사용해 네이밍(ex. erase-check.svg)</td>
     </tr>
