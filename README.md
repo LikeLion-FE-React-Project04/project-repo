@@ -981,7 +981,7 @@ APP_ID = ""
 ```
 #### :loudspeaker: 파이어베이스
 <details>
-  <summary>✅파이어베이스 연동하기</summary>
+  <summary>✅ 파이어베이스 연동하기</summary>
   <table>
     <tr>
       <td width="200">
